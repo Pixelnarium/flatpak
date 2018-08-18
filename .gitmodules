@@ -1,3 +1,6 @@
 [submodule "co.uk.pcemulator.PCem/shared-modules"]
 	path = co.uk.pcemulator.PCem/shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "net.pcsx2.PCSX2/shared-modules"]
+	path = net.pcsx2.PCSX2/shared-modules
+	url = https://github.com/flathub/shared-modules.git
