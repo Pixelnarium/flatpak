@@ -1,0 +1,95 @@
+{
+  "app-id": "co.uk.pcemulator.PCem",
+  "runtime": "org.freedesktop.Platform",
+  "sdk": "org.freedesktop.Sdk",
+  "runtime-version": "18.08",
+  "command": "pcem",
+  "rename-desktop-file": "PCem.desktop",
+  "rename-appdata-file": "pcem.appdata.xml",
+  "rename-icon": "icon",
+  "finish-args": [
+    "--device=all",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=pulseaudio",
+    "--persist=.pcem"
+  ],
+  "modules": [
+    {
+      "name": "wxWidgets",
+      "cleanup": [
+        "/bin",
+        "/include",
+        "/share/bakefile",
+        "/share/aclocal",
+        "/lib/wx/include"
+      ],
+      "config-opts": [
+        "--with-opengl",
+        "--with-libjpeg",
+        "--with-libpng",
+        "--with-zlib",
+        "--disable-sdltest",
+        "--enable-unicode",
+        "--enable-display",
+        "--enable-propgrid",
+        "--disable-webkit",
+        "--disable-webview",
+        "--disable-webviewwebkit",
+        "--with-expat=builtin",
+        "--with-libiconv=/usr"
+      ],
+      "build-options" : {
+        "cxxflags":"-std=c++0x"
+      },
+      "sources": [ 
+        {  
+          "type": "archive", 
+          "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2",
+          "sha256":"96157f988d261b7368e5340afa1a0cad943768f35929c22841f62c25b17bf7f0" 
+        }
+      ],
+      "modules": [
+        "shared-modules/glu/glu-9.0.0.json"
+      ]
+    },
+    {
+      "name": "pcem",
+      "config-opts": [
+        "--enable-release-build",
+        "--enable-networking"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "strip-components": 0,
+          "url": "http://pcem-emulator.co.uk/files/PCemV14Linux.tar.gz",
+          "sha256": "06d84aa2089945fc554ac108ad94bbe92ef3ade2dbf16c67ddebacdfe8ac17cb"
+        }
+      ]
+    },
+    {
+      "name": "pcem-desktop-integration",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -Dm644 PCem.desktop /app/share/applications/PCem.desktop",
+        "install -Dm644 pcem.appdata.xml /app/share/appdata/pcem.appdata.xml",
+        "install -Dm644 icon.png /app/share/icons/hicolor/256x256/apps/icon.png"
+      ],
+      "sources": [
+        {
+          "type": "file",
+          "path": "PCem.desktop"
+        },
+        {
+          "type": "file",
+          "path": "pcem.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "icon.png"
+        }
+      ]
+    }
+  ]
+}

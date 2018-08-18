@@ -1,2 +1,2 @@
 # flatpak
-various flatpaks of programs I use
+various flatpak manifests of programs I use

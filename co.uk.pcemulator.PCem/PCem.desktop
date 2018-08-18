@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PCem
+GenericName=PC Emulator
+Comment=PC Emulator that emulates different PCs
+Exec=pcem
+Icon=co.uk.pcemulator.PCem
+Categories=Game
