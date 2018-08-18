@@ -1,0 +1,57 @@
+{
+  "app-id": "com.eduke32.EDuke32",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "3.28",
+  "sdk": "org.gnome.Sdk",
+  "command": "eduke32",
+  "rename-desktop-file": "eduke32.desktop",
+  "rename-icon": "eduke32",
+  "rename-appdata-file": "eduke32.appdata.xml",
+  "finish-args": [
+      "--share=ipc",
+      "--socket=x11",
+      "--device=dri",
+      "--share=network",
+      "--socket=pulseaudio",
+      "--persist=.config/eduke32",
+      "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+      "--filesystem=xdg-run/dconf",
+      "--filesystem=~/.config/dconf:ro",
+      "--talk-name=ca.desrt.dconf"
+  ],
+  "modules": [
+		"shared-modules/glu/glu-9.0.0.json",
+    {
+      "name": "eduke32",
+      "buildsystem": "simple",
+      "build-commands": [
+        "make -j$FLATPAK_BUILDER_N_JOBS",
+        "install -d /app/bin",
+        "install -Dm755 eduke32 mapster32 /app/bin",
+        "install -Dm644 package/common/buildlic.txt /app/share/licenses/eduke32/buildlic.txt",
+        "install -Dm644 eduke32.png /app/share/icons/hicolor/48x48/apps/eduke32.png",
+        "install -Dm644 eduke32.desktop /app/share/applications/eduke32.desktop",
+        "install -Dm644 eduke32.appdata.xml /app/share/appdata/eduke32.appdata.xml"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://dukeworld.com/eduke32/synthesis/latest/eduke32_src_20180809-6969.tar.xz",
+          "sha256": "9f84e980a410b91cd759fd9ceb368b866b6e80ed7984d9ba45220ca60c4de3ba"
+        },
+        {
+          "type": "file",
+          "path": "eduke32.desktop"
+        },
+        {
+          "type": "file",
+          "path": "eduke32.png"
+        },
+        {
+          "type": "file",
+          "path": "eduke32.appdata.xml"
+        }
+      ]
+		}
+	]
+}

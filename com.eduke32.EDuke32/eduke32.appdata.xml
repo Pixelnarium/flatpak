@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>com.eduek32.EDuke32</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL, BUILD</project_license>
+  <name>EDuke32</name>
+  <summary>EDuke32</summary>
+  <description>
+    Native Duke Nuke 3D Source Port. Needs game files to work.
+  </description>
+</component>
