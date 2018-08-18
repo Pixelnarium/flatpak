@@ -8,19 +8,19 @@
   "rename-icon": "eduke32",
   "rename-appdata-file": "eduke32.appdata.xml",
   "finish-args": [
-      "--share=ipc",
-      "--socket=x11",
-      "--device=dri",
-      "--share=network",
-      "--socket=pulseaudio",
-      "--persist=.config/eduke32",
-      "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
-      "--filesystem=xdg-run/dconf",
-      "--filesystem=~/.config/dconf:ro",
-      "--talk-name=ca.desrt.dconf"
+    "--share=ipc",
+    "--socket=x11",
+    "--device=dri",
+    "--share=network",
+    "--socket=pulseaudio",
+    "--persist=.config/eduke32",
+    "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+    "--filesystem=xdg-run/dconf",
+    "--filesystem=~/.config/dconf:ro",
+    "--talk-name=ca.desrt.dconf"
   ],
   "modules": [
-		"shared-modules/glu/glu-9.0.0.json",
+    "shared-modules/glu/glu-9.0.0.json",
     {
       "name": "eduke32",
       "buildsystem": "simple",
@@ -52,6 +52,6 @@
           "path": "eduke32.appdata.xml"
         }
       ]
-		}
-	]
+    }
+  ]
 }
