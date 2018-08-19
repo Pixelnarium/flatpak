@@ -131,11 +131,22 @@
       "config-opts": [
         "-DCMAKE_BUILD_TYPE=Release",
         "-DGTK3_API=TRUE",
-        "-DPACKAGE_MODE=TRUE",
         "-DXDG_STD=TRUE",
         "-DDISABLE_BUILD_DATE=TRUE",
         "-DOpenGL_GL_PREFERENCE=GLVND"
       ],
+      "build-options": 
+      {
+        "arch":
+        {
+          "x86_64":
+          {
+            "config-opts": [
+              "-DCMAKE_BUILD_TYPE=Debug"
+            ]
+          }
+        }
+      },
       "cleanup": [
         "/share/pixmaps",
         "/share/man",
@@ -150,6 +161,10 @@
         {
           "type": "git",
           "url": "https://github.com/PCSX2/pcsx2.git"
+        },
+        {
+          "type": "patch",
+          "path": "0001-64bit.patch"
         },
         {
           "type": "file",

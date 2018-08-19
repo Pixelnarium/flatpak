@@ -1,0 +1,44 @@
+{
+  "app-id": "io.mednafen.Mednafen",
+  "runtime": "org.freedesktop.Platform",
+  "sdk": "org.freedesktop.Sdk",
+  "runtime-version": "18.08",
+  "command": "mednafen",
+  "rename-desktop-file": "mednafen.desktop",
+  "finish-args": [
+    "--device=all",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--persist=.mednafen"
+  ],
+  "modules": [
+    "shared-modules/udev/udev-175.json",
+    "shared-modules/glu/glu-9.0.0.json",
+    {
+      "name": "mednafen",
+      "post-install": [
+        "mkdir -p /app/share/applications",
+        "mkdir -p /app/share/appdata/",
+        "install -Dm644 mednafen.desktop /app/share/applications/",
+        "install -Dm644 io.mednafen.Mednafen.appdata.xml /app/share/appdata/"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://mednafen.github.io/releases/files/mednafen-1.21.3.tar.xz",
+          "sha256": "2e761e8834b098b7f1ab35dccaa6d2be715ee9106cf40af4919f6ca4b99ee3c6"
+        },
+        {
+          "type": "file",
+          "path": "io.mednafen.Mednafen.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "mednafen.desktop"
+        }
+      ]
+    }
+  ]
+}
