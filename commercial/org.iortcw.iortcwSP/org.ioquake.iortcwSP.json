@@ -1,0 +1,100 @@
+{
+  "app-id": "org.iortcw.iortcwSP",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "18.08",
+  "sdk": "org.freedesktop.Sdk",
+  "rename-desktop-file": "iortcwsp.desktop",
+  "rename-icon": "iortcwsp",
+  "rename-appdata-file": "iortcwsp.appdata.xml",
+  "finish-args": [
+    "--device=dri",
+    "--share=ipc",
+    "--share=network",
+    "--socket=x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--persist=.wolf"
+  ],
+  "command": "iortcwsp",
+  "modules": [
+    {
+      "name": "iortcw",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app/data/iortcw",
+        "make -j$FLATPAK_BUILDER_N_JOBS -C SP BUILD_CLIENT=1 DEFAULT_BASEDIR='/app/data/iortcw' COPYDIR='/app/data/iortcw' copyfiles",
+        "mkdir /app/bin",
+        "ln -s /app/data/iortcw/iowolfsp.x86_64 /app/bin/iortcwsp",
+        "install -Dm644 SP/misc/iortcw.svg /app/share/icons/hicolor/scalable/apps/iortcwsp.svg"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/iortcw/iortcw/archive/1.51b.zip",
+          "sha256": "5177af2fef677a021d45c341e0a32b3d089a353edea48fd8f4cfc7114a592175"
+        }
+      ]
+    },
+    {
+      "name": "iortcw-data",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app/share/applications",
+        "mkdir -p /app/share/appdata",
+        "install -Dm644 iortcwsp.desktop /app/share/applications/",
+        "install -Dm644 iortcwsp.appdata.xml /app/share/appdata/",
+        "unzip patch-data-141.zip",
+        "rm main/*.so",
+        "rm main/*.dll",
+        "cp -r main/* /app/data/iortcw/main/",
+        "install -Dm644 pak0.pk3 /app/data/iortcw/main/",
+        "install -Dm644 sp_pak1.pk3 /app/data/iortcw/main/",
+        "install -Dm644 sp_pak2.pk3 /app/data/iortcw/main/"
+      ],
+      "sources": [
+        {
+          "type": "file",
+          "url": "https://github.com/iortcw/iortcw/releases/download/1.51b/patch-data-141.zip",
+          "sha256": "7fe0f5d04967bd3f2f66017a832d1bffec8796a04cf651401c0ff3d5024f3e47"
+        },
+        {
+          "type": "file",
+          "path": "iortcwsp.desktop"
+        },
+        {
+          "type": "file",
+          "path": "iortcwsp.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "pak0.pk3"
+        },
+        {
+          "type": "file",
+          "path": "sp_pak1.pk3"
+        },
+        {
+          "type": "file",
+          "path": "sp_pak2.pk3"
+        }
+      ]
+    },
+    {
+      /* change to your needs */
+      "name": "iortcw-language",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -Dm644 sp_pak3.pk3 /app/data/iortcw/main/",
+        "install -Dm644 language.cfg /app/data/iortcw/main/"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/iortcw/iortcw/releases/download/1.51b/patch-data-SP_deutsch.zip",
+          "sha256": "593b3f6689e32039c6a4132eb47248d65ec2649c3c2380c3b76f8e821d5ca9c9"
+        }
+      ]
+    }
+ 
+  ]
+}

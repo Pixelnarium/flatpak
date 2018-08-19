@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>org.iortcw.iortcwSP</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <name>Return To Castle Wolfenstein</name>
+  <summary>Return To Castle Wolfenstein Single Player</summary>
+  <description>
+    Return To Castle Wolfenstein Source Port. Needs game files to work.
+  </description>
+</component>

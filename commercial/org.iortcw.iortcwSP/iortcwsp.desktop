@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Return To Castle Wolfenstein
+GenericName=Return To Castle Wolfenstein
+Comment=ioRTCW - Return To Castle Wolfenstein Open Source Engine
+Exec=iortcwsp
+Icon=iortcwsp
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Game;
