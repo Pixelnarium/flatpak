@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <id type="desktop">org.libretro.RetroArch.desktop</id>
+  <name>RetroArch</name>
+  <summary>Frontend for emulators, game engines and media players.</summary>
+  <developer_name>libretro</developer_name>
+  <url type="homepage">https://www.retroarch.com</url>
+  <categories>
+    <category>Game</category>
+  </categories>
+  <screenshots>
+    <screenshot type="default">
+      <caption>The RetroArch main menu.</caption>
+      <image type="source" width="1920" height="1080">https://rawgit.com/flathub/org.libretro.RetroArch/master/screenshot.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>RetroArch running the Nintendo Entertainment System.</caption>
+      <image type="source" width="1172" height="960">https://rawgit.com/flathub/org.libretro.RetroArch/master/screenshot-2.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>RetroArch running Sheep It Up on the Gameboy.</caption>
+      <image type="source" width="1554" height="1050">https://rawgit.com/flathub/org.libretro.RetroArch/master/screenshot-3.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>RetroArch running the Super Nintendo.</caption>
+      <image type="source" width="1172" height="896">https://rawgit.com/flathub/org.libretro.RetroArch/master/screenshot-4.png</image>
+    </screenshot>
+  </screenshots>
+  <description>
+    <p>
+      RetroArch enables you to run classic games on a wide range of computers and consoles through its slick graphical interface. Settings are also unified so configuration is done once and for all.
+    </p>
+  </description>
+  <project_license>GPL-3.0</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <releases>
+    <release version="1.7.3" date="2018-05-03">
+      <description>
+        <ul>
+          <li>AUDIO: Audio mixer supports FLAC/MP3 file types now.</li>
+          <li>COMMON: Fixed bug 'crashing in cores that don't range check retro_set_controller_type'. Some people were having crashes when device is set to RETRO_DEVICE_NONE and the cores don't check the number of ports, in VBAM's case it was overflowing and crashing. QuickNES was crashing too.</li>
+          <li>COMMON: (QuickMenu) Added Configuration Override submenu.</li>
+          <li>LOCALIZATION: Update Italian translation.</li>
+          <li>LOCALIZATION: Update Portuguese translation.</li>
+          <li>MENU: Audio mixer now works in the menu without any cores loaded. You have to enable the setting 'Enable menu audio' for this to work.</li>
+          <li>REMAPPING/OVERLAYS: Fix regression - overlays could no longer be remapped.</li>
+          <li>SCANNER: Add Wii Backup File WBFS support.</li>
+          <li>X11: CRT SwitchRes support for X11/Linux.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.7.2" date="2018-04-24">
+      <description>
+        <ul>
+          <li>CRT: Added CRT SwitchRes.</li>
+          <li>COMMON: Hide the 'Core delete' option if the 'Core updater' is also hidden.</li>
+          <li>COMMON: Add way to reset core association for playlist entry.</li>
+          <li>COMMON: Fix invalid long command line options causing infinite loop on Windows</li>
+          <li>COMMON: Add OSD statistics for video/audio/core.</li>
+          <li>COMMON: Added runahead system; allows you to drive down latency even further.</li>
+          <li>CHEEVOS: Support Atari 2600, Virtual Boy, and Arcade (only Neo Geo, CPS-1, CPS-2 and CPS-3 and only with fbalpha core).</li>
+          <li>CHEEVOS: Add option to automatically take a screenshot when an achievement is triggered.</li>
+          <li>CHEEVOS: Fixed incompatibilities with Neo Geo Pocket achievement sets.</li>
+          <li>LIBRETRO: Addition - Functions to enable and disable audio and video, and an environment function to query status of audio and video enables.</li>
+          <li>LOCALIZATION: Update Italian translation.</li>
+          <li>LOCALIZATION: Update Polish translation.</li>
+          <li>MENU: Add Rewind/Latency/Overlay settings to Quick Menu, add options to show/hide them (User Interface -> Views -> Quick Menu)</li>
+          <li>MENU/RGUI: Only show Menu Linear Filter for RGUI and only show it for video drivers that implement it (D3D8/9/10/11/12/GL)</li>
+          <li>MENU/RGUI: Add User Interface -> Appearance options.</li>
+          <li>MENU/RGUI: D3D8/D3D9: Hookup Menu Linear Filter</li>
+          <li>MENU/XMB: Disable XMB shadow icons by default for PowerPC and ARM for performance reasons.</li>
+          <li>MENU/XMB: Left/right thumbnails are now automatically scaled according to layout.</li>
+          <li>MENU/XMB: Add Left Thumbnails (additional to the right).</li>
+          <li>MENU/XMB: Fixed left/right tab regression.</li>
+          <li>MENU/XMB: Fix scaling of tall images that were cut on bottom previously.</li>
+          <li>MENU/XMB: Menu scale factor setting now changes texts length, image scaling and margins.</li>
+          <li>MENU/XMB: Mouse cursor scales correctly now.</li>
+          <li>MENU/XMB: Add toggle to show/hide Playlist tabs.</li>
+          <li>MENU/XMB: Add menu layout - can switch between Desktop, Handheld and Auto.</li>
+          <li>MENU/XMB: Don't load menu pipeline shaders unless XMB is selected (D3D10/D3D11/D3D12/GL/Vulkan)</li>
+          <li>MENU/VIDEO: Only show black frame insertion for the video drivers/context drivers that support it (so far this includes - D3D8/D3D9, OpenGL, Vulkan)</li>
+          <li>MENU/VIDEO: Only show max swapchain images if supported by video driver and/or context driver (so far this includes - DRM EGL context driver, VideoCore EGL context driver, Vulkan)</li>
+          <li>MENU/MaterialUI: Automatic DPI Scaling should be much improved now, now scales as expected at 1440p and 4K resolutions.</li>
+          <li>MENU/MaterialUI: Fix wrong calculation of an entry height causing long playlists to end up outside of screen range. This also could cause crashes on low DPI screens.</li>
+          <li>SCANNER: Should be able to scan dual-layer Wii disc images now, filestream code now supports files larger than 4GB.</li>
+          <li>SHADERS/SLANG: Slang shaders should work again on Android version and MSVC versions (basically all the Griffin-based versions).</li>
+          <li>SHADERS: If GL context is GLES2/3/Core context, Cg shaders are unavailable. Applies to shader list too.</li>
+          <li>SHADERS: Hide cg/glsl shaders from being able to be selected if D3D8/9/10/11/Vulkan video drivers are selected.</li>
+          <li>SHADERS: Hide slang shaders from being able to be selected if D3D8/9/OpenGL video drivers are selected.</li>
+          <li>SHADERS: Prevent crashes from occurring if we have the GL video driver in use and we try to skip to a slang shader through next/previous hotkeys</li>
+          <li>SHADERS: Fix shader parameter increase / decrease functions</li>
+          <li>SUBSYSTEM: handle savestates properly (cart1 + cart2.state0)</li>
+          <li>VULKAN/X11: Fix X11 Vulkan bug from Wayland driver.</li>
+          <li>VULKAN: Fix multi-line text spacing in menus with Vulkan driver.</li>
+          <li>X11: Allow compositor disabling on X11 fullscreen through _NET_WM_BYPASS_COMPOSITOR</li>
+          <li>X11: Prioritize _NET_WM_STATE_FULLSCREEN in true fullscreen mode</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.7.1" date="2018-02-19">
+      <description>
+        <ul>
+          <li>AUDIO: Added 'Audio Resampler Quality' setting to Audio Settings. Setting this higher will increase sound quality at the expense of sound latency and/or performance. Setting this value lower will improve sound latency/performance at the expense of sound quality. Only has an effect if the Sinc resampler is used, and you have to restart the game for changes to take effect.</li>
+          <li>CHEEVOS: Fix unofficial achievements not being loaded.</li>
+          <li>CHEEVOS: Show savestate menu entries when no achievements are found even if hardcore mode is enabled.</li>
+          <li>CHEEVOS: Support Neo Geo Pocket.</li>
+          <li>COMMON: Bugfix for issue related to 'Windows mouse pointer visible when running MESS or MAME cores'.</li>
+          <li>COMMON: Fix bug 'Last item in a Playlist is ignored'.</li>
+          <li>COMMON: New LED API. Driver implemented for Raspberry Pi, proof of concept implemented for core MAME 2003.</li>
+          <li>COMMON: Add quick menu option to watch shader files for changes and recompile them automatically (Linux only for now).</li>
+          <li>D3D8: Direct3D 8 can now work on systems that have Direct3D 8 installed.</li>
+          <li>INPUT: show friendly names when available under input binds and system information</li>
+          <li>INPUT: show the config name when available under system information</li>
+          <li>GUI: Allow changing menu font color.</li>
+          <li>GUI: Menu visibility options for RGUI and MaterialUI.</li>
+          <li>GUI/MaterialUI: Works now with D3D8, D3D9 Cg, D3D11 and D3D12 drivers.</li>
+          <li>GUI/XMB: Add Monochrome Inverted icon theme.</li>
+          <li>GUI/XMB: Allow changing menu scale to 200%.</li>
+          <li>GUI/XMB: Works now with D3D8, D3D9 Cg, D3D11 and D3D12 drivers. Menu shader effects currently don't work on D3D8/D3D9 Cg.</li>
+          <li>KEYMAPPER: prevent a condition that caused input_menu_toggle to stop working when a RETRO_DEVICE_KEYBOARD type device is enabled</li>
+          <li>GL: ignore hard gpu sync when fast-forwarding</li>
+          <li>LOCALIZATION: Update Italian translation.</li>
+          <li>LOCALIZATION: Update Japanese translation.</li>
+          <li>LOCALIZATION: Update Portuguese-Brazilian translation.</li>
+          <li>LOCALIZATION: Update Spanish translation.</li>
+          <li>NETPLAY: Add menu option to select different MITM (relay) server locations.</li>
+          <li>SHADERS: Allow saving of shader presets based on the parent directory (Saving one for /foo/bar/mario.sfc would result in shaders/presets/corename/bar.ext). We decided it's safer to still isolate the presets to a single core because different cores may treat video output differently.</li>
+          <li>SHADERS: Don't save the path to the current preset to the main config. This was causing weird behavior, instead it will try to load currentconfig.ext and it will save a preset with that name when select apply shader preset. The resulting shader will restore properly after restarting and even after core/parent/game specific presets are loaded</li>
+          <li>SHADERS: SPIRV-Cross/slang shader support for D3D11.</li>
+          <li>SUBSYSTEM: Subsystem saves now respect the save directory</li>
+          <li>SUBSYSTEM: You can now load subsystem games from the menu (see https://github.com/libretro/RetroArch/pull/6282 for caveats)</li>
+          <li>VULKAN: Fix swapchain recreation bug on Nvidia GPUs with Windows 10 (resolved in Windows Nvidia driver version 390.77).</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.7.0" date="2017-12-25">
+      <description>
+        <ul>
+          <li>CHEEVOS: Add badges for achievements, shows thumbnail images of achievements.</li>
+          <li>CHEEVOS: Leaderboard support.</li>
+          <li>CHEEVOS: Only disable savestates on hardcore mode if achievements are not available.</li>
+          <li>COMMANDLINE: Fix fullscreen toggle switch.</li>
+          <li>COMMON: Add 'Automatically Load Content To Playlist' feature, enabled by default.</li>
+          <li>COMMON: Fix slowmotion ratio always being reset back to 1.</li>
+          <li>COMMON: Optimized NBIO implementations now for Apple, Windows, and Linux. Uses mmap for Linux/Windows/BSD if/when available. File I/O should now be much faster for loading images inside the menu.</li>
+          <li>COMMON: Native Blissbox support now for latest firmware as of writing (2.0). Implementation through libusb and/or native Windows HID.</li>
+          <li>COMMON: New lightgun API.</li>
+          <li>COMMON: New VFS (Virtual File System) API.</li>
+          <li>COMMON: Fixed some playlist bugs.</li>
+          <li>COMMON: New snow shader.</li>
+          <li>COMMON: Fix Quick Menu title, no longer shows 'Select File'.</li>
+          <li>COMMON: Fix loading cores that require no content one after another.</li>
+          <li>COMMON: Map Delete key to Y button for non-unified menu keyboard controls.</li>
+          <li>COMMON: Fix for relative paths being normalised and generating a duplicate history entry.</li>
+          <li>INPUT: Map clear button to DEL key.</li>
+          <li>LINUX/X11: Add RetroArch logo to window title bar.</li>
+          <li>LINUX/X11: Input driver now supports new lightgun code.</li>
+          <li>LINUX/X11: Support window transparency (requires a compositing window manager).</li>
+          <li>LOBBIES: Fix for crash on join netplay rooms via touch / glui.</li>
+          <li>LOCALIZATION: Update Italian translation.</li>
+          <li>LOCALIZATION: Update Japanese translation.</li>
+          <li>LOCALIZATION: Update Portuguese-Brazilian translation.</li>
+          <li>LOCALIZATION: Update Polish translation.</li>
+          <li>LOCALIZATION: Update Russian translation.</li>
+          <li>MENU: Snowflake menu shader effect.</li>
+          <li>SCANNER: Fix crash from Windows-incompatible format string.</li>
+          <li>VULKAN: Various stability fixes for WSI.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.9" date="2017-11-21">
+      <description>
+        <ul>
+          <li>COMMON: Small memory leak.</li>
+          <li>NETPLAY: Fix network command only working once.</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+</application>

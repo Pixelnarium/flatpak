@@ -13,3 +13,6 @@
 [submodule "commercial/org.freegish.Gish/shared-modules"]
 	path = commercial/org.freegish.Gish/shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "org.libretro.RetroArch/shared-modules"]
+	path = org.libretro.RetroArch/shared-modules
+	url = https://github.com/flathub/shared-modules.git

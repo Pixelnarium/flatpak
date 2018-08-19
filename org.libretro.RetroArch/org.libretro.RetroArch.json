@@ -1,0 +1,55 @@
+{
+  "app-id": "org.libretro.RetroArch",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "18.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "retroarch",
+  "rename-desktop-file": "retroarch.desktop",
+  "rename-icon": "retroarch",
+  "finish-args": [
+    "--socket=x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--share=ipc",
+    "--share=network",
+    "--device=all",
+    "--allow=multiarch",
+    "--talk-name=org.freedesktop.ScreenSaver"
+  ],
+  "modules": [
+    "shared-modules/udev/udev-175.json",
+    {
+      "name": "retroarch",
+      "config-opts": [
+        "--enable-dbus",
+        "--disable-ffmpeg"
+      ],
+      "make-args": [
+        "GLOBAL_CONFIG_DIR=/app/etc"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/RetroArch.git"
+        },
+        {
+          "type": "file",
+          "path": "org.libretro.RetroArch.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "retroarch.cfg"
+        }
+      ],
+      "post-install": [
+        "mkdir -p /app/share/icons/hicolor/scalable/apps/",
+        "mv /app/share/pixmaps/retroarch.svg /app/share/icons/hicolor/scalable/apps/",
+        "rmdir /app/share/pixmaps/",
+        "mkdir -p /app/etc",
+        "cp retroarch.cfg /app/etc",
+        "mkdir -p /app/share/appdata",
+        "cp org.libretro.RetroArch.appdata.xml /app/share/appdata"
+      ]
+    }
+  ]
+}
