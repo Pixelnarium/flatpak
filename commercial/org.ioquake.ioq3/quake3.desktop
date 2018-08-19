@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Quake III Arena
+GenericName=Quake III
+Comment=ioQuake3 - Quake III Open Source Engine
+Exec=quake3
+Icon=quake3
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Game;
