@@ -133,20 +133,9 @@
         "-DGTK3_API=TRUE",
         "-DXDG_STD=TRUE",
         "-DDISABLE_BUILD_DATE=TRUE",
-        "-DOpenGL_GL_PREFERENCE=GLVND"
+        "-DOpenGL_GL_PREFERENCE=GLVND",
+        "-DPACKAGE_MODE=TRUE"
       ],
-      "build-options": 
-      {
-        "arch":
-        {
-          "x86_64":
-          {
-            "config-opts": [
-              "-DCMAKE_BUILD_TYPE=Debug"
-            ]
-          }
-        }
-      },
       "cleanup": [
         "/share/pixmaps",
         "/share/man",
