@@ -1,3 +1,4 @@
 .flatpak-builder/
 build/
 *.pk3
+gish_g_linux.tar.gz

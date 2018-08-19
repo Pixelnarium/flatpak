@@ -1,0 +1,27 @@
+From 7dbc4395cda4e3e1889d14492eeda309267851ee Mon Sep 17 00:00:00 2001
+From: Pixelnarium <hello+pixelgithub@creepy-net.de>
+Date: Sun, 19 Aug 2018 17:19:58 +0200
+Subject: [PATCH] math_and_data_path
+
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7f9a3f3..e2c3e61 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,8 +14,9 @@ endif(NOT ${INSTALL_FHS})
+ # Uncomment this to hardcode the data path. On the command line, you
+ # would actually give -DDATAPATH='"/usr/share/games/gish"' or similar
+ # but CMake does the extra quoting for us.
+-#add_definitions(-DDATAPATH="/usr/share/games/gish")
++add_definitions(-DDATAPATH="/app/share/freegish")
+ 
++find_library(M_LIB m)
+ find_package(SDL REQUIRED)
+ find_package(OpenAL REQUIRED)
+ find_package(OpenGL REQUIRED)
+-- 
+2.18.0
+

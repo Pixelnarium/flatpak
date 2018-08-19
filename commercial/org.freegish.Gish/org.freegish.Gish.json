@@ -1,0 +1,56 @@
+{
+  "app-id": "org.freegish.Gish",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "18.08",
+  "sdk": "org.freedesktop.Sdk",
+  "rename-desktop-file": "freegish.desktop",
+  "rename-icon": "freegish",
+  "rename-appdata-file": "freegish.appdata.xml",
+  "finish-args": [
+    "--device=dri",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=pulseaudio",
+    "--persist=."
+  ],
+  "command": "freegish",
+  "modules": [
+    "shared-modules/glew/glew.json",
+    "shared-modules/glu/glu-9.0.0.json",
+    "shared-modules/SDL/SDL-1.2.15.json",
+    "shared-modules/SDL/SDL_mixer-1.2.12.json",
+    {
+      "name": "freegish",
+      "buildsystem": "cmake",
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/freegish/freegish.git"
+        },
+        {
+          "type": "patch",
+          "path": "0001-math_and_data_path.patch"
+        },
+         {
+          "type": "file",
+          "path": "freegish.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "freegish.desktop"
+        },
+        {
+          /* change to your needs */
+          "type": "archive",
+          "path": "gish_g_linux.tar.gz"
+        }
+      ],
+      "post-install": [
+        "mkdir -p /app/share/appdata/",
+        "install -Dm644 freegish.desktop /app/share/applications/",
+        "install -Dm644 freegish.appdata.xml /app/share/appdata/",
+        "cp -r {animation,level,music,sound,texture,tile01,tile02,tile03,tile04,tile05,tile06,tile07} /app/share/freegish"
+      ]
+    }
+  ]
+}

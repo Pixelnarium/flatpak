@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>org.freegish.Gish</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <name>FreeGish</name>
+  <summary>FreeGish</summary>
+  <description>
+    Gish Source Port. Needs game files to work.
+  </description>
+</component>

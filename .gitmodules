@@ -10,3 +10,6 @@
 [submodule "com.dosbox.DOSBoxSVN/shared-modules"]
 	path = com.dosbox.DOSBoxSVN/shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "commercial/org.freegish.Gish/shared-modules"]
+	path = commercial/org.freegish.Gish/shared-modules
+	url = https://github.com/flathub/shared-modules.git
