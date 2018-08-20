@@ -19,3 +19,6 @@
 [submodule "io.github.Mednafen/shared-modules"]
 	path = io.github.Mednafen/shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "io.github.SameBoy/shared-modules"]
+	path = io.github.SameBoy/shared-modules
+	url = https://github.com/flathub/shared-modules.git

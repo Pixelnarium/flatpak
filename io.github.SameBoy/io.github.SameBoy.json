@@ -1,0 +1,72 @@
+{
+  "app-id": "io.github.SameBoy",
+  "runtime": "org.freedesktop.Platform",
+  "sdk": "org.freedesktop.Sdk",
+  "runtime-version": "18.08",
+  "command": "sameboy",
+  "finish-args": [
+    "--device=all",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--socket=pulseaudio"
+  ],
+  "modules": [
+    "shared-modules/udev/udev-175.json",
+    "shared-modules/glu/glu-9.0.0.json",
+    {
+      "name": "rgbds",
+      "buildsystem": "simple",
+      "cleanup": [
+        "*"
+      ],
+      "build-commands": [
+        "make",
+        "make install PREFIX=/app"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/rednex/rgbds/releases/download/v0.3.7/rgbds-0.3.7.tar.gz",
+          "sha256": "9ffdbdf223e40b18e0e64083356092d07c268b42b78d8fd29fcc468969936a04"
+        }
+      ]
+    },
+    {
+      "name": "sameboy",
+      "buildsystem": "simple",
+      "build-commands": [
+        "sed -i 's/\-flto//g' Makefile",
+        "make CONF=release"
+      ],
+      "post-install": [
+        "mkdir -p /app/share/applications",
+        "mkdir -p /app/share/appdata/",
+        "mkdir -p /app/share/icons/hicolor/512x512/apps/",
+        "install -Dm644 io.github.SameBoy.desktop /app/share/applications/",
+        "install -Dm644 io.github.SameBoy.appdata.xml /app/share/appdata/",
+        "install -Dm644 io.github.SameBoy.png /app/share/icons/hicolor/512x512/apps/",
+        "cp -r build/bin/SDL/* /app/bin/"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/LIJI32/SameBoy/archive/v0.11.1.zip",
+          "sha256": "64d3b65a147e2fabc9ac15372b91c70d7beaf2da4f086a31dfbb572a997f833e"
+        },
+        {
+          "type": "file",
+          "path": "io.github.SameBoy.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "io.github.SameBoy.desktop"
+        },
+        {
+          "type": "file",
+          "path": "io.github.SameBoy.png"
+        }
+      ]
+    }
+  ]
+}
