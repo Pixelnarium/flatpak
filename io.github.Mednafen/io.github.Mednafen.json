@@ -1,5 +1,5 @@
 {
-  "app-id": "io.mednafen.Mednafen",
+  "app-id": "io.github.Mednafen",
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
   "runtime-version": "18.08",
@@ -22,7 +22,7 @@
         "mkdir -p /app/share/applications",
         "mkdir -p /app/share/appdata/",
         "install -Dm644 mednafen.desktop /app/share/applications/",
-        "install -Dm644 io.mednafen.Mednafen.appdata.xml /app/share/appdata/"
+        "install -Dm644 io.github.Mednafen.appdata.xml /app/share/appdata/"
       ],
       "sources": [
         {
@@ -32,7 +32,7 @@
         },
         {
           "type": "file",
-          "path": "io.mednafen.Mednafen.appdata.xml"
+          "path": "io.github.Mednafen.appdata.xml"
         },
         {
           "type": "file",

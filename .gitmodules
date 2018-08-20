@@ -16,6 +16,6 @@
 [submodule "org.libretro.RetroArch/shared-modules"]
 	path = org.libretro.RetroArch/shared-modules
 	url = https://github.com/flathub/shared-modules.git
-[submodule "io.mednafen.Mednafen/shared-modules"]
-	path = io.mednafen.Mednafen/shared-modules
+[submodule "io.github.Mednafen/shared-modules"]
+	path = io.github.Mednafen/shared-modules
 	url = https://github.com/flathub/shared-modules.git

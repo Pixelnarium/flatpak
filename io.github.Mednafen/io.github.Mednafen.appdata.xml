@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
-  <id type="desktop">io.mednafen.Mednafen.desktop</id>
-  <launchable type="desktop-id">io.mednafen.Mednafen.desktop</launchable>
+  <id type="desktop">io.github.Mednafen.desktop</id>
+  <launchable type="desktop-id">io.github.Mednafen.desktop</launchable>
   <name>Mednafen</name>
   <summary>A Multi-System Emulator</summary>
   <categories>
