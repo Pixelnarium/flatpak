@@ -25,3 +25,6 @@
 [submodule "WIP-not-working/org.mamedev.MAME/shared-modules"]
 	path = WIP-not-working/org.mamedev.MAME/shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "commercial/com.github.wolf4sdl/shared-modules"]
+	path = commercial/com.github.wolf4sdl/shared-modules
+	url = https://github.com/flathub/shared-modules.git

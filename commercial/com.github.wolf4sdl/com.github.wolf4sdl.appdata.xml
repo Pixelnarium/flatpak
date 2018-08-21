@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <id type="desktop">com.github.wolf4sdl.desktop</id>
+  <launchable type="desktop-id">com.github.wolf4sdl.desktop</launchable>
+  <name>Wolf4SDL</name>
+  <summary>Wolfenstein 3D</summary>
+  <categories>
+    <category>Game</category>
+  </categories>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>id, MAME</project_license>
+  <url type="homepage">https://github.com/mozzwald/wolf4sdl</url>
+</application>

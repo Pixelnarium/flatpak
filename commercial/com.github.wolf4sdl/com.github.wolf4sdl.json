@@ -1,0 +1,90 @@
+{
+  "app-id": "com.github.wolf4sdl",
+  "runtime": "org.freedesktop.Platform",
+  "sdk": "org.freedesktop.Sdk",
+  "runtime-version": "18.08",
+  "command": "wolf3d",
+  "finish-args": [
+    "--device=all",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--persist=."
+  ],
+  "modules": [
+    "shared-modules/SDL/SDL-1.2.15.json",
+    "shared-modules/SDL/SDL_mixer-1.2.12.json",
+    {
+      "name": "wolf4sdl",
+      "buildsystem": "simple",
+      "cleanup": [
+        "/app/share/man"
+      ],
+      "build-commands": [
+        "mkdir -p /app/bin/",
+        "mkdir -p /app/share/applications",
+        "mkdir -p /app/share/appdata/",
+        "mkdir -p /app/share/wolf3d",
+        "mkdir -p /app/share/man",
+        "install -Dm644 com.github.wolf4sdl.desktop /app/share/applications/",
+        "install -Dm644 com.github.wolf4sdl.appdata.xml /app/share/appdata/",
+        "install -Dm644 *.wl6 /app/share/wolf3d/",
+        "sed -i 's|#define UPLOAD|//#define UPLOAD|g' version.h",
+        "echo 'DATADIR=/app/share/wolf3d/' >> config.default",
+        "echo 'PREFIX=/app/' >> config.default",
+        "make -j$FLATPAK_BUILDER_N_JOBS install"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mozzwald/wolf4sdl.git"
+        },
+        {
+          "type": "file",
+          "path": "com.github.wolf4sdl.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "com.github.wolf4sdl.desktop"
+        },
+        {
+          "type": "file",
+          "path": "audiohed.wl6"
+        },
+        {
+          "type": "file",
+          "path": "audiot.wl6"
+        },
+        {
+          "type": "file",
+          "path": "config.wl6"
+        },
+        {
+          "type": "file",
+          "path": "gamemaps.wl6"
+        },
+        {
+          "type": "file",
+          "path": "maphead.wl6"
+        },
+        {
+          "type": "file",
+          "path": "vgadict.wl6"
+        },
+        {
+          "type": "file",
+          "path": "vgagraph.wl6"
+        },
+        {
+          "type": "file",
+          "path": "vgahead.wl6"
+        },
+        {
+          "type": "file",
+          "path": "vswap.wl6"
+        }
+      ]
+    }
+  ]
+}
