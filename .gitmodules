@@ -22,3 +22,6 @@
 [submodule "io.github.SameBoy/shared-modules"]
 	path = io.github.SameBoy/shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "WIP-not-working/org.mamedev.MAME/shared-modules"]
+	path = WIP-not-working/org.mamedev.MAME/shared-modules
+	url = https://github.com/flathub/shared-modules.git
