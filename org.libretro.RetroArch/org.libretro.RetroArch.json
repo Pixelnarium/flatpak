@@ -19,10 +19,24 @@
   "modules": [
     "shared-modules/udev/udev-175.json",
     {
+      "name": "lame",
+      "config-opts": [
+        "--disable-static",
+        "--enable-shared",
+        "--disable-frontend"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://downloads.sourceforge.net/lame/lame-3.100.tar.gz",
+          "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
+        }
+      ]
+    },
+    {
       "name": "retroarch",
       "config-opts": [
-        "--enable-dbus",
-        "--disable-ffmpeg"
+        "--enable-dbus"
       ],
       "make-args": [
         "GLOBAL_CONFIG_DIR=/app/etc"
