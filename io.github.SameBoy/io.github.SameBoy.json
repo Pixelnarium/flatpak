@@ -36,7 +36,6 @@
       "name": "sameboy",
       "buildsystem": "simple",
       "build-commands": [
-        "sed -i 's/\-flto//g' Makefile",
         "make CONF=release"
       ],
       "post-install": [
