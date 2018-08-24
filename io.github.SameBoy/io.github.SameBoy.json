@@ -33,6 +33,25 @@
       ]
     },
     {
+      "name": "libicns",
+      "cleanup": ["*"],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/kornelski/libicns.git",
+          "commit": "1137b6f"
+        },
+        {
+          "type": "script",
+          "commands": [
+            "autoreconf -sfi"
+          ],
+          "dest-filename": "autogen.sh"
+        }
+
+      ]
+    },
+    {
       "name": "sameboy",
       "buildsystem": "simple",
       "build-commands": [
@@ -41,10 +60,19 @@
       "post-install": [
         "mkdir -p /app/share/applications",
         "mkdir -p /app/share/appdata/",
+        "mkdir -p /app/share/icons/hicolor/16x16/apps/",
+        "mkdir -p /app/share/icons/hicolor/32x32/apps/",
+        "mkdir -p /app/share/icons/hicolor/256x256/apps/",
         "mkdir -p /app/share/icons/hicolor/512x512/apps/",
+        "mkdir -p /app/share/icons/hicolor/1024x0124/apps/",
         "install -Dm644 io.github.SameBoy.desktop /app/share/applications/",
         "install -Dm644 io.github.SameBoy.appdata.xml /app/share/appdata/",
-        "install -Dm644 io.github.SameBoy.png /app/share/icons/hicolor/512x512/apps/",
+        "icns2png -x Cocoa/AppIcon.icns",
+        "install -Dm644 AppIcon_16x16x32.png /app/share/icons/hicolor/16x16/apps/io.github.SameBoy.png",
+        "install -Dm644 AppIcon_32x32x32.png /app/share/icons/hicolor/32x32/apps/io.github.SameBoy.png",
+        "install -Dm644 AppIcon_256x256x32.png /app/share/icons/hicolor/256x256/apps/io.github.SameBoy.png",
+        "install -Dm644 AppIcon_512x512x32.png /app/share/icons/hicolor/512x512/apps/io.github.SameBoy.png",
+        "install -Dm644 AppIcon_1024x1024x32.png /app/share/icons/hicolor/1024x1024/apps/io.github.SameBoy.png",
         "cp -r build/bin/SDL/* /app/bin/"
       ],
       "sources": [
@@ -60,10 +88,6 @@
         {
           "type": "file",
           "path": "io.github.SameBoy.desktop"
-        },
-        {
-          "type": "file",
-          "path": "io.github.SameBoy.png"
         }
       ]
     }
