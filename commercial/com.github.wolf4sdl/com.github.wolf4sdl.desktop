@@ -4,4 +4,5 @@ Type=Application
 Name=Wolf4SDL
 GenericName=Wolf4SDL
 Exec=wolf3d
+Icon=wolf3d
 Categories=Game

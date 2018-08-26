@@ -4,6 +4,7 @@
   "sdk": "org.freedesktop.Sdk",
   "runtime-version": "18.08",
   "command": "wolf3d",
+  "rename-icon": "wolf3d",
   "finish-args": [
     "--device=all",
     "--share=ipc",
@@ -27,9 +28,11 @@
         "mkdir -p /app/share/appdata/",
         "mkdir -p /app/share/wolf3d",
         "mkdir -p /app/share/man",
+        "mkdir -p /app/share/icons/hicolor/scalable/apps",
         "install -Dm644 com.github.wolf4sdl.desktop /app/share/applications/",
         "install -Dm644 com.github.wolf4sdl.appdata.xml /app/share/appdata/",
         "install -Dm644 *.wl6 /app/share/wolf3d/",
+        "install -Dm644 debian_wolf4sdl.svg /app/share/icons/hicolor/scalable/apps/wolf3d.svg",
         "sed -i 's|#define UPLOAD|//#define UPLOAD|g' version.h",
         "echo 'DATADIR=/app/share/wolf3d/' >> config.default",
         "echo 'PREFIX=/app/' >> config.default",
@@ -83,6 +86,10 @@
         {
           "type": "file",
           "path": "vswap.wl6"
+        },
+        {
+          "type": "file",
+          "path": "debian_wolf4sdl.svg"
         }
       ]
     }
