@@ -24,7 +24,7 @@
         "mkdir -p /app/data/iortcw",
         "make -j$FLATPAK_BUILDER_N_JOBS -C SP BUILD_CLIENT=1 DEFAULT_BASEDIR='/app/data/iortcw' COPYDIR='/app/data/iortcw' copyfiles",
         "mkdir /app/bin",
-        "ln -s /app/data/iortcw/iowolfsp.x86_64 /app/bin/iortcwsp",
+        "ln -s /app/data/iortcw/iowolfsp.$FLATPAK_ARCH /app/bin/iortcwsp",
         "install -Dm644 SP/misc/iortcw.svg /app/share/icons/hicolor/scalable/apps/iortcwsp.svg"
       ],
       "sources": [
