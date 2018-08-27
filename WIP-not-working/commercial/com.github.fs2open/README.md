@@ -1,1 +1,3 @@
-crashes on startup
+- does not play videos
+- has input problems
+- main menu freezes on fullscreen
