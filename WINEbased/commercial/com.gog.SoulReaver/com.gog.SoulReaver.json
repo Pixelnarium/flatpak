@@ -10,7 +10,8 @@
   "finish-args": [
     "--device=dri",
     "--socket=x11",
-    "--socket=pulseaudio"
+    "--socket=pulseaudio",
+    "--persist=."
   ],
   "modules": [
     {
