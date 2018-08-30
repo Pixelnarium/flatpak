@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=LONGNAME
+Icon=gameicon
+Exec=starter
+Categories=Game;
