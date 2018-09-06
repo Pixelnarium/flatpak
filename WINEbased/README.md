@@ -1,1 +1,1 @@
-there manifests are using WINE to work
+these manifests are using WINE
