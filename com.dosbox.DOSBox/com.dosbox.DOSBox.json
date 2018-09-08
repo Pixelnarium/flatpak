@@ -11,7 +11,7 @@
     "--socket=pulseaudio",
     "--persist=.dosbox"
   ],
-  "command": "dosbox",
+  "command": "dosbox-wrapper",
   "cleanup": [
     "/include",
     "/lib/pkgconfig",
@@ -87,13 +87,18 @@
         {
           "type": "file",
           "path": "com.dosbox.DOSBox.desktop"
+        },
+        {
+          "type": "file",
+          "path": "dosbox-wrapper.sh"
         }
       ],
       "post-install": [
         "install -Dm644 com.dosbox.DOSBox.appdata.xml /app/share/appdata/com.dosbox.DOSBox.appdata.xml",
         "install -Dm644 com.dosbox.DOSBox.desktop /app/share/applications/com.dosbox.DOSBox.desktop",
         "install -Dm644 com.dosbox.DOSBox.png /app/share/icons/hicolor/256x256/apps/com.dosbox.DOSBox.png",
-        "install -Dm644 glide2x.ovl /app/share/"
+        "install -Dm644 glide2x.ovl /app/share/",
+        "install -Dm755 dosbox-wrapper.sh /app/bin/dosbox-wrapper"
       ]
     }
   ]
