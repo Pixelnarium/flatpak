@@ -4,4 +4,5 @@ Type=Application
 Name=Mednafen
 GenericName=Mednafen
 Exec=mednafen
+Icon=buggy
 Categories=Game
