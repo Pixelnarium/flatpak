@@ -134,7 +134,8 @@
         "-DXDG_STD=TRUE",
         "-DDISABLE_BUILD_DATE=TRUE",
         "-DOpenGL_GL_PREFERENCE=GLVND",
-        "-DPACKAGE_MODE=TRUE"
+        "-DPACKAGE_MODE=TRUE",
+        "-DUSE_LTO=TRUE"
       ],
       "cleanup": [
         "/share/pixmaps",
