@@ -55,6 +55,8 @@
       "name": "sameboy",
       "buildsystem": "simple",
       "build-commands": [
+        "sed -i 's/DNDEBUG/DNDEBUG\\nCFLAGS := $(filter-out -fcf-protection,$(CFLAGS))\\nCFLAGS := $(filter-out -fstack-clash-protection,$(CFLAGS))/' Makefile",
+        "sed -i 's/Werror/Wno-error/' Makefile",
         "make CONF=release"
       ],
       "post-install": [
@@ -78,8 +80,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/LIJI32/SameBoy/archive/v0.11.1.zip",
-          "sha256": "64d3b65a147e2fabc9ac15372b91c70d7beaf2da4f086a31dfbb572a997f833e"
+          "url": "https://github.com/LIJI32/SameBoy/archive/v0.11.2.zip",
+          "sha256": "267437164bdbf8e51fb871342933b5962438395b130c87f36a2d119d8fe72a8e"
         },
         {
           "type": "file",
