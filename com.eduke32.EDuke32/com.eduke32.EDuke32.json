@@ -36,8 +36,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://dukeworld.com/eduke32/synthesis/latest/eduke32_src_20181214-7290.tar.xz",
-          "sha256":"7400497e482a86e3fc3f02579f128981964142edc992c33c38a0fe7cbede00bd"
+          "url": "https://dukeworld.com/eduke32/synthesis/latest/eduke32_src_20190202-7326.tar.xz",
+          "sha256":"b3c58f0ba6a791952674e77a5334f55e84b34ec580d5cde22a1497f0df468166"
         },
         {
           "type": "file",
