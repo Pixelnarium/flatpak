@@ -3,7 +3,7 @@
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
   "runtime-version": "18.08",
-  "command": "bsnes",
+  "command": "bsnes-padsp",
   "rename-desktop-file": "bsnes.desktop",
   "rename-icon": "bsnes",
   "finish-args": [
@@ -14,28 +14,28 @@
     "--socket=pulseaudio",
     "--persist=."
   ],
-	"cleanup": [
-		"/include",
-		"/share/man",
-		"/share/info",
-		"/share/gtk-doc",
-		"/share/aclocal",
-		"*.la",
-		"*.a"
-	],  
+  "cleanup": [
+    "/include",
+    "/share/man",
+    "/share/info",
+    "/share/gtk-doc",
+    "/share/aclocal",
+    "*.la",
+    "*.a"
+  ],
   "modules": [
     "shared-modules/udev/udev-175.json",
- 		"shared-modules/gtk2/gtk2.json",
- 		{
- 		  "name": "gtksourceview2",
- 		  "sources": [
- 		    {
- 		      "type": "archive",
+    "shared-modules/gtk2/gtk2.json",
+    {
+      "name": "gtksourceview2",
+      "sources": [
+        {
+          "type": "archive",
           "url": "https://download.gnome.org/sources/gtksourceview/2.10/gtksourceview-2.10.5.tar.bz2",
           "sha256": "c585773743b1df8a04b1be7f7d90eecdf22681490d6810be54c81a7ae152191e"
- 		    }
- 		  ]
- 		},
+        }
+      ]
+    },
     {
       "name": "p7zip",
       "cleanup": [
@@ -80,7 +80,9 @@
         "cd bsnes_v107-source && sed -i 's/mm/px/g' icarus/data/icarus.svg",
         "cd bsnes_v107-source && install -Dm644 icarus/data/icarus.svg /app/share/icons/hicolor/scalable/apps/org.byuu.bsnes.icarus.svg",
         "mv /app/share/applications/icarus.desktop /app/share/applications/org.byuu.bsnes.icarus.desktop",
-        "sed -i '/^Icon/c\Icon=org.byuu.bsnes.icarus' /app/share/applications/org.byuu.bsnes.icarus.desktop"
+        "sed -i '/^Icon/c\Icon=org.byuu.bsnes.icarus' /app/share/applications/org.byuu.bsnes.icarus.desktop",
+        "install -Dm755 bsnes-padsp.sh /app/bin/bsnes-padsp",
+        "sed -i '/^Exec/c\Exec=bsnes-padsp' /app/share/applications/bsnes.desktop"
       ],
       "post-install": [
         "mkdir -p /app/share/metainfo/",
@@ -95,6 +97,10 @@
         {
           "type": "file",
           "path": "org.byuu.bsnes.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "bsnes-padsp.sh"
         }
       ]
     }
