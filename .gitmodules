@@ -28,3 +28,6 @@
 [submodule "com.dosbox.DOSBox/shared-modules"]
 	path = com.dosbox.DOSBox/shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "org.byuu.bsnes/shared-modules"]
+	path = org.byuu.bsnes/shared-modules
+	url = https://github.com/flathub/shared-modules.git
