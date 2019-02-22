@@ -38,7 +38,9 @@
  		},
     {
       "name": "p7zip",
-      "cleanup": "*",
+      "cleanup": [
+        "*"
+      ],
       "buildsystem": "simple",
       "build-commands": [
         "make all3",
@@ -68,12 +70,16 @@
       "buildsystem": "simple",
       "build-commands": [
         "7z x bsnes_v107-source.7z",
-        "cd bsnes_v107-source",
         "cd bsnes_v107-source && sed -i '/^prefix/c\prefix := /app' nall/GNUmakefile",
         "cd bsnes_v107-source && make -j$FLATPAK_BUILDER_N_JOBS -C higan",
+        "cd bsnes_v107-source && make -j$FLATPAK_BUILDER_N_JOBS -C icarus",
         "cd bsnes_v107-source && make -C higan install",
+        "cd bsnes_v107-source && make -C icarus install",
         "mkdir -p /app/share/icons/hicolor/scalable/apps/",
-        "cd bsnes_v107-source && install -Dm644 higan/target-bsnes/resource/bsnes.svg /app/share/icons/hicolor/scalable/apps/bsnes.svg"
+        "cd bsnes_v107-source && install -Dm644 higan/target-bsnes/resource/bsnes.svg /app/share/icons/hicolor/scalable/apps/bsnes.svg",
+        "cd bsnes_v107-source && install -Dm644 icarus/data/icarus.svg /app/share/icons/hicolor/scalable/apps/org.byuu.bsnes.icarus.svg",
+        "mv /app/share/applications/icarus.desktop /app/share/applications/org.byuu.bsnes.icarus.desktop",
+        "sed -i '/^Icon/c\Icon=org.byuu.bsnes.icarus' /app/share/applications/org.byuu.bsnes.icarus.desktop"
       ],
       "post-install": [
         "mkdir -p /app/share/metainfo/",
