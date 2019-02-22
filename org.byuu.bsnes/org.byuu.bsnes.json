@@ -77,6 +77,7 @@
         "cd bsnes_v107-source && make -C icarus install",
         "mkdir -p /app/share/icons/hicolor/scalable/apps/",
         "cd bsnes_v107-source && install -Dm644 higan/target-bsnes/resource/bsnes.svg /app/share/icons/hicolor/scalable/apps/bsnes.svg",
+        "cd bsnes_v107-source && sed -i 's/mm/px/g' icarus/data/icarus.svg",
         "cd bsnes_v107-source && install -Dm644 icarus/data/icarus.svg /app/share/icons/hicolor/scalable/apps/org.byuu.bsnes.icarus.svg",
         "mv /app/share/applications/icarus.desktop /app/share/applications/org.byuu.bsnes.icarus.desktop",
         "sed -i '/^Icon/c\Icon=org.byuu.bsnes.icarus' /app/share/applications/org.byuu.bsnes.icarus.desktop"
