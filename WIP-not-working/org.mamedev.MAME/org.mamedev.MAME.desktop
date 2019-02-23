@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MAME
+GenericName=MAME
+Exec=mame-wrapper
+Icon=org.mamedev.MAME
+Categories=Game

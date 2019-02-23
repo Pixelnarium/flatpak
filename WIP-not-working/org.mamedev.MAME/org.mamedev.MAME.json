@@ -1,7 +1,7 @@
 {
   "id": "org.mamedev.MAME",
   "runtime": "org.kde.Platform",
-  "runtime-version": "5.9",
+  "runtime-version": "5.12",
   "sdk": "org.kde.Sdk",
   "command": "mame-wrapper",
   "finish-args": [
@@ -13,32 +13,41 @@
     "--socket=pulseaudio",
     "--persist=.mame"
   ],
-  
   "modules": [
     {
       "name": "mame",
       "buildsystem": "simple",
       "build-commands": [
-        "make -j$FLATPAK_BUILDER_N_JOBS TOOLS=0 SOURCES=src/mame/drivers/pacman.cpp",
+        "make TOOLS=0 OPTIMIZE=2 NOWERROR=1",
         "install -Dm755 mame64 /app/data/mame/mame",
         "install -Dm644 src/osd/modules/opengl/shader/glsl*.*h -t /app/data/mame/shader/",
-        "cp -ar {artwork,bgfx,plugins,language,ctrlr,keymaps,hash} /app/data/mame/" 
+        "cp -ar {artwork,bgfx,plugins,language,ctrlr,keymaps,hash} /app/data/mame/",
+        "mkdir -p /app/share/metainfo",
+        "mkdir -p /app/share/icons/hicolor/256x256/apps/",
+        "mkdir -p /app/share/applications",
+        "install -Dm644 org.mamedev.MAME.png /app/share/icons/hicolor/256x256/apps/",
+        "install -Dm644 org.mamedev.MAME.desktop /app/share/applications/",
+        "install -Dm644 org.mamedev.MAME.appdata.xml /app/share/metainfo/",
+        "install -Dm755 mame-wrapper.sh /app/bin/mame-wrapper"
       ],
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/mamedev/mame/archive/mame0202.tar.gz",
-          "sha256": "a5cef3e7e606e2a36d25b559a5410c1c3105acd24ddbff03352cacb1f1ca7053"
-        }
-      ]
-    },
-    {
-      "name": "launcher-wrapper",
-      "buildsystem": "simple",
-      "build-commands": [
-        "install -Dm755 mame-wrapper.sh /app/bin/mame-wrapper"
-      ],
-      "sources": [
+          "url": "https://github.com/mamedev/mame/archive/mame0206.tar.gz",
+          "sha256": "588ba357361cc49fdc2754d8343c8b91f6b965b30220a998cbb1da09e49dcbdd"
+        },
+        {
+          "type": "file",
+          "path": "org.mamedev.MAME.desktop"
+        },
+        {
+          "type": "file",
+          "path": "org.mamedev.MAME.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "org.mamedev.MAME.png"
+        },
         {
           "type": "file",
           "path": "mame-wrapper.sh"
