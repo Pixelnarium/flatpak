@@ -28,3 +28,6 @@
 [submodule "org.byuu.bsnes/shared-modules"]
 	path = org.byuu.bsnes/shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "org.mamedev.MAME/shared-modules"]
+	path = org.mamedev.MAME/shared-modules
+	url = https://github.com/flathub/shared-modules
