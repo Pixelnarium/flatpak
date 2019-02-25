@@ -18,11 +18,13 @@
     {
       "name": "mupen64plus-core",
       "buildsystem": "simple",
+      "cleanup": ["/include"],
       "build-commands": [
         "mkdir -p /app/bin",
         "mkdir -p /app/include/mupen64plus",
-        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS all",
+        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS SHAREDIR=/app/bin/ all",
         "install -Dm644 projects/unix/*.so* /app/bin/",
+        "install -Dm644 data/* /app/bin/",
         "install -Dm644 src/api/* /app/include/mupen64plus/"
       ],      
       "sources": [
@@ -111,7 +113,8 @@
         "sh src/getRevision.sh",
         "cd projects/cmake/ && cmake -DVEC4_OPT=On -DMUPENPLUSAPI=On -DUSE_SYSTEM_LIBS=On ../../src/",
         "cd projects/cmake/ && make -j$FLATPAK_BUILDER_N_JOBS",
-        "install -Dm644 projects/cmake/plugin/Release/*.so* /app/bin/"
+        "install -Dm644 projects/cmake/plugin/Release/*.so* /app/bin/",
+        "install -Dm644 ini/* /app/bin/"
       ],
       "sources": [
         {
