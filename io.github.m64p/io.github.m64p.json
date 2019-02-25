@@ -39,6 +39,7 @@
       "buildsystem": "simple",
       "build-commands": [
         "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
+        "install -Dm644 data/* /app/bin/",
         "install -Dm644 projects/unix/*.so* /app/bin/"       
       ],      
       "sources": [
