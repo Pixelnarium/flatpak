@@ -31,3 +31,6 @@
 [submodule "org.mamedev.MAME/shared-modules"]
 	path = org.mamedev.MAME/shared-modules
 	url = https://github.com/flathub/shared-modules
+[submodule "io.github.m64p/shared-modules"]
+	path = io.github.m64p/shared-modules
+	url = https://github.com/flathub/shared-modules

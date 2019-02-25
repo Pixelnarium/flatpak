@@ -1,0 +1,160 @@
+{
+  "app-id": "io.github.m64p",
+  "runtime": "org.kde.Platform",
+  "sdk": "org.kde.Sdk",
+  "runtime-version": "5.12",
+  "command": "mupen64plus-gui",
+  "finish-args": [
+    "--device=all",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--persist=."
+  ],
+  "modules": [
+    "shared-modules/udev/udev-175.json",
+    "shared-modules/glu/glu-9.0.0.json",    
+    {
+      "name": "mupen64plus-core",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app/bin",
+        "mkdir -p /app/include/mupen64plus",
+        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS all",
+        "install -Dm644 projects/unix/*.so* /app/bin/",
+        "install -Dm644 src/api/* /app/include/mupen64plus/"
+      ],      
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mupen64plus/mupen64plus-core.git"
+        }
+      ]
+    },
+    {
+      "name": "mupen64plus-input-sdl",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
+        "install -Dm644 projects/unix/*.so* /app/bin/"       
+      ],      
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mupen64plus/mupen64plus-input-sdl.git"
+        }
+      ]
+    },
+    {
+      "name": "mupen64plus-audio-sdl",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
+        "install -Dm644 projects/unix/*.so* /app/bin/"       
+      ],      
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mupen64plus/mupen64plus-audio-sdl.git"
+        }
+      ]
+    },
+    {
+      "name": "mupen64plus-rsp-cxd4",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
+        "install -Dm644 projects/unix/*.so* /app/bin/"       
+      ],      
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mupen64plus/mupen64plus-rsp-cxd4.git"
+        }
+      ]
+    },
+    {
+      "name": "mupen64plus-rsp-hle",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
+        "install -Dm644 projects/unix/*.so* /app/bin/"       
+      ],      
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mupen64plus/mupen64plus-rsp-hle.git"
+        }
+      ]
+    },
+    {
+      "name": "angrylion-rdp-plus",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir build",
+        "cd build && cmake ..",
+        "cd build && make -j$FLATPAK_BUILDER_N_JOBS",
+        "install -Dm644 build/*.so* /app/bin/"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/ata4/angrylion-rdp-plus.git"
+        }
+      ]
+    },
+    {
+      "name": "GLideN64",
+      "buildsystem": "simple",
+      "build-commands": [
+        "sh src/getRevision.sh",
+        "cd projects/cmake/ && cmake -DVEC4_OPT=On -DMUPENPLUSAPI=On -DUSE_SYSTEM_LIBS=On ../../src/",
+        "cd projects/cmake/ && make -j$FLATPAK_BUILDER_N_JOBS",
+        "install -Dm644 projects/cmake/plugin/Release/*.so* /app/bin/"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gonetz/GLideN64.git"
+        }
+      ]
+    },
+    {
+      "name": "mupen64plus-gui",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir build",
+        "cd build && qmake ../mupen64plus-gui.pro",
+        "cd build && make -j$FLATPAK_BUILDER_N_JOBS",
+        "install -Dm755 build/mupen64plus-gui /app/bin/"
+      ],
+      "post-install": [
+        "mkdir -p /app/share/applications",
+        "mkdir -p /app/share/metainfo/",
+        "mkdir -p /app/share/icons/hicolor/512x512/apps",
+        "install -Dm644 io.github.m64p.desktop /app/share/applications/",
+        "install -Dm644 io.github.m64p.appdata.xml /app/share/metainfo/",
+        "install -Dm644 io.github.m64p.png /app/share/icons/hicolor/512x512/apps/"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/m64p/mupen64plus-gui.git"
+        },
+        {
+          "type": "file",
+          "path": "io.github.m64p.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "io.github.m64p.desktop"
+        },
+        {
+          "type": "file",
+          "path": "io.github.m64p.png"
+        }
+      ]
+    }
+  ]
+}
