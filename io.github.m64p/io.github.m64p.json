@@ -143,7 +143,8 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://github.com/m64p/mupen64plus-gui.git"
+          "url": "https://github.com/m64p/mupen64plus-gui.git",
+          "commit": "ebad8c6bae19df3df7ac93f98c83a7498eac2eef"
         },
         {
           "type": "file",
