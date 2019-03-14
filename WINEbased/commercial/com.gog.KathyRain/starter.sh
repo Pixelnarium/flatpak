@@ -8,7 +8,6 @@ then
     mkdir -p $XDG_DATA_HOME/wine/drive_c/game/
     cd $XDG_DATA_HOME/wine/drive_c/game/
     ln -s /app/game/* .
-    winecfg
 fi
 
 cd $XDG_DATA_HOME/wine/drive_c/game/
