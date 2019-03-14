@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Factorio
+GenericName=Factorio
+Comment=A 2D game about building and maintaining factories.
+Exec=start-factorio
+Icon=factorio
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Game;

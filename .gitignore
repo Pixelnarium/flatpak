@@ -4,3 +4,4 @@ build/
 gish_g_linux.tar.gz
 *.exe
 *.wl6
+*.tar.xz
