@@ -76,8 +76,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://dl.winehq.org/wine/source/3.x/wine-3.14.tar.xz",
-          "sha256": "47896634c255c202d04b85f884b4f1bceb02e1d7bb2ff257b6bc8d69d4b0b005"
+          "url": "https://dl.winehq.org/wine/source/4.x/wine-4.3.tar.xz",
+          "sha256": "3db9b50f061087e7ec115a47e44d662a5b8a7fdb44264e637795508a185f0fb4"
         }
       ]
     },

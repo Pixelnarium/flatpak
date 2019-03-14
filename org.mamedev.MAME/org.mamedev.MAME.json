@@ -18,7 +18,7 @@
       "name": "mame",
       "buildsystem": "simple",
       "build-commands": [
-        "make -j$FLATPAK_BUILDER_N_JOBS TOOLS=1 OPTIMIZE=2 NOWERROR=1 ARCHOPTS=-g0",
+        "make TOOLS=1 OPTIMIZE=2 NOWERROR=1 ARCHOPTS=-g0",
         "install -Dm755 mame64 /app/data/mame/mame",
         "install -Dm644 src/osd/modules/opengl/shader/glsl*.*h -t /app/data/mame/shader/",
         "cp -ar {artwork,bgfx,plugins,language,ctrlr,keymaps,hash} /app/data/mame/",
