@@ -27,8 +27,8 @@
         "install -Dm644 factorio.desktop /app/share/applications/",
         "install -Dm644 factorio.appdata.xml /app/share/metainfo/",
         "install -Dm755 start-factorio.sh /app/bin/start-factorio",
-        "mkdir -p /app/share/icons/hicolor/512x512/apps/",
-        "install -Dm644 /app/factorio/data/core/graphics/factorio.png /app/share/icons/hicolor/512x512/apps/",
+        "mkdir -p /app/share/icons/hicolor/128x128/apps/",
+        "install -Dm644 /app/factorio/data/core/graphics/factorio-icon@2x.png /app/share/icons/hicolor/128x128/apps/factorio.png",
         "echo 'config-path=/var/config/' > /app/factorio/config-path.cfg",
         "echo 'use-system-read-write-data-directories=true' >> /app/factorio/config-path.cfg"
       ],
