@@ -1,0 +1,59 @@
+{
+    "app-id": "com.rimworldgame.RimWorld",
+    "branch": "master",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "starter",
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--share=network",
+        "--share=ipc",
+        "--device=dri",
+        "--socket=pulseaudio",
+        "--persist=."
+    ],
+    "cleanup": [
+        "/include"
+    ],
+    "modules": [
+        {
+            "name": "game",
+            "buildsystem": "simple",
+            "build-commands": [
+              "mkdir /app/bin",
+              "mkdir /app/game",
+              "mv RimWorld/* /app/game/",
+              "mkdir -p /app/share/icons/hicolor/128x128/apps/",
+              "install -Dm644 /app/game/RimWorldLinux_Data/Resources/UnityPlayer.png /app/share/icons/hicolor/128x128/apps/com.rimworldgame.RimWorld.png",
+              "mkdir -p /app/share/applications",
+              "mkdir -p /app/share/metainfo",
+              "install -Dm644 com.rimworldgame.RimWorld.desktop /app/share/applications/com.rimworldgame.RimWorld.desktop",
+              "install -Dm644 com.rimworldgame.RimWorld.appdata.xml /app/share/metainfo/com.rimworldgame.RimWorld.appdata.xml",
+              "install -Dm755 starter.sh /app/bin/starter"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "RimWorld.tar.xz",
+                    "strip-components": 0
+                },
+                {
+                    "type": "file",
+                    "path": "com.rimworldgame.RimWorld.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "com.rimworldgame.RimWorld.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "starter.sh"
+                }                
+            ]
+        },
+        "shared-modules/udev/udev-175.json", 
+        "shared-modules/glu/glu-9.0.0.json"        
+    ]
+}

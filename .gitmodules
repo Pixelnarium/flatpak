@@ -34,3 +34,6 @@
 [submodule "io.github.m64p/shared-modules"]
 	path = io.github.m64p/shared-modules
 	url = https://github.com/flathub/shared-modules
+[submodule "commercial/com.rimworldgame.RimWorld/shared-modules"]
+	path = commercial/com.rimworldgame.RimWorld/shared-modules
+	url = https://github.com/flathub/shared-modules
