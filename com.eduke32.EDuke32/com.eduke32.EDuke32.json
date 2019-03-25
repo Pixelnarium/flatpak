@@ -36,9 +36,8 @@
       ],
       "sources": [
         {
-          "type": "archive",
-          "url": "https://dukeworld.com/eduke32/synthesis/latest/eduke32_src_20190310-7395.tar.xz",
-          "sha256": "bcd1c50fc2bcf69c74848b719f62270d05f9e9dc54fa691d63210f0b26dcef67"
+          "type": "svn",
+          "url": "https://svn.eduke32.com/eduke32"
         },
         {
           "type": "file",
