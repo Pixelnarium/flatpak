@@ -11,4 +11,4 @@ else
 fi
 
 cd /app/factorio/
-padsp ./bin/x64/factorio
+./bin/x64/factorio

@@ -33,8 +33,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/mamedev/mame/archive/mame0207.tar.gz",
-          "sha256": "69c29533d2128345c59fbf23fabc3af696322a77a6c1d7a7bd7f5a2ee57adafb"
+          "url": "https://github.com/mamedev/mame/archive/mame0208.tar.gz",
+          "sha256": "d02dba8e144ac11878226ef48aa8e4d30a33d77dd72210f84e9803908c70e8b2"
         },
         {
           "type": "file",

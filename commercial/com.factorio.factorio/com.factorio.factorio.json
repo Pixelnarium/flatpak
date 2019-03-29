@@ -35,7 +35,7 @@
       "sources": [
         {
           "type": "archive",
-          "path": "factorio_alpha_x64_0.17.17.tar.xz",
+          "path": "factorio_alpha_x64_0.17.22.tar.xz",
           "strip-components": 0
         },
         {
