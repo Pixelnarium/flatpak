@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BlastEm
+GenericName=BlastEm
+Exec=start-blastem
+Icon=blastem
+Categories=Game

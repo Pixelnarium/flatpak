@@ -37,3 +37,6 @@
 [submodule "commercial/com.rimworldgame.RimWorld/shared-modules"]
 	path = commercial/com.rimworldgame.RimWorld/shared-modules
 	url = https://github.com/flathub/shared-modules
+[submodule "com.retrodev.blastem/shared-modules"]
+	path = com.retrodev.blastem/shared-modules
+	url = https://github.com/flathub/shared-modules

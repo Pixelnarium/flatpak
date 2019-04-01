@@ -1,0 +1,137 @@
+{
+  "app-id": "com.retrodev.blastem",
+  "runtime": "org.freedesktop.Platform",
+  "sdk": "org.freedesktop.Sdk",
+  "runtime-version": "18.08",
+  "command": "start-blastem",
+  "rename-icon": "blastem",
+  "finish-args": [
+    "--device=all",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--persist=."
+  ],
+  "modules": [
+    "shared-modules/glu/glu-9.0.0.json",
+    "shared-modules/glew/glew.json",
+    {
+      "name": "xcftools",
+      "cleanup": [
+        "*"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "http://henning.makholm.net/xcftools/xcftools-1.0.7.tar.gz",
+          "sha256": "1ebf6d8405348600bc551712d9e4f7c33cc83e416804709f68d0700afde920a6"
+        },
+        {
+          "type": "patch",
+          "path": "xcftools.patch"
+        }
+      ] 
+    },
+    {
+      "name": "vasm",
+      "cleanup": [
+        "*"
+      ],
+      "buildsystem": "simple",
+      "build-commands": [
+        "make CPU=m68k SYNTAX=mot",
+        "make CPU=z80 SYNTAX=mot",
+        "install -Dm755 vasmm68k_mot /app/bin/",
+        "install -Dm755 vasmz80_mot /app/bin/"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://server.owl.de/~frank/tags/vasm1_8e.tar.gz",
+          "sha256": "5f1ebb8b81d2d9664e5c2646f1abbc5fb795642ed117f55e84a66590a62760ff"
+        }
+      ]
+    },
+    {
+      "name": "python-pillow",
+      "cleanup": [
+        "*"
+      ],
+      "buildsystem": "simple",
+      "build-options": {
+          "arch": {
+              "i386": {
+                  "env": {
+                      "MAX_CONCURRENCY": "1"
+                  }
+              },
+              "arm": {
+                  "env": {
+                      "MAX_CONCURRENCY": "1"
+                  }
+              }
+          }
+      },
+      "ensure-writable": [
+          "/lib/python*/site-packages/easy-install.pth",
+          "/lib/python*/site-packages/setuptools.pth",
+          "/app/lib/python*/site-packages/easy-install.pth",
+          "/app/lib/python*/site-packages/setuptools.pth"
+      ],
+      "build-commands": [
+          "python setup.py install --prefix=/app --root=/"
+      ],
+      "sources": [
+          {
+              "type": "archive",
+              "url": "https://github.com/python-pillow/Pillow/archive/5.4.1.tar.gz",
+              "sha256": "d233c2e63414535281c572d2b4debd7de8a205b341ffc7db0f48f3f4d199fbc0"
+          },
+          {
+              "type": "shell",
+              "commands": [
+                  "sed -i 's/if not platform_/if not dirs/' setup.py"
+              ]
+          }
+      ]
+    },
+    {
+      "name": "blastem",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app/share/applications",
+        "mkdir -p /app/share/metainfo/",
+        "mkdir -p /app/share/icons/hicolor/256x256/apps/",
+        "install -Dm644 com.retrodev.blastem.desktop /app/share/applications/",
+        "install -Dm644 com.retrodev.blastem.appdata.xml /app/share/metainfo/",
+        "make clean all",
+        "make menu.bin",
+        "mkdir /app/blastem/",
+        "cp -r dis zdis stateview vgmplay blastem termhelper menu.bin shaders images default.cfg rom.db gamecontrollerdb.txt README COPYING CHANGELOG /app/blastem/",
+        "xcf2png -o blastem.png icons/windows.xcf 256x256",
+        "install -Dm644 blastem.png /app/share/icons/hicolor/256x256/apps/",
+        "install -Dm755 start-blastem.sh /app/bin/start-blastem"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.retrodev.com/repos/blastem/archive/8aeac7bd9fa7.tar.gz",
+          "sha256": "af158d3184927ef5210258629859d730956245df925ac81a95637c124d66dbd2"
+        },
+        {
+          "type": "file",
+          "path": "com.retrodev.blastem.appdata.xml"
+        },
+        {
+          "type": "file",
+          "path": "com.retrodev.blastem.desktop"
+        },
+        {
+          "type": "file",
+          "path": "start-blastem.sh"
+        }
+      ]
+    }
+  ]
+}
