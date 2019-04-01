@@ -17,7 +17,6 @@
     "--talk-name=org.freedesktop.ScreenSaver"
   ],
   "modules": [
-    "shared-modules/udev/udev-175.json",
     {
       "name": "lame",
       "config-opts": [
@@ -36,7 +35,8 @@
     {
       "name": "retroarch",
       "config-opts": [
-        "--enable-dbus"
+        "--enable-dbus",
+        "--disable-udev"
       ],
       "make-args": [
         "GLOBAL_CONFIG_DIR=/app/etc"

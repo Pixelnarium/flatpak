@@ -13,7 +13,6 @@
     "--persist=."
   ],
   "modules": [
-    "shared-modules/udev/udev-175.json",
     "shared-modules/glu/glu-9.0.0.json",    
     {
       "name": "mupen64plus-core",

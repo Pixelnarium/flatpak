@@ -12,7 +12,6 @@
     "--socket=pulseaudio"
   ],
   "modules": [
-    "shared-modules/udev/udev-175.json",
     "shared-modules/glu/glu-9.0.0.json",
     {
       "name": "rgbds",

@@ -18,7 +18,6 @@
     "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
   ],
   "modules": [
-    "shared-modules/udev/udev-175.json",
     {
       "name": "wxWidgets",
       "cleanup": [
@@ -127,15 +126,11 @@
     },
     {
       "name": "pcsx2",
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE=Release",
-        "-DGTK3_API=TRUE",
-        "-DXDG_STD=TRUE",
-        "-DDISABLE_BUILD_DATE=TRUE",
-        "-DOpenGL_GL_PREFERENCE=GLVND",
-        "-DPACKAGE_MODE=TRUE",
-        "-DUSE_LTO=TRUE"
+      "buildsystem": "simple",
+      "build-commands": [
+        "rm -rf plugins/cdvdGigaherz",
+        "cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DGTK3_API=TRUE -DXDG_STD=TRUE -DDISABLE_BUILD_DATE=TRUE -DOpenGL_GL_PREFERENCE=GLVND -DPACKAGE_MODE=TRUE -DUSE_LTO=TRUE -DCMAKE_INSTALL_PREFIX:PATH=/app/",
+        "ninja all install"
       ],
       "cleanup": [
         "/share/pixmaps",
@@ -151,10 +146,6 @@
         {
           "type": "git",
           "url": "https://github.com/PCSX2/pcsx2.git"
-        },
-        {
-          "type": "patch",
-          "path": "0001-64bit.patch"
         },
         {
           "type": "file",
