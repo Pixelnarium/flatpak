@@ -42,7 +42,7 @@
       ],
       "buildsystem": "simple",
       "build-commands": [
-        "make all3",
+        "make -j$FLATPAK_BUILDER_N_JOBS 7z",
         "make install DEST_DIR=/ DEST_HOME=/app"
       ],
       "sources": [
@@ -68,20 +68,14 @@
       "name": "bsnes",
       "buildsystem": "simple",
       "build-commands": [
-        "7z x bsnes_v107-source.7z",
-        "mv bsnes_v107-source/* .",
-        "sed -i '/^prefix/c\prefix := /app' nall/GNUmakefile",
+        "7z x bsnes_v107r1-source.7z",
+        "mv bsnes_v107r1-source/* .",
+        "sed -i '/^  prefix/c\  prefix := /app' nall/GNUmakefile",
         "sed -i 's|input.xlib input.udev|input.xlib|g' ruby/GNUmakefile",
         "make -j$FLATPAK_BUILDER_N_JOBS -C higan",
-        "make -j$FLATPAK_BUILDER_N_JOBS -C icarus",
         "make -C higan install",
-        "make -C icarus install",
         "mkdir -p /app/share/icons/hicolor/scalable/apps/",
         "install -Dm644 higan/target-bsnes/resource/bsnes.svg /app/share/icons/hicolor/scalable/apps/bsnes.svg",
-        "sed -i 's/mm/px/g' icarus/data/icarus.svg",
-        "install -Dm644 icarus/data/icarus.svg /app/share/icons/hicolor/scalable/apps/org.byuu.bsnes.icarus.svg",
-        "mv /app/share/applications/icarus.desktop /app/share/applications/org.byuu.bsnes.icarus.desktop",
-        "sed -i '/^Icon/c\Icon=org.byuu.bsnes.icarus' /app/share/applications/org.byuu.bsnes.icarus.desktop",
         "install -Dm755 bsnes-padsp.sh /app/bin/bsnes-padsp",
         "sed -i '/^Exec/c\Exec=bsnes-padsp' /app/share/applications/bsnes.desktop"
       ],
@@ -92,8 +86,8 @@
       "sources": [
         {
           "type": "file",
-          "url": "https://download.byuu.org/bsnes_v107-source.7z",
-          "sha256": "7b7fa745ce593f9912ce116bdf009cd2e70eb034cd7186264c4abedb87a5da36"
+          "url": "https://download.byuu.org/bsnes_v107r1-source.7z",
+          "sha256": "8649491111ecf257daec4637d7c238ebed534860a16bcfa139d7bca4c2629fbf"
         },
         {
           "type": "file",
