@@ -68,14 +68,14 @@
       "name": "bsnes",
       "buildsystem": "simple",
       "build-commands": [
-        "7z x bsnes_v107r1-source.7z",
-        "mv bsnes_v107r1-source/* .",
+        "7z x bsnes_v107r2-source.7z",
+        "mv bsnes_v107r2-source/* .",
         "sed -i '/^  prefix/c\  prefix := /app' nall/GNUmakefile",
         "sed -i 's|input.xlib input.udev|input.xlib|g' ruby/GNUmakefile",
-        "make -j$FLATPAK_BUILDER_N_JOBS -C higan",
-        "make -C higan install",
+        "make -j$FLATPAK_BUILDER_N_JOBS -C bsnes",
+        "make -C bsnes install",
         "mkdir -p /app/share/icons/hicolor/scalable/apps/",
-        "install -Dm644 higan/target-bsnes/resource/bsnes.svg /app/share/icons/hicolor/scalable/apps/bsnes.svg",
+        "install -Dm644 bsnes/target-bsnes/resource/bsnes.svg /app/share/icons/hicolor/scalable/apps/bsnes.svg",
         "install -Dm755 bsnes-padsp.sh /app/bin/bsnes-padsp",
         "sed -i '/^Exec/c\Exec=bsnes-padsp' /app/share/applications/bsnes.desktop"
       ],
@@ -86,8 +86,8 @@
       "sources": [
         {
           "type": "file",
-          "url": "https://download.byuu.org/bsnes_v107r1-source.7z",
-          "sha256": "8649491111ecf257daec4637d7c238ebed534860a16bcfa139d7bca4c2629fbf"
+          "url": "https://download.byuu.org/bsnes_v107r2-source.7z",
+          "sha256": "527dbbd9957465183a14c2e8ef8767b493d8542b6b8f10e5fd5f99eb46e94bb0"
         },
         {
           "type": "file",
