@@ -68,8 +68,8 @@
       "name": "bsnes",
       "buildsystem": "simple",
       "build-commands": [
-        "7z x bsnes_v107r2-source.7z",
-        "mv bsnes_v107r2-source/* .",
+        "7z x bsnes_v107r3-source.7z",
+        "mv bsnes_v107r3-source/* .",
         "sed -i '/^  prefix/c\  prefix := /app' nall/GNUmakefile",
         "sed -i 's|input.xlib input.udev|input.xlib|g' ruby/GNUmakefile",
         "make -j$FLATPAK_BUILDER_N_JOBS -C bsnes",
@@ -86,8 +86,8 @@
       "sources": [
         {
           "type": "file",
-          "url": "https://download.byuu.org/bsnes_v107r2-source.7z",
-          "sha256": "527dbbd9957465183a14c2e8ef8767b493d8542b6b8f10e5fd5f99eb46e94bb0"
+          "url": "https://download.byuu.org/bsnes_v107r3-source.7z",
+          "sha256": "21e29e311034b94b5244b2208baee12376bb07d83e2cf0d541cf326280e8cba1"
         },
         {
           "type": "file",
