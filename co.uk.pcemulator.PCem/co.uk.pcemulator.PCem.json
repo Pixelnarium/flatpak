@@ -67,8 +67,8 @@
         {
           "type": "archive",
           "strip-components": 0,
-          "url": "http://pcem-emulator.co.uk/files/PCemV14Linux.tar.gz",
-          "sha256": "06d84aa2089945fc554ac108ad94bbe92ef3ade2dbf16c67ddebacdfe8ac17cb"
+          "url": "http://pcem-emulator.co.uk/files/PCemV15Linux.tar.gz",
+          "sha256": "b501d3fc2b11bb6127d23fbbcd2de14aabf53460db52daf5d664a80c6f5c85f0"
         }
       ]
     },
