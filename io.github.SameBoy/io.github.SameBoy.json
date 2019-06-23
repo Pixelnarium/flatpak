@@ -78,8 +78,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/LIJI32/SameBoy/archive/v0.11.2.zip",
-          "sha256": "267437164bdbf8e51fb871342933b5962438395b130c87f36a2d119d8fe72a8e"
+          "url": "https://github.com/LIJI32/SameBoy/archive/v0.12.1.zip",
+          "sha256": "5db2b6c88dca119b1f0d7ee4dd6179cd702b92474a3fb6f8c91c521af065af14"
         },
         {
           "type": "file",
