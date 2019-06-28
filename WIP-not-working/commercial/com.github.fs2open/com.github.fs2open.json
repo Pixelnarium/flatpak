@@ -55,7 +55,6 @@
         {
           "type": "git",
           "url": "https://github.com/scp-fs2open/fs2open.github.com.git"
-          /*"tag": "release_3_8_0"*/
         }
       ]
     },
