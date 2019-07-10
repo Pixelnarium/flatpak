@@ -1,0 +1,47 @@
+{
+  "app-id": "org.neverball.Neverball",
+  "runtime": "org.freedesktop.Platform",
+  "sdk": "org.freedesktop.Sdk",
+  "runtime-version": "18.08",
+  "command": "neverball",
+  "finish-args": [
+    "--device=dri",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--persist=."
+  ],
+  "modules": [
+    {
+      "name": "neverball",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app/bin",
+        "mkdir -p /app/share/applications",
+        "mkdir -p /app/share/locale",
+        "mkdir -p /app/share/metainfo/",
+        "mkdir -p /app/share/icons/hicolor/512x512/apps/",
+        "mkdir -p /app/share/neverball/",
+        "install -Dm644 dist/neverball_512.png /app/share/icons/hicolor/512x512/apps/org.neverball.Neverball.png",
+        "install -Dm644 dist/neverputt_512.png /app/share/icons/hicolor/512x512/apps/org.neverball.Neverball.Neverputt.png",
+        "make -j$FLATPAK_BUILDER_N_JOBS DATADIR=/app/share/neverball LOCALEDIR=/app/share/locale CPPFLAGS=\"$CPPFLAGS\" CFLAGS=\"$CFLAGS\"",
+        "cp -r locale/* /app/share/locale/",
+        "cp -r data/* /app/share/neverball/",
+        "install -m644 dist/neverball.desktop /app/share/applications/org.neverball.Neverball.desktop",
+        "install -m644 dist/neverputt.desktop /app/share/applications/org.neverball.Neverball.Neverputt.desktop",
+        "echo '<?xml version=\"1.0\" encoding=\"UTF-8\"?>' | cat - dist/neverball.appdata.xml > temp && mv temp dist/neverball.appdata.xml",
+        "install -m644 dist/neverball.appdata.xml /app/share/metainfo/org.neverball.Neverball.appdata.xml",
+        "sed -i '/^Icon/c\Icon=org.neverball.Neverball' /app/share/applications/org.neverball.Neverball.desktop",
+        "sed -i '/^Icon/c\Icon=org.neverball.Neverball.Neverputt' /app/share/applications/org.neverball.Neverball.Neverputt.desktop",
+        "install -m755 neverball mapc neverputt /app/bin/"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/Neverball/neverball.git"
+        }
+      ]
+    }
+  ]
+}
