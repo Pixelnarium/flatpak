@@ -70,8 +70,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "http://ftp.de.debian.org/debian/pool/main/liba/libaio/libaio_0.3.111.orig.tar.gz",
-          "sha256": "62cf871ad8fd09eb3418f00aca7a7d449299b8e1de31c65f28bf6a2ef1fa502a"
+          "url": "http://ftp.de.debian.org/debian/pool/main/liba/libaio/libaio_0.3.112.orig.tar.xz",
+          "sha256": "f69e5800425f4ea957426693ac09f9896bb993db5490fa021644454adcc72a32"
         }
       ]
     },
@@ -121,6 +121,21 @@
           "type": "archive",
           "url": "https://download.savannah.nongnu.org/releases/pngpp/png++-0.2.9.tar.gz",
           "sha256": "abbc6a0565122b6c402d61743451830b4faee6ece454601c5711e1c1b4238791"
+        }
+      ]
+    },
+    {
+      "name": "libpcap",
+      "cleanup": [
+        "/include",
+        "/share",
+        "/lib/pkgconfig"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.tcpdump.org/release/libpcap-1.9.0.tar.gz",
+          "sha256": "2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019"
         }
       ]
     },
