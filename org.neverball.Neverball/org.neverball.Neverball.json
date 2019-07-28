@@ -31,6 +31,7 @@
         "install -m644 dist/neverball.desktop /app/share/applications/org.neverball.Neverball.desktop",
         "install -m644 dist/neverputt.desktop /app/share/applications/org.neverball.Neverball.Neverputt.desktop",
         "echo '<?xml version=\"1.0\" encoding=\"UTF-8\"?>' | cat - dist/neverball.appdata.xml > temp && mv temp dist/neverball.appdata.xml",
+        "sed -i 's|neverball.desktop|org.neverball.Neverball.desktop|g' dist/neverball.appdata.xml",
         "install -m644 dist/neverball.appdata.xml /app/share/metainfo/org.neverball.Neverball.appdata.xml",
         "sed -i '/^Icon/c\Icon=org.neverball.Neverball' /app/share/applications/org.neverball.Neverball.desktop",
         "sed -i '/^Icon/c\Icon=org.neverball.Neverball.Neverputt' /app/share/applications/org.neverball.Neverball.Neverputt.desktop",
