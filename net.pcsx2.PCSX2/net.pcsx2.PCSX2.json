@@ -11,11 +11,7 @@
     "--share=ipc",
     "--socket=x11",
     "--socket=pulseaudio",
-    "--filesystem=home:ro",
-    "--talk-name=ca.desrt.dconf",
-    "--filesystem=xdg-run/dconf",
-    "--filesystem=~/.config/dconf:ro",
-    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    "--filesystem=home:ro"
   ],
   "modules": [
     {
