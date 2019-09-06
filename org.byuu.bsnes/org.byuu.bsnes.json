@@ -36,24 +36,6 @@
       ]
     },
     {
-      "name": "p7zip",
-      "cleanup": [
-        "*"
-      ],
-      "buildsystem": "simple",
-      "build-commands": [
-        "make -j$FLATPAK_BUILDER_N_JOBS 7z",
-        "make install DEST_DIR=/ DEST_HOME=/app"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://downloads.sourceforge.net/project/p7zip/p7zip/16.02/p7zip_16.02_src_all.tar.bz2",
-          "sha256": "5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f"
-        }
-      ]
-    },
-    {
       "name": "libao",
       "sources": [
         {
@@ -68,8 +50,6 @@
       "name": "bsnes",
       "buildsystem": "simple",
       "build-commands": [
-        "7z x bsnes_v108-source.7z",
-        "mv bsnes_v108-source/* .",
         "sed -i '/^  prefix/c\  prefix := /app' nall/GNUmakefile",
         "sed -i 's|input.xlib input.udev|input.xlib|g' ruby/GNUmakefile",
         "make -j$FLATPAK_BUILDER_N_JOBS -C bsnes",
@@ -85,9 +65,9 @@
       ],
       "sources": [
         {
-          "type": "file",
-          "url": "https://download.byuu.org/bsnes_v108-source.7z",
-          "sha256": "49c560b8438d0ea3942b1cd90ac3d4b5a33074eca77a0b24a7af463e87187bec"
+          "type": "git",
+          "url": "https://github.com/byuu/bsnes.git",
+          "commit": "fa77fc6a8f37f3d5f643e7590674b626fae36138"
         },
         {
           "type": "file",
