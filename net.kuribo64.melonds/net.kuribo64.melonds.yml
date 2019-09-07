@@ -3,13 +3,14 @@ app-id: net.kuribo64.melonds
 runtime: org.freedesktop.Platform
 runtime-version: '18.08'
 sdk: org.freedesktop.Sdk
-command: melonDS
+command: starter
 finish-args:
   - "--share=ipc"
   - "--socket=x11"
   - "--socket=pulseaudio"
   - "--share=network"
   - "--device=all"
+  - "--persist=."
 modules:
   - name: libpcap
     cleanup:
@@ -29,7 +30,13 @@ modules:
         tag: 0.8.3
       - type: file
         path: net.kuribo64.melonds.desktop
+      - type: file
+        path: net.kuribo64.melonds.appdata.xml
+      - type: file
+        path: starter.sh
     post-install:
       - "desktop-file-install --dir=/app/share/applications net.kuribo64.melonds.desktop"
       - "install -D icon/melon_256x256.png /app/share/icons/hicolor/256x256/apps/net.kuribo64.melonds.png"
+      - "install -D net.kuribo64.melonds.appdata.xml /app/share/metainfo/net.kuribo64.melonds.appdata.xml"
       - "install -D romlist.bin /app/bin/romlist.bin"
+      - "install -Dm755 starter.sh /app/bin/starter"

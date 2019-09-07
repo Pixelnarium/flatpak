@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=melonDS
 Comment=Nintendo DS emulator
-Exec=melonDS
+Exec=starter
 Type=Application
 Categories=Game;
 Terminal=false
