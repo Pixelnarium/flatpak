@@ -2,7 +2,7 @@
   "app-id": "org.neverball.Neverball",
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "18.08",
+  "runtime-version": "19.08",
   "command": "neverball",
   "finish-args": [
     "--device=dri",

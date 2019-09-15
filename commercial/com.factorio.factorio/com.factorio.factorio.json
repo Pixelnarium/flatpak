@@ -1,7 +1,7 @@
 {
   "app-id": "com.factorio.factorio",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "18.08",
+  "runtime-version": "19.08",
   "sdk": "org.freedesktop.Sdk",
   "rename-desktop-file": "factorio.desktop",
   "rename-icon": "factorio",
@@ -35,7 +35,7 @@
       "sources": [
         {
           "type": "archive",
-          "path": "factorio_alpha_x64_0.17.52.tar.xz",
+          "path": "factorio_alpha_x64_0.17.68.tar.xz",
           "strip-components": 0
         },
         {

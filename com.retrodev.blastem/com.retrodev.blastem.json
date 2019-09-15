@@ -2,7 +2,7 @@
   "app-id": "com.retrodev.blastem",
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "18.08",
+  "runtime-version": "19.08",
   "command": "start-blastem",
   "rename-icon": "blastem",
   "finish-args": [
@@ -80,7 +80,7 @@
           "/app/lib/python*/site-packages/setuptools.pth"
       ],
       "build-commands": [
-          "python setup.py install --prefix=/app --root=/"
+          "python3 setup.py install --prefix=/app --root=/"
       ],
       "sources": [
           {

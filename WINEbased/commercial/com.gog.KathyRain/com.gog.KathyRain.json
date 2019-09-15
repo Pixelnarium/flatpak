@@ -2,7 +2,7 @@
   "app-id": "com.gog.KathyRain",
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "18.08",
+  "runtime-version": "19.08",
   "rename-icon": "gameicon",
   "rename-desktop-file": "game.desktop",
   "rename-appdata-file": "template.appdata.xml",
