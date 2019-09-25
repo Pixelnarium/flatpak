@@ -1,0 +1,34 @@
+{
+  "name": "sdl2",
+  "buildsystem": "cmake-ninja",
+  "builddir": true,
+  "config-opts": [
+    "-DCMAKE_INSTALL_PREFIX=/app",
+    "-DSDL_STATIC=OFF",
+    "-DSDL_DLOPEN=ON",
+    "-DARTS=OFF",
+    "-DESD=OFF",
+    "-DNAS=OFF",
+    "-DALSA=OFF",
+    "-DPULSEAUDIO_SHARED=ON",
+    "-DVIDEO_WAYLAND=ON",
+    "-DRPATH=OFF",
+    "-DCLOCK_GETTIME=ON"
+  ],
+  "sources": [
+    {
+      "type": "archive",
+      "url": "https://www.libsdl.org/release/SDL2-2.0.10.tar.gz",
+      "sha256": "b4656c13a1f0d0023ae2f4a9cf08ec92fffb464e0f24238337784159b8b91d57"
+    }
+  ],
+  "cleanup": [
+    "/bin",
+    "/share/man",
+    "/share/aclocal",
+    "/include",
+    "/lib/pkgconfig",
+    "/lib/*.la",
+    "/lib/*.a"
+  ]
+}

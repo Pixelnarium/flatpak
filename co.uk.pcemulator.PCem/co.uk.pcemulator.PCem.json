@@ -15,6 +15,7 @@
     "--persist=.pcem"
   ],
   "modules": [
+    "../sdl2.json",
     {
       "name": "wxWidgets",
       "cleanup": [

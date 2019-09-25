@@ -17,6 +17,7 @@
     "--talk-name=org.freedesktop.ScreenSaver"
   ],
   "modules": [
+    "../sdl2.json",
     {
       "name": "lame",
       "config-opts": [
