@@ -13,7 +13,7 @@
     "--persist=."
   ],
   "modules": [
-    "shared-modules/glu/glu-9.0.0.json",    
+    "shared-modules/glu/glu-9.json",    
     {
       "name": "mupen64plus-core",
       "buildsystem": "simple",

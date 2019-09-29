@@ -14,7 +14,7 @@
 		"--persist=."
 	],
 	"modules": [
-		"shared-modules/glu/glu-9.0.0.json",
+		"shared-modules/glu/glu-9.json",
 		"shared-modules/glew/glew.json",
     "../sdl2.json",
 		{
