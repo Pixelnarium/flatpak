@@ -46,7 +46,7 @@
         {
           "type": "git",
           "url": "https://github.com/libretro/RetroArch.git",
-          "tag": "v1.7.8.4"
+          "tag": "v1.7.9.2"
         },
         {
           "type": "file",
