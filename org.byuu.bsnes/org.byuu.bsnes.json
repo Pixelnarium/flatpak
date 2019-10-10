@@ -24,6 +24,7 @@
     "*.a"
   ],
   "modules": [
+    "sdl2.json",
     "shared-modules/gtk2/gtk2.json",
     {
       "name": "gtksourceview2",
@@ -67,7 +68,7 @@
         {
           "type": "git",
           "url": "https://github.com/byuu/bsnes.git",
-          "commit": "e71da4d8c86d561445781cc00b6ac83de12e7d2d"
+          "commit": "3d646aef73a1e1468b4b0bb5c3ffed0fc28eb180"
         },
         {
           "type": "file",
