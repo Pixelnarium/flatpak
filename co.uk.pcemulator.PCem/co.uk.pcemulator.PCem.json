@@ -51,7 +51,7 @@
         }
       ],
       "modules": [
-        "shared-modules/glu/glu-9.json"
+        "../shared-modules/glu/glu-9.json"
       ]
     },
     {

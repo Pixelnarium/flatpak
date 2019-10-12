@@ -42,7 +42,7 @@ modules:
         url: 'https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2'
         sha256: 96157f988d261b7368e5340afa1a0cad943768f35929c22841f62c25b17bf7f0
     modules:
-      - 'shared-modules/glu/glu-9.json'
+      - '../shared-modules/glu/glu-9.json'
 
   - name: libaio
     cleanup:

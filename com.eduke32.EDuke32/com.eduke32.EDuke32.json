@@ -16,8 +16,8 @@
     "--persist=.config/eduke32"
   ],
   "modules": [
-    "shared-modules/glu/glu-9.json",
-    "shared-modules/gtk2/gtk2.json",
+    "../shared-modules/glu/glu-9.json",
+    "../shared-modules/gtk2/gtk2.json",
     {
       "name": "eduke32",
       "buildsystem": "simple",

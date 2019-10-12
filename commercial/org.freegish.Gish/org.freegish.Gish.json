@@ -15,10 +15,10 @@
   ],
   "command": "freegish",
   "modules": [
-    "shared-modules/glew/glew.json",
-    "shared-modules/glu/glu-9.json",
-    "shared-modules/SDL/SDL-1.2.15.json",
-    "shared-modules/SDL/SDL_mixer-1.2.12.json",
+    "../../shared-modules/glew/glew.json",
+    "../../shared-modules/glu/glu-9.json",
+    "../../shared-modules/SDL/SDL-1.2.15.json",
+    "../../shared-modules/SDL/SDL_mixer-1.2.12.json",
     {
       "name": "freegish",
       "buildsystem": "cmake",

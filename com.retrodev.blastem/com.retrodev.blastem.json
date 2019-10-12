@@ -14,8 +14,8 @@
 		"--persist=."
 	],
 	"modules": [
-		"shared-modules/glu/glu-9.json",
-		"shared-modules/glew/glew.json",
+		"../shared-modules/glu/glu-9.json",
+		"../shared-modules/glew/glew.json",
     "../sdl2.json",
 		{
 			"name": "xcftools",

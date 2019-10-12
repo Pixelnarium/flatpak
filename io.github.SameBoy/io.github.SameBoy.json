@@ -13,7 +13,7 @@
   ],
   "modules": [
     "../sdl2.json",
-    "shared-modules/glu/glu-9.json",
+    "../shared-modules/glu/glu-9.json",
     {
       "name": "rgbds",
       "buildsystem": "simple",

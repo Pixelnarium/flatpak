@@ -20,10 +20,10 @@
     "*.la", "*.a"
   ],
   "modules": [
-    "shared-modules/glu/glu-9.json",
-    "shared-modules/SDL/SDL-1.2.15.json",
-    "shared-modules/SDL/SDL_net-1.2.8.json",
-    "shared-modules/smpeg/smpeg-0.4.5.json",
+    "../shared-modules/glu/glu-9.json",
+    "../shared-modules/SDL/SDL-1.2.15.json",
+    "../shared-modules/SDL/SDL_net-1.2.8.json",
+    "../shared-modules/smpeg/smpeg-0.4.5.json",
     {
       "name": "SDL_sound",
       "build-options": {
