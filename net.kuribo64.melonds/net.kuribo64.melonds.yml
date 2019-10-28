@@ -12,6 +12,7 @@ finish-args:
   - "--device=all"
   - "--persist=."
 modules:
+  - "../sdl2.json"
   - name: libpcap
     cleanup:
       - "/include"
