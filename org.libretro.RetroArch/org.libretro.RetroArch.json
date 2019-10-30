@@ -169,7 +169,7 @@
       "buildsystem": "simple",
       "build-commands": [
         "mkdir -p ${FLATPAK_DEST}/share/libretro/overlay",
-        "mv -r * ${FLATPAK_DEST}/share/libretro/overlay/"
+        "mv * ${FLATPAK_DEST}/share/libretro/overlay/"
       ],
       "sources": [
         {
