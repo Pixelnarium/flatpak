@@ -3,6 +3,7 @@ import sys
 import os
 from subprocess import call
 import shutil
+from pathlib import Path
 
 projects = [("com.dosbox.DOSBox","x86_64"),
         ("com.eduke32.EDuke32","x86_64"),
@@ -27,7 +28,10 @@ projects = [("com.dosbox.DOSBox","x86_64"),
 
 def main():
     repo_path = sys.argv[1]
-    proj_prefix = "~/FlatPak/flatpak/"
+    home = str(Path.home())
+    proj_prefix = home+"/FlatPak/flatpak/"
+    stats_dir = home+"/FlatPak/build-dir/flatpak-builder"
+    build_dir = home+"/FlatPak/build-dir/build"
     results = []
 
     for proj in projects:
@@ -43,11 +47,11 @@ def main():
         else:
             name += ".yml"
 
-        ret = call(["flatpak-builder", "build", name, "--force-clean", "--repo="+repo_path, "--arch="+arch])
+        ret = call(["flatpak-builder", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])#, "--keep-build-dirs"])
         results.append(name + " -> " + str(ret))
 
-        shutil.rmtree("build", ignore_errors=True)
-        shutil.rmtree(".flatpak-builder", ignore_errors=True)
+        #shutil.rmtree("build", ignore_errors=True)
+        #shutil.rmtree(".flatpak-builder", ignore_errors=True)
 
     for r in results:
         print(r)
