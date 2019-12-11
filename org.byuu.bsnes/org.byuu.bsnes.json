@@ -68,7 +68,7 @@
         {
           "type": "git",
           "url": "https://github.com/byuu/bsnes.git",
-          "commit": "c717a0e7bd3e5996e971648738d4c13c8f81e747"
+          "tag": "v113"
         },
         {
           "type": "file",
