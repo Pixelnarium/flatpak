@@ -1,0 +1,42 @@
+{
+  "app-id": "io.mgba.mGBA",
+  "runtime": "org.kde.Platform",
+  "sdk": "org.kde.Sdk",
+  "runtime-version": "5.13",
+  "command": "mgba-qt",
+  "rename-desktop-file": "mgba-qt.desktop",
+  "rename-icon": "mgba",
+  "rename-appdata-file": "mgba.appdata.xml",
+  "finish-args": [
+    "--device=all",
+    "--socket=pulseaudio",
+    "--socket=x11",
+    /* SDL needs to be able to talk to UPower */
+    "--system-talk-name=org.freedesktop.UPower"
+  ],
+  "modules": [
+    "../sdl2.json",
+    {
+      "name": "mgba",
+      "buildsystem": "cmake-ninja",
+      "config-opts": [
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_INSTALL_LIBDIR=lib"
+      ],
+      "build-commands": [
+        "install -Dm644 appdata.xml /app/share/appdata/mgba.appdata.xml"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/mgba-emu/mgba/archive/0.8-b1.tar.gz",
+          "sha256": "e1bfda43e051f235b6ed625c53f11d1d425e3d76df06a120c7b75ab40981aa7b"
+        },
+        {
+          "type": "file",
+          "path": "appdata.xml"
+        }
+      ]
+    }
+  ]
+}
