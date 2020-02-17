@@ -2,7 +2,7 @@
   "app-id": "io.github.m64p",
   "runtime": "org.kde.Platform",
   "sdk": "org.kde.Sdk",
-  "runtime-version": "5.13",
+  "runtime-version": "5.14",
   "command": "mupen64plus-gui",
   "finish-args": [
     "--device=all",

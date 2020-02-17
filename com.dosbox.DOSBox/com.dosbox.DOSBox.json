@@ -40,41 +40,11 @@
       ]
     },
     {
-      "name": "openglide",
-      "buildsystem": "simple",
-      "build-commands": [
-        "./bootstrap",
-        "./configure --prefix=/app",
-        "sed -e '/install-data-hook/,/$p/d' -i Makefile.am",
-        "sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac",
-        "sed -e '/INCLUDES/d' -i Makefile.am",
-        "make",
-        "make install"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/voyageur/openglide"
-        }
-      ]
-    },
-    {
       "name": "dosbox",
-      "build-options": {
-        "cppflags": "-I /app/include/openglide"
-      },
       "sources": [
         {
           "type": "svn",
           "url": "https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk"
-        },
-        {
-          "type": "patch",
-          "path": "dosbox_glide.diff"
-        },
-        {
-          "type": "file",
-          "path": "glide2x.ovl"
         },
         {
           "type": "file",
@@ -97,7 +67,6 @@
         "install -Dm644 com.dosbox.DOSBox.appdata.xml /app/share/appdata/com.dosbox.DOSBox.appdata.xml",
         "install -Dm644 com.dosbox.DOSBox.desktop /app/share/applications/com.dosbox.DOSBox.desktop",
         "install -Dm644 com.dosbox.DOSBox.png /app/share/icons/hicolor/256x256/apps/com.dosbox.DOSBox.png",
-        "install -Dm644 glide2x.ovl /app/share/",
         "install -Dm755 dosbox-wrapper.sh /app/bin/dosbox-wrapper"
       ]
     }
