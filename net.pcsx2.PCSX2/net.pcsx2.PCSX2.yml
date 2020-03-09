@@ -1,7 +1,7 @@
 app-id: net.pcsx2.PCSX2
 runtime: org.freedesktop.Platform
 sdk: org.freedesktop.Sdk
-runtime-version: '18.08'
+runtime-version: '19.08'
 command: PCSX2
 rename-desktop-file: PCSX2.desktop
 rename-icon: PCSX2
@@ -12,15 +12,57 @@ finish-args:
   - '--socket=x11'
   - '--socket=pulseaudio'
   - '--filesystem=home:ro'
+  - '--allow=multiarch'
 
+add-extensions:
+  org.freedesktop.Platform.Compat.i386:
+    directory: lib/i386-linux-gnu
+    version: '19.08'
+  org.freedesktop.Platform.Compat.i386.Debug:
+    directory: lib/debug/lib/i386-linux-gnu
+    version: '19.08'
+    no-autodownload: true
+  org.freedesktop.Platform.GL32:
+    directory: lib/i386-linux-gnu/GL
+    version: '19.08'
+    subdirectories: true
+    no-autodownload: true
+    autodelete: false
+    add-ld-path: lib
+    merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d
+    download-if: active-gl-driver
+    enable-if: active-gl-driver
+    
+sdk-extensions:
+  - org.freedesktop.Sdk.Compat.i386
+  - org.freedesktop.Sdk.Extension.toolchain-i386
+
+build-options:
+  prepend-pkg-config-path: "/app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig"
+  ldflags: "-L/app/lib32"
+  append-path: "/usr/lib/sdk/toolchain-i386/bin"
+  env:
+    CC: i686-unknown-linux-gnu-gcc
+    CXX: i686-unknown-linux-gnu-g++
+  libdir: /app/lib32
+  
 modules:
+  - name: compati386
+    buildsystem: simple
+    build-commands:
+      - 'mkdir -p /app/lib/i386-linux-gnu'
+      - 'mkdir -p  /app/lib/debug/lib/i386-linux-gnu'
+      - 'install -Dm644 -t /app/etc ld.so.conf'
+    sources:
+      - type: file
+        path: ld.so.conf
   - name: wxWidgets
     cleanup:
       - /bin
       - /include
       - /share/bakefile
       - /share/aclocal
-      - /lib/wx/include
+      - /lib32/wx/include
     config-opts:
       - '--with-opengl'
       - '--with-libjpeg'
@@ -36,7 +78,7 @@ modules:
       - '--with-expat=builtin'
       - '--with-libiconv=/usr'
     build-options:
-      cxxflags: '-std=c++0x'
+      cxxflags: '-std=c++0x' 
     sources:
       - type: archive
         url: 'https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2'
@@ -47,13 +89,13 @@ modules:
   - name: libaio
     cleanup:
       - /include
-      - '/lib/*.a'
+      - '/lib32/*.a'
     buildsystem: simple
     build-options:
       cflags: '-O2 -pipe -fno-stack-protector -fno-plt'
     build-commands:
       - 'make'
-      - 'make prefix=/app install'
+      - 'make prefix=/app libdir=/app/lib32 install'
     sources:
       - type: archive
         url: 'http://ftp.de.debian.org/debian/pool/main/liba/libaio/libaio_0.3.112.orig.tar.xz'
@@ -62,8 +104,8 @@ modules:
   - name: portaudio
     cleanup:
       - /include
-      - /lib/pkgconfig
-      - '/lib/*.la'
+      - /lib32/pkgconfig
+      - '/lib32/*.la'
     config-opts:
       - '--disable-static'
     sources:
@@ -76,38 +118,46 @@ modules:
       - '--disable-static'
     sources:
       - type: archive
-        url: 'https://www.surina.net/soundtouch/soundtouch-2.0.0.tar.gz'
-        sha256: d224f7d1421b5f8e74a74c85741345bd9802618a40ae30ce5b427a5705c89d25
+        url: 'https://gitlab.com/soundtouch/soundtouch/-/archive/2.1.1/soundtouch-2.1.1.tar.gz'
+        sha256: 09311b159e15b2f5ceec953ad711922b466642a3000449f17de1874ce7a3ac8a
     cleanup:
       - /bin
       - /include
-      - /lib/pkgconfig
+      - /lib32/pkgconfig
       - /share/aclocal
       - /share/doc
-      - '/lib/*.la'
+      - '/lib32/*.la'
 
   - name: libpcap
     cleanup:
       - /include
       - /share
-      - /lib/pkgconfig
+      - /lib32/pkgconfig
     sources:
       - type: archive
-        url: 'https://www.tcpdump.org/release/libpcap-1.9.0.tar.gz'
-        sha256: 2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019
+        url: 'https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz'
+        sha256: 635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094
 
   - name: pcsx2
-    buildsystem: simple
-    build-commands:
-      - 'rm -rf plugins/cdvdGigaherz'
-      - 'cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DGTK3_API=TRUE -DXDG_STD=TRUE -DDISABLE_BUILD_DATE=TRUE -DOpenGL_GL_PREFERENCE=GLVND -DPACKAGE_MODE=TRUE -DUSE_LTO=TRUE -DCMAKE_INSTALL_PREFIX:PATH=/app/'
-      - 'ninja all install'
+    buildsystem: cmake-ninja
+    config-opts:
+      - '-DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake'
+      - '-DCMAKE_BUILD_TYPE=Release'
+      - '-DCMAKE_LIBRARY_PATH=/app/lib32'
+      - '-DPLUGIN_DIR=/app/lib32/pcsx2'
+      - '-DGTK3_API=TRUE'
+      - '-DXDG_STD=TRUE'
+      - '-DDISABLE_BUILD_DATE=TRUE'
+      - '-DOpenGL_GL_PREFERENCE=GLVND'
+      - '-DPACKAGE_MODE=TRUE'
+      - '-DDISABLE_DEV9GHZDRK=TRUE'
+      - '-DCMAKE_INSTALL_PREFIX:PATH=/app/'
     cleanup:
       - /share/pixmaps
       - /share/man
       - /share/doc
     post-install:
-      - 'sed -i s/Exec=.*/Exec=PCSX2/ /app/share/applications/PCSX2.desktop'
+      - 'desktop-file-edit --set-key=Exec --set-value=PCSX2 /app/share/applications/PCSX2.desktop'
       - 'install -Dm644 pcsx2/gui/Resources/AppIcon64.png /app/share/icons/hicolor/64x64/apps/PCSX2.png'
       - 'install -Dm644 net.pcsx2.PCSX2.appdata.xml /app/share/appdata/net.pcsx2.PCSX2.appdata.xml'
     sources:
