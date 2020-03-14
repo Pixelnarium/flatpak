@@ -151,6 +151,7 @@ modules:
       - '-DOpenGL_GL_PREFERENCE=GLVND'
       - '-DPACKAGE_MODE=TRUE'
       - '-DDISABLE_DEV9GHZDRK=TRUE'
+      - '-DUSE_LTO=FALSE'
       - '-DCMAKE_INSTALL_PREFIX:PATH=/app/'
     cleanup:
       - /share/pixmaps
