@@ -67,8 +67,8 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://github.com/byuu/bsnes.git",
-          "commit": "8e80d2f8a43e34a82931e25143b279e5fbcfaedc"
+          "url": "https://github.com/bsnes-emu/bsnes.git",
+          "tag": "v115"
         },
         {
           "type": "file",
