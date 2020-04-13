@@ -14,6 +14,7 @@
   ],
   "modules": [
     "../shared-modules/glu/glu-9.json",    
+    "../sdl2.json",    
     {
       "name": "mupen64plus-core",
       "buildsystem": "simple",
