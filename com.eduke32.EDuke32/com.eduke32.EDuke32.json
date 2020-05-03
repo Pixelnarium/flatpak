@@ -32,8 +32,8 @@
       ],
       "sources": [
         {
-          "type": "svn",
-          "url": "https://svn.eduke32.com/eduke32"
+          "type": "git",
+          "url": "https://voidpoint.io/terminx/eduke32"
         },
         {
           "type": "file",
