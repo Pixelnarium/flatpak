@@ -41,7 +41,7 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://git.xiph.org/libao.git",
+          "url": "https://github.com/xiph/libao.git",
           "commit": "20dc8ed9fa4605f5c25e7496ede42e8ba6468225",
           "disable-shallow-clone": true
         }

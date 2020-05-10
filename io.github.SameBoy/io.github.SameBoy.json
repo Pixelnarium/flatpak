@@ -27,8 +27,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/rednex/rgbds/releases/download/v0.3.7/rgbds-0.3.7.tar.gz",
-          "sha256": "9ffdbdf223e40b18e0e64083356092d07c268b42b78d8fd29fcc468969936a04"
+          "url": "https://github.com/rednex/rgbds/releases/download/v0.4.0/rgbds-0.4.0.tar.gz",
+          "sha256": "bd8ed69ac395b224d2b55db2cd57791bfd6b836891e7691cd8742344873d33e5"
         }
       ]
     },
@@ -78,7 +78,8 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://github.com/LIJI32/SameBoy.git"
+          "url": "https://github.com/LIJI32/SameBoy.git",
+          "commit": "89713521d43a9abee20ddcb51a4810be116f5894"
         },
         {
           "type": "file",

@@ -125,6 +125,20 @@
       ]
     },
     {
+      "name": "mupen64plus-ui-console",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ SHAREDIR=/app/bin PREFIX=/app/bin LIBDIR=/app/bin PLUGINDIR=/app/bin all",
+        "install -Dm775 projects/unix/mupen64plus /app/bin/"
+      ],      
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mupen64plus/mupen64plus-ui-console.git"
+        }
+      ]
+    },
+    {
       "name": "mupen64plus-gui",
       "buildsystem": "simple",
       "build-commands": [
