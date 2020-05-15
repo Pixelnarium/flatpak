@@ -3,7 +3,7 @@
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
   "runtime-version": "19.08",
-  "command": "mednafen",
+  "command": "mednafen-wrapper",
   "rename-desktop-file": "mednafen.desktop",
   "rename-icon": "buggy",
   "finish-args": [
@@ -25,7 +25,8 @@
         "mkdir -p /app/share/icons/hicolor/scalable/apps",
         "install -Dm644 mednafen.desktop /app/share/applications/",
         "install -Dm644 io.github.Mednafen.appdata.xml /app/share/appdata/",
-        "install -Dm644 buggy.svg /app/share/icons/hicolor/scalable/apps/buggy.svg"
+        "install -Dm644 buggy.svg /app/share/icons/hicolor/scalable/apps/buggy.svg",
+        "install -Dm775 mednafen-wrapper.sh /app/bin/mednafen-wrapper"
       ],
       "sources": [
         {
@@ -44,6 +45,10 @@
         {
           "type": "file",
           "path": "buggy.svg"
+        },
+        {
+          "type": "file",
+          "path": "mednafen-wrapper.sh"
         }
       ]
     }

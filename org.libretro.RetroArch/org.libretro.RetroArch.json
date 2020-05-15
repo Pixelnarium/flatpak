@@ -68,7 +68,8 @@
         "sed s:@prefix@:${FLATPAK_DEST}:g retroarch.cfg > ${FLATPAK_DEST}/etc/retroarch.cfg",
         "mkdir -p ${FLATPAK_DEST}/share/appdata",
         "cp org.libretro.RetroArch.appdata.xml ${FLATPAK_DEST}/share/appdata",
-        "install -Dm775 retroarch-wrapper.sh /app/bin/retroarch-wrapper"
+        "install -Dm775 retroarch-wrapper.sh /app/bin/retroarch-wrapper",
+        "desktop-file-edit --set-key=Exec --set-value=retroarch-wrapper /app/share/applications/retroarch.desktop"
       ]
     },
     {
