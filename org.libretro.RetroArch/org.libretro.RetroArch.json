@@ -3,7 +3,7 @@
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "19.08",
   "sdk": "org.freedesktop.Sdk",
-  "command": "retroarch",
+  "command": "retroarch-wrapper",
   "rename-desktop-file": "retroarch.desktop",
   "rename-icon": "retroarch",
   "finish-args": [
@@ -54,6 +54,10 @@
         {
           "type": "file",
           "path": "retroarch.cfg"
+        },
+        {
+          "type": "file",
+          "path": "retroarch-wrapper.sh"
         }
       ],
       "post-install": [
@@ -63,7 +67,8 @@
         "mkdir -p ${FLATPAK_DEST}/etc",
         "sed s:@prefix@:${FLATPAK_DEST}:g retroarch.cfg > ${FLATPAK_DEST}/etc/retroarch.cfg",
         "mkdir -p ${FLATPAK_DEST}/share/appdata",
-        "cp org.libretro.RetroArch.appdata.xml ${FLATPAK_DEST}/share/appdata"
+        "cp org.libretro.RetroArch.appdata.xml ${FLATPAK_DEST}/share/appdata",
+        "install -Dm775 retroarch-wrapper.sh /app/bin/retroarch-wrapper"
       ]
     },
     {
@@ -150,8 +155,11 @@
           "type": "git",
           "url": "https://github.com/libretro/slang-shaders.git"
         }
+      ],
+      "post-install": [
+        "ln -sf /var/config/retroarch/shader_presets /app/share/libretro/shaders/presets"
       ]
-    },
+     },
     {
       "name": "glsl-shaders",
       "make-install-args": [
@@ -162,6 +170,9 @@
           "type": "git",
           "url": "https://github.com/libretro/glsl-shaders.git"
         }
+      ],
+      "post-install": [
+        "ln -sf /var/config/retroarch/shader_presets /app/share/libretro/shaders/presets"
       ]
     },
     {
