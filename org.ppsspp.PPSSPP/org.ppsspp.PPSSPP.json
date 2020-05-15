@@ -6,7 +6,6 @@
   "command": "ppsspp",
   "rename-desktop-file": "ppsspp.desktop",
   "rename-icon": "ppsspp",
-  "rename-appdata-file": "ppsspp.appdata.xml",
   "finish-args": [
     "--device=all",
     "--filesystem=host:ro",
@@ -52,7 +51,7 @@
         "install -Dm644 icons/icon-512.svg /app/share/icons/hicolor/scalable/apps/ppsspp.svg",
         "ln -s /app/ppsspp/PPSSPPSDL /app/bin/ppsspp",
         "install -m644 ppsspp.desktop /app/share/applications/",
-        "install -Dm644 appdata.xml /app/share/appdata/ppsspp.appdata.xml"
+        "install -Dm644 org.ppsspp.PPSSPP.appdata.xml /app/share/appdata/org.ppsspp.PPSSPP.appdata.xml"
       ],
       "sources": [
         {
@@ -67,7 +66,7 @@
         },
         {
           "type": "file",
-          "path": "appdata.xml"
+          "path": "org.ppsspp.PPSSPP.appdata.xml"
         }
       ]
     }

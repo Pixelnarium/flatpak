@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application>
-  <id type="desktop">mgba-qt.desktop</id>
+<component type="desktop">
+  <id>io.mgba.mGBA</id>
   <name>mGBA</name>
   <summary>Nintendo Game Boy Advance Emulator</summary>
   <metadata_license>CC0-1.0</metadata_license>
@@ -19,8 +19,4 @@
     <screenshot>https://raw.githubusercontent.com/flathub/io.mgba.mGBA/master/screenshots/2.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/flathub/io.mgba.mGBA/master/screenshots/3.png</screenshot>
   </screenshots>
-  <releases>
-    <release version="0.7.3" date="2019-09-15"/>
-  </releases>
-  <updatecontact>b@bpiotrowski.pl</updatecontact>
-</application>
+</component>

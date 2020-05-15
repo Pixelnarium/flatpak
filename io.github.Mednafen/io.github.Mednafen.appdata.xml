@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application>
-  <id type="desktop">io.github.Mednafen.desktop</id>
+<component type="desktop">
+  <id>io.github.Mednafen</id>
   <launchable type="desktop-id">io.github.Mednafen.desktop</launchable>
   <name>Mednafen</name>
   <summary>A Multi-System Emulator</summary>
+  <description><p>A Multi-System Emulator</p></description>
   <categories>
     <category>Game</category>
     <category>Emulator</category>
@@ -11,4 +12,4 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0</project_license>
   <url type="homepage">https://mednafen.github.io/</url>
-</application>
+</component>

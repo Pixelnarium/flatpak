@@ -6,7 +6,6 @@
   "command": "mgba-qt",
   "rename-desktop-file": "mgba-qt.desktop",
   "rename-icon": "mgba",
-  "rename-appdata-file": "mgba.appdata.xml",
   "finish-args": [
     "--device=all",
     "--socket=pulseaudio",
@@ -24,7 +23,7 @@
         "-DCMAKE_INSTALL_LIBDIR=lib"
       ],
       "build-commands": [
-        "install -Dm644 appdata.xml /app/share/appdata/mgba.appdata.xml"
+        "install -Dm644 io.mgba.mGBA.appdata.xml /app/share/appdata/io.mgba.mGBA.appdata.xml"
       ],
       "sources": [
         {
@@ -34,7 +33,7 @@
         },
         {
           "type": "file",
-          "path": "appdata.xml"
+          "path": "io.mgba.mGBA.appdata.xml"
         }
       ]
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>org.mamedev.MAME.desktop</id>
+  <id>org.mamedev.MAME</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-2.0+ and BSD-3-Clause</project_license>
   <name>MAME</name>

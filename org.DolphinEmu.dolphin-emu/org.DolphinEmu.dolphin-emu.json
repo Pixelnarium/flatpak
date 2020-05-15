@@ -6,7 +6,6 @@
   "command": "dolphin-emu",
   "rename-desktop-file": "dolphin-emu.desktop",
   "rename-icon": "dolphin-emu",
-  "rename-appdata-file": "dolphin-emu.appdata.xml",
   "finish-args": [
     "--device=all",
     "--filesystem=xdg-documents:ro",
@@ -58,7 +57,7 @@
         "/share/man"
       ],
       "post-install": [
-        "install -Dm644 appdata.xml /app/share/appdata/dolphin-emu.appdata.xml",
+        "install -Dm644 org.DolphinEmu.dolphin-emu.appdata.xml /app/share/appdata/org.DolphinEmu.dolphin-emu.appdata.xml",
         "sed -i -e 's/\"2048\"/\"512\"/g' /app/share/icons/hicolor/scalable/apps/dolphin-emu.svg"
       ],
       "sources": [
@@ -68,7 +67,7 @@
         },
         {
           "type": "file",
-          "path": "appdata.xml"
+          "path": "org.DolphinEmu.dolphin-emu.appdata.xml"
         }
       ]
     }

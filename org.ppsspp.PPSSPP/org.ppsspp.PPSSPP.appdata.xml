@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application>
-  <id type="desktop">ppsspp.desktop</id>
+<component type="desktop">
+  <id>org.ppsspp.PPSSPP</id>
   <name>PPSSPP</name>
   <summary>A PlayStation Portable emulator</summary>
   <metadata_license>CC0-1.0</metadata_license>
@@ -68,5 +68,4 @@
     </release>
   </releases>
   <content_rating type="oars-1.1" />
-  <updatecontact>b@bpiotrowski.pl</updatecontact>
-</application>
+</component>
