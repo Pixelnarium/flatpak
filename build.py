@@ -26,6 +26,7 @@ projects = [("com.dosbox.DOSBox","x86_64"),
         ("org.DolphinEmu.dolphin-emu","x86_64"),
         ("org.ppsspp.PPSSPP","x86_64"),
         ("io.mgba.mGBA","x86_64"),
+        ("org.residualvm.ResidualVM","x86_64"),
         ("org.byuu.bsnes","x86_64")]
 
 
