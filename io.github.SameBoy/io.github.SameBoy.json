@@ -79,7 +79,7 @@
         {
           "type": "git",
           "url": "https://github.com/LIJI32/SameBoy.git",
-          "commit": "9e8b4345c03aac473dfc1471b3e22fc540ed961d"
+          "tag": "v0.13.1"
         },
         {
           "type": "file",
