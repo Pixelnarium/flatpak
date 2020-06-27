@@ -22,7 +22,7 @@
       "name": "eduke32",
       "buildsystem": "simple",
       "build-commands": [
-        "make -j$FLATPAK_BUILDER_N_JOBS",
+        "make -j$FLATPAK_BUILDER_N_JOBS VC_REV=$(git rev-list HEAD --count)",
         "install -d /app/bin",
         "install -Dm755 eduke32 mapster32 /app/bin",
         "install -Dm644 package/common/buildlic.txt /app/share/licenses/eduke32/buildlic.txt",
