@@ -31,8 +31,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://mednafen.github.io/releases/files/mednafen-1.24.2.tar.xz",
-          "sha256": "1169ded285bb56d359973d3d332f28e5d2e9e41768a9932383d1a0ef63057c6c"
+          "url": "https://mednafen.github.io/releases/files/mednafen-1.25.0-UNSTABLE.tar.xz",
+          "sha256": "0ee12e6b52325d5b158f55725f2f34845afd85a4bfba2d5e3c1e139e2be5982a"
         },
         {
           "type": "file",
