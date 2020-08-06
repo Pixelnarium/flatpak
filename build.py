@@ -29,19 +29,18 @@ projects = [("com.dosbox.DOSBox","x86_64"),
         ("org.byuu.bsnes","x86_64"),
         ("org.mamedev.MAME","x86_64")]
 
-
 def main():
     repo_path = sys.argv[1]
-    home = str(Path.home())
-    proj_prefix = home+"/FlatPak/flatpak/"
-    stats_dir = home+"/FlatPak/build-dir/flatpak-builder"
-    build_dir = home+"/FlatPak/build-dir/build"
+    home = str(Path.cwd().parent)
+    proj_prefix = os.path.join(home, "flatpak")
+    stats_dir = os.path.join(home, "build-dir", "flatpak-builder")
+    build_dir = os.path.join(home, "build-dir", "build")
     results = []
 
     for proj in projects:
         path = proj[0]
         arch = proj[1]
-        full_path = os.path.expanduser(proj_prefix+path)
+        full_path = os.path.join(os.path.expanduser(proj_prefix), path)
         name = path.split("/")[-1]
 
         os.chdir(full_path)
