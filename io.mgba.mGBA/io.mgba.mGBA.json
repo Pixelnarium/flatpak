@@ -14,7 +14,6 @@
     "--system-talk-name=org.freedesktop.UPower"
   ],
   "modules": [
-    "../sdl2.json",
     {
       "name": "mgba",
       "buildsystem": "cmake-ninja",

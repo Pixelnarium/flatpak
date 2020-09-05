@@ -1,6 +1,6 @@
 ---
 app-id: net.kuribo64.melonds
-runtime: org.freedesktop.Platform
+runtime: org.kde.Platform
 runtime-version: '5.15'
 sdk: org.kde.Sdk
 command: starter
@@ -12,7 +12,6 @@ finish-args:
   - "--device=all"
   - "--persist=."
 modules:
-  - "../sdl2.json"
   - name: libpcap
     cleanup:
       - "/include"
@@ -20,15 +19,20 @@ modules:
       - type: archive
         url: http://www.tcpdump.org/release/libpcap-1.9.0.tar.gz
         sha256: 2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019
-
+  - name: libslirp
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/slirp/libslirp.git
+        tag: v4.3.1
   - name: melonds
     buildsystem: cmake-ninja
     build-options:
       cxxflags: "-g0"
     sources:
       - type: git
-        url: https://github.com/StapleButter/melonDS.git
-        tag: 0.9.0
+        url: https://github.com/Arisotura/melonDS.git
+        commit: 9772201345ab47cc820fd6c08247c133605f8b84
       - type: file
         path: net.kuribo64.melonds.desktop
       - type: file
@@ -39,5 +43,4 @@ modules:
       - "desktop-file-install --dir=/app/share/applications net.kuribo64.melonds.desktop"
       - "install -D icon/melon_256x256.png /app/share/icons/hicolor/256x256/apps/net.kuribo64.melonds.png"
       - "install -D net.kuribo64.melonds.appdata.xml /app/share/metainfo/net.kuribo64.melonds.appdata.xml"
-      - "install -D romlist.bin /app/bin/romlist.bin"
       - "install -Dm755 starter.sh /app/bin/starter"

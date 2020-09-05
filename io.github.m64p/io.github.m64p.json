@@ -13,8 +13,7 @@
     "--persist=."
   ],
   "modules": [
-    "../shared-modules/glu/glu-9.json",    
-    "../sdl2.json",    
+    "../shared-modules/glu/glu-9.json",
     {
       "name": "mupen64plus-core",
       "buildsystem": "simple",
@@ -26,7 +25,7 @@
         "install -Dm644 projects/unix/*.so* /app/bin/",
         "install -Dm644 data/* /app/bin/",
         "install -Dm644 src/api/* /app/include/mupen64plus/"
-      ],      
+      ],
       "sources": [
         {
           "type": "git",
@@ -40,8 +39,8 @@
       "build-commands": [
         "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
         "install -Dm644 data/* /app/bin/",
-        "install -Dm644 projects/unix/*.so* /app/bin/"       
-      ],      
+        "install -Dm644 projects/unix/*.so* /app/bin/"
+      ],
       "sources": [
         {
           "type": "git",
@@ -54,8 +53,8 @@
       "buildsystem": "simple",
       "build-commands": [
         "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
-        "install -Dm644 projects/unix/*.so* /app/bin/"       
-      ],      
+        "install -Dm644 projects/unix/*.so* /app/bin/"
+      ],
       "sources": [
         {
           "type": "git",
@@ -68,8 +67,8 @@
       "buildsystem": "simple",
       "build-commands": [
         "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
-        "install -Dm644 projects/unix/*.so* /app/bin/"       
-      ],      
+        "install -Dm644 projects/unix/*.so* /app/bin/"
+      ],
       "sources": [
         {
           "type": "git",
@@ -82,8 +81,8 @@
       "buildsystem": "simple",
       "build-commands": [
         "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ all",
-        "install -Dm644 projects/unix/*.so* /app/bin/"       
-      ],      
+        "install -Dm644 projects/unix/*.so* /app/bin/"
+      ],
       "sources": [
         {
           "type": "git",
@@ -128,9 +127,9 @@
       "name": "mupen64plus-ui-console",
       "buildsystem": "simple",
       "build-commands": [
-        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ SHAREDIR=/app/bin PREFIX=/app/bin LIBDIR=/app/bin PLUGINDIR=/app/bin all",
+        "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS APIDIR=/app/include/mupen64plus/ SHAREDIR=/app/bin PREFIX=/app/bin LIBDIR=/app/bin PLUGINDIR=/app/bin PIE=1 all",
         "install -Dm775 projects/unix/mupen64plus /app/bin/"
-      ],      
+      ],
       "sources": [
         {
           "type": "git",

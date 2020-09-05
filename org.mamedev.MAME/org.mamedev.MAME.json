@@ -14,7 +14,6 @@
     "--persist=.mame"
   ],
   "modules": [
-    "../sdl2.json",
     {
       "name": "mame",
       "buildsystem": "simple",

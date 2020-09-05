@@ -12,7 +12,6 @@
     "--socket=pulseaudio"
   ],
   "modules": [
-    "../sdl2.json",
     "../shared-modules/glu/glu-9.json",
     {
       "name": "rgbds",
@@ -27,8 +26,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/rednex/rgbds/releases/download/v0.4.0/rgbds-0.4.0.tar.gz",
-          "sha256": "bd8ed69ac395b224d2b55db2cd57791bfd6b836891e7691cd8742344873d33e5"
+          "url": "https://github.com/rednex/rgbds/releases/download/v0.4.1/rgbds-0.4.1.tar.gz",
+          "sha256": "e4253de7f1fdf1cd202276b07150010e182490052c6da6ae6ddac5685b9fec45"
         }
       ]
     },

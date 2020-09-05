@@ -16,7 +16,6 @@
   ],
   "modules": [
     "../shared-modules/glu/glu-9.json",
-    "../sdl2.json",
     {
       "name": "mednafen",
       "post-install": [

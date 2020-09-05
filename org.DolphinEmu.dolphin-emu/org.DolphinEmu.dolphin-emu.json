@@ -15,7 +15,6 @@
     "--share=ipc"
   ],
   "modules": [
-    "../sdl2.json",
     {
       "name": "libusb",
       "config-opts": [
