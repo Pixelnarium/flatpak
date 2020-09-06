@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>net.kuribo64.melonds</id>
-  <launchable type="desktop-id">net.kuribo64.melonds.desktop</launchable>
+  <id>net.kuribo64.melonDS</id>
+  <launchable type="desktop-id">net.kuribo64.melonDS.desktop</launchable>
   <name>melonDS</name>
   <summary>NintendoDS Emulator</summary>
   <description><p>A NintendoDS Emulator</p></description>
