@@ -48,8 +48,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://server.owl.de/~frank/tags/vasm1_8e.tar.gz",
-          "sha256": "5f1ebb8b81d2d9664e5c2646f1abbc5fb795642ed117f55e84a66590a62760ff"
+          "url": "http://sun.hasenbraten.de/vasm/release/vasm.tar.gz",
+          "sha256": "9ae0b37bca11cae5cf00e4d47e7225737bdaec4028e4db2a501b4eca7df8639d"
         }
       ]
     },
