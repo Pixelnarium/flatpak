@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>net.sourceforge.quakespasm</id>
+  <metadata_license>GPL-2</metadata_license>
+  <project_license>GPL-2</project_license>
+  <name>quakespasm</name>
+  <summary>quakespasm</summary>
+  <description>
+    <p>A Quake 1 port</p>
+  </description>
+</component>

@@ -27,6 +27,7 @@ projects = [("com.dosbox.DOSBox","x86_64"),
         ("io.mgba.mGBA","x86_64"),
         ("org.residualvm.ResidualVM","x86_64"),
         ("org.byuu.bsnes","x86_64"),
+        ("net.sourceforge.quakespasm","x86_64"),
         ("org.mamedev.MAME","x86_64")]
 
 def main():
