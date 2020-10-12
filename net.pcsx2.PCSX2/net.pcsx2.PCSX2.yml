@@ -12,57 +12,15 @@ finish-args:
   - '--socket=x11'
   - '--socket=pulseaudio'
   - '--filesystem=home:ro'
-  - '--allow=multiarch'
 
-add-extensions:
-  org.freedesktop.Platform.Compat.i386:
-    directory: lib/i386-linux-gnu
-    version: '20.08'
-  org.freedesktop.Platform.Compat.i386.Debug:
-    directory: lib/debug/lib/i386-linux-gnu
-    version: '20.08'
-    no-autodownload: true
-  org.freedesktop.Platform.GL32:
-    directory: lib/i386-linux-gnu/GL
-    version: '20.08'
-    subdirectories: true
-    no-autodownload: true
-    autodelete: false
-    add-ld-path: lib
-    merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d
-    download-if: active-gl-driver
-    enable-if: active-gl-driver
-    
-sdk-extensions:
-  - org.freedesktop.Sdk.Compat.i386
-  - org.freedesktop.Sdk.Extension.toolchain-i386
-
-build-options:
-  prepend-pkg-config-path: "/app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig"
-  ldflags: "-L/app/lib32"
-  append-path: "/usr/lib/sdk/toolchain-i386/bin"
-  env:
-    CC: i686-unknown-linux-gnu-gcc
-    CXX: i686-unknown-linux-gnu-g++
-  libdir: /app/lib32
-  
 modules:
-  - name: compati386
-    buildsystem: simple
-    build-commands:
-      - 'mkdir -p /app/lib/i386-linux-gnu'
-      - 'mkdir -p  /app/lib/debug/lib/i386-linux-gnu'
-      - 'install -Dm644 -t /app/etc ld.so.conf'
-    sources:
-      - type: file
-        path: ld.so.conf
   - name: wxWidgets
     cleanup:
       - /bin
       - /include
       - /share/bakefile
       - /share/aclocal
-      - /lib32/wx/include
+      - /lib/wx/include
     config-opts:
       - '--with-opengl'
       - '--with-libjpeg'
@@ -89,13 +47,13 @@ modules:
   - name: libaio
     cleanup:
       - /include
-      - '/lib32/*.a'
+      - '/lib/*.a'
     buildsystem: simple
     build-options:
       cflags: '-O2 -pipe -fno-stack-protector -fno-plt'
     build-commands:
       - 'make'
-      - 'make prefix=/app libdir=/app/lib32 install'
+      - 'make prefix=/app libdir=/app/lib install'
     sources:
       - type: archive
         url: 'http://ftp.de.debian.org/debian/pool/main/liba/libaio/libaio_0.3.112.orig.tar.xz'
@@ -104,8 +62,8 @@ modules:
   - name: portaudio
     cleanup:
       - /include
-      - /lib32/pkgconfig
-      - '/lib32/*.la'
+      - /lib/pkgconfig
+      - '/lib/*.la'
     config-opts:
       - '--disable-static'
     sources:
@@ -118,21 +76,21 @@ modules:
       - '--disable-static'
     sources:
       - type: archive
-        url: 'https://gitlab.com/soundtouch/soundtouch/-/archive/2.1.1/soundtouch-2.1.1.tar.gz'
-        sha256: 09311b159e15b2f5ceec953ad711922b466642a3000449f17de1874ce7a3ac8a
+        url: 'https://gitlab.com/soundtouch/soundtouch/-/archive/2.1.2/soundtouch-2.1.2.tar.gz'
+        sha256: 2826049e2f34efbc4c8a47d00c93649822b0c14e1f29f5569835704814590732
     cleanup:
       - /bin
       - /include
-      - /lib32/pkgconfig
+      - /lib/pkgconfig
       - /share/aclocal
       - /share/doc
-      - '/lib32/*.la'
+      - '/lib/*.la'
 
   - name: libpcap
     cleanup:
       - /include
       - /share
-      - /lib32/pkgconfig
+      - /lib/pkgconfig
     sources:
       - type: archive
         url: 'https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz'
@@ -141,10 +99,8 @@ modules:
   - name: pcsx2
     buildsystem: cmake-ninja
     config-opts:
-      - '-DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake'
       - '-DCMAKE_BUILD_TYPE=Release'
-      - '-DCMAKE_LIBRARY_PATH=/app/lib32'
-      - '-DPLUGIN_DIR=/app/lib32/pcsx2'
+      - '-DPLUGIN_DIR=/app/lib/pcsx2'
       - '-DGTK3_API=TRUE'
       - '-DXDG_STD=TRUE'
       - '-DDISABLE_BUILD_DATE=TRUE'
