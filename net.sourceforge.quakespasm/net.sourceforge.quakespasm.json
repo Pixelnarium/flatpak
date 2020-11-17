@@ -9,7 +9,7 @@
   "rename-appdata-file": "quakespasm.appdata.xml",
   "finish-args": [
     "--share=ipc",
-    "--socket=x11",
+    "--socket=fallback-x11",
     "--device=dri",
     "--share=network",
     "--socket=pulseaudio",

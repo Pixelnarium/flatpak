@@ -9,7 +9,7 @@ rename-icon: PCSX2
 finish-args:
   - '--device=all'
   - '--share=ipc'
-  - '--socket=x11'
+  - '--socket=fallback-x11'
   - '--socket=pulseaudio'
   - '--filesystem=home:ro'
 

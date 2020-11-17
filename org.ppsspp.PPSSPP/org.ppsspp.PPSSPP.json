@@ -11,7 +11,7 @@
     "--filesystem=host:ro",
     "--socket=pulseaudio",
     "--socket=wayland",
-    "--socket=x11",
+    "--socket=fallback-x11",
     "--share=network"
   ],
   "modules": [

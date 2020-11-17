@@ -9,7 +9,7 @@
   "command": "starter",
   "finish-args": [
     "--device=dri",
-    "--socket=x11",
+    "--socket=fallback-x11",
     "--socket=pulseaudio",
     "--persist=."
   ],
