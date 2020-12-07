@@ -101,12 +101,10 @@ modules:
     config-opts:
       - '-DCMAKE_BUILD_TYPE=Release'
       - '-DPLUGIN_DIR=/app/lib/pcsx2'
-      - '-DGTK3_API=TRUE'
       - '-DXDG_STD=TRUE'
       - '-DDISABLE_BUILD_DATE=TRUE'
       - '-DOpenGL_GL_PREFERENCE=GLVND'
       - '-DPACKAGE_MODE=TRUE'
-      - '-DDISABLE_DEV9GHZDRK=TRUE'
       - '-DUSE_LTO=FALSE'
       - '-DCMAKE_INSTALL_PREFIX:PATH=/app/'
     cleanup:

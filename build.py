@@ -13,7 +13,6 @@ projects = [("com.dosbox.DOSBox","x86_64"),
         ("net.pcsx2.PCSX2","x86_64"),
         ("org.libretro.RetroArch","x86_64"),
         ("commercial/com.github.wolf4sdl","x86_64"),
-        ("commercial/com.factorio.factorio","x86_64"),
         ("commercial/com.rimworldgame.RimWorld","x86_64"),
         ("commercial/org.freegish.Gish","x86_64"),
         ("commercial/org.ioquake.ioq3","x86_64"),
@@ -28,6 +27,7 @@ projects = [("com.dosbox.DOSBox","x86_64"),
         ("org.residualvm.ResidualVM","x86_64"),
         ("org.byuu.bsnes","x86_64"),
         ("net.sourceforge.quakespasm","x86_64"),
+        ("commercial/com.factorio.factorio","x86_64"),
         ("org.mamedev.MAME","x86_64")]
 
 def main():
