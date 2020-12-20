@@ -10,7 +10,7 @@
     "--device=dri",
     "--share=ipc",
     "--share=network",
-    "--socket=fallback-x11",
+    "--socket=x11",
     "--socket=wayland",
     "--socket=pulseaudio",
     "--persist=."
@@ -35,7 +35,7 @@
       "sources": [
         {
           "type": "archive",
-          "path": "factorio_alpha_x64_1.1.3.tar.xz",
+          "path": "factorio_alpha_x64_1.1.6.tar.xz",
           "strip-components": 0
         },
         {
