@@ -11,8 +11,8 @@
     "--socket=pulseaudio",
     "--socket=fallback-x11",
     "--socket=wayland",
-    /* SDL needs to be able to talk to UPower */
-    "--system-talk-name=org.freedesktop.UPower"
+    "--system-talk-name=org.freedesktop.UPower",
+    "--talk-name=org.freedesktop.ScreenSaver"
   ],
   "modules": [
     {
