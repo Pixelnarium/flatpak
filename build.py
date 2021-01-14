@@ -32,6 +32,9 @@ projects = [("com.dosbox.DOSBox","x86_64"),
 
 def main():
     repo_path = sys.argv[1]
+    filter_name = None
+    if len(sys.argv) > 2:
+        filter_name = sys.argv[2]
     home = str(Path.cwd().parent)
     proj_prefix = os.path.join(home, "flatpak")
     stats_dir = os.path.join(home, "build-dir", "flatpak-builder")
@@ -40,6 +43,10 @@ def main():
 
     for proj in projects:
         path = proj[0]
+        if filter_name:
+            if not filter_name in path:
+                continue
+
         arch = proj[1]
         full_path = os.path.join(os.path.expanduser(proj_prefix), path)
         name = path.split("/")[-1]
