@@ -34,7 +34,7 @@
         {
           "type": "git",
           "url": "https://github.com/mamedev/mame.git",
-          "tag": "mame0227"
+          "tag": "mame0228"
         },
         {
           "type": "file",
