@@ -38,9 +38,9 @@
         "install -m 755 -t '/app/bin/' bin/duckstation-nogui bin/duckstation-qt",
         "install -m 755 -d /app/share/applications/",
         "install -m 644 appimage/duckstation-qt.desktop /app/share/applications/org.duckstation.DuckStation.desktop",
-        "mkdir -p /app/share/icons/hicolor/64x64/apps/",
+        "install -m 755 -d /app/share/icons/hicolor/64x64/apps/",
         "install -m 644 appimage/icon-64px.png /app/share/icons/hicolor/64x64/apps/duckstation-qt.png",
-        "mkdir -p /app/share/metainfo",
+        "install -m 755 -d /app/share/metainfo",
         "install -Dm644 org.duckstation.DuckStation.appdata.xml /app/share/metainfo/"
       ],
       "sources": [
