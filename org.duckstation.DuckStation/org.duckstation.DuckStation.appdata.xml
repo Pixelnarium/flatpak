@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>org.duckstation.DuckStation</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>DuckStation</name>
+  <summary>PSX Emulator</summary>
+  <description>
+    <p>
+      DuckStation is a PlayStation emulator
+    </p>
+  </description>
+  <url type="homepage">https://duckstation.org/</url>
+</component>

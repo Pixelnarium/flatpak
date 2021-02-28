@@ -1,0 +1,58 @@
+{
+  "id": "org.duckstation.DuckStation",
+  "runtime": "org.kde.Platform",
+  "runtime-version": "5.15",
+  "sdk": "org.kde.Sdk",
+  "command": "duckstation-qt",
+  "rename-icon": "duckstation-qt",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--share=network",
+    "--device=all",
+    "--socket=pulseaudio"
+  ],
+  "modules": [
+    {
+      "name" : "libevdev",
+      "buildsystem" : "meson",
+      "config-opts" : [
+        "-Dtests=disabled",
+        "-Ddocumentation=disabled"
+      ],
+      "sources" : [
+        {
+          "type" : "git",
+          "url" : "https://gitlab.freedesktop.org/libevdev/libevdev.git",
+          "tag" : "libevdev-1.11.0"
+        }
+      ]
+    },
+    {
+      "name": "duckstation",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DUSE_WAYLAND=1 -DUSE_DRMKMS=1",
+        "ninja",
+        "install -m 755 -t '/app/bin/' bin/duckstation-nogui bin/duckstation-qt",
+        "install -m 755 -d /app/share/applications/",
+        "install -m 644 appimage/duckstation-qt.desktop /app/share/applications/org.duckstation.DuckStation.desktop",
+        "mkdir -p /app/share/icons/hicolor/64x64/apps/",
+        "install -m 644 appimage/icon-64px.png /app/share/icons/hicolor/64x64/apps/duckstation-qt.png",
+        "mkdir -p /app/share/metainfo",
+        "install -Dm644 org.duckstation.DuckStation.appdata.xml /app/share/metainfo/"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/stenzek/duckstation.git"
+        },
+        {
+          "type": "file",
+          "path": "org.duckstation.DuckStation.appdata.xml"
+        }
+      ]
+    }
+  ]
+}
