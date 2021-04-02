@@ -10,8 +10,7 @@
     "--device=dri",
     "--share=ipc",
     "--share=network",
-    "--socket=fallback-x11",
-    "--socket=wayland",
+    "--socket=x11",
     "--socket=pulseaudio",
     "--persist=."
   ],
