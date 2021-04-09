@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>io.github.pr-starfighter</id>
+  <metadata_license>GPL-3</metadata_license>
+  <project_license>GPL-3</project_license>
+  <name>pr-starfighter</name>
+  <summary>Starfighter</summary>
+  <description>
+    <p>Liberate the universe from the evil company WEAPCO</p>
+  </description>
+</component>
