@@ -15,7 +15,28 @@
   ],
   "modules": [
     "../shared-modules/glu/glu-9.json",
-    "../shared-modules/glew/glew.json",
+    {
+      "name": "glew",
+      "buildsystem": "simple",
+      "build-commands": [
+        "sed -i '/^.PHONY: .*\.pc$/d' Makefile",
+        "sed -i 's,lib64,lib,' config/Makefile.linux",
+        "make SYSTEM=linux-egl",
+        "make GLEW_DEST=\"$FLATPAK_DEST\" SYSTEM=linux-egl install.all"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://downloads.sourceforge.net/project/glew/glew/2.2.0/glew-2.2.0.tgz",
+          "sha256": "d4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1"
+        }
+      ],
+      "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/lib/*.a"
+      ]
+    },
     {
       "name": "xcftools",
       "cleanup": [
@@ -48,8 +69,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "http://sun.hasenbraten.de/vasm/release/vasm.tar.gz",
-          "sha256": "9ae0b37bca11cae5cf00e4d47e7225737bdaec4028e4db2a501b4eca7df8639d"
+          "url": "http://phoenix.owl.de/tags/vasm1_8j.tar.gz",
+          "sha256": "8b8b78091d82a92769778b2964e64c4fb98e969b46d65708dcf88f6957072676"
         }
       ]
     },
