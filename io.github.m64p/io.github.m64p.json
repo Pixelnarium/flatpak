@@ -24,6 +24,7 @@
         "cd projects/unix && make -j$FLATPAK_BUILDER_N_JOBS SHAREDIR=/app/bin/ all",
         "install -Dm644 projects/unix/*.so* /app/bin/",
         "install -Dm644 data/* /app/bin/",
+        "install -Dm644 src/api/* /app/include/",
         "install -Dm644 src/api/* /app/include/mupen64plus/"
       ],
       "sources": [
@@ -141,6 +142,7 @@
       "name": "mupen64plus-gui",
       "buildsystem": "simple",
       "build-commands": [
+        "echo '#define GUI_VERSION \"deadbeef\"' > version.h",
         "mkdir build",
         "cd build && qmake ../mupen64plus-gui.pro",
         "cd build && make -j$FLATPAK_BUILDER_N_JOBS",
@@ -158,7 +160,7 @@
         {
           "type": "git",
           "url": "https://github.com/m64p/mupen64plus-gui.git",
-          "commit": "ebad8c6bae19df3df7ac93f98c83a7498eac2eef"
+          "branch": "main"
         },
         {
           "type": "file",
