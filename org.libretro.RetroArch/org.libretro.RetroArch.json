@@ -43,7 +43,7 @@
         {
           "type": "git",
           "url": "https://github.com/libretro/RetroArch.git",
-          "tag": "v1.9.5"
+          "tag": "v1.9.6"
         },
         {
           "type": "file",
