@@ -36,7 +36,7 @@ modules:
       - '--with-expat=builtin'
       - '--with-libiconv=/usr'
     build-options:
-      cxxflags: '-std=c++0x' 
+      cxxflags: '-std=c++0x'
     sources:
       - type: archive
         url: 'https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxWidgets-3.0.5.tar.bz2'
@@ -68,16 +68,16 @@ modules:
       - '--disable-static'
     sources:
       - type: archive
-        url: 'http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz'
-        sha256: f5a21d7dcd6ee84397446fa1fa1a0675bb2e8a4a6dceb4305a8404698d8d1513
+        url: 'https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.tar.gz'
+        sha256: 5af29ba58bbdbb7bbcefaaecc77ec8fc413f0db6f4c4e286c40c3e1b83174fa0
 
   - name: soundtouch
     config-opts:
       - '--disable-static'
     sources:
       - type: archive
-        url: 'https://gitlab.com/soundtouch/soundtouch/-/archive/2.1.2/soundtouch-2.1.2.tar.gz'
-        sha256: 2826049e2f34efbc4c8a47d00c93649822b0c14e1f29f5569835704814590732
+        url: 'https://gitlab.com/soundtouch/soundtouch/-/archive/2.2/soundtouch-2.2.tar.gz'
+        sha256: 525478c745a51dadaf7adb8e5386ec1f903d47196fab5947dc37414344684560
     cleanup:
       - /bin
       - /include
@@ -93,28 +93,28 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: 'https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz'
-        sha256: 635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094
+        url: 'https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz'
+        sha256: ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4
 
   - name: pcsx2
     buildsystem: cmake-ninja
+    builddir: true
     config-opts:
       - '-DCMAKE_BUILD_TYPE=Release'
-      - '-DPLUGIN_DIR=/app/lib/pcsx2'
       - '-DXDG_STD=TRUE'
       - '-DDISABLE_BUILD_DATE=TRUE'
       - '-DOpenGL_GL_PREFERENCE=GLVND'
       - '-DPACKAGE_MODE=TRUE'
-      - '-DUSE_LTO=FALSE'
       - '-DCMAKE_INSTALL_PREFIX:PATH=/app/'
+      - '-DDISABLE_SETCAP=TRUE'
     cleanup:
       - /share/pixmaps
       - /share/man
       - /share/doc
     post-install:
       - 'desktop-file-edit --set-key=Exec --set-value=PCSX2 /app/share/applications/PCSX2.desktop'
-      - 'install -Dm644 pcsx2/gui/Resources/AppIcon64.png /app/share/icons/hicolor/64x64/apps/PCSX2.png'
-      - 'install -Dm644 net.pcsx2.PCSX2.appdata.xml /app/share/appdata/net.pcsx2.PCSX2.appdata.xml'
+      - 'install -Dm644 ../pcsx2/gui/Resources/AppIcon64.png /app/share/icons/hicolor/64x64/apps/PCSX2.png'
+      - 'install -Dm644 ../net.pcsx2.PCSX2.appdata.xml /app/share/appdata/net.pcsx2.PCSX2.appdata.xml'
     sources:
       - type: git
         url: 'https://github.com/PCSX2/pcsx2.git'
