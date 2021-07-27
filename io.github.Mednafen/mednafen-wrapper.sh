@@ -1,3 +1,3 @@
 #!/bin/sh
 
-padsp /app/bin/mednafen "$@"
+pw-jack /app/bin/mednafen "$@"

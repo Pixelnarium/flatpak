@@ -12,10 +12,12 @@
     "--socket=fallback-x11",
     "--socket=wayland",
     "--socket=pulseaudio",
+    "--filesystem=xdg-run/pipewire-0",
     "--persist=.mednafen"
   ],
   "modules": [
     "../shared-modules/glu/glu-9.json",
+    "../shared-modules/linux-audio/jack2.json",
     {
       "name": "mednafen",
       "post-install": [
