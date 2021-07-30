@@ -5,8 +5,7 @@ from subprocess import call
 import shutil
 from pathlib import Path
 
-projects = [("com.dosbox.DOSBox","x86_64"),
-        ("com.eduke32.EDuke32","x86_64"),
+projects = [("com.eduke32.EDuke32","x86_64"),
         ("co.uk.pcemulator.PCem","x86_64"),
         ("io.github.Mednafen","x86_64"),
         ("io.github.SameBoy","x86_64"),
