@@ -30,7 +30,8 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://github.com/ioquake/ioq3.git"
+          "url": "https://github.com/ioquake/ioq3.git",
+          "branch": "main"
         }
       ]
     },
