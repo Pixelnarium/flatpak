@@ -139,14 +139,11 @@
       ]
     },
     {
-      "name": "mupen64plus-gui",
+      "name": "m64p",
       "buildsystem": "simple",
       "build-commands": [
-        "echo '#define GUI_VERSION \"deadbeef\"' > version.h",
-        "mkdir build",
-        "cd build && qmake ../mupen64plus-gui.pro",
-        "cd build && make -j$FLATPAK_BUILDER_N_JOBS",
-        "install -Dm755 build/mupen64plus-gui /app/bin/"
+        "bash build.sh",
+        "mv mupen64plus/* /app/bin/"
       ],
       "post-install": [
         "mkdir -p /app/share/applications",
@@ -159,7 +156,7 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://github.com/m64p/mupen64plus-gui.git",
+          "url": "https://github.com/loganmc10/m64p.git",
           "branch": "main"
         },
         {
@@ -173,6 +170,19 @@
         {
           "type": "file",
           "path": "io.github.m64p.png"
+        }
+      ],
+      "modules": [
+        "../shared-modules/libusb/libusb.json",
+        {
+          "name": "hidapi",
+          "buildsystem": "cmake-ninja",
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://github.com/libusb/hidapi.git"
+            }
+          ]
         }
       ]
     }
