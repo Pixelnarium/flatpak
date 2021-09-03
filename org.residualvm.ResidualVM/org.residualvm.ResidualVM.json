@@ -1,7 +1,7 @@
 {
   "id": "org.residualvm.ResidualVM",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "20.08",
+  "runtime-version": "21.08",
   "sdk": "org.freedesktop.Sdk",
   "command": "residualvm",
   "rename-icon": "residualvm",

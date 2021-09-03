@@ -1,7 +1,7 @@
 app-id: net.pcsx2.PCSX2
 runtime: org.freedesktop.Platform
 sdk: org.freedesktop.Sdk
-runtime-version: '20.08'
+runtime-version: '21.08'
 command: PCSX2
 rename-desktop-file: PCSX2.desktop
 rename-icon: PCSX2
@@ -118,5 +118,6 @@ modules:
     sources:
       - type: git
         url: 'https://github.com/PCSX2/pcsx2.git'
+        disable-shallow-clone: true
       - type: file
         path: net.pcsx2.PCSX2.appdata.xml
