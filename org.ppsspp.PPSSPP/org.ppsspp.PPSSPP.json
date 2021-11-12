@@ -55,7 +55,7 @@
         {
           "type": "git",
           "url": "https://github.com/hrydgard/ppsspp.git",
-          "tag": "v1.11.3",
+          "tag": "v1.12.3",
           "disable-shallow-clone": true
         },
         {
