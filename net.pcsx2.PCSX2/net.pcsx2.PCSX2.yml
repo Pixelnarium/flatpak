@@ -99,6 +99,9 @@ modules:
   - name: pcsx2
     buildsystem: cmake-ninja
     builddir: true
+    build-options:
+        build-args:
+            - "--share=network"
     config-opts:
       - '-DCMAKE_BUILD_TYPE=Release'
       - '-DXDG_STD=TRUE'
@@ -119,5 +122,10 @@ modules:
       - type: git
         url: 'https://github.com/PCSX2/pcsx2.git'
         disable-shallow-clone: true
+        disable-submodules: true
       - type: file
         path: net.pcsx2.PCSX2.appdata.xml
+      - type: shell
+        commands:
+          - git submodule init
+          - git submodule update
