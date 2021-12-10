@@ -43,7 +43,7 @@
         {
           "type": "git",
           "url": "https://github.com/libretro/RetroArch.git",
-          "tag": "v1.9.13.2"
+          "tag": "v1.9.14"
         },
         {
           "type": "file",
@@ -154,12 +154,27 @@
           "type": "git",
           "url": "https://github.com/libretro/slang-shaders.git"
         }
-      ],
-      "post-install": [
-        "ln -sf /var/config/retroarch/shader_presets /app/share/libretro/shaders/presets"
       ]
      },
-    {
+     {
+      "name": "themaister-shaders",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/Themaister/slang-shaders.git"
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "sed -i 's@INSTALLDIR :=.*@INSTALLDIR := /app/share/libretro/shaders/themaister@g' Makefile"
+          ]
+        }
+      ]
+     },
+     {
       "name": "glsl-shaders",
       "make-install-args": [
         "PREFIX=${FLATPAK_DEST}"
@@ -169,9 +184,6 @@
           "type": "git",
           "url": "https://github.com/libretro/glsl-shaders.git"
         }
-      ],
-      "post-install": [
-        "ln -sf /var/config/retroarch/shader_presets /app/share/libretro/shaders/presets"
       ]
     },
     {

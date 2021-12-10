@@ -2,7 +2,7 @@
   "app-id": "io.mgba.mGBA",
   "runtime": "org.kde.Platform",
   "sdk": "org.kde.Sdk",
-  "runtime-version": "5.15",
+  "runtime-version": "5.15-21.08",
   "command": "mgba-qt",
   "rename-desktop-file": "mgba-qt.desktop",
   "rename-icon": "mgba",

@@ -20,7 +20,7 @@
       "name": "factorio",
       "buildsystem": "simple",
       "build-commands": [
-        "echo 'building factorio 1.1.37'",
+        "echo 'building factorio 1.1.49'",
         "mv factorio /app/",
         "mkdir -p /app/share/applications",
         "mkdir -p /app/share/metainfo",
@@ -35,7 +35,7 @@
       "sources": [
         {
           "type": "archive",
-          "path": "factorio_alpha_x64_1.1.37.tar.xz",
+          "path": "factorio_alpha_x64_1.1.49.tar.xz",
           "strip-components": 0
         },
         {
