@@ -2,19 +2,21 @@ app-id: net.pcsx2.PCSX2
 runtime: org.freedesktop.Platform
 sdk: org.freedesktop.Sdk
 runtime-version: '21.08'
-command: PCSX2
+command: pcsx2
 rename-desktop-file: PCSX2.desktop
 rename-icon: PCSX2
 
 finish-args:
   - '--device=all'
   - '--share=ipc'
+  - '--socket=wayland'
   - '--socket=fallback-x11'
   - '--socket=pulseaudio'
   - '--filesystem=home:ro'
 
 modules:
   - name: wxWidgets
+    buildsystem: cmake-ninja
     cleanup:
       - /bin
       - /include
@@ -22,25 +24,13 @@ modules:
       - /share/aclocal
       - /lib/wx/include
     config-opts:
-      - '--with-opengl'
-      - '--with-libjpeg'
-      - '--with-libpng'
-      - '--with-zlib'
-      - '--disable-sdltest'
-      - '--enable-unicode'
-      - '--enable-display'
-      - '--enable-propgrid'
-      - '--disable-webkit'
-      - '--disable-webview'
-      - '--disable-webviewwebkit'
-      - '--with-expat=builtin'
-      - '--with-libiconv=/usr'
+      - '-DCMAKE_BUILD_TYPE=Release'
     build-options:
       cxxflags: '-std=c++0x'
     sources:
-      - type: archive
-        url: 'https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxWidgets-3.0.5.tar.bz2'
-        sha256: 8aacd56b462f42fb6e33b4d8f5d40be5abc3d3b41348ea968aa515cc8285d813
+      - type: git
+        url: 'https://github.com/wxWidgets/wxWidgets.git'
+        tag: v3.1.5
     modules:
       - '../shared-modules/glu/glu-9.json'
 
@@ -72,12 +62,11 @@ modules:
         sha256: 5af29ba58bbdbb7bbcefaaecc77ec8fc413f0db6f4c4e286c40c3e1b83174fa0
 
   - name: soundtouch
-    config-opts:
-      - '--disable-static'
+    buildsystem: cmake-ninja
     sources:
-      - type: archive
-        url: 'https://gitlab.com/soundtouch/soundtouch/-/archive/2.2/soundtouch-2.2.tar.gz'
-        sha256: 525478c745a51dadaf7adb8e5386ec1f903d47196fab5947dc37414344684560
+      - type: git
+        url: 'https://codeberg.org/soundtouch/soundtouch.git'
+        tag: 2.3.1
     cleanup:
       - /bin
       - /include
@@ -96,6 +85,15 @@ modules:
         url: 'https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz'
         sha256: ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4
 
+  - name: rapidyaml
+    buildsystem: cmake-ninja
+    cleanup:
+      - /include
+    sources:
+      - type: git
+        url: 'https://github.com/biojppm/rapidyaml.git'
+        tag: v0.3.0
+
   - name: pcsx2
     buildsystem: cmake-ninja
     builddir: true
@@ -110,12 +108,16 @@ modules:
       - '-DPACKAGE_MODE=TRUE'
       - '-DCMAKE_INSTALL_PREFIX:PATH=/app/'
       - '-DDISABLE_SETCAP=TRUE'
+      - '-DSDL2_API=TRUE'
+      - '-DWAYLAND_API=ON'
+      - '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON'
+      - '-DUSE_SYSTEM_YAML=TRUE'
     cleanup:
       - /share/pixmaps
       - /share/man
       - /share/doc
     post-install:
-      - 'desktop-file-edit --set-key=Exec --set-value=PCSX2 /app/share/applications/PCSX2.desktop'
+      - 'desktop-file-edit --set-key=Exec --set-value=pcsx2 /app/share/applications/PCSX2.desktop'
       - 'install -Dm644 ../pcsx2/gui/Resources/AppIcon64.png /app/share/icons/hicolor/64x64/apps/PCSX2.png'
       - 'install -Dm644 ../net.pcsx2.PCSX2.appdata.xml /app/share/appdata/net.pcsx2.PCSX2.appdata.xml'
     sources:
