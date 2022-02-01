@@ -59,6 +59,7 @@ def main():
         else:
             name += ".yml"
 
+        print(name)
         ret = call(["chrt", "-i", "0", "flatpak-builder", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])#, "--keep-build-dirs"])
         results.append(name + " -> " + str(ret))
 
