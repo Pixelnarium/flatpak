@@ -13,11 +13,39 @@
     "--socket=wayland",
     "--socket=pulseaudio",
     "--filesystem=xdg-run/pipewire-0",
-    "--persist=.mednafen"
+    "--persist=.mednafen",
+    "--env=SDL_DYNAMIC_API=/app/lib/libSDL2-2.0.so.0"
   ],
   "modules": [
     "../shared-modules/glu/glu-9.json",
     "../shared-modules/linux-audio/jack2.json",
+    {
+      "name": "sdl2",
+      "buildsystem": "cmake-ninja",
+      "builddir": true,
+      "config-opts": [
+        "-DCMAKE_INSTALL_PREFIX=/app",
+        "-DSDL_STATIC=OFF",
+        "-DSDL_DLOPEN=ON",
+        "-DSDL_RPATH=OFF"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.libsdl.org/release/SDL2-2.0.20.tar.gz",
+          "sha256": "c56aba1d7b5b0e7e999e4a7698c70b63a3394ff9704b5f6e1c57e0c16f04dd06"
+        }
+      ],
+      "cleanup": [
+        "/bin",
+        "/share/man",
+        "/share/aclocal",
+        "/include",
+        "/lib/pkgconfig",
+        "/lib/*.la",
+        "/lib/*.a"
+      ]
+    },
     {
       "name": "mednafen",
       "post-install": [

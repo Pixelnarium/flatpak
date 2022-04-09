@@ -92,7 +92,7 @@ modules:
     sources:
       - type: git
         url: 'https://github.com/biojppm/rapidyaml.git'
-        tag: v0.3.0
+        tag: v0.4.1
 
   - name: pcsx2
     buildsystem: cmake-ninja
