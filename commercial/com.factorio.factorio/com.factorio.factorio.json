@@ -20,7 +20,7 @@
       "name": "factorio",
       "buildsystem": "simple",
       "build-commands": [
-        "echo 'building factorio 1.1.49'",
+        "echo 'building factorio 1.1.57'",
         "mv factorio /app/",
         "mkdir -p /app/share/applications",
         "mkdir -p /app/share/metainfo",
