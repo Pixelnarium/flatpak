@@ -1,72 +1,85 @@
 {
-  "app-id": "org.ppsspp.PPSSPP",
-  "runtime": "org.freedesktop.Platform",
-  "runtime-version": "21.08",
-  "sdk": "org.freedesktop.Sdk",
-  "command": "ppsspp",
-  "rename-desktop-file": "ppsspp.desktop",
-  "rename-icon": "ppsspp",
-  "finish-args": [
-    "--device=all",
-    "--filesystem=host:ro",
-    "--socket=pulseaudio",
-    "--socket=x11",
-    "--share=network"
-  ],
-  "modules": [
-    "../shared-modules/glu/glu-9.json",
-    "../shared-modules/glew/glew.json",
-    {
-      "name": "libzip",
-      "buildsystem": "cmake-ninja",
-      "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
-      "cleanup": [
-        "/bin",
-        "/include",
-        "/lib/pkgconfig",
-        "/share/man"
-      ],
-      "sources": [
+    "app-id": "org.ppsspp.PPSSPP",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "21.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "ppsspp",
+    "rename-desktop-file": "ppsspp.desktop",
+    "rename-icon": "ppsspp",
+    "finish-args": [
+        "--device=all",
+        "--filesystem=host:ro",
+        "--socket=pulseaudio",
+        "--socket=x11",
+        "--share=network"
+    ],
+    "modules": [
+        "../shared-modules/glu/glu-9.json",
+        "../shared-modules/glew/glew.json",
         {
-          "type": "archive",
-          "url": "https://libzip.org/download/libzip-1.5.2.tar.xz",
-          "sha256": "b3de4d4bd49a01e0cab3507fc163f88e1651695b6b9cb25ad174dbe319d4a3b4"
-        }
-      ]
-    },
-    {
-      "name": "ppsspp",
-      "buildsystem": "cmake-ninja",
-      "no-make-install": true,
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE=Release",
-        "-DOpenGL_GL_PREFERENCE=GLVND"
-      ],
-      "build-commands": [
-        "mkdir -p /app/ppsspp /app/bin /app/share/applications",
-        "install -m755 PPSSPPSDL /app/ppsspp/",
-        "cp -dr assets /app/ppsspp/",
-        "install -Dm644 icons/icon-512.svg /app/share/icons/hicolor/scalable/apps/ppsspp.svg",
-        "ln -s /app/ppsspp/PPSSPPSDL /app/bin/ppsspp",
-        "install -m644 ppsspp.desktop /app/share/applications/",
-        "install -Dm644 org.ppsspp.PPSSPP.appdata.xml /app/share/appdata/org.ppsspp.PPSSPP.appdata.xml"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/hrydgard/ppsspp.git",
-          "tag": "v1.12.3",
-          "disable-shallow-clone": true
+            "name": "libzip",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "cleanup": [
+                "/bin",
+                "/include",
+                "/lib/pkgconfig",
+                "/share/man"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://libzip.org/download/libzip-1.8.0.tar.xz",
+                    "sha256": "f0763bda24ba947e80430be787c4b068d8b6aa6027a26a19923f0acfa3dac97e",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 10649,
+                        "stable-only": false,
+                        "url-template": "https://libzip.org/download/libzip-$version.tar.xz"
+                    }
+                }
+            ]
         },
         {
-          "type": "file",
-          "path": "ppsspp.desktop"
-        },
-        {
-          "type": "file",
-          "path": "org.ppsspp.PPSSPP.appdata.xml"
+            "name": "ppsspp",
+            "buildsystem": "cmake-ninja",
+            "no-make-install": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DOpenGL_GL_PREFERENCE=GLVND"
+            ],
+            "build-commands": [
+                "mkdir -p /app/ppsspp /app/bin /app/share/applications",
+                "install -m755 PPSSPPSDL /app/ppsspp/",
+                "cp -dr assets /app/ppsspp/",
+                "install -Dm644 icons/icon-512.svg /app/share/icons/hicolor/scalable/apps/ppsspp.svg",
+                "ln -s /app/ppsspp/PPSSPPSDL /app/bin/ppsspp",
+                "install -m644 ppsspp.desktop /app/share/applications/",
+                "install -Dm644 org.ppsspp.PPSSPP.appdata.xml /app/share/appdata/org.ppsspp.PPSSPP.appdata.xml"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/hrydgard/ppsspp.git",
+                    "tag": "v1.12.3",
+                    "commit": "ce0a45cf0fcdd5bebf32208b9998f68dfc1107b7",
+                    "disable-shallow-clone": true,
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "ppsspp.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "org.ppsspp.PPSSPP.appdata.xml"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

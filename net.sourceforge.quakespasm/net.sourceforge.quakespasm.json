@@ -32,7 +32,13 @@
         {
           "type": "archive",
           "url": "https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.94.3.tar.gz",
-          "sha256": "3e95f6d3e5c7205e1a468b04aca1a7ca55c8a9d32d1b751bb22ef4ccd1bd0ead"
+          "sha256": "3e95f6d3e5c7205e1a468b04aca1a7ca55c8a9d32d1b751bb22ef4ccd1bd0ead",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 17533,
+            "stable-only": false,
+            "url-template": "https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-$version.tar.gz"
+          }
         },
         {
           "type": "file",

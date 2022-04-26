@@ -1,85 +1,96 @@
 {
-  "app-id": "io.github.Mednafen",
-  "runtime": "org.freedesktop.Platform",
-  "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "21.08",
-  "command": "mednafen-wrapper",
-  "rename-desktop-file": "mednafen.desktop",
-  "rename-icon": "buggy",
-  "finish-args": [
-    "--device=all",
-    "--share=ipc",
-    "--socket=fallback-x11",
-    "--socket=wayland",
-    "--socket=pulseaudio",
-    "--filesystem=xdg-run/pipewire-0",
-    "--persist=.mednafen",
-    "--env=SDL_DYNAMIC_API=/app/lib/libSDL2-2.0.so.0"
-  ],
-  "modules": [
-    "../shared-modules/glu/glu-9.json",
-    "../shared-modules/linux-audio/jack2.json",
-    {
-      "name": "sdl2",
-      "buildsystem": "cmake-ninja",
-      "builddir": true,
-      "config-opts": [
-        "-DCMAKE_INSTALL_PREFIX=/app",
-        "-DSDL_STATIC=OFF",
-        "-DSDL_DLOPEN=ON",
-        "-DSDL_RPATH=OFF"
-      ],
-      "sources": [
+    "app-id": "io.github.Mednafen",
+    "runtime": "org.freedesktop.Platform",
+    "sdk": "org.freedesktop.Sdk",
+    "runtime-version": "21.08",
+    "command": "mednafen-wrapper",
+    "rename-desktop-file": "mednafen.desktop",
+    "rename-icon": "buggy",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--filesystem=xdg-run/pipewire-0",
+        "--persist=.mednafen",
+        "--env=SDL_DYNAMIC_API=/app/lib/libSDL2-2.0.so.0"
+    ],
+    "modules": [
+        "../shared-modules/glu/glu-9.json",
+        "../shared-modules/linux-audio/jack2.json",
         {
-          "type": "archive",
-          "url": "https://www.libsdl.org/release/SDL2-2.0.20.tar.gz",
-          "sha256": "c56aba1d7b5b0e7e999e4a7698c70b63a3394ff9704b5f6e1c57e0c16f04dd06"
+            "name": "sdl2",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_INSTALL_PREFIX=/app",
+                "-DSDL_STATIC=OFF",
+                "-DSDL_DLOPEN=ON",
+                "-DSDL_RPATH=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libsdl-org/SDL.git",
+                    "commit": "53dea9830964eee8b5c2a7ee0a65d6e268dc78a1",
+                    "tag": "release-2.0.22",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^release-([\\d.]+)$"
+                    }
+                }
+            ],
+            "cleanup": [
+                "/bin",
+                "/share/man",
+                "/share/aclocal",
+                "/include",
+                "/lib/pkgconfig",
+                "/lib/*.la",
+                "/lib/*.a"
+            ]
+        },
+        {
+            "name": "mednafen",
+            "post-install": [
+                "mkdir -p /app/share/applications",
+                "mkdir -p /app/share/appdata/",
+                "mkdir -p /app/share/icons/hicolor/scalable/apps",
+                "install -Dm644 mednafen.desktop /app/share/applications/",
+                "install -Dm644 io.github.Mednafen.appdata.xml /app/share/appdata/",
+                "install -Dm644 buggy.svg /app/share/icons/hicolor/scalable/apps/buggy.svg",
+                "install -Dm775 mednafen-wrapper.sh /app/bin/mednafen-wrapper"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://mednafen.github.io/releases/files/mednafen-1.29.0.tar.xz",
+                    "sha256": "da3fbcf02877f9be0f028bfa5d1cb59e953a4049b90fe7e39388a3386d9f362e",
+                    "x-checker-data": {
+                        "type": "html",
+                        "url": "https://mednafen.github.io/documentation/ChangeLog.txt",
+                        "version-pattern": "-- ([\\d\\.-]*): --",
+                        "url-template": "https://mednafen.github.io/releases/files/mednafen-$version.tar.xz"
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "io.github.Mednafen.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "mednafen.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "buggy.svg"
+                },
+                {
+                    "type": "file",
+                    "path": "mednafen-wrapper.sh"
+                }
+            ]
         }
-      ],
-      "cleanup": [
-        "/bin",
-        "/share/man",
-        "/share/aclocal",
-        "/include",
-        "/lib/pkgconfig",
-        "/lib/*.la",
-        "/lib/*.a"
-      ]
-    },
-    {
-      "name": "mednafen",
-      "post-install": [
-        "mkdir -p /app/share/applications",
-        "mkdir -p /app/share/appdata/",
-        "mkdir -p /app/share/icons/hicolor/scalable/apps",
-        "install -Dm644 mednafen.desktop /app/share/applications/",
-        "install -Dm644 io.github.Mednafen.appdata.xml /app/share/appdata/",
-        "install -Dm644 buggy.svg /app/share/icons/hicolor/scalable/apps/buggy.svg",
-        "install -Dm775 mednafen-wrapper.sh /app/bin/mednafen-wrapper"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://mednafen.github.io/releases/files/mednafen-1.29.0.tar.xz",
-          "sha256": "da3fbcf02877f9be0f028bfa5d1cb59e953a4049b90fe7e39388a3386d9f362e"
-        },
-        {
-          "type": "file",
-          "path": "io.github.Mednafen.appdata.xml"
-        },
-        {
-          "type": "file",
-          "path": "mednafen.desktop"
-        },
-        {
-          "type": "file",
-          "path": "buggy.svg"
-        },
-        {
-          "type": "file",
-          "path": "mednafen-wrapper.sh"
-        }
-      ]
-    }
-  ]
+    ]
 }

@@ -1,40 +1,54 @@
----
 app-id: net.kuribo64.melonDS
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 command: melonDS
 finish-args:
-  - "--share=ipc"
-  - "--socket=fallback-x11"
-  - "--socket=wayland"
-  - "--socket=pulseaudio"
-  - "--share=network"
-  - "--device=all"
-  - "--persist=."
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --share=network
+  - --device=all
+  - --persist=.
 modules:
   - name: libpcap
     cleanup:
-      - "/include"
+      - /include
     sources:
       - type: archive
-        url: http://www.tcpdump.org/release/libpcap-1.10.1.tar.gz
+        url: https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz
         sha256: ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4
+        x-checker-data:
+          type: anitya
+          project-id: 1702
+          stable-only: true
+          url-template: https://www.tcpdump.org/release/libpcap-$version.tar.gz
+
   - name: libslirp
     buildsystem: meson
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/slirp/libslirp.git
         tag: v4.6.1
+        commit: cceced0cce9d578ed01db68edf31af78eb66f858
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
   - name: melonds
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - '-DCMAKE_BUILD_TYPE=Release'
+      - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/Arisotura/melonDS.git
         tag: 0.9.4
+        commit: cce9de5ee1f51e906a644922b2ada6644d81287a
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
       - type: file
         path: net.kuribo64.melonDS.appdata.xml
     post-install:

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>io.github.pr-starfighter</id>
   <metadata_license>GPL-3</metadata_license>
@@ -8,4 +8,7 @@
   <description>
     <p>Liberate the universe from the evil company WEAPCO</p>
   </description>
+  <releases>
+    <release version="2.4" date="2022-04-26"/>
+  </releases>
 </component>

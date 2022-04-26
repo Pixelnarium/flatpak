@@ -1,171 +1,161 @@
 {
-  "app-id": "com.retrodev.blastem",
-  "runtime": "org.freedesktop.Platform",
-  "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "21.08",
-  "command": "start-blastem",
-  "rename-icon": "blastem",
-  "finish-args": [
-    "--device=all",
-    "--share=ipc",
-    "--socket=fallback-x11",
-    "--socket=wayland",
-    "--socket=pulseaudio",
-    "--persist=."
-  ],
-  "modules": [
-    "../shared-modules/glu/glu-9.json",
-    "../modules/glew-egl.json",
-    {
-      "name": "xcftools",
-      "cleanup": [
-        "*"
-      ],
-      "sources": [
+    "app-id": "com.retrodev.blastem",
+    "runtime": "org.freedesktop.Platform",
+    "sdk": "org.freedesktop.Sdk",
+    "runtime-version": "21.08",
+    "command": "start-blastem",
+    "rename-icon": "blastem",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--persist=."
+    ],
+    "modules": [
+        "../shared-modules/glu/glu-9.json",
+        "../modules/glew-egl.json",
         {
-          "type": "archive",
-          "url": "http://henning.makholm.net/xcftools/xcftools-1.0.7.tar.gz",
-          "sha256": "1ebf6d8405348600bc551712d9e4f7c33cc83e416804709f68d0700afde920a6"
+            "name": "xcftools",
+            "cleanup": [
+                "*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://henning.makholm.net/xcftools/xcftools-1.0.7.tar.gz",
+                    "sha256": "1ebf6d8405348600bc551712d9e4f7c33cc83e416804709f68d0700afde920a6",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 9988,
+                        "stable-only": true,
+                        "url-template": "http://henning.makholm.net/xcftools/xcftools-$version.tar.gz"
+                    }
+                },
+                {
+                    "type": "patch",
+                    "path": "xcftools.patch"
+                }
+            ]
         },
         {
-          "type": "patch",
-          "path": "xcftools.patch"
+            "name": "vasm",
+            "cleanup": [
+                "*"
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "make CPU=m68k SYNTAX=mot",
+                "make CPU=z80 SYNTAX=mot",
+                "install -Dm755 vasmm68k_mot /app/bin/",
+                "install -Dm755 vasmz80_mot /app/bin/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://phoenix.owl.de/tags/vasm1_9.tar.gz",
+                    "sha256": "1986e21096a7a08f18699921c719098152f0e981468fa8bf651fe44681526482",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 234716,
+                        "stable-only": true,
+                        "url-template": "http://phoenix.owl.de/tags/vasm${version0}_${version1}.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "python-pillow",
+            "cleanup": [
+                "*"
+            ],
+            "buildsystem": "simple",
+            "build-options": {
+                "arch": {
+                    "i386": {
+                        "env": {
+                            "MAX_CONCURRENCY": "1"
+                        }
+                    },
+                    "arm": {
+                        "env": {
+                            "MAX_CONCURRENCY": "1"
+                        }
+                    }
+                },
+                "ldflags": "-L/usr/lib/x86_64-linux-gnu/"
+            },
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth",
+                "/lib/python*/site-packages/setuptools.pth",
+                "/app/lib/python*/site-packages/easy-install.pth",
+                "/app/lib/python*/site-packages/setuptools.pth"
+            ],
+            "build-commands": [
+                "python setup.py install --prefix=/app --root=/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/python-pillow/Pillow.git",
+                    "commit": "5d070222d21138d2ead002fd33fdf5adcb708941",
+                    "tag": "9.1.0",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    }
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's/if not platform_/if not dirs/' setup.py"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "blastem",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/share/applications",
+                "mkdir -p /app/share/metainfo/",
+                "mkdir -p /app/share/icons/hicolor/256x256/apps/",
+                "install -Dm644 com.retrodev.blastem.desktop /app/share/applications/",
+                "install -Dm644 com.retrodev.blastem.appdata.xml /app/share/metainfo/",
+                "make clean all",
+                "make menu.bin",
+                "mkdir /app/blastem/",
+                "cp -r dis zdis vgmplay blastem termhelper menu.bin shaders images default.cfg rom.db gamecontrollerdb.txt README COPYING CHANGELOG /app/blastem/",
+                "xcf2png -o blastem.png icons/windows.xcf 256x256",
+                "install -Dm644 blastem.png /app/share/icons/hicolor/256x256/apps/",
+                "install -Dm755 start-blastem.sh /app/bin/start-blastem"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.retrodev.com/repos/blastem/archive/tip.tar.bz2",
+                    "sha256": "c2874cd57b125467b7bba5164402c0500d362aee3ff31153ea7cc648b407c423"
+                },
+                {
+                    "type": "file",
+                    "path": "com.retrodev.blastem.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "com.retrodev.blastem.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "start-blastem.sh"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's|gnu99|gnu99 -fcommon|g' Makefile"
+                    ]
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "vasm",
-      "cleanup": [
-        "*"
-      ],
-      "buildsystem": "simple",
-      "build-commands": [
-        "make CPU=m68k SYNTAX=mot",
-        "make CPU=z80 SYNTAX=mot",
-        "install -Dm755 vasmm68k_mot /app/bin/",
-        "install -Dm755 vasmz80_mot /app/bin/"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "http://phoenix.owl.de/tags/vasm1_8j.tar.gz",
-          "sha256": "8b8b78091d82a92769778b2964e64c4fb98e969b46d65708dcf88f6957072676"
-        }
-      ]
-    },
-    {
-      "name": "python-pillow",
-      "cleanup": [
-        "*"
-      ],
-      "buildsystem": "simple",
-      "build-options": {
-        "arch": {
-          "i386": {
-            "env": {
-              "MAX_CONCURRENCY": "1"
-            }
-          },
-          "arm": {
-            "env": {
-              "MAX_CONCURRENCY": "1"
-            }
-          }
-        },
-        "ldflags": "-L/usr/lib/x86_64-linux-gnu/"
-      },
-      "ensure-writable": [
-        "/lib/python*/site-packages/easy-install.pth",
-        "/lib/python*/site-packages/setuptools.pth",
-        "/app/lib/python*/site-packages/easy-install.pth",
-        "/app/lib/python*/site-packages/setuptools.pth"
-      ],
-      "build-commands": [
-        "python setup.py install --prefix=/app --root=/"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://github.com/python-pillow/Pillow/archive/6.1.0.tar.gz",
-          "sha256": "9a3a613e7780362605b10765274389b3e9a6fe3201dd2bceeb422d45c5c9ba18"
-        },
-        {
-          "type": "shell",
-          "commands": [
-            "sed -i 's/if not platform_/if not dirs/' setup.py"
-          ]
-        }
-      ],
-      "modules": [
-        {
-          "name": "python-2.7",
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://www.python.org/ftp/python/2.7.16/Python-2.7.16.tgz",
-              "sha256": "01da813a3600876f03f46db11cc5c408175e99f03af2ba942ef324389a83bad5"
-            }
-          ],
-          "config-opts": [
-            "--enable-shared",
-            "--with-ensurepip=yes",
-            "--with-system-expat",
-            "--with-system-ffi",
-            "--enable-loadable-sqlite-extensions",
-            "--with-dbmliborder=gdbm",
-            "--enable-unicode=ucs4"
-          ],
-          "post-install": [
-            "chmod 644 $FLATPAK_DEST/lib/libpython2.7.so.1.0"
-          ],
-          "cleanup": [
-            "*"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "blastem",
-      "buildsystem": "simple",
-      "build-commands": [
-        "mkdir -p /app/share/applications",
-        "mkdir -p /app/share/metainfo/",
-        "mkdir -p /app/share/icons/hicolor/256x256/apps/",
-        "install -Dm644 com.retrodev.blastem.desktop /app/share/applications/",
-        "install -Dm644 com.retrodev.blastem.appdata.xml /app/share/metainfo/",
-        "make clean all",
-        "make menu.bin",
-        "mkdir /app/blastem/",
-        "cp -r dis zdis stateview vgmplay blastem termhelper menu.bin shaders images default.cfg rom.db gamecontrollerdb.txt README COPYING CHANGELOG /app/blastem/",
-        "xcf2png -o blastem.png icons/windows.xcf 256x256",
-        "install -Dm644 blastem.png /app/share/icons/hicolor/256x256/apps/",
-        "install -Dm755 start-blastem.sh /app/bin/start-blastem"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://www.retrodev.com/repos/blastem/archive/8aeac7bd9fa7.tar.gz",
-          "sha256": "af158d3184927ef5210258629859d730956245df925ac81a95637c124d66dbd2"
-        },
-        {
-          "type": "file",
-          "path": "com.retrodev.blastem.appdata.xml"
-        },
-        {
-          "type": "file",
-          "path": "com.retrodev.blastem.desktop"
-        },
-        {
-          "type": "file",
-          "path": "start-blastem.sh"
-        },
-        {
-          "type": "shell",
-          "commands": [
-            "sed -i 's|gnu99|gnu99 -fcommon|g' Makefile"
-          ]
-        }
-      ]
-    }
-  ]
+    ]
 }

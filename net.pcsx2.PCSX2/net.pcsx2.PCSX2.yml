@@ -7,12 +7,12 @@ rename-desktop-file: PCSX2.desktop
 rename-icon: PCSX2
 
 finish-args:
-  - '--device=all'
-  - '--share=ipc'
-  - '--socket=wayland'
-  - '--socket=fallback-x11'
-  - '--socket=pulseaudio'
-  - '--filesystem=home:ro'
+  - --device=all
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --filesystem=home:ro
 
 modules:
   - name: wxWidgets
@@ -24,56 +24,72 @@ modules:
       - /share/aclocal
       - /lib/wx/include
     config-opts:
-      - '-DCMAKE_BUILD_TYPE=Release'
+      - -DCMAKE_BUILD_TYPE=Release
     build-options:
-      cxxflags: '-std=c++0x'
+      cxxflags: -std=c++0x
     sources:
       - type: git
-        url: 'https://github.com/wxWidgets/wxWidgets.git'
-        tag: v3.1.5
+        url: https://github.com/wxWidgets/wxWidgets.git
+        tag: v3.1.6
+        commit: 19907924842a9152b8ee5f03f117aed65193b964
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
     modules:
-      - '../shared-modules/glu/glu-9.json'
+      - ../shared-modules/glu/glu-9.json
 
   - name: libaio
     cleanup:
       - /include
-      - '/lib/*.a'
+      - /lib/*.a
     buildsystem: simple
     build-options:
-      cflags: '-O2 -pipe -fno-stack-protector -fno-plt'
+      cflags: -O2 -pipe -fno-stack-protector -fno-plt
     build-commands:
-      - 'make'
-      - 'make prefix=/app libdir=/app/lib install'
+      - make
+      - make prefix=/app libdir=/app/lib install
     sources:
       - type: archive
-        url: 'http://ftp.de.debian.org/debian/pool/main/liba/libaio/libaio_0.3.112.orig.tar.xz'
-        sha256: f69e5800425f4ea957426693ac09f9896bb993db5490fa021644454adcc72a32
+        url: https://pagure.io/libaio/archive/libaio-0.3.113/libaio-libaio-0.3.113.tar.gz
+        sha256: 716c7059703247344eb066b54ecbc3ca2134f0103307192e6c2b7dab5f9528ab
+        x-checker-data:
+          type: anitya
+          project-id: 1557
+          stable-only: true
+          url-template: https://pagure.io/libaio/archive/libaio-$version/libaio-libaio-$version.tar.gz
 
   - name: portaudio
     cleanup:
       - /include
       - /lib/pkgconfig
-      - '/lib/*.la'
+      - /lib/*.la
     config-opts:
-      - '--disable-static'
+      - --disable-static
     sources:
-      - type: archive
-        url: 'https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.tar.gz'
-        sha256: 5af29ba58bbdbb7bbcefaaecc77ec8fc413f0db6f4c4e286c40c3e1b83174fa0
-
+      - type: git
+        url: https://github.com/PortAudio/portaudio.git
+        commit: 147dd722548358763a8b649b3e4b41dfffbcfbb6
+        tag: v19.7.0
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
   - name: soundtouch
     buildsystem: cmake-ninja
     sources:
       - type: git
-        url: 'https://codeberg.org/soundtouch/soundtouch.git'
+        url: https://codeberg.org/soundtouch/soundtouch.git
         tag: 2.3.1
+        commit: e1f315f5358d9db5cee35a7a2886425489fcefe8
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
     cleanup:
       - /bin
       - /include
       - /lib/pkgconfig
       - /share/aclocal
       - /share/doc
-      - '/lib/*.la'
+      - /lib/*.la
 
   - name: libpcap
     cleanup:
@@ -82,8 +98,13 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: 'https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz'
+        url: https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz
         sha256: ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4
+        x-checker-data:
+          type: anitya
+          project-id: 1702
+          stable-only: true
+          url-template: https://www.tcpdump.org/release/libpcap-$version.tar.gz
 
   - name: rapidyaml
     buildsystem: cmake-ninja
@@ -91,38 +112,42 @@ modules:
       - /include
     sources:
       - type: git
-        url: 'https://github.com/biojppm/rapidyaml.git'
+        url: https://github.com/biojppm/rapidyaml.git
         tag: v0.4.1
-
+        commit: 213b201d264139cd1b887790197e08850af628e3
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+          
   - name: pcsx2
     buildsystem: cmake-ninja
     builddir: true
     build-options:
-        build-args:
-            - "--share=network"
+      build-args:
+        - --share=network
     config-opts:
-      - '-DCMAKE_BUILD_TYPE=Release'
-      - '-DXDG_STD=TRUE'
-      - '-DDISABLE_BUILD_DATE=TRUE'
-      - '-DOpenGL_GL_PREFERENCE=GLVND'
-      - '-DPACKAGE_MODE=TRUE'
-      - '-DCMAKE_INSTALL_PREFIX:PATH=/app/'
-      - '-DDISABLE_SETCAP=TRUE'
-      - '-DSDL2_API=TRUE'
-      - '-DWAYLAND_API=ON'
-      - '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON'
-      - '-DUSE_SYSTEM_YAML=TRUE'
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DXDG_STD=TRUE
+      - -DDISABLE_BUILD_DATE=TRUE
+      - -DOpenGL_GL_PREFERENCE=GLVND
+      - -DPACKAGE_MODE=TRUE
+      - -DCMAKE_INSTALL_PREFIX:PATH=/app/
+      - -DDISABLE_SETCAP=TRUE
+      - -DSDL2_API=TRUE
+      - -DWAYLAND_API=ON
+      - -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+      - -DUSE_SYSTEM_YAML=TRUE
     cleanup:
       - /share/pixmaps
       - /share/man
       - /share/doc
     post-install:
-      - 'desktop-file-edit --set-key=Exec --set-value=pcsx2 /app/share/applications/PCSX2.desktop'
-      - 'install -Dm644 ../pcsx2/gui/Resources/AppIcon64.png /app/share/icons/hicolor/64x64/apps/PCSX2.png'
-      - 'install -Dm644 ../net.pcsx2.PCSX2.appdata.xml /app/share/appdata/net.pcsx2.PCSX2.appdata.xml'
+      - desktop-file-edit --set-key=Exec --set-value=pcsx2 /app/share/applications/PCSX2.desktop
+      - install -Dm644 ../pcsx2/gui/Resources/AppIcon64.png /app/share/icons/hicolor/64x64/apps/PCSX2.png
+      - install -Dm644 ../net.pcsx2.PCSX2.appdata.xml /app/share/appdata/net.pcsx2.PCSX2.appdata.xml
     sources:
       - type: git
-        url: 'https://github.com/PCSX2/pcsx2.git'
+        url: https://github.com/PCSX2/pcsx2.git
         disable-shallow-clone: true
         disable-submodules: true
       - type: file

@@ -1,94 +1,105 @@
 {
-  "app-id": "io.github.SameBoy",
-  "runtime": "org.freedesktop.Platform",
-  "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "21.08",
-  "command": "sameboy",
-  "finish-args": [
-    "--device=all",
-    "--share=ipc",
-    "--socket=fallback-x11",
-    "--socket=wayland",
-    "--socket=pulseaudio"
-  ],
-  "modules": [
-    "../shared-modules/glu/glu-9.json",
-    {
-      "name": "rgbds",
-      "buildsystem": "simple",
-      "cleanup": [
-        "*"
-      ],
-      "build-commands": [
-        "make",
-        "make install PREFIX=/app"
-      ],
-      "sources": [
+    "app-id": "io.github.SameBoy",
+    "runtime": "org.freedesktop.Platform",
+    "sdk": "org.freedesktop.Sdk",
+    "runtime-version": "21.08",
+    "command": "sameboy",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--socket=pulseaudio"
+    ],
+    "modules": [
+        "../shared-modules/glu/glu-9.json",
         {
-          "type": "archive",
-          "url": "https://github.com/rednex/rgbds/releases/download/v0.4.1/rgbds-0.4.1.tar.gz",
-          "sha256": "e4253de7f1fdf1cd202276b07150010e182490052c6da6ae6ddac5685b9fec45"
-        }
-      ]
-    },
-    {
-      "name": "libicns",
-      "cleanup": ["*"],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/kornelski/libicns.git",
-          "commit": "1137b6f"
+            "name": "rgbds",
+            "buildsystem": "simple",
+            "cleanup": [
+                "*"
+            ],
+            "build-commands": [
+                "make",
+                "make install PREFIX=/app"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/rednex/rgbds.git",
+                    "commit": "9d993d84e85eeb8dd304e48463d89865795e97ed",
+                    "tag": "v0.5.2",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                }
+            ]
         },
         {
-          "type": "script",
-          "commands": [
-            "autoreconf -sfi"
-          ],
-          "dest-filename": "autogen.sh"
-        }
-
-      ]
-    },
-    {
-      "name": "sameboy",
-      "buildsystem": "simple",
-      "build-commands": [
-        "sed -i 's/-Werror //' Makefile",
-        "make sdl CONF=release"
-      ],
-      "post-install": [
-        "mkdir -p /app/share/applications",
-        "mkdir -p /app/share/appdata/",
-        "mkdir -p /app/share/icons/hicolor/16x16/apps/",
-        "mkdir -p /app/share/icons/hicolor/32x32/apps/",
-        "mkdir -p /app/share/icons/hicolor/256x256/apps/",
-        "mkdir -p /app/share/icons/hicolor/512x512/apps/",
-        "mkdir -p /app/share/icons/hicolor/1024x0124/apps/",
-        "install -Dm644 io.github.SameBoy.desktop /app/share/applications/",
-        "install -Dm644 io.github.SameBoy.appdata.xml /app/share/appdata/",
-        "icns2png -x Cocoa/AppIcon.icns",
-        "install -Dm644 AppIcon_16x16x32.png /app/share/icons/hicolor/16x16/apps/io.github.SameBoy.png",
-        "install -Dm644 AppIcon_32x32x32.png /app/share/icons/hicolor/32x32/apps/io.github.SameBoy.png",
-        "install -Dm644 AppIcon_256x256x32.png /app/share/icons/hicolor/256x256/apps/io.github.SameBoy.png",
-        "install -Dm644 AppIcon_512x512x32.png /app/share/icons/hicolor/512x512/apps/io.github.SameBoy.png",
-        "cp -r build/bin/SDL/* /app/bin/"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/LIJI32/SameBoy.git",
-          "tag": "v0.14.7"
+            "name": "libicns",
+            "cleanup": [
+                "*"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/kornelski/libicns.git",
+                    "commit": "1137b6f67eed87fe7a31c7de5325686422bc4568"
+                },
+                {
+                    "type": "script",
+                    "commands": [
+                        "autoreconf -sfi"
+                    ],
+                    "dest-filename": "autogen.sh"
+                }
+            ]
         },
         {
-          "type": "file",
-          "path": "io.github.SameBoy.appdata.xml"
-        },
-        {
-          "type": "file",
-          "path": "io.github.SameBoy.desktop"
+            "name": "sameboy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "sed -i 's/-Werror //' Makefile",
+                "make sdl CONF=release"
+            ],
+            "post-install": [
+                "mkdir -p /app/share/applications",
+                "mkdir -p /app/share/appdata/",
+                "mkdir -p /app/share/icons/hicolor/16x16/apps/",
+                "mkdir -p /app/share/icons/hicolor/32x32/apps/",
+                "mkdir -p /app/share/icons/hicolor/256x256/apps/",
+                "mkdir -p /app/share/icons/hicolor/512x512/apps/",
+                "mkdir -p /app/share/icons/hicolor/1024x0124/apps/",
+                "install -Dm644 io.github.SameBoy.desktop /app/share/applications/",
+                "install -Dm644 io.github.SameBoy.appdata.xml /app/share/appdata/",
+                "icns2png -x Cocoa/AppIcon.icns",
+                "install -Dm644 AppIcon_16x16x32.png /app/share/icons/hicolor/16x16/apps/io.github.SameBoy.png",
+                "install -Dm644 AppIcon_32x32x32.png /app/share/icons/hicolor/32x32/apps/io.github.SameBoy.png",
+                "install -Dm644 AppIcon_256x256x32.png /app/share/icons/hicolor/256x256/apps/io.github.SameBoy.png",
+                "install -Dm644 AppIcon_512x512x32.png /app/share/icons/hicolor/512x512/apps/io.github.SameBoy.png",
+                "cp -r build/bin/SDL/* /app/bin/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/LIJI32/SameBoy.git",
+                    "tag": "v0.14.7",
+                    "commit": "43831d0bc137d2f10d39939035dc10bfc4cc33e3",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "io.github.SameBoy.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "io.github.SameBoy.desktop"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

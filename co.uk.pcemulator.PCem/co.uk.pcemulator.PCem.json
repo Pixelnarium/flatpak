@@ -1,99 +1,110 @@
 {
-  "app-id": "co.uk.pcemulator.PCem",
-  "runtime": "org.freedesktop.Platform",
-  "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "21.08",
-  "command": "pcem",
-  "rename-desktop-file": "PCem.desktop",
-  "rename-appdata-file": "pcem.appdata.xml",
-  "rename-icon": "icon",
-  "finish-args": [
-    "--device=all",
-    "--share=ipc",
-    "--socket=fallback-x11",
-    "--socket=pulseaudio",
-    "--persist=.pcem"
-  ],
-  "modules": [
-    {
-      "name": "wxWidgets",
-      "cleanup": [
-        "/bin",
-        "/include",
-        "/share/bakefile",
-        "/share/aclocal",
-        "/lib/wx/include"
-      ],
-      "config-opts": [
-        "--with-opengl",
-        "--with-libjpeg",
-        "--with-libpng",
-        "--with-zlib",
-        "--disable-sdltest",
-        "--enable-unicode",
-        "--enable-display",
-        "--enable-propgrid",
-        "--disable-webkit",
-        "--disable-webview",
-        "--disable-webviewwebkit",
-        "--with-expat=builtin",
-        "--with-libiconv=/usr"
-      ],
-      "build-options" : {
-        "cxxflags":"-std=c++0x"
-      },
-      "sources": [
+    "app-id": "co.uk.pcemulator.PCem",
+    "runtime": "org.freedesktop.Platform",
+    "sdk": "org.freedesktop.Sdk",
+    "runtime-version": "21.08",
+    "command": "pcem",
+    "rename-desktop-file": "PCem.desktop",
+    "rename-appdata-file": "pcem.appdata.xml",
+    "rename-icon": "icon",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=pulseaudio",
+        "--persist=.pcem"
+    ],
+    "modules": [
         {
-          "type": "archive",
-          "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxWidgets-3.0.5.tar.bz2",
-          "sha256": "8aacd56b462f42fb6e33b4d8f5d40be5abc3d3b41348ea968aa515cc8285d813"
-        }
-      ],
-      "modules": [
-        "../shared-modules/glu/glu-9.json"
-      ]
-    },
-    {
-      "name": "pcem",
-      "config-opts": [
-        "--enable-release-build",
-        "--enable-networking"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "strip-components": 0,
-          "url": "http://pcem-emulator.co.uk/files/PCemV17Linux.tar.gz",
-          "sha256": "5b24cb5ce886ed53232385f46594146ba3f7d7eecda90f82892b2dce1cb2f1a4"
+            "name": "wxWidgets",
+            "cleanup": [
+                "/bin",
+                "/include",
+                "/share/bakefile",
+                "/share/aclocal",
+                "/lib/wx/include"
+            ],
+            "config-opts": [
+                "--with-opengl",
+                "--with-libjpeg",
+                "--with-libpng",
+                "--with-zlib",
+                "--disable-sdltest",
+                "--enable-unicode",
+                "--enable-display",
+                "--enable-propgrid",
+                "--disable-webkit",
+                "--disable-webview",
+                "--disable-webviewwebkit",
+                "--with-expat=builtin",
+                "--with-libiconv=/usr"
+            ],
+            "build-options": {
+                "cxxflags": "-std=c++0x"
+            },
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/wxWidgets/wxWidgets.git",
+                    "commit": "19907924842a9152b8ee5f03f117aed65193b964",
+                    "tag": "v3.1.6",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                }
+            ],
+            "modules": [
+                "../shared-modules/glu/glu-9.json"
+            ]
         },
         {
-          "type": "shell",
-          "commands": [ "autoreconf -vfi" ]
-        }
-      ]
-    },
-    {
-      "name": "pcem-desktop-integration",
-      "buildsystem": "simple",
-      "build-commands": [
-        "install -Dm644 PCem.desktop /app/share/applications/PCem.desktop",
-        "install -Dm644 pcem.appdata.xml /app/share/appdata/pcem.appdata.xml",
-        "install -Dm644 icon.png /app/share/icons/hicolor/256x256/apps/icon.png"
-      ],
-      "sources": [
-        {
-          "type": "file",
-          "path": "PCem.desktop"
+            "name": "pcem",
+            "config-opts": [
+                "--enable-release-build",
+                "--enable-networking"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/sarah-walker-pcem/pcem.git",
+                    "commit": "13f53a25687be71ee3ee8482b1a90b1b0aa64fb6",
+                    "tag": "v17",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "autoreconf -vfi"
+                    ]
+                }
+            ]
         },
         {
-          "type": "file",
-          "path": "pcem.appdata.xml"
-        },
-        {
-          "type": "file",
-          "path": "icon.png"
+            "name": "pcem-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm644 PCem.desktop /app/share/applications/PCem.desktop",
+                "install -Dm644 pcem.appdata.xml /app/share/appdata/pcem.appdata.xml",
+                "install -Dm644 icon.png /app/share/icons/hicolor/256x256/apps/icon.png"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "PCem.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "pcem.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "icon.png"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

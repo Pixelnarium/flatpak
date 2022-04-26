@@ -65,7 +65,12 @@
         {
           "type": "git",
           "url": "https://github.com/bsnes-emu/bsnes.git",
-          "tag": "v115"
+          "tag": "v115",
+          "commit": "8e80d2f8a43e34a82931e25143b279e5fbcfaedc",
+          "x-checker-data": {
+            "type": "git",
+            "tag-pattern": "^v([\\d.]+)$"
+          }
         },
         {
           "type": "file",

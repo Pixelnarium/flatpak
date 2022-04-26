@@ -1,57 +1,62 @@
 {
-  "id": "org.mamedev.MAME",
-  "runtime": "org.kde.Platform",
-  "runtime-version": "5.15-21.08",
-  "sdk": "org.kde.Sdk",
-  "command": "mame-wrapper",
-  "finish-args": [
-    "--share=ipc",
-    "--socket=x11",
-    "--share=network",
-    "--device=all",
-    "--socket=pulseaudio",
-    "--persist=.mame"
-  ],
-  "modules": [
-    {
-      "name": "mame",
-      "buildsystem": "simple",
-      "build-commands": [
-        "make -j6 TOOLS=1 OPTIMIZE=2 NOWERROR=1 ARCHOPTS=-g0 PYTHON_EXECUTABLE=python3",
-        "install -Dm755 mame /app/data/mame/mame",
-        "install -Dm644 src/osd/modules/opengl/shader/glsl*.*h -t /app/data/mame/shader/",
-        "cp -ar {artwork,bgfx,plugins,language,ctrlr,keymaps,hash} /app/data/mame/",
-        "mkdir -p /app/share/metainfo",
-        "mkdir -p /app/share/icons/hicolor/256x256/apps/",
-        "mkdir -p /app/share/applications",
-        "install -Dm644 org.mamedev.MAME.png /app/share/icons/hicolor/256x256/apps/",
-        "install -Dm644 org.mamedev.MAME.desktop /app/share/applications/",
-        "install -Dm644 org.mamedev.MAME.appdata.xml /app/share/metainfo/",
-        "install -Dm755 mame-wrapper.sh /app/bin/mame-wrapper"
-      ],
-      "sources": [
+    "id": "org.mamedev.MAME",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-21.08",
+    "sdk": "org.kde.Sdk",
+    "command": "mame-wrapper",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--share=network",
+        "--device=all",
+        "--socket=pulseaudio",
+        "--persist=.mame"
+    ],
+    "modules": [
         {
-          "type": "git",
-          "url": "https://github.com/mamedev/mame.git",
-          "tag": "mame0242"
-        },
-        {
-          "type": "file",
-          "path": "org.mamedev.MAME.desktop"
-        },
-        {
-          "type": "file",
-          "path": "org.mamedev.MAME.appdata.xml"
-        },
-        {
-          "type": "file",
-          "path": "org.mamedev.MAME.png"
-        },
-        {
-          "type": "file",
-          "path": "mame-wrapper.sh"
+            "name": "mame",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make -j6 TOOLS=1 OPTIMIZE=2 NOWERROR=1 ARCHOPTS=-g0 PYTHON_EXECUTABLE=python3",
+                "install -Dm755 mame /app/data/mame/mame",
+                "install -Dm644 src/osd/modules/opengl/shader/glsl*.*h -t /app/data/mame/shader/",
+                "cp -ar {artwork,bgfx,plugins,language,ctrlr,keymaps,hash} /app/data/mame/",
+                "mkdir -p /app/share/metainfo",
+                "mkdir -p /app/share/icons/hicolor/256x256/apps/",
+                "mkdir -p /app/share/applications",
+                "install -Dm644 org.mamedev.MAME.png /app/share/icons/hicolor/256x256/apps/",
+                "install -Dm644 org.mamedev.MAME.desktop /app/share/applications/",
+                "install -Dm644 org.mamedev.MAME.appdata.xml /app/share/metainfo/",
+                "install -Dm755 mame-wrapper.sh /app/bin/mame-wrapper"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/mamedev/mame.git",
+                    "tag": "mame0242",
+                    "commit": "e8166b52740880cedfee0b779eb71c5994ff0334",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^mame([\\d.]+)$"
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "org.mamedev.MAME.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "org.mamedev.MAME.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "org.mamedev.MAME.png"
+                },
+                {
+                    "type": "file",
+                    "path": "mame-wrapper.sh"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
