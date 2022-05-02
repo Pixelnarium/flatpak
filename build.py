@@ -27,14 +27,19 @@ projects = [("com.eduke32.EDuke32","x86_64"),
         ("net.sourceforge.quakespasm","x86_64"),
         ("io.github.pr-starfighter","x86_64"),
         ("commercial/com.factorio.factorio","x86_64"),
-        ("com.valvesoftware.Steam.Utility.gamescope","x86_64"),
         ("org.mamedev.MAME","x86_64")]
 
 def main():
     repo_path = sys.argv[1]
     filter_name = None
+    update_only = False
     if len(sys.argv) > 2:
-        filter_name = sys.argv[2]
+        val = sys.argv[2]
+        if val == 'update_only':
+            update_only = True
+        else:
+            filter_name = val
+
     home = str(Path.cwd().parent)
     proj_prefix = os.path.join(home, "flatpak")
     stats_dir = os.path.join(home, "build-dir", "flatpak-builder")
@@ -59,8 +64,10 @@ def main():
             name += ".yml"
 
         print(name)
-        ret = call(["chrt", "-i", "0", "flatpak-builder", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])#, "--keep-build-dirs"])
-        results.append(name + " -> " + str(ret))
+        call(["chrt", "-i", "0", "flatpak", "run", "org.flathub.flatpak-external-data-checker", "--commit-only", "--edit-only", name])
+        if not update_only:
+            ret = call(["chrt", "-i", "0", "flatpak-builder", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])#, "--keep-build-dirs"])
+            results.append(name + " -> " + str(ret))
 
         #shutil.rmtree("build", ignore_errors=True)
         #shutil.rmtree(".flatpak-builder", ignore_errors=True)

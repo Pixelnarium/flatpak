@@ -33,7 +33,6 @@
                 "--enable-unicode",
                 "--enable-display",
                 "--enable-propgrid",
-                "--disable-webkit",
                 "--disable-webview",
                 "--disable-webviewwebkit",
                 "--with-expat=builtin",
