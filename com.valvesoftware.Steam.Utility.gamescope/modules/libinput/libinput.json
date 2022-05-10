@@ -1,0 +1,65 @@
+{
+    "name": "libinput",
+    "buildsystem": "meson",
+    "build-options" : {
+        "prefix" : "/app/utils/gamescope/",
+        "append-pkg-config-path" : "/app/utils/gamescope/lib/pkgconfig"
+    },
+    "config-opts": [
+        "-Dlibwacom=false",
+        "-Ddebug-gui=false",
+        "-Dtests=false",
+        "-Ddocumentation=false"
+    ],
+    "sources": [
+        {
+            "type": "git",
+            "url": "https://gitlab.freedesktop.org/libinput/libinput.git",
+            "commit": "562f7bcee0bf513824d30be31e2a64c40d5f2ee1",
+            "tag": "1.20.1",
+            "x-checker-data": {
+                "type": "git",
+                "tag-pattern": "^([\\d.]+)$"
+            }
+        }
+    ],
+    "modules": [
+        {
+            "name": "mtdev",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://bitmath.org/code/mtdev/mtdev-1.1.6.tar.gz",
+                    "sha256": "1325f389a2f25cd5f5a8ea4d29aad24aa7c3ec30401d679400dd79eb9c0a8dbb",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 8868,
+                        "stable-only": true,
+                        "url-template": "http://bitmath.org/code/mtdev/mtdev-$version.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "libevdev",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dtests=disabled",
+                "-Ddocumentation=disabled"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.freedesktop.org/software/libevdev/libevdev-1.12.1.tar.xz",
+                    "sha256": "1dbba41bc516d3ca7abc0da5b862efe3ea8a7018fa6e9b97ce9d39401b22426c",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 20540,
+                        "stable-only": true,
+                        "url-template": "https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz"
+                    }
+                }
+            ]
+        }
+    ]
+}

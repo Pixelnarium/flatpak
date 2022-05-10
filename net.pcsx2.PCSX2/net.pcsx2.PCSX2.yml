@@ -12,7 +12,6 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --socket=pulseaudio
-  - --filesystem=home:ro
 
 modules:
   - name: wxWidgets

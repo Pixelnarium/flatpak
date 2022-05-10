@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 Stephan Sokolow -->
+<component type="console-application">
+  <id>com.github.Sude.lgogdownloader</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>WTFPL</project_license>
+  <name>LGOGDownloader</name>
+  <summary>Download GOG.com Games</summary>
+  <description>
+    <p>
+      LGOGDownloader is an unofficial GOG.com game downloader for Linux users.
+      It uses the same API as the official GOG Galaxy client and is not limited
+      to downloading only Linux builds.
+    </p>
+    <p>
+      This release is built with the optional dependency on QtWebEngine to
+      provide support for displaying reCAPTCHA challenges which GOG.com
+      may present when you use the --login option. However, it
+      otherwise has no graphical interface and will not install a desktop 
+      launcher entry.
+    </p>
+    <p>Consult the output of the --help option for usage.</p>
+    <p>
+      As Flatpak currently limits packages to exporting reverse-DNS command 
+      names, you are advised to place a line such as 'alias 
+      lgogdownloader="flatpak run com.github.Sude.lgogdownloader' into
+      your shell profile (eg. .bashrc) for ease of use. You may
+      omit the "flatpak run" portion if you have added Flatpak's
+      exports directory to your PATH.
+    </p>
+  </description>
+  <categories>
+    <category>Network</category>
+    <category>FileTransfer</category>
+    <category>Qt</category>
+    <category>ConsoleOnly</category>
+  </categories>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/Sude-/lgogdownloader/master/screenshot.png</image>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.0"/>
+  <url type="homepage">https://sites.google.com/site/gogdownloader/</url>
+  <url type="bugtracker">https://github.com/Sude-/lgogdownloader/issues</url>
+  <url type="donation">https://ko-fi.com/lgogdownloader</url>
+  <url type="donation">https://www.paypal.com/donate/?cmd=_s-xclick&amp;hosted_button_id=PT95NXVLQU6WG</url>
+  <provides>
+    <binary>lgogdownloader</binary>
+  </provides>
+  <suggests>
+    <id>org.phoenicis.playonlinux</id>
+  </suggests>
+</component>

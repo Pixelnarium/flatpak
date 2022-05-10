@@ -1,0 +1,139 @@
+{
+    "app-id": "com.github.Sude.lgogdownloader",
+    "default-branch": "stable",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-21.08",
+    "base": "io.qt.qtwebengine.BaseApp",
+    "base-version": "5.15-21.08",
+    "sdk": "org.kde.Sdk",
+    "command": "lgogdownloader",
+    "cleanup": [
+        "/include",
+        "*.a",
+        "*.la"
+    ],
+    "cleanup-commands": [ "/app/cleanup-BaseApp.sh" ],
+    "finish-args": [
+        "--share=network",
+        "--no-talk-name=com.canonical.AppMenu.Registrar",
+        "--no-talk-name=org.kde.kconfig.notify",
+        "--persist=."
+    ],
+    "modules": [
+        {
+            "name": "boost",
+            "buildsystem": "simple",
+            "build-commands": [
+                "./bootstrap.sh --prefix=/app --with-libraries=regex,date_time,system,filesystem,program_options,iostreams",
+                "./b2 -j `nproc` install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.79.0/source/boost_1_79_0.tar.bz2",
+                    "sha256": "475d589d51a7f8b3ba2ba4eda022b170e562ca3b760ee922c146b6c65856ef39",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 6845,
+                        "stable-only": true,
+                        "url-template": "https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${version0}_${version1}_${version2}.tar.bz2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "jsoncpp",
+            "buildsystem": "meson",
+            "config-opts": [ "--buildtype=release", "--default-library=shared" ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/open-source-parsers/jsoncpp.git",
+                    "tag": "1.9.5",
+                    "commit": "5defb4ed1a4293b8e2bf641e16b156fb9de498cc",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "htmlcxx",
+            "buildsystem": "autotools",
+            "build-options" : { "ldflags": "-Wl,--no-as-needed" },
+            "cleanup": [ "/bin" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://sourceforge.net/projects/htmlcxx/files/v0.87/htmlcxx-0.87.tar.gz",
+                    "sha256": "5d38f938cf4df9a298a5346af27195fffabfef9f460fc2a02233cbcfa8fc75c8",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 9388,
+                        "stable-only": true,
+                        "url-template": "https://sourceforge.net/projects/htmlcxx/files/v$version/htmlcxx-$version.tar.gz"
+                    }
+                },
+                {
+                    "type": "patch",
+                    "path": "htmlcxx-0.87-c++17.patch"
+                }
+            ]
+        },
+        {
+            "name": "tinyxml2",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/leethomason/tinyxml2.git",
+                    "tag": "9.0.0",
+                    "commit": "1dee28e51f9175a31955b9791c74c430fe13dc82",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "librhash",
+            "buildsystem": "autotools",
+            "build-options": { "config-opts": [ "--enable-openssl-runtime" ] },
+            "cleanup": [ "/bin/*", "/share/man/*" ],
+            "post-install": ["make install-lib-so-link install-lib-headers"],
+
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/rhash/RHash.git",
+                    "tag": "v1.4.2",
+                    "commit": "02c8b1dbae01c8d56613b6a3034c3698f94a52be",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lgogdownloader",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [ "-DCMAKE_BUILD_TYPE=Release", "-DUSE_QT_GUI=ON" ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Sude-/lgogdownloader.git",
+                    "tag": "v3.9",
+                    "commit": "6560688d8a4669090e8cd5719dd659b3b9e3fa70",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                }
+            ]
+        }
+    ]
+}
