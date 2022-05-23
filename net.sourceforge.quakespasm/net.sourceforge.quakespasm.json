@@ -1,54 +1,54 @@
 {
-  "app-id": "net.sourceforge.quakespasm",
-  "runtime": "org.freedesktop.Platform",
-  "runtime-version": "21.08",
-  "sdk": "org.freedesktop.Sdk",
-  "command": "quakespasm",
-  "rename-desktop-file": "quakespasm.desktop",
-  "rename-icon": "quakespasm",
-  "rename-appdata-file": "quakespasm.appdata.xml",
-  "finish-args": [
-    "--share=ipc",
-    "--socket=fallback-x11",
-    "--device=dri",
-    "--share=network",
-    "--socket=pulseaudio",
-    "--persist=.quakespasm"
-  ],
-  "modules": [
-    {
-      "name": "quakespasm",
-      "buildsystem": "simple",
-      "build-commands": [
-        "sed -i 's|USE_CODEC_MP3=1|USE_CODEC_MP3=0|g' Quake/Makefile",
-        "cd Quake && make -j$FLATPAK_BUILDER_N_JOBS DO_USERDIRS=1 USE_SDL2=1",
-        "install -d /app/bin",
-        "install -Dm755 Quake/quakespasm /app/bin",
-        "install -Dm644 Misc/QuakeSpasm_512.png /app/share/icons/hicolor/512x512/apps/quakespasm.png",
-        "install -Dm644 quakespasm.desktop /app/share/applications/quakespasm.desktop",
-        "install -Dm644 quakespasm.appdata.xml /app/share/appdata/quakespasm.appdata.xml"
-      ],
-      "sources": [
+    "app-id": "net.sourceforge.quakespasm",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "21.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "quakespasm",
+    "rename-desktop-file": "quakespasm.desktop",
+    "rename-icon": "quakespasm",
+    "rename-appdata-file": "quakespasm.appdata.xml",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--device=dri",
+        "--share=network",
+        "--socket=pulseaudio",
+        "--persist=.quakespasm"
+    ],
+    "modules": [
         {
-          "type": "archive",
-          "url": "https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.94.3.tar.gz",
-          "sha256": "3e95f6d3e5c7205e1a468b04aca1a7ca55c8a9d32d1b751bb22ef4ccd1bd0ead",
-          "x-checker-data": {
-            "type": "anitya",
-            "project-id": 17533,
-            "stable-only": false,
-            "url-template": "https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-$version.tar.gz"
-          }
-        },
-        {
-          "type": "file",
-          "path": "quakespasm.desktop"
-        },
-        {
-          "type": "file",
-          "path": "quakespasm.appdata.xml"
+            "name": "quakespasm",
+            "buildsystem": "simple",
+            "build-commands": [
+                "sed -i 's|USE_CODEC_MP3=1|USE_CODEC_MP3=0|g' Quake/Makefile",
+                "cd Quake && make -j$FLATPAK_BUILDER_N_JOBS DO_USERDIRS=1 USE_SDL2=1",
+                "install -d /app/bin",
+                "install -Dm755 Quake/quakespasm /app/bin",
+                "install -Dm644 Misc/QuakeSpasm_512.png /app/share/icons/hicolor/512x512/apps/quakespasm.png",
+                "install -Dm644 quakespasm.desktop /app/share/applications/quakespasm.desktop",
+                "install -Dm644 quakespasm.appdata.xml /app/share/appdata/quakespasm.appdata.xml"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.94.4.tar.gz",
+                    "sha256": "cc7b7466ecde50bdb6f62986530688856bb85301398bcf0cdec810f109943bf2",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 17533,
+                        "stable-only": false,
+                        "url-template": "https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-$version.tar.gz"
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "quakespasm.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "quakespasm.appdata.xml"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
