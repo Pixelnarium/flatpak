@@ -53,7 +53,8 @@
           "commit": "9b282aa742b6c3d2f2925ae5a12e2cd7c6b6ad38",
           "x-checker-data": {
             "type": "git",
-            "tag-pattern": "^v([\\d.]+)$"
+            "tag-pattern": "^v([\\d.]+)$",
+            "is-main-source": true
           }
         },
         {

@@ -26,7 +26,8 @@
                     "commit": "958574490d96d7a58cc10a70d354d0b09401767b",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
+                        "tag-pattern": "^v([\\d.]+)$",
+                        "is-main-source": true
                     }
                 },
                 {

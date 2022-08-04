@@ -49,6 +49,7 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
+          is-main-source: true
       - type: file
         path: net.kuribo64.melonDS.appdata.xml
     post-install:

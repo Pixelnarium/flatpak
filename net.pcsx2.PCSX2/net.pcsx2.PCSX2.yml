@@ -29,8 +29,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
-        tag: v3.1.6
-        commit: 19907924842a9152b8ee5f03f117aed65193b964
+        tag: v3.2.0
+        commit: 5b5ec3804a31a3765d60ff351bbdf79eddb1e1f9
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -117,7 +117,7 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-          
+
   - name: pcsx2
     buildsystem: cmake-ninja
     builddir: true
@@ -147,8 +147,14 @@ modules:
     sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
+        commit: bf0cd5a6cdc187159133f4bb79278b82e8e5024f
         disable-shallow-clone: true
         disable-submodules: true
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+          is-main-source: true
+        tag: v1.7.3137
       - type: file
         path: net.pcsx2.PCSX2.appdata.xml
       - type: shell

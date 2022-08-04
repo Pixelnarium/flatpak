@@ -12,7 +12,9 @@
         "*.a",
         "*.la"
     ],
-    "cleanup-commands": [ "/app/cleanup-BaseApp.sh" ],
+    "cleanup-commands": [
+        "/app/cleanup-BaseApp.sh"
+    ],
     "finish-args": [
         "--share=network",
         "--no-talk-name=com.canonical.AppMenu.Registrar",
@@ -44,7 +46,10 @@
         {
             "name": "jsoncpp",
             "buildsystem": "meson",
-            "config-opts": [ "--buildtype=release", "--default-library=shared" ],
+            "config-opts": [
+                "--buildtype=release",
+                "--default-library=shared"
+            ],
             "sources": [
                 {
                     "type": "git",
@@ -61,8 +66,12 @@
         {
             "name": "htmlcxx",
             "buildsystem": "autotools",
-            "build-options" : { "ldflags": "-Wl,--no-as-needed" },
-            "cleanup": [ "/bin" ],
+            "build-options": {
+                "ldflags": "-Wl,--no-as-needed"
+            },
+            "cleanup": [
+                "/bin"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -100,16 +109,24 @@
         {
             "name": "librhash",
             "buildsystem": "autotools",
-            "build-options": { "config-opts": [ "--enable-openssl-runtime" ] },
-            "cleanup": [ "/bin/*", "/share/man/*" ],
-            "post-install": ["make install-lib-so-link install-lib-headers"],
-
+            "build-options": {
+                "config-opts": [
+                    "--enable-openssl-runtime"
+                ]
+            },
+            "cleanup": [
+                "/bin/*",
+                "/share/man/*"
+            ],
+            "post-install": [
+                "make install-lib-so-link install-lib-headers"
+            ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/rhash/RHash.git",
-                    "tag": "v1.4.2",
-                    "commit": "02c8b1dbae01c8d56613b6a3034c3698f94a52be",
+                    "tag": "v1.4.3",
+                    "commit": "a1ba419a295e2925cce55c80794873a92a838d44",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
@@ -121,7 +138,10 @@
             "name": "lgogdownloader",
             "buildsystem": "cmake-ninja",
             "builddir": true,
-            "config-opts": [ "-DCMAKE_BUILD_TYPE=Release", "-DUSE_QT_GUI=ON" ],
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DUSE_QT_GUI=ON"
+            ],
             "sources": [
                 {
                     "type": "git",
@@ -130,7 +150,8 @@
                     "commit": "6560688d8a4669090e8cd5719dd659b3b9e3fa70",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
+                        "tag-pattern": "^v([\\d.]+)$",
+                        "is-main-source": true
                     }
                 }
             ]

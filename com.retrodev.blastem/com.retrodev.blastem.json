@@ -99,8 +99,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/python-pillow/Pillow.git",
-                    "commit": "0f44136e720cd3b2db72bdf29614897b7aa3e868",
-                    "tag": "9.1.1",
+                    "commit": "58acec3312fb8671c9d84829197e1c8150085589",
+                    "tag": "9.2.0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"

@@ -24,6 +24,16 @@
   <url type="homepage">https://pcsx2.net</url>
   <url type="bugtracker">https://github.com/PCSX2/pcsx2/issues</url>
   <releases>
+    <release version="1.7.3137" date="2022-07-30"/>
+    <release version="1.7.3074" date="2022-07-15"/>
+    <release version="1.7.3035" date="2022-07-01"/>
+    <release version="1.7.2954" date="2022-06-18"/>
+    <release version="1.7.2951" date="2022-06-16"/>
+    <release version="1.7.2900" date="2022-06-06"/>
+    <release version="1.7.2810" date="2022-05-26"/>
+    <release version="1.7.2804" date="2022-05-25"/>
+    <release version="1.7.2803" date="2022-05-25"/>
+    <release version="1.7.2800" date="2022-05-25"/>
     <release date="2020-03-22" version="v1.6.0-rc"/>
     <release date="2020-05-01" version="v1.6.0"/>
   </releases>

@@ -8,4 +8,7 @@
   <description>
     <p>PC Emulator that emulates various PCs</p>
   </description>
+  <releases>
+    <release version="17" date="2020-12-01"/>
+  </releases>
 </component>

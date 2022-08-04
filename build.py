@@ -29,6 +29,7 @@ projects = [("com.eduke32.EDuke32","x86_64"),
         ("com.github.Sude.lgogdownloader","x86_64"),
         ("com.valvesoftware.Steam.Utility.gamescope","x86_64"),
         ("commercial/com.factorio.factorio","x86_64"),
+        ("org.winehq.Wine","x86_64"),
         ("org.mamedev.MAME","x86_64")]
 
 def main():
@@ -48,6 +49,7 @@ def main():
     build_dir = os.path.join(home, "build-dir", "build")
     results = []
 
+    call(["git", "submodule", "update", "--recursive", "--remote", "--merge"])
     for proj in projects:
         path = proj[0]
         if filter_name:

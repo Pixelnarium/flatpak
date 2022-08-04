@@ -71,7 +71,8 @@
                         "type": "html",
                         "url": "https://mednafen.github.io/documentation/ChangeLog.txt",
                         "version-pattern": "-- ([\\d\\.-]*): --",
-                        "url-template": "https://mednafen.github.io/releases/files/mednafen-$version.tar.xz"
+                        "url-template": "https://mednafen.github.io/releases/files/mednafen-$version.tar.xz",
+                        "is-main-source": true
                     }
                 },
                 {

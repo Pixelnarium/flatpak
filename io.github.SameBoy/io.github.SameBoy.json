@@ -84,11 +84,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/LIJI32/SameBoy.git",
-                    "tag": "v0.14.7",
-                    "commit": "43831d0bc137d2f10d39939035dc10bfc4cc33e3",
+                    "tag": "v0.15.3",
+                    "commit": "1414e68a76530a1855fbeb24cda472a5d5db20a2",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
+                        "tag-pattern": "^v([\\d.]+)$",
+                        "is-main-source": true
                     }
                 },
                 {

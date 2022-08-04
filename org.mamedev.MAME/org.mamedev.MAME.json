@@ -17,7 +17,7 @@
             "name": "mame",
             "buildsystem": "simple",
             "build-commands": [
-                "make -j6 TOOLS=1 OPTIMIZE=2 NOWERROR=1 ARCHOPTS=-g0 PYTHON_EXECUTABLE=python3",
+                "make -j6 TOOLS=1 OPTIMIZE=2 NOWERROR=1 ARCHOPTS=-g0 PYTHON_EXECUTABLE=python3 VERBOSE=1 USE_BUNDLED_LIB_SDL2=0",
                 "install -Dm755 mame /app/data/mame/mame",
                 "install -Dm644 src/osd/modules/opengl/shader/glsl*.*h -t /app/data/mame/shader/",
                 "cp -ar {artwork,bgfx,plugins,language,ctrlr,keymaps,hash} /app/data/mame/",
@@ -33,11 +33,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/mamedev/mame.git",
-                    "tag": "mame0243",
-                    "commit": "addbb8ab40b4f0e780a6937a8788c8bb6bbcb3da",
+                    "tag": "mame0245",
+                    "commit": "5d31f0fc97a61920fe1bac50016fe137595c6590",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "^mame([\\d.]+)$"
+                        "tag-pattern": "^mame([\\d.]+)$",
+                        "is-main-source": true
                     }
                 },
                 {
