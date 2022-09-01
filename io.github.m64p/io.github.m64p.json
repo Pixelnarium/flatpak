@@ -2,8 +2,8 @@
   "app-id": "io.github.m64p",
   "runtime": "org.kde.Platform",
   "sdk": "org.kde.Sdk",
-  "runtime-version": "5.15-21.08",
-  "command": "mupen64plus-gui",
+  "runtime-version": "6.3",
+  "command": "simple64-gui",
   "finish-args": [
     "--device=all",
     "--share=ipc",
@@ -143,7 +143,7 @@
       "buildsystem": "simple",
       "build-commands": [
         "bash build.sh",
-        "mv mupen64plus/* /app/bin/"
+        "mv simple64/* /app/bin/"
       ],
       "post-install": [
         "mkdir -p /app/share/applications",
@@ -156,7 +156,7 @@
       "sources": [
         {
           "type": "git",
-          "url": "https://github.com/loganmc10/m64p.git",
+          "url": "https://github.com/simple64/simple64.git",
           "branch": "main"
         },
         {

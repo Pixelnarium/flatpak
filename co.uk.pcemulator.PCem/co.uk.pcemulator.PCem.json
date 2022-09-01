@@ -2,7 +2,7 @@
     "app-id": "co.uk.pcemulator.PCem",
     "runtime": "org.freedesktop.Platform",
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "21.08",
+    "runtime-version": "22.08",
     "command": "pcem",
     "rename-desktop-file": "PCem.desktop",
     "rename-appdata-file": "pcem.appdata.xml",

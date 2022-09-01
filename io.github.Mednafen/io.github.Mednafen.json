@@ -2,7 +2,7 @@
     "app-id": "io.github.Mednafen",
     "runtime": "org.freedesktop.Platform",
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "21.08",
+    "runtime-version": "22.08",
     "command": "mednafen-wrapper",
     "rename-desktop-file": "mednafen.desktop",
     "rename-icon": "buggy",
@@ -33,8 +33,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/libsdl-org/SDL.git",
-                    "commit": "53dea9830964eee8b5c2a7ee0a65d6e268dc78a1",
-                    "tag": "release-2.0.22",
+                    "commit": "8c9beb0c873f6ca5efbd88f1ad2648bfc793b2ac",
+                    "tag": "release-2.24.0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^release-([\\d.]+)$"
