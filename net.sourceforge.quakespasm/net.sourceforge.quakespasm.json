@@ -31,8 +31,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.94.7.tar.gz",
-                    "sha256": "c645c6f8f04208cfafcd26444a03f690eb03d2b4a0ea946ea49747e58f9f73fe",
+                    "url": "https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.95.0.tar.gz",
+                    "sha256": "a635ea3b22f920bbb44f1e6c7de8585db56c2f5d406edf5c819278c64901ae70",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 17533,

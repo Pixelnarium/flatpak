@@ -29,8 +29,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
-        tag: v3.2.0
-        commit: 5b5ec3804a31a3765d60ff351bbdf79eddb1e1f9
+        tag: v3.2.1
+        commit: 97e99707c5d2271a70cb686720b48dbf34ced496
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -147,14 +147,14 @@ modules:
     sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        commit: ee2cbc80b888d2fe45cf7645521186cbd4d7c82d
+        commit: aa075bdf6b0e1ac9b72271b25e25aa6a4cf88bef
         disable-shallow-clone: true
         disable-submodules: true
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
-        tag: v1.7.3161
+        tag: v1.7.3325
       - type: file
         path: net.pcsx2.PCSX2.appdata.xml
       - type: shell

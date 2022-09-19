@@ -1,6 +1,6 @@
 app-id: net.kuribo64.melonDS
 runtime: org.kde.Platform
-runtime-version: 5.15-21.08
+runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: melonDS
 finish-args:
@@ -39,6 +39,9 @@ modules:
   - name: melonds
     buildsystem: cmake-ninja
     builddir: true
+    build-options:
+      build-args:
+        - --share=network
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
     sources:
@@ -52,5 +55,9 @@ modules:
           is-main-source: true
       - type: file
         path: net.kuribo64.melonDS.appdata.xml
+      - type: shell
+        commands:
+          - git fetch
+          - git cherry-pick -n 4cc34121b0db2cf77541014271af8d79fed35f26
     post-install:
       - install -D -m644 -t /app/share/appdata/ ../${FLATPAK_ID}.appdata.xml
