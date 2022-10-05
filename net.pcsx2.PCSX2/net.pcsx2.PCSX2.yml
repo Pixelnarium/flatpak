@@ -147,14 +147,14 @@ modules:
     sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        commit: aa075bdf6b0e1ac9b72271b25e25aa6a4cf88bef
+        commit: 2f7d45db09ba90fa6554b29ce5b39c9e72d15499
         disable-shallow-clone: true
         disable-submodules: true
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
           is-main-source: true
-        tag: v1.7.3325
+        tag: v1.7.3369
       - type: file
         path: net.pcsx2.PCSX2.appdata.xml
       - type: shell

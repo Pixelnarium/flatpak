@@ -10,7 +10,7 @@
   <url type="help">https://docs.libretro.com</url>
   <url type="faq">https://retroarch.com/?page=faq</url>
   <url type="donation">https://retroarch.com/index.php?page=donate</url>
-  <content_rating type="oars-1.0" />
+  <content_rating type="oars-1.0"/>
   <screenshots>
     <screenshot type="default">
       <caption>RetroArch main menu</caption>
@@ -40,6 +40,7 @@
   <project_license>GPL-3.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <releases>
+    <release version="1.11.1" date="2022-10-05"/>
     <release version="1.8.6" date="2020-05-06">
       <url>https://www.libretro.com/index.php/retroarch-1-8-6-released/</url>
       <description>
@@ -110,7 +111,7 @@
           <li>BUGFIX: Prevent double input when using return key (hardware) to close on-screen keyboard</li>
           <li>BUGFIX: Fix mouse capture hotkey not working</li>
           <li>BUGFIX: Avoid overflow when calculating multiplying performance counter</li>
-          <li>BUGFIX: Retroarch overlay displaying &quot;Game remap file loaded.&quot; on the overlay instead of &quot;Core remap file loaded.&quot; when only a core remap file is present</li>
+          <li>BUGFIX: Retroarch overlay displaying "Game remap file loaded." on the overlay instead of "Core remap file loaded." when only a core remap file is present</li>
           <li>CHEEVOS/BUGFIX: Achievement triggers could cause Retroarch to Crash</li>
           <li>CHEEVOS: Dont block Sameboy core because it only exposes some memory</li>
           <li>CHEEVOS: Support for extended Sega CD memory</li>
@@ -184,7 +185,7 @@
           <li>DISK CONTROL: Selecting an index via the Current Disk Index drop-down list automatically moves the menu selection back to Insert Disk</li>
           <li>DISK CONTROL: The Disk Control entry sublabels have been changed for greater clarity</li>
           <li>DISK CONTROL: All of the horrendous notification spam has been removed.</li>
-          <li>DISK CONTROL: A new Resume content after changing disks option has been added under Settings > User Interface. When enabled (default setting), content is resumed automatically after selecting either Insert Disk or Load New Disk</li>
+          <li>DISK CONTROL: A new Resume content after changing disks option has been added under Settings &gt; User Interface. When enabled (default setting), content is resumed automatically after selecting either Insert Disk or Load New Disk</li>
           <li>DISK CONTROL/BUGFIX: The Disk Control menu now has the correct title</li>
           <li>DISK CONTROL/BUGFIX: Selecting a disk via the Load New Disk file browser no longer flushes the user back to the top level menu (it now correctly returns to the Disk Control menu)</li>
           <li>PLAYLISTS: Add 'Clean Playlist' option</li>
@@ -239,7 +240,7 @@
           <li>MENU/XMB: Fullscreen thumbnail viewer for boxart and pictures</li>
           <li>MENU/USABILITY: Selectively hide 'Disallow Non-Slave Mode Clients' if 'Allow Slave-Mode Clients' is disabled.</li>
           <li>MENU/USABILITY: Hide 'Show desktop menu on startup' if 'Desktop menu' setting itself is disabled.</li>
-          <li>MENU/USABILITY: Reimplement Quick Menu - > Shaders -> Watch shader files for changes - can now be turned on/off through touch.</li>
+          <li>MENU/USABILITY: Reimplement Quick Menu - &gt; Shaders -&gt; Watch shader files for changes - can now be turned on/off through touch.</li>
           <li>MENU/USABILITY: Refactor Quick Menu - Controls - each port now has its own submenu.</li>
           <li>MENU/USABILITY: Quick Menu - Cheats - Delete All no longer requires five right button presses - this should fix this functionality for mobile touch users too.</li>
           <li>MENU/USABILITY: Hide Refresh Rate options when Threaded Video is enabled - these settings do nothing with Threaded Video.</li>
@@ -252,31 +253,31 @@
           <li>MENU/USABILITY: Video - Hide Fullscreen Mode settings if windowed mode is not supported by context driver.</li>
           <li>MENU/USABILITY: Selectively hide Network Command Port.</li>
           <li>MENU/USABILITY: Selectively hide Relay Server Location.</li>
-          <li>MENU/USABILITY: User Interface -> Appearance - Selectively hide XMB Horizontal Animation setting.</li>
+          <li>MENU/USABILITY: User Interface -&gt; Appearance - Selectively hide XMB Horizontal Animation setting.</li>
           <li>MENU/USABILITY: Playlists - more selective hiding.</li>
           <li>MENU/USABILITY: Selectively hide Rewind Settings.</li>
           <li>MENU/USABILITY: Selectively hide Overlay Settings.</li>
           <li>MENU/USABILITY: Selectively hide FPS Update Interval based on Display Framerate being enabled.</li>
           <li>MENU/USABILITY: Selectively hide Onscreen Notifications BG Color Settings.</li>
-          <li>MENU/USABILITY: Settings -> Logging - Hide 'Log To File Timestamp' if 'Log To File' is disabled.</li>
-          <li>MENU/USABILITY: Video -> Scaling - Hide Custom Viewport X/Y when Integer Scale is enabled as description indicates.</li>
+          <li>MENU/USABILITY: Settings -&gt; Logging - Hide 'Log To File Timestamp' if 'Log To File' is disabled.</li>
+          <li>MENU/USABILITY: Video -&gt; Scaling - Hide Custom Viewport X/Y when Integer Scale is enabled as description indicates.</li>
           <li>MENU/USABILITY: Achievement submenu - selectively hide.</li>
-          <li>MENU/USABILITY: Settings -> Video -> Aspect ratio - selectively hide/show values based on whether you have Custom or Config selected.</li>
-          <li>MENU/USABILITY: Settings -> Video -> Selectively hide Hard Sync.</li>
-          <li>MENU/USABILITY: Settings -> Video -> Implement selective hiding for VSync and Hard Sync.</li>
+          <li>MENU/USABILITY: Settings -&gt; Video -&gt; Aspect ratio - selectively hide/show values based on whether you have Custom or Config selected.</li>
+          <li>MENU/USABILITY: Settings -&gt; Video -&gt; Selectively hide Hard Sync.</li>
+          <li>MENU/USABILITY: Settings -&gt; Video -&gt; Implement selective hiding for VSync and Hard Sync.</li>
           <li>MENU/USABILITY: Selective hiding of Runahead settings based on global setting.</li>
-          <li>MENU/USABILITY: Add Input -> Haptic Feedback submenu.</li>
-          <li>MENU/USABILITY: Add Input -> Menu Controls submenu.</li>
-          <li>MENU/USABILITY: Settings -> Video -> Max Swapchain Images - Add OK action.</li>
+          <li>MENU/USABILITY: Add Input -&gt; Haptic Feedback submenu.</li>
+          <li>MENU/USABILITY: Add Input -&gt; Menu Controls submenu.</li>
+          <li>MENU/USABILITY: Settings -&gt; Video -&gt; Max Swapchain Images - Add OK action.</li>
           <li>MENU/USABILITY: Input - Implement OK action for Bind Hold, Turbo Period and Duty Cycle.</li>
           <li>MENU/USABILITY: Input - Hotkey Binds refactor.</li>
-          <li>MENU/USABILITY: Move 'Press Quit Twice' and 'Menu Toggle Gamepad Combo' to Input -> Hotkey Binds.</li>
+          <li>MENU/USABILITY: Move 'Press Quit Twice' and 'Menu Toggle Gamepad Combo' to Input -&gt; Hotkey Binds.</li>
           <li>MENU/USABILITY: Video - Add sublabel for Video Output submenu.</li>
           <li>MENU/USABILITY:  If 'Favorites Tab' is disabled, don't show 'Add To Favorites' option in Quick Menu/Playlist menu.</li>
           <li>MENU/USABILITY: If On-Demand Thumbnail Downloader is enabled, hide 'Download Thumbnails' from playlist menu screen.</li>
-          <li>MENU/USABILITY: Add Audio Driver setting to Audio -> Output.</li>
-          <li>MENU/USABILITY: Add Audio -> Resampler settings.</li>
-          <li>MENU/USABILITY: Add Audio -> Output and Audio -> Synchronization.</li>
+          <li>MENU/USABILITY: Add Audio Driver setting to Audio -&gt; Output.</li>
+          <li>MENU/USABILITY: Add Audio -&gt; Resampler settings.</li>
+          <li>MENU/USABILITY: Add Audio -&gt; Output and Audio -&gt; Synchronization.</li>
           <li>OPENGL: Shaders are now working properly (only in OpenGL) when rotating both from Core API rotation and from menu video rotation. The fix is clearly visible with crt-royale for example.</li>
           <li>OPENGL: 1:1 PAR is now correct when rotating (both from Core API rotation and from menu video rotation, as you said, in the latter case you currently have to change Aspect Ratio after menu video rotation for it to work).</li>
           <li>OPENGL: When using Custom Aspect Ratio and rotation (both from Core API rotation and from menu video rotation), Integer Scaling is now working properly (correct multiples of internal resolution). Even when Integer Scaling is not activated, the Custom AR width / height are now correctly labeled using (1x), (2x), ... suffixes. You also have to activate Integer Scaling after menu video rotation for it to work.</li>
@@ -330,11 +331,11 @@
           <li>MENU/MATERIALUI: The ticker text spacer has been set to a 'bullet' character (same as Ozone)</li>
           <li>MENU/MATERIALUI: The default colour theme has been set to 'Ozone Dark'</li>
           <li>MENU/MATERIALUI: Three new colour themes have been added</li>
-          <li>MENU/MATERIALUI: A new Menu Transition Animation option has been added under User Interface > Appearance</li>
+          <li>MENU/MATERIALUI: A new Menu Transition Animation option has been added under User Interface &gt; Appearance</li>
           <li>MENU/MATERIALUI: The navigation bar is now shown at all times</li>
           <li>MENU/MATERIALUI: Two new context-sensitive buttons have been added to the navigation bar - back button and resume button</li>
-          <li>MENU/MATERIALUI: A new Auto-Rotate Navigation Bar option has been added under User Interface > Appearance</li>
-          <li>MENU/MATERIALUI: The playlists tab is now correctly hidden when User Interface > Views > Show Playlist Tabs is disabled</li>
+          <li>MENU/MATERIALUI: A new Auto-Rotate Navigation Bar option has been added under User Interface &gt; Appearance</li>
+          <li>MENU/MATERIALUI: The playlists tab is now correctly hidden when User Interface &gt; Views &gt; Show Playlist Tabs is disabled</li>
           <li>MENU/MATERIALUI: Material UI now correctly readjusts its layout when screen orientation changes on mobile devices</li>
           <li>MENU/MATERIALUI: Material UI now resizes in real-time when the user manually sets the Menu Scale Factor (this never worked properly with the old DPI override)</li>
           <li>MENU/MATERIALUI: Material UI no longer leaks memory on 'context reset' (fonts were previously never free()'d)</li>
@@ -529,7 +530,7 @@
           <li>COMMON: Fix buffer overflows in system information</li>
           <li>COMMON: Add option to change screen orientation via the windowing system (Android, Windows, X11)</li>
           <li>COMMON: Show CPU model name in log</li>
-          <li>COMMON: Add "Help -> Send Debug Info" option (and F10 hotkey) to send diagnostic info to the RetroArch team for help with problems</li>
+          <li>COMMON: Add "Help -&gt; Send Debug Info" option (and F10 hotkey) to send diagnostic info to the RetroArch team for help with problems</li>
           <li>COMMON: Show GPU device name/version in log</li>
           <li>COMMON: Add menu option to write log info to a file</li>
           <li>COMMON: Add subsystem support for playlists. Subsystem info is automatically saved to the history playlist for easy relaunching</li>
@@ -556,7 +557,7 @@
           <li>LOCALIZATION: Update Spanish translation</li>
           <li>LOCALIZATION: Add new Turkish translation</li>
           <li>MIDI: Fix startup crash in midi driver</li>
-          <li>MENU: Bugfix - you can no longer get stuck in Online Updater -> Update Core screen when toggling between ingame and menu</li>
+          <li>MENU: Bugfix - you can no longer get stuck in Online Updater -&gt; Update Core screen when toggling between ingame and menu</li>
           <li>MENU: Selectively hide 'Take Screenshot' for video drivers that don't support taking screenshots</li>
           <li>MENU: Framerate independent menu rendering. MaterialUI/Ozone/XMB/RGUI can now run at higher framerates</li>
           <li>MENU: Thumbnails work in history list</li>
@@ -581,7 +582,7 @@
           <li>MENU/OZONE: Add thumbnail support</li>
           <li>MENU/OZONE: Battery notifications</li>
           <li>MENU/OZONE: Add wifi icon for network entries</li>
-          <li>MENU/QT/WIMP: Add git version and build date to Help->About window</li>
+          <li>MENU/QT/WIMP: Add git version and build date to Help-&gt;About window</li>
           <li>MENU/QT/WIMP: Fix content loading via the file browser</li>
           <li>MENU/QT/WIMP: Add new settings window to control all RetroArch settings</li>
           <li>MENU/RGUI: Improve playlist titles</li>
@@ -606,7 +607,7 @@
           <li>MENU/RGUI: Battery notifications</li>
           <li>MENU/XMB: Prevent crashes when resizing to a tiny window</li>
           <li>MENU/XMB: XMB honors the 'show menu sublabels' setting now - was previously RGUI only</li>
-          <li>NETPLAY: Fix stall-out causing total disconnection with >2 players</li>
+          <li>NETPLAY: Fix stall-out causing total disconnection with &gt;2 players</li>
           <li>NETPLAY: Different (more intuitive?) default netplay share policy</li>
           <li>NETPLAY: Add hotkey option to toggle hosting on/off</li>
           <li>NETWORKING: Encode URLs to allow for spaces in directory names</li>
@@ -649,7 +650,7 @@
           <li>LOCALIZATION: Update Spanish translation</li>
           <li>MENU: New "ozone" menu driver</li>
           <li>MENU: Only show CRT SwitchRes if video display server is implemented (Windows/Linux for now)</li>
-          <li>MENU: User Interface -> Appearance -> 'Menu Font Green/Blue Color' settings now work properly</li>
+          <li>MENU: User Interface -&gt; Appearance -&gt; 'Menu Font Green/Blue Color' settings now work properly</li>
           <li>MENU: Add option to enable in-menu sound effects</li>
           <li>MENU/QT/WIMP: Allow building with MSVC2017</li>
           <li>MENU/QT/WIMP: Add detailed file browser table</li>
@@ -773,9 +774,9 @@
           <li>LIBRETRO: Addition - Functions to enable and disable audio and video, and an environment function to query status of audio and video enables</li>
           <li>LOCALIZATION: Update Italian translation</li>
           <li>LOCALIZATION: Update Polish translation</li>
-          <li>MENU: Add Rewind/Latency/Overlay settings to Quick Menu, add options to show/hide them (User Interface -> Views -> Quick Menu)</li>
+          <li>MENU: Add Rewind/Latency/Overlay settings to Quick Menu, add options to show/hide them (User Interface -&gt; Views -&gt; Quick Menu)</li>
           <li>MENU/RGUI: Only show Menu Linear Filter for RGUI and only show it for video drivers that implement it (D3D8/9/10/11/12/GL)</li>
-          <li>MENU/RGUI: Add User Interface -> Appearance options</li>
+          <li>MENU/RGUI: Add User Interface -&gt; Appearance options</li>
           <li>MENU/RGUI: D3D8/D3D9: Hookup Menu Linear Filter</li>
           <li>MENU/XMB: Disable XMB shadow icons by default for PowerPC and ARM for performance reasons</li>
           <li>MENU/XMB: Left/right thumbnails are now automatically scaled according to layout</li>

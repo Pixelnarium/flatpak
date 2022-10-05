@@ -1,216 +1,216 @@
 {
-  "app-id": "org.libretro.RetroArch",
-  "runtime": "org.freedesktop.Platform",
-  "runtime-version": "22.08",
-  "sdk": "org.freedesktop.Sdk",
-  "command": "retroarch-wrapper",
-  "rename-desktop-file": "retroarch.desktop",
-  "rename-icon": "retroarch",
-  "finish-args": [
-    "--socket=fallback-x11",
-    "--socket=wayland",
-    "--socket=pulseaudio",
-    "--share=ipc",
-    "--share=network",
-    "--device=all",
-    "--talk-name=org.freedesktop.ScreenSaver"
-  ],
-  "modules": [
-    {
-      "name": "lame",
-      "config-opts": [
-        "--disable-static",
-        "--enable-shared",
-        "--disable-frontend"
-      ],
-      "sources": [
+    "app-id": "org.libretro.RetroArch",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "22.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "retroarch-wrapper",
+    "rename-desktop-file": "retroarch.desktop",
+    "rename-icon": "retroarch",
+    "finish-args": [
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--share=ipc",
+        "--share=network",
+        "--device=all",
+        "--talk-name=org.freedesktop.ScreenSaver"
+    ],
+    "modules": [
         {
-          "type": "archive",
-          "url": "https://downloads.sourceforge.net/lame/lame-3.100.tar.gz",
-          "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e",
-          "x-checker-data": {
-            "type": "anitya",
-            "project-id": 12523,
-            "stable-only": false,
-            "url-template": "https://downloads.sourceforge.net/lame/lame-$version.tar.gz"
-          }          
-        }
-      ]
-    },
-    {
-      "name": "retroarch",
-      "config-opts": [
-        "--enable-dbus"
-      ],
-      "make-args": [
-        "GLOBAL_CONFIG_DIR=${FLATPAK_DEST}/etc"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/libretro/RetroArch.git",
-          "tag": "v1.10.3",
-          "commit": "9b282aa742b6c3d2f2925ae5a12e2cd7c6b6ad38",
-          "x-checker-data": {
-            "type": "git",
-            "tag-pattern": "^v([\\d.]+)$",
-            "is-main-source": true
-          }
+            "name": "lame",
+            "config-opts": [
+                "--disable-static",
+                "--enable-shared",
+                "--disable-frontend"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/lame/lame-3.100.tar.gz",
+                    "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 12523,
+                        "stable-only": false,
+                        "url-template": "https://downloads.sourceforge.net/lame/lame-$version.tar.gz"
+                    }
+                }
+            ]
         },
         {
-          "type": "file",
-          "path": "org.libretro.RetroArch.appdata.xml"
+            "name": "retroarch",
+            "config-opts": [
+                "--enable-dbus"
+            ],
+            "make-args": [
+                "GLOBAL_CONFIG_DIR=${FLATPAK_DEST}/etc"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/RetroArch.git",
+                    "tag": "v1.11.1",
+                    "commit": "389ef31a8f4a505f255e9bfebe882750d22ab490",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$",
+                        "is-main-source": true
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "org.libretro.RetroArch.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "retroarch.cfg"
+                },
+                {
+                    "type": "file",
+                    "path": "retroarch-wrapper.sh"
+                }
+            ],
+            "post-install": [
+                "mkdir -p ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
+                "mv /app/share/pixmaps/retroarch.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
+                "rmdir ${FLATPAK_DEST}/share/pixmaps/",
+                "mkdir -p ${FLATPAK_DEST}/etc",
+                "sed s:@prefix@:${FLATPAK_DEST}:g retroarch.cfg > ${FLATPAK_DEST}/etc/retroarch.cfg",
+                "mkdir -p ${FLATPAK_DEST}/share/appdata",
+                "cp org.libretro.RetroArch.appdata.xml ${FLATPAK_DEST}/share/appdata",
+                "install -Dm775 retroarch-wrapper.sh /app/bin/retroarch-wrapper",
+                "desktop-file-edit --set-key=Exec --set-value=retroarch-wrapper /app/share/applications/retroarch.desktop"
+            ]
         },
         {
-          "type": "file",
-          "path": "retroarch.cfg"
+            "name": "retroarch-filers-video",
+            "subdir": "gfx/video_filters",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/RetroArch.git"
+                }
+            ]
         },
         {
-          "type": "file",
-          "path": "retroarch-wrapper.sh"
-        }
-      ],
-      "post-install": [
-        "mkdir -p ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
-        "mv /app/share/pixmaps/retroarch.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
-        "rmdir ${FLATPAK_DEST}/share/pixmaps/",
-        "mkdir -p ${FLATPAK_DEST}/etc",
-        "sed s:@prefix@:${FLATPAK_DEST}:g retroarch.cfg > ${FLATPAK_DEST}/etc/retroarch.cfg",
-        "mkdir -p ${FLATPAK_DEST}/share/appdata",
-        "cp org.libretro.RetroArch.appdata.xml ${FLATPAK_DEST}/share/appdata",
-        "install -Dm775 retroarch-wrapper.sh /app/bin/retroarch-wrapper",
-        "desktop-file-edit --set-key=Exec --set-value=retroarch-wrapper /app/share/applications/retroarch.desktop"
-      ]
-    },
-    {
-      "name": "retroarch-filers-video",
-      "subdir": "gfx/video_filters",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/libretro/RetroArch.git"
-        }
-      ]
-    },
-    {
-      "name": "retroarch-filers-audio",
-      "subdir": "libretro-common/audio/dsp_filters",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/libretro/RetroArch.git"
-        }
-      ]
-    },
-    {
-      "name": "retroarch-assets",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/libretro/retroarch-assets.git"
-        }
-      ]
-    },
-    {
-      "name": "libretro-database",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/libretro/libretro-database.git"
-        }
-      ]
-    },
-    {
-      "name": "libretro-core-info",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/libretro/libretro-core-info.git"
-        }
-      ]
-    },
-    {
-      "name": "retroarch-joypad-autoconfig",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/libretro/retroarch-joypad-autoconfig.git"
-        }
-      ]
-    },
-    {
-      "name": "slang-shaders",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/libretro/slang-shaders.git"
-        }
-      ]
-     },
-     {
-      "name": "themaister-shaders",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/Themaister/slang-shaders.git"
+            "name": "retroarch-filers-audio",
+            "subdir": "libretro-common/audio/dsp_filters",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/RetroArch.git"
+                }
+            ]
         },
         {
-          "type": "shell",
-          "commands": [
-            "sed -i 's@INSTALLDIR :=.*@INSTALLDIR := /app/share/libretro/shaders/themaister@g' Makefile"
-          ]
-        }
-      ]
-     },
-     {
-      "name": "glsl-shaders",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}"
-      ],
-      "sources": [
+            "name": "retroarch-assets",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/retroarch-assets.git"
+                }
+            ]
+        },
         {
-          "type": "git",
-          "url": "https://github.com/libretro/glsl-shaders.git"
-        }
-      ]
-    },
-    {
-      "name": "overlay",
-      "buildsystem": "simple",
-      "build-commands": [
-        "mkdir -p ${FLATPAK_DEST}/share/libretro/overlay",
-        "mv * ${FLATPAK_DEST}/share/libretro/overlay/"
-      ],
-      "sources": [
+            "name": "libretro-database",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/libretro-database.git"
+                }
+            ]
+        },
         {
-          "type": "git",
-          "url": "https://github.com/libretro/common-overlays.git"
+            "name": "libretro-core-info",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/libretro-core-info.git"
+                }
+            ]
+        },
+        {
+            "name": "retroarch-joypad-autoconfig",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/retroarch-joypad-autoconfig.git"
+                }
+            ]
+        },
+        {
+            "name": "slang-shaders",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/slang-shaders.git"
+                }
+            ]
+        },
+        {
+            "name": "themaister-shaders",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Themaister/slang-shaders.git"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's@INSTALLDIR :=.*@INSTALLDIR := /app/share/libretro/shaders/themaister@g' Makefile"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "glsl-shaders",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/glsl-shaders.git"
+                }
+            ]
+        },
+        {
+            "name": "overlay",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p ${FLATPAK_DEST}/share/libretro/overlay",
+                "mv * ${FLATPAK_DEST}/share/libretro/overlay/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libretro/common-overlays.git"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

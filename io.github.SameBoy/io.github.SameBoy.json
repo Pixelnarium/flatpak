@@ -12,7 +12,6 @@
         "--socket=pulseaudio"
     ],
     "modules": [
-        "../shared-modules/glu/glu-9.json",
         {
             "name": "rgbds",
             "buildsystem": "simple",
@@ -31,28 +30,9 @@
                     "tag": "v0.5.2",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
+                        "tag-pattern": "^v([\\d.]+)$",
+                        "versions": {"<": "0.6"}
                     }
-                }
-            ]
-        },
-        {
-            "name": "libicns",
-            "cleanup": [
-                "*"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/kornelski/libicns.git",
-                    "commit": "1137b6f67eed87fe7a31c7de5325686422bc4568"
-                },
-                {
-                    "type": "script",
-                    "commands": [
-                        "autoreconf -sfi"
-                    ],
-                    "dest-filename": "autogen.sh"
                 }
             ]
         },
@@ -71,13 +51,11 @@
                 "mkdir -p /app/share/icons/hicolor/256x256/apps/",
                 "mkdir -p /app/share/icons/hicolor/512x512/apps/",
                 "mkdir -p /app/share/icons/hicolor/1024x0124/apps/",
-                "install -Dm644 io.github.SameBoy.desktop /app/share/applications/",
                 "install -Dm644 io.github.SameBoy.appdata.xml /app/share/appdata/",
-                "icns2png -x Cocoa/AppIcon.icns",
-                "install -Dm644 AppIcon_16x16x32.png /app/share/icons/hicolor/16x16/apps/io.github.SameBoy.png",
-                "install -Dm644 AppIcon_32x32x32.png /app/share/icons/hicolor/32x32/apps/io.github.SameBoy.png",
-                "install -Dm644 AppIcon_256x256x32.png /app/share/icons/hicolor/256x256/apps/io.github.SameBoy.png",
-                "install -Dm644 AppIcon_512x512x32.png /app/share/icons/hicolor/512x512/apps/io.github.SameBoy.png",
+                "install -Dm644 FreeDesktop/AppIcon/16x16.png /app/share/icons/hicolor/16x16/apps/io.github.SameBoy.png",
+                "install -Dm644 FreeDesktop/AppIcon/32x32.png /app/share/icons/hicolor/32x32/apps/io.github.SameBoy.png",
+                "install -Dm644 FreeDesktop/AppIcon/256x256.png /app/share/icons/hicolor/256x256/apps/io.github.SameBoy.png",
+                "install -Dm644 FreeDesktop/AppIcon/512x512.png /app/share/icons/hicolor/512x512/apps/io.github.SameBoy.png",
                 "cp -r build/bin/SDL/* /app/bin/"
             ],
             "sources": [
@@ -95,10 +73,6 @@
                 {
                     "type": "file",
                     "path": "io.github.SameBoy.appdata.xml"
-                },
-                {
-                    "type": "file",
-                    "path": "io.github.SameBoy.desktop"
                 }
             ]
         }
