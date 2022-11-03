@@ -40,6 +40,7 @@
   <project_license>GPL-3.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <releases>
+    <release version="1.12.0" date="2022-10-21"/>
     <release version="1.11.1" date="2022-10-05"/>
     <release version="1.8.6" date="2020-05-06">
       <url>https://www.libretro.com/index.php/retroarch-1-8-6-released/</url>

@@ -1,31 +1,21 @@
 app-id: net.pcsx2.PCSX2
-runtime: org.freedesktop.Platform
-sdk: org.freedesktop.Sdk
-runtime-version: '22.08'
+runtime: org.kde.Platform
+sdk: org.kde.Sdk
+runtime-version: '6.4'
 command: pcsx2
-rename-desktop-file: PCSX2.desktop
-rename-icon: PCSX2
-
 finish-args:
   - --device=all
   - --share=ipc
-  - --socket=wayland
   - --socket=fallback-x11
+  - --socket=wayland
   - --socket=pulseaudio
-
 modules:
   - name: wxWidgets
     buildsystem: cmake-ninja
     cleanup:
       - /bin
       - /include
-      - /share/bakefile
-      - /share/aclocal
       - /lib/wx/include
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-    build-options:
-      cxxflags: -std=c++0x
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
@@ -38,40 +28,38 @@ modules:
       - ../shared-modules/glu/glu-9.json
 
   - name: libaio
+    no-autogen: true
+    make-install-args:
+      - prefix=${FLATPAK_DEST}
+    sources:
+      - type: git
+        url: https://pagure.io/libaio.git
+        tag: libaio-0.3.113
+        commit: 1b18bfafc6a2f7b9fa2c6be77a95afed8b7be448
+        x-checker-data:
+          type: git
+          tag-pattern: ^libaio-([\d.]+)$
     cleanup:
       - /include
       - /lib/*.a
-    buildsystem: simple
-    build-options:
-      cflags: -O2 -pipe -fno-stack-protector -fno-plt
-    build-commands:
-      - make
-      - make prefix=/app libdir=/app/lib install
-    sources:
-      - type: archive
-        url: https://pagure.io/libaio/archive/libaio-0.3.113/libaio-libaio-0.3.113.tar.gz
-        sha256: 716c7059703247344eb066b54ecbc3ca2134f0103307192e6c2b7dab5f9528ab
-        x-checker-data:
-          type: anitya
-          project-id: 1557
-          stable-only: true
-          url-template: https://pagure.io/libaio/archive/libaio-$version/libaio-libaio-$version.tar.gz
 
   - name: portaudio
+    buildsystem: cmake-ninja
     cleanup:
       - /include
+      - /share/doc
+      - /lib/cmake
       - /lib/pkgconfig
-      - /lib/*.la
-    config-opts:
-      - --disable-static
+      - /lib/*.a
     sources:
       - type: git
         url: https://github.com/PortAudio/portaudio.git
-        commit: 147dd722548358763a8b649b3e4b41dfffbcfbb6
         tag: v19.7.0
+        commit: 147dd722548358763a8b649b3e4b41dfffbcfbb6
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
+
   - name: soundtouch
     buildsystem: cmake-ninja
     sources:
@@ -85,35 +73,47 @@ modules:
     cleanup:
       - /bin
       - /include
+      - /lib/cmake
       - /lib/pkgconfig
-      - /share/aclocal
       - /share/doc
-      - /lib/*.la
+      - /lib/*.a
 
-  - name: libpcap
-    cleanup:
-      - /include
-      - /share
-      - /lib/pkgconfig
+  - name: png++
+    disabled: true
+    buildsystem: autotools
+    make-install-args:
+      - prefix=${FLATPAK_DEST}
     sources:
       - type: archive
-        url: https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz
-        sha256: ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4
-        x-checker-data:
-          type: anitya
-          project-id: 1702
-          stable-only: true
-          url-template: https://www.tcpdump.org/release/libpcap-$version.tar.gz
+        url: https://download.savannah.nongnu.org/releases/pngpp/png++-0.2.10.tar.gz
+        sha256: 998af216ab16ebb88543fbaa2dbb9175855e944775b66f2996fc945c8444eee1
 
-  - name: rapidyaml
+  - name: libpcap
     buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/the-tcpdump-group/libpcap.git
+        tag: libpcap-1.10.1
+        commit: c7642e2cc0c5bd65754685b160d25dc23c76c6bd
+        x-checker-data:
+          type: git
+          tag-pattern: ^libpcap-([\d.]+)$
+    cleanup:
+      - /bin
+      - /include
+      - /share/man
+      - /lib/pkgconfig
+      - /lib/*.a
+
+  - name: fastfloat
+    buildsystem: cmake
     cleanup:
       - /include
     sources:
       - type: git
-        url: https://github.com/biojppm/rapidyaml.git
-        tag: v0.4.1
-        commit: 213b201d264139cd1b887790197e08850af628e3
+        url: https://github.com/fastfloat/fast_float.git
+        tag: v3.5.1
+        commit: 6876616f0f6e69534b42ff0524fd616b56116736
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -121,43 +121,57 @@ modules:
   - name: pcsx2
     buildsystem: cmake-ninja
     builddir: true
-    build-options:
-      build-args:
-        - --share=network
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DXDG_STD=TRUE
-      - -DDISABLE_BUILD_DATE=TRUE
-      - -DOpenGL_GL_PREFERENCE=GLVND
-      - -DPACKAGE_MODE=TRUE
-      - -DCMAKE_INSTALL_PREFIX:PATH=/app/
+      - -DPACKAGE_MODE=ON
+      - -DXDG_STD=ON
+      - -DDISABLE_BUILD_DATE=ON
+      - -DDISABLE_PCSX2_WRAPPER=ON
       - -DDISABLE_SETCAP=TRUE
-      - -DSDL2_API=TRUE
+      - -DSDL2_API=ON
       - -DWAYLAND_API=ON
       - -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
-      - -DUSE_SYSTEM_YAML=TRUE
     cleanup:
       - /share/pixmaps
       - /share/man
       - /share/doc
     post-install:
-      - desktop-file-edit --set-key=Exec --set-value=pcsx2 /app/share/applications/PCSX2.desktop
-      - install -Dm644 ../pcsx2/gui/Resources/AppIcon64.png /app/share/icons/hicolor/64x64/apps/PCSX2.png
-      - install -Dm644 ../net.pcsx2.PCSX2.appdata.xml /app/share/appdata/net.pcsx2.PCSX2.appdata.xml
-    sources:
+      - mv ${FLATPAK_DEST}/share/applications/PCSX2.desktop ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
+      - desktop-file-edit --set-key=Exec --set-value=pcsx2 ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
+      - desktop-file-edit --set-key=Icon --set-value=net.pcsx2.PCSX2 ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
+      - install -Dm644 ../pcsx2/gui/Resources/AppIcon64.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/net.pcsx2.PCSX2.png
+      - install -Dm644 ../net.pcsx2.PCSX2.metainfo.xml ${FLATPAK_DEST}/share/metainfo/net.pcsx2.PCSX2.metainfo.xml
+    sources: &pcsx2-sources
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        commit: 2f7d45db09ba90fa6554b29ce5b39c9e72d15499
-        disable-shallow-clone: true
-        disable-submodules: true
+        tag: v1.7.3512
+        commit: 6103d07d078b5404027a4d547fe7fd57211fe909
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-          is-main-source: true
-        tag: v1.7.3369
       - type: file
-        path: net.pcsx2.PCSX2.appdata.xml
-      - type: shell
-        commands:
-          - git submodule init
-          - git submodule update
+        path: net.pcsx2.PCSX2.metainfo.xml
+  - name: pcsx2-qt
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DXDG_STD=ON
+      - -DDISABLE_BUILD_DATE=ON
+      - -DDISABLE_PCSX2_WRAPPER=ON
+      - -DDISABLE_SETCAP=TRUE
+      - -DSDL2_API=ON
+      - -DWAYLAND_API=ON
+      - -DQT_BUILD=ON
+      - -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+    cleanup:
+      - /share/pixmaps
+      - /share/man
+      - /share/doc
+    post-install:
+      - cp -r ../bin/* ${FLATPAK_DEST}/bin
+      - rm ${FLATPAK_DEST}/bin/portable.ini
+      - install -Dm644 ../.github/workflows/scripts/linux/pcsx2-qt.desktop ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.Qt.desktop
+      - desktop-file-edit --set-key=Icon --set-value=net.pcsx2.PCSX2 ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.Qt.desktop
+      - desktop-file-edit --set-key=Name --set-value='PCSX2 Qt' ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.Qt.desktop
+    sources: *pcsx2-sources

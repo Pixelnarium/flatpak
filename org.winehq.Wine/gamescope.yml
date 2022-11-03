@@ -9,6 +9,7 @@ sources:
     url: https://github.com/Plagman/gamescope.git
     tag: 3.11.47
     commit: b87660561fd3b48e55a26febac4aa5cd6b459172
+    disable-shallow-clone: true
     x-checker-data:
       type: git
       tag-pattern: ^([\d.]+)$
@@ -21,6 +22,7 @@ sources:
   - type: shell
     commands:
       - install -t subprojects/stb subprojects/packagefiles/stb/*
+
 modules:
   - modules/libinput/libinput.json
   - modules/xwayland/xwayland.yml

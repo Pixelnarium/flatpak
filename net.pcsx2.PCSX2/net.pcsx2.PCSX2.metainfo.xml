@@ -20,26 +20,19 @@
       <li>Increase or decrease the game speed by using the built-in frame-limiter</li>
       <li>Ability to record in full HD with the built-in video recorder (F12 using the GSdx plugin)</li>
     </ul>
+    <p>Copy your PS2 BIOS files to the default BIOS search path "$HOME/.var/app/net.pcsx2.PCSX2/config/PCSX2/bios".</p>
   </description>
   <url type="homepage">https://pcsx2.net</url>
   <url type="bugtracker">https://github.com/PCSX2/pcsx2/issues</url>
   <releases>
-    <release version="1.7.3369" date="2022-10-05"/>
-    <release version="1.7.3325" date="2022-09-19"/>
-    <release version="1.7.3274" date="2022-09-02"/>
-    <release version="1.7.3161" date="2022-08-04"/>
-    <release version="1.7.3137" date="2022-07-30"/>
-    <release version="1.7.3074" date="2022-07-15"/>
-    <release version="1.7.3035" date="2022-07-01"/>
-    <release version="1.7.2954" date="2022-06-18"/>
-    <release version="1.7.2951" date="2022-06-16"/>
-    <release version="1.7.2900" date="2022-06-06"/>
-    <release version="1.7.2810" date="2022-05-26"/>
-    <release version="1.7.2804" date="2022-05-25"/>
-    <release version="1.7.2803" date="2022-05-25"/>
-    <release version="1.7.2800" date="2022-05-25"/>
-    <release date="2020-03-22" version="v1.6.0-rc"/>
-    <release date="2020-05-01" version="v1.6.0"/>
+    <release version="1.7.3512" date="2022-11-02"/>
+    <release version="1.7.3511" date="2022-11-02"/>
+    <release version="1.7.3505" date="2022-11-01"/>
+    <release version="1.7.3500" date="2022-10-31"/>
+    <release version="1.7.3495" date="2022-10-30"/>
+    <release version="1.7.3485" date="2022-10-25"/>
+    <release version="1.7.3376" date="2022-10-07"/>
+    <release version="1.7.3358" date="2022-10-02"/>
   </releases>
   <screenshots>
     <screenshot type="default">
@@ -48,4 +41,5 @@
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
+  <update_contact>tingping_at_tingping.se</update_contact>
 </component>
