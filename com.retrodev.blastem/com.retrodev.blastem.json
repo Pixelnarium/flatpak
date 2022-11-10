@@ -99,8 +99,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/python-pillow/Pillow.git",
-                    "commit": "58acec3312fb8671c9d84829197e1c8150085589",
-                    "tag": "9.2.0",
+                    "commit": "d594f4cb8dc47fb0c69ae58d9fff86faae4515bd",
+                    "tag": "9.3.0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -112,6 +112,27 @@
                         "sed -i 's/if not platform_/if not dirs/' setup.py"
                     ]
                 }
+            ]
+        },
+        {
+            "name": "imagemagick",
+            "config-opts": [
+                "--disable-static"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/ImageMagick/ImageMagick",
+                    "tag": "7.1.0-52",
+                    "commit": "04ee6cec572251279db13cba52a59eaef12f5652",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+\\-[\\d]+)$"
+                    }
+                }
+            ],
+            "cleanup": [
+                "*"
             ]
         },
         {
@@ -135,7 +156,7 @@
                 {
                     "type": "archive",
                     "url": "https://www.retrodev.com/repos/blastem/archive/tip.tar.bz2",
-                    "sha256": "c2874cd57b125467b7bba5164402c0500d362aee3ff31153ea7cc648b407c423"
+                    "sha256": "92bf9106737bf8394606cf4166042b6e206bf70075f5d9d69afc418e3e4741e3"
                 },
                 {
                     "type": "file",

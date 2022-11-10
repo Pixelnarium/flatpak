@@ -1,48 +1,46 @@
 {
-  "app-id": "io.mgba.mGBA",
-  "runtime": "org.kde.Platform",
-  "sdk": "org.kde.Sdk",
-  "runtime-version": "5.15-22.08",
-  "command": "mgba-qt",
-  "rename-desktop-file": "mgba-qt.desktop",
-  "rename-icon": "mgba",
-  "finish-args": [
-    "--device=all",
-    "--socket=pulseaudio",
-    "--socket=fallback-x11",
-    "--socket=wayland",
-    "--system-talk-name=org.freedesktop.UPower",
-    "--talk-name=org.freedesktop.ScreenSaver"
-  ],
-  "modules": [
-    {
-      "name": "mgba",
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE=Release",
-        "-DUSE_FFMPEG=OFF",
-        "-DCMAKE_INSTALL_LIBDIR=lib"
-      ],
-      "build-commands": [
-        "install -Dm644 io.mgba.mGBA.appdata.xml /app/share/appdata/io.mgba.mGBA.appdata.xml"
-      ],
-      "sources": [
+    "app-id": "io.mgba.mGBA",
+    "runtime": "org.kde.Platform",
+    "sdk": "org.kde.Sdk",
+    "runtime-version": "5.15-22.08",
+    "command": "mgba-qt",
+    "finish-args": [
+        "--device=all",
+        "--socket=pulseaudio",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--system-talk-name=org.freedesktop.UPower",
+        "--talk-name=org.freedesktop.ScreenSaver"
+    ],
+    "modules": [
         {
-          "type": "git",
-          "url": "https://github.com/mgba-emu/mgba.git",
-          "tag": "0.9.3",
-          "commit": "1163869139a4cf38027e567ad77854691958ae84",
-          "x-checker-data": {
-            "type": "git",
-            "tag-pattern": "^([\\d.]+)$",
-            "is-main-source": true
-          }
-        },
-        {
-          "type": "file",
-          "path": "io.mgba.mGBA.appdata.xml"
+            "name": "mgba",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DUSE_FFMPEG=OFF",
+                "-DCMAKE_INSTALL_LIBDIR=lib"
+            ],
+            "build-commands": [
+                "install -Dm644 io.mgba.mGBA.appdata.xml /app/share/appdata/io.mgba.mGBA.appdata.xml"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/mgba-emu/mgba.git",
+                    "tag": "0.10.0",
+                    "commit": "686eee4e20cc555b90810811f2d0d6f8b9b393c5",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$",
+                        "is-main-source": true
+                    }
+                },
+                {
+                    "type": "file",
+                    "path": "io.mgba.mGBA.appdata.xml"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

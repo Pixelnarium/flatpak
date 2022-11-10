@@ -47,8 +47,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Arisotura/melonDS.git
-        tag: 0.9.4
-        commit: cce9de5ee1f51e906a644922b2ada6644d81287a
+        tag: 0.9.5
+        commit: 430de6b2702bb93faa8c2004aff3fbd084db4a1e
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$

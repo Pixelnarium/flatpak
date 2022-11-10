@@ -180,8 +180,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/22.10/FAudio-22.10.tar.gz
-        sha256: c2b3d52cb4a649582f4c10f3fd8245985b305b16f6c46dd191cb296a71f9250a
+        url: https://github.com/FNA-XNA/FAudio/archive/22.11/FAudio-22.11.tar.gz
+        sha256: ba38e6682616e3d6f6b0913be54069020436701af316c9c3479e957c9c1cb758
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
@@ -250,8 +250,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.15.10.tar.gz
-        sha256: 19a0206cb9750f8204e51e8bf1b5e7808d997559b9cf9923b3ba6bf473846cf8
+        url: https://download.samba.org/pub/samba/samba-4.15.11.tar.gz
+        sha256: 2f305980d49c7723cbef281fff2b81a2eeafae51e58b5172bb43d9693ef8953b
         x-checker-data:
           type: anitya
           project-id: 4758
@@ -336,8 +336,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
       - type: archive
-        url: https://dl.winehq.org/wine/source/7.x/wine-7.19.tar.xz
-        sha256: 43ac497e6e1d7fded492c32a68b554c57b76f2be8dc787e7335a0dd4e68b9d21
+        url: https://dl.winehq.org/wine/source/7.x/wine-7.20.tar.xz
+        sha256: 751b79f22b5a9f72c9ec15f755b00b13d3ed073e9168c3ef4adabd9db37d0d50
         x-addons-url: &wine-addons-url >-
           https://source.winehq.org/git/wine.git/blob_plain/refs/heads/master:/dlls/appwiz.cpl/addons.c
         x-checker-data:
@@ -498,9 +498,9 @@ modules:
         --origin=flatpak ${FLATPAK_ID}.mono
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/7.3.0/wine-mono-7.3.0-x86.tar.xz
+        url: https://dl.winehq.org/wine/wine-mono/7.4.0/wine-mono-7.4.0-x86.tar.xz
         strip-components: 0
-        sha256: 60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd
+        sha256: 9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3
         x-checker-data:
           type: html
           url: *wine-addons-url

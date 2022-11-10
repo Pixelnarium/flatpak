@@ -9,27 +9,24 @@
   "finish-args": [
     "--device=dri",
     "--share=ipc",
+    "--socket=wayland",
     "--socket=fallback-x11",
     "--socket=pulseaudio",
     "--persist=."
   ],
   "command": "freegish",
   "modules": [
-    "../../shared-modules/glew/glew.json",
-    "../../shared-modules/glu/glu-9.json",
-    "../../shared-modules/SDL/SDL-1.2.15.json",
-    "../../shared-modules/SDL/SDL_mixer-1.2.12.json",
     {
       "name": "freegish",
       "buildsystem": "cmake",
+      "config-opts": [
+        "-DINSTALL_FHS=ON",
+        "-DCMAKE_INSTALL_PREFIX=/app"
+      ],
       "sources": [
         {
           "type": "git",
           "url": "https://github.com/freegish/freegish.git"
-        },
-        {
-          "type": "patch",
-          "path": "0001-math_and_data_path.patch"
         },
          {
           "type": "file",
@@ -54,7 +51,8 @@
         "install -Dm644 freegish.desktop /app/share/applications/",
         "install -Dm644 freegish.appdata.xml /app/share/appdata/",
         "cp -r {animation,level,music,sound,texture,tile01,tile02,tile03,tile04,tile05,tile06,tile07} /app/share/freegish",
-        "sh clean_textures.sh"
+        "sh clean_textures.sh",
+        "sh rename-levels.sh /app/share/freegish"
       ]
     }
   ]
