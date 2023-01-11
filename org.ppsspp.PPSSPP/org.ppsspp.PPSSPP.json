@@ -63,8 +63,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/hrydgard/ppsspp.git",
-                    "tag": "v1.13.2",
-                    "commit": "9fe6338e3bf397f8a009a51a282c139dfa180eb6",
+                    "tag": "v1.14.4",
+                    "commit": "cd535263c1ad65fd03869591a8bd706680cbf04b",
                     "disable-shallow-clone": true,
                     "x-checker-data": {
                         "type": "git",

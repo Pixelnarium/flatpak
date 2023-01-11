@@ -45,8 +45,6 @@ def main():
 
     home = str(Path.cwd().parent)
     proj_prefix = os.path.join(home, "flatpak")
-    stats_dir = os.path.join(home, "build-dir", "flatpak-builder")
-    build_dir = os.path.join(home, "build-dir", "build")
     results = []
 
     call(["git", "submodule", "update", "--recursive", "--remote", "--merge"])
@@ -60,6 +58,9 @@ def main():
         full_path = os.path.join(os.path.expanduser(proj_prefix), path)
         name = path.split("/")[-1]
 
+        stats_dir = os.path.join(home, "build-dir", name, "flatpak-builder")
+        build_dir = os.path.join(home, "build-dir", name, "build")
+
         os.chdir(full_path)
 
         if os.path.isfile(name+".json"):
@@ -70,7 +71,8 @@ def main():
         print(name)
         call(["chrt", "-i", "0", "flatpak", "run", "org.flathub.flatpak-external-data-checker", "--commit-only", "--edit-only", name])
         if not update_only:
-            ret = call(["chrt", "-i", "0", "flatpak", "run", "org.flatpak.Builder", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])#, "--keep-build-dirs"])
+            ret = call(["chrt", "-i", "0", "flatpak-builder", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])
+            #ret = call(["chrt", "-i", "0", "flatpak", "run", "org.flatpak.Builder", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])
             results.append(name + " -> " + str(ret))
 
         #shutil.rmtree("build", ignore_errors=True)

@@ -2,7 +2,7 @@ app-id: net.pcsx2.PCSX2
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
 runtime-version: '6.4'
-command: pcsx2
+command: pcsx2-qt
 finish-args:
   - --device=all
   - --share=ipc
@@ -10,23 +10,6 @@ finish-args:
   - --socket=wayland
   - --socket=pulseaudio
 modules:
-  - name: wxWidgets
-    buildsystem: cmake-ninja
-    cleanup:
-      - /bin
-      - /include
-      - /lib/wx/include
-    sources:
-      - type: git
-        url: https://github.com/wxWidgets/wxWidgets.git
-        tag: v3.2.1
-        commit: 97e99707c5d2271a70cb686720b48dbf34ced496
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
-    modules:
-      - ../shared-modules/glu/glu-9.json
-
   - name: libaio
     no-autogen: true
     make-install-args:
@@ -93,8 +76,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/the-tcpdump-group/libpcap.git
-        tag: libpcap-1.10.1
-        commit: c7642e2cc0c5bd65754685b160d25dc23c76c6bd
+        tag: libpcap-1.10.2
+        commit: c46306b7898229747609636c4bdd48ae2bdbab8a
         x-checker-data:
           type: git
           tag-pattern: ^libpcap-([\d.]+)$
@@ -112,8 +95,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fastfloat/fast_float.git
-        tag: v3.6.0
-        commit: 662497742fea7055f0e0ee27e5a7ddc382c2c38e
+        tag: v3.8.1
+        commit: 08c47edf570aedfffc7dc1fbbed5cad9be691840
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -123,12 +106,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DPACKAGE_MODE=ON
-      - -DXDG_STD=ON
       - -DDISABLE_BUILD_DATE=ON
-      - -DDISABLE_PCSX2_WRAPPER=ON
-      - -DDISABLE_SETCAP=TRUE
-      - -DSDL2_API=ON
       - -DWAYLAND_API=ON
       - -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
     cleanup:
@@ -136,42 +114,19 @@ modules:
       - /share/man
       - /share/doc
     post-install:
-      - mv ${FLATPAK_DEST}/share/applications/PCSX2.desktop ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
-      - desktop-file-edit --set-key=Exec --set-value=pcsx2 ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
-      - desktop-file-edit --set-key=Icon --set-value=net.pcsx2.PCSX2 ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
-      - install -Dm644 ../pcsx2/gui/Resources/AppIcon64.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/net.pcsx2.PCSX2.png
+      - cp -r bin/pcsx2-qt ../bin/* ${FLATPAK_DEST}/bin
+      - rm ${FLATPAK_DEST}/bin/portable.ini
+      - install -Dm644 ../pcsx2/Resources/AppIcon64.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/net.pcsx2.PCSX2.png
       - install -Dm644 ../net.pcsx2.PCSX2.metainfo.xml ${FLATPAK_DEST}/share/metainfo/net.pcsx2.PCSX2.metainfo.xml
-    sources: &pcsx2-sources
+      - install -Dm644 ../.github/workflows/scripts/linux/pcsx2-qt.desktop ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
+      - desktop-file-edit --set-key=Icon --set-value=net.pcsx2.PCSX2 ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
+    sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        tag: v1.7.3550
-        commit: 93d948ac575b70c9190f3c010c3b2e8beac9011b
+        tag: v1.7.3882
+        commit: 0a90765ed0e74b5b73827f3e632daed58a5dc854
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
       - type: file
         path: net.pcsx2.PCSX2.metainfo.xml
-  - name: pcsx2-qt
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DXDG_STD=ON
-      - -DDISABLE_BUILD_DATE=ON
-      - -DDISABLE_PCSX2_WRAPPER=ON
-      - -DDISABLE_SETCAP=TRUE
-      - -DSDL2_API=ON
-      - -DWAYLAND_API=ON
-      - -DQT_BUILD=ON
-      - -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
-    cleanup:
-      - /share/pixmaps
-      - /share/man
-      - /share/doc
-    post-install:
-      - cp -r ../bin/* ${FLATPAK_DEST}/bin
-      - rm ${FLATPAK_DEST}/bin/portable.ini
-      - install -Dm644 ../.github/workflows/scripts/linux/pcsx2-qt.desktop ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.Qt.desktop
-      - desktop-file-edit --set-key=Icon --set-value=net.pcsx2.PCSX2 ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.Qt.desktop
-      - desktop-file-edit --set-key=Name --set-value='PCSX2 Qt' ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.Qt.desktop
-    sources: *pcsx2-sources

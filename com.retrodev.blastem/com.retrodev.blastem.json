@@ -99,8 +99,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/python-pillow/Pillow.git",
-                    "commit": "d594f4cb8dc47fb0c69ae58d9fff86faae4515bd",
-                    "tag": "9.3.0",
+                    "commit": "a5bbab1c1e63b439de191ef2040173713b26d2da",
+                    "tag": "9.4.0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -123,8 +123,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ImageMagick/ImageMagick",
-                    "tag": "7.1.0-52",
-                    "commit": "04ee6cec572251279db13cba52a59eaef12f5652",
+                    "tag": "7.1.0-57",
+                    "commit": "eadf378a6f4e088c32fa5eda62ca6c41d8a84c9c",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+\\-[\\d]+)$"

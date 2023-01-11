@@ -7,13 +7,12 @@ buildsystem: meson
 sources:
   - type: git
     url: https://github.com/Plagman/gamescope.git
-    tag: 3.11.48
-    commit: f072cbd58b0ab373f486bf1647b7acd0ffce8f0d
+    tag: 3.11.51
+    commit: 7aef264dfcf81c5f303422d820b7e1ecf81568f3
     disable-shallow-clone: true
     x-checker-data:
       type: git
       tag-pattern: ^([\d.]+)$
-      is-main-source: true
   - type: git
     url: https://github.com/nothings/stb.git
     branch: master
@@ -27,3 +26,4 @@ modules:
   - modules/libinput/libinput.json
   - modules/xwayland/xwayland.yml
   - modules/libseat/libseat.yml
+  - modules/hwdata/hwdata.yml
