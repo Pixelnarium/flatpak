@@ -336,8 +336,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
       - type: archive
-        url: https://dl.winehq.org/wine/source/8.0/wine-8.0-rc3.tar.xz
-        sha256: e16302241195743554c3c5f0556d53f6d0ebeddc66ba339f58adccc83a421d89
+        url: https://dl.winehq.org/wine/source/8.0/wine-8.0-rc5.tar.xz
+        sha256: 067417954fb1fe6d5b6ad36634d739d26b6bd992bc2c00022795cededeae5eda
         x-addons-url: &wine-addons-url >-
           https://source.winehq.org/git/wine.git/blob_plain/refs/heads/master:/dlls/appwiz.cpl/addons.c
         x-checker-data:
