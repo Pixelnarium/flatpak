@@ -15,6 +15,15 @@
   "modules": [
     "../shared-modules/glu/glu-9.json",
     {
+      "name": "SDL2_net",
+      "cleanup": ["/include"],
+      "sources": [{
+        "type": "git",
+        "url": "https://github.com/libsdl-org/SDL_net.git",
+        "branch": "main"
+      }]
+    },
+    {
       "name": "mupen64plus-core",
       "buildsystem": "simple",
       "cleanup": ["/include"],

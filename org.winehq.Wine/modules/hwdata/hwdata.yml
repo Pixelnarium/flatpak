@@ -10,8 +10,8 @@ build-options:
 sources:
   - type: git
     url: https://github.com/vcrhonek/hwdata.git
-    tag: v0.366
-    commit: 2fa514ff86da425726dea8629bcf4ceac9d8e7ff
+    tag: v0.368
+    commit: 0e25d93ac6433791edbb9d28b3f8eae0cf5e46ff
     x-checker-data:
       type: git
       tag-pattern: ^v([\d.]+)$

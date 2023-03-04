@@ -180,8 +180,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/23.01/FAudio-23.01.tar.gz
-        sha256: 763fb3125138181eff1a807ed8b03b3fb921b9b0df30a87e0aa2cfb46c991758
+        url: https://github.com/FNA-XNA/FAudio/archive/23.03/FAudio-23.03.tar.gz
+        sha256: 59489129668ac3134c0483a0fea206db531550f0f5428f99aafec78626054551
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
@@ -382,8 +382,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
-        tag: '20220411'
-        commit: 5904ee355e37dff4a3ab37e1573c56cffe6ce223
+        tag: '20230212'
+        commit: e9f380aab64c07126d9259e1c16598c332c2f58f
         x-checker-data:
           type: git
           tag-pattern: ^(\d+)$

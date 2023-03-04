@@ -123,8 +123,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ImageMagick/ImageMagick",
-                    "tag": "7.1.0-60",
-                    "commit": "212bed9bab497c0f738c0f11ded1f34656ff154e",
+                    "tag": "7.1.0-62",
+                    "commit": "32ce406898b6f9992103cc0ee353f31a0e83f063",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+\\-[\\d]+)$"
