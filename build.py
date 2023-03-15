@@ -32,6 +32,22 @@ projects = [("com.eduke32.EDuke32","x86_64"),
         ("org.winehq.Wine","x86_64"),
         ("org.mamedev.MAME","x86_64")]
 
+self_host = [("https://github.com/flathub/com.visualstudio.code.git","com.visualstudio.code")]
+
+sh_folder = "selfhost"
+
+def checkout_selfhosted(proj_prefix):
+    sh_path = proj_prefix.joinpath(sh_folder)
+    os.chdir(proj_prefix)
+    shutil.rmtree(sh_folder, ignore_errors=True)
+
+    for selfh in self_host:
+        sgit = selfh[0]
+        sname = selfh[1]
+        call(["git", "clone", "--depth=1", sgit, str(sh_path.joinpath(sname))])
+        projects.append((sh_folder+"/"+sname, "x86_64"))
+        shutil.copytree(str(proj_prefix.joinpath("shared-modules")), str(sh_path.joinpath(sname, "shared-modules")), dirs_exist_ok=True) 
+
 def main():
     repo_path = sys.argv[1]
     filter_name = None
@@ -43,11 +59,15 @@ def main():
         else:
             filter_name = val
 
-    home = str(Path.cwd().parent)
-    proj_prefix = os.path.join(home, "flatpak")
+    home = Path.cwd().parent
+    proj_prefix = home.joinpath("flatpak")
+    
     results = []
 
     call(["git", "submodule", "update", "--recursive", "--remote", "--merge"])
+
+    checkout_selfhosted(proj_prefix)
+
     for proj in projects:
         path = proj[0]
         if filter_name:
@@ -55,24 +75,26 @@ def main():
                 continue
 
         arch = proj[1]
-        full_path = os.path.join(os.path.expanduser(proj_prefix), path)
+        full_path = proj_prefix.joinpath(path)
         name = path.split("/")[-1]
 
-        stats_dir = os.path.join(home, "build-dir", name, "flatpak-builder")
-        build_dir = os.path.join(home, "build-dir", name, "build")
+        stats_dir = home.joinpath("build-dir", name, "flatpak-builder")
+        build_dir = home.joinpath("build-dir", name, "build")
 
         os.chdir(full_path)
 
         if os.path.isfile(name+".json"):
             name += ".json"
         else:
-            name += ".yml"
+            if os.path.isfile(name+".yml"):
+                name += ".yml"
+            else:
+                name += ".yaml"
 
         print(name)
         call(["chrt", "-i", "0", "flatpak", "run", "org.flathub.flatpak-external-data-checker", "--commit-only", "--edit-only", name])
         if not update_only:
-            ret = call(["chrt", "-i", "0", "flatpak-builder", "--jobs=4", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])
-            #ret = call(["chrt", "-i", "0", "flatpak", "run", "org.flatpak.Builder", build_dir, name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+stats_dir])
+            ret = call(["chrt", "-i", "0", "flatpak-builder", "--jobs=4", str(build_dir), name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+str(stats_dir)])
             results.append(name + " -> " + str(ret))
 
         #shutil.rmtree("build", ignore_errors=True)
