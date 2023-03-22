@@ -49,8 +49,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/libretro/RetroArch.git",
-                    "tag": "v1.14.0",
-                    "commit": "ad89b0c655fc1d25adfcdf40268e95c5d0391111",
+                    "tag": "v1.15.0",
+                    "commit": "6616b807edea5b56683e9fbca8b003b436c22b13",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",

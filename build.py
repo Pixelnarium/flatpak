@@ -46,7 +46,11 @@ def checkout_selfhosted(proj_prefix):
         sname = selfh[1]
         call(["git", "clone", "--depth=1", sgit, str(sh_path.joinpath(sname))])
         projects.append((sh_folder+"/"+sname, "x86_64"))
-        shutil.copytree(str(proj_prefix.joinpath("shared-modules")), str(sh_path.joinpath(sname, "shared-modules")), dirs_exist_ok=True) 
+
+        # copy shared-modules folder into target folder just in case
+        sourcesm = str(proj_prefix.joinpath("shared-modules"))
+        targetsm = str(sh_path.joinpath(sname, "shared-modules"))
+        shutil.copytree(sourcesm, targetsm, dirs_exist_ok=True)
 
 def main():
     repo_path = sys.argv[1]
@@ -61,7 +65,7 @@ def main():
 
     home = Path.cwd().parent
     proj_prefix = home.joinpath("flatpak")
-    
+
     results = []
 
     call(["git", "submodule", "update", "--recursive", "--remote", "--merge"])
@@ -83,6 +87,7 @@ def main():
 
         os.chdir(full_path)
 
+        # dirty hack to find the manifest
         if os.path.isfile(name+".json"):
             name += ".json"
         else:
@@ -94,11 +99,8 @@ def main():
         print(name)
         call(["chrt", "-i", "0", "flatpak", "run", "org.flathub.flatpak-external-data-checker", "--commit-only", "--edit-only", name])
         if not update_only:
-            ret = call(["chrt", "-i", "0", "flatpak-builder", "--jobs=4", str(build_dir), name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+str(stats_dir)])
+            ret = call(["chrt", "-i", "0", "ionice", "-c3", "nice", "-n19", "flatpak-builder", "--jobs=4", str(build_dir), name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+str(stats_dir)])
             results.append(name + " -> " + str(ret))
-
-        #shutil.rmtree("build", ignore_errors=True)
-        #shutil.rmtree(".flatpak-builder", ignore_errors=True)
 
     for r in results:
         print(r)
