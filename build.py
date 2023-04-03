@@ -30,9 +30,12 @@ projects = [("com.eduke32.EDuke32","x86_64"),
         ("com.valvesoftware.Steam.Utility.gamescope","x86_64"),
         ("commercial/com.factorio.factorio","x86_64"),
         ("org.winehq.Wine","x86_64"),
+        ("com.github.nba_emu.NanoBoyAdvance", "x86_64"),
         ("org.mamedev.MAME","x86_64")]
 
-self_host = [("https://github.com/flathub/com.visualstudio.code.git","com.visualstudio.code")]
+self_host = [("https://github.com/flathub/com.visualstudio.code.git","com.visualstudio.code"),
+             ("https://github.com/flathub/org.blender.Blender.git", "org.blender.Blender")
+             ]
 
 sh_folder = "selfhost"
 

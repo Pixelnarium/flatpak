@@ -95,8 +95,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fastfloat/fast_float.git
-        tag: v3.10.1
-        commit: eb8c0012015f9404ecb8b767a57d2669032a890f
+        tag: v3.11.0
+        commit: 0cdf016847c94a4303381e29758ccf480e90142e
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -123,8 +123,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        tag: v1.7.4268
-        commit: ad12a3f735d5a9c15b0bab4c1666172a0707c386
+        tag: v1.7.4288
+        commit: 4dd946bc8a07cf8e30b57376dbe6622bfcd9301e
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$

@@ -10,8 +10,8 @@ config-opts:
 sources:
   - type: git
     url: https://gitlab.freedesktop.org/xorg/xserver.git
-    tag: xwayland-23.1.0
-    commit: 603c14b96ff741b454b149ed4bde03d71c915b8c
+    tag: xwayland-23.1.1
+    commit: f03dd41290acb56bc229f4d290b0b112e13321aa
     x-checker-data:
       type: git
       tag-pattern: ^xwayland-([\d.]+)$
