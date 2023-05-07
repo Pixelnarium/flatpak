@@ -1,0 +1,38 @@
+app-id: com.github.nba_emu.NanoBoyAdvance
+runtime: org.kde.Platform
+runtime-version: '6.4'
+sdk: org.kde.Sdk
+command: NanoBoyAdvance
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --share=network
+  - --device=all
+  - --persist=.
+
+modules:
+  - ../shared-modules/glew/glew.json
+  - name: nba
+    buildsystem: cmake-ninja
+    builddir: true
+    build-options:
+      cflags: -DGLEW_NO_GLU
+      cxxflags: -DGLEW_NO_GLU
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=None
+      - -DUSE_QT6=ON
+    post-install:
+      - install -Dt /app/bin bin/qt/NanoBoyAdvance
+    sources:
+      - type: git
+        url: https://github.com/nba-emu/NanoBoyAdvance.git
+        tag: v1.7
+        commit: 1bcdaa39879c2d3c8db25d42a7439bc3a7555843
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+      - type: shell
+        commands:
+          - sed -i 's|-flto||g' external/unarr/CMakeLists.txt

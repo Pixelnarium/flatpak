@@ -21,8 +21,16 @@
         {
             "name": "eduke32",
             "buildsystem": "simple",
+            "build-options" : {
+                "cflags": "",
+                "cflags-override": true,
+                "cxxflags": "",
+                "cxxflags-override": true,
+                "ldflags": "",
+                "ldflags-override": true
+            },
             "build-commands": [
-                "make -j$FLATPAK_BUILDER_N_JOBS VC_REV=$(git rev-list HEAD --count)",
+                "make -j$FLATPAK_BUILDER_N_JOBS VC_REV=$(git rev-list HEAD --count) SDL_TARGET=2",
                 "install -d /app/bin",
                 "install -Dm755 eduke32 mapster32 /app/bin",
                 "install -Dm644 package/common/buildlic.txt /app/share/licenses/eduke32/buildlic.txt",
@@ -35,7 +43,7 @@
                     "type": "git",
                     "url": "https://voidpoint.io/terminx/eduke32.git",
                     "branch": "master",
-                    "commit": "ef5f15e456e70a9a65a4623795b74a353c1157aa"
+                    "commit": "6537106e66fe29413e5a5edc3145dcad8f9bb12c"
                 },
                 {
                     "type": "file",

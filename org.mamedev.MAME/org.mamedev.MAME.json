@@ -33,8 +33,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/mamedev/mame.git",
-                    "tag": "mame0253",
-                    "commit": "b6d9756c5e0c4d01cf034c38f95b0de64145f214",
+                    "tag": "mame0254",
+                    "commit": "bfa8d724a007d6421545a121e1986d9207459c67",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^mame([\\d.]+)$",

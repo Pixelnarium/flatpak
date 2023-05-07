@@ -76,8 +76,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/the-tcpdump-group/libpcap.git
-        tag: libpcap-1.10.3
-        commit: 95691ebe7564afa3faa5c6ba0dbd17e351be455a
+        tag: libpcap-1.10.4
+        commit: 104271ba4a14de6743e43bcf87536786d8fddea4
         x-checker-data:
           type: git
           tag-pattern: ^libpcap-([\d.]+)$
@@ -95,8 +95,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fastfloat/fast_float.git
-        tag: v3.11.0
-        commit: 0cdf016847c94a4303381e29758ccf480e90142e
+        tag: v4.0.0
+        commit: fbd5bd712e44b57b6b98d3117482909839f9320f
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -123,8 +123,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        tag: v1.7.4288
-        commit: 4dd946bc8a07cf8e30b57376dbe6622bfcd9301e
+        tag: v1.7.4477
+        commit: f651d8e26a8b3b91c46998176240e8af71ec45e5
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$

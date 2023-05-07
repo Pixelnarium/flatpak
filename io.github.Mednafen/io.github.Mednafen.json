@@ -33,8 +33,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/libsdl-org/SDL.git",
-                    "commit": "07d0f51fa292895443f563f0cbde4cb3802d87fa",
-                    "tag": "release-2.26.4",
+                    "commit": "ac13ca9ab691e13e8eebe9684740ddcb0d716203",
+                    "tag": "release-2.26.5",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^release-([\\d.]+)$"
