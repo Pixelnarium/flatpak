@@ -10,8 +10,8 @@ config-opts:
 sources:
   - type: git
     url: https://gitlab.freedesktop.org/xorg/xserver.git
-    tag: xwayland-23.1.1
-    commit: f03dd41290acb56bc229f4d290b0b112e13321aa
+    tag: xwayland-23.1.2
+    commit: 79a529dc34ef2fcdf853121004911896e07490fe
     x-checker-data:
       type: git
       tag-pattern: ^xwayland-([\d.]+)$
@@ -95,10 +95,10 @@ modules:
   - name: libmd
     sources:
       - type: archive
-        url: https://archive.hadrons.org/software/libmd/libmd-1.0.4.tar.xz
+        url: https://archive.hadrons.org/software/libmd/libmd-1.1.0.tar.xz
         mirror-urls:
           - https://libbsd.freedesktop.org/releases/libmd-1.0.4.tar.xz
-        sha256: f51c921042e34beddeded4b75557656559cf5b1f2448033b4c1eec11c07e530f
+        sha256: 1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332
         x-checker-data:
           type: anitya
           project-id: 15525

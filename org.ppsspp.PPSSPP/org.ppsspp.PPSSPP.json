@@ -31,8 +31,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://libzip.org/download/libzip-1.9.2.tar.xz",
-                    "sha256": "c93e9852b7b2dc931197831438fee5295976ee0ba24f8524a8907be5c2ba5937",
+                    "url": "https://libzip.org/download/libzip-1.10.0.tar.xz",
+                    "sha256": "cd2a7ac9f1fb5bfa6218272d9929955dc7237515bba6e14b5ad0e1d1e2212b43",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 10649,
@@ -63,8 +63,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/hrydgard/ppsspp.git",
-                    "tag": "v1.15.2",
-                    "commit": "4d4c325765c4f8d08a80b30d496c2fa28af68710",
+                    "tag": "v1.15.4",
+                    "commit": "9a80120dc09997e40c0a73fda05c3e07a347259f",
                     "disable-shallow-clone": true,
                     "x-checker-data": {
                         "type": "git",

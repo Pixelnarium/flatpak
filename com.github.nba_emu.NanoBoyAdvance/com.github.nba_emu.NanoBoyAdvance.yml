@@ -28,8 +28,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/nba-emu/NanoBoyAdvance.git
-        tag: v1.7
-        commit: 1bcdaa39879c2d3c8db25d42a7439bc3a7555843
+        tag: v1.7.1
+        commit: 5a14f6356e94e5dd9285256165ccd7ab65fb0fb5
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$

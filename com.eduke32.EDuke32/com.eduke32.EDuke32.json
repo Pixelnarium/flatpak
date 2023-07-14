@@ -21,7 +21,7 @@
         {
             "name": "eduke32",
             "buildsystem": "simple",
-            "build-options" : {
+            "build-options": {
                 "cflags": "",
                 "cflags-override": true,
                 "cxxflags": "",
@@ -43,7 +43,7 @@
                     "type": "git",
                     "url": "https://voidpoint.io/terminx/eduke32.git",
                     "branch": "master",
-                    "commit": "6537106e66fe29413e5a5edc3145dcad8f9bb12c"
+                    "commit": "77e6bb66fc27b54f9b2fa448a138047c71fab02e"
                 },
                 {
                     "type": "file",
