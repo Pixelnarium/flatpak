@@ -101,7 +101,7 @@ def main():
         print(name)
         call(["chrt", "-i", "0", "flatpak", "run", "org.flathub.flatpak-external-data-checker", "--commit-only", "--edit-only", name])
         if not update_only:
-            ret = call(["chrt", "-i", "0", "ionice", "-c3", "nice", "-n19", "flatpak-builder", "--jobs=4", str(build_dir), name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+str(stats_dir)])
+            ret = call(["chrt", "-i", "0", "ionice", "-c3", "nice", "-n19", "flatpak-builder", "--jobs=7", str(build_dir), name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+str(stats_dir)])
             results.append(name + " -> " + str(ret))
 
     for r in results:
