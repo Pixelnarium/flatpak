@@ -180,8 +180,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/23.07/FAudio-23.07.tar.gz
-        sha256: 9f197b778a69dc70f7fd2def547e87c3f1c369edc03b1d4085feb2742414f62a
+        url: https://github.com/FNA-XNA/FAudio/archive/23.08/FAudio-23.08.tar.gz
+        sha256: bf73c20a2082338fe0b3c283fdb3de08b5f2802bfaea8acc59c70c05567e94af
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
@@ -250,8 +250,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.18.4.tar.gz
-        sha256: 6ba7b3503cc59c9ff4f6fcb1b510c2c855fff93e0b366ab891a32a4732e88e53
+        url: https://download.samba.org/pub/samba/samba-4.18.5.tar.gz
+        sha256: 095256ac332e1d9fbf9b7ff7823f92a3233d3ed658ce7fc9b33905c2243f447f
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/
@@ -342,17 +342,17 @@ modules:
       - UPDATE_DESKTOP_DATABASE=/bin/true
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
-      - type: archive
-        url: https://dl.winehq.org/wine/source/8.x/wine-8.5.tar.xz
-        sha256: c09766401b30bb425e132e114b26dafa4276497e40ccbe15fb77e751fb09be17
+      - type: git
+        url: https://gitlab.winehq.org/wine/wine.git
+        sha256: eac34b9c85e1d6da483eb64094fa0b316d1b01a5
+        tag: wine-8.13
         x-addons-url: &wine-addons-url >-
           https://source.winehq.org/git/wine.git/blob_plain/refs/heads/master:/dlls/appwiz.cpl/addons.c
         x-checker-data:
-          type: html
-          url: https://www.winehq.org/news/
-          version-pattern: Wine (\d[\d\w\.-]+\d) Released
-          url-template: https://dl.winehq.org/wine/source/$major.x/wine-$version.tar.xz
+          type: git
+          tag-pattern: ^wine-([\d]+\.[\d]+)$
           is-main-source: true
+        commit: eac34b9c85e1d6da483eb64094fa0b316d1b01a5
       - type: patch
         paths:
           - patches/wine/loader-prefer-winedllpath.patch
@@ -539,6 +539,3 @@ modules:
         path: wine-logo.svg
       - type: file
         path: org.winehq.Wine.appdata.xml
-    modules:
-      - gamescope.yml
-
