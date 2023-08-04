@@ -21,9 +21,7 @@ projects = [("com.eduke32.EDuke32","x86_64"),
         ("net.kuribo64.melonDS","x86_64"),
         ("com.retrodev.blastem","x86_64"),
         ("org.DolphinEmu.dolphin-emu","x86_64"),
-        ("org.ppsspp.PPSSPP","x86_64"),
         ("io.mgba.mGBA","x86_64"),
-        ("org.byuu.bsnes","x86_64"),
         ("net.sourceforge.quakespasm","x86_64"),
         ("io.github.pr-starfighter","x86_64"),
         ("com.github.Sude.lgogdownloader","x86_64"),
@@ -33,7 +31,8 @@ projects = [("com.eduke32.EDuke32","x86_64"),
         ("org.mamedev.MAME","x86_64")]
 
 self_host = [("https://github.com/flathub/com.visualstudio.code.git","com.visualstudio.code"),
-             ("https://github.com/flathub/org.blender.Blender.git", "org.blender.Blender")
+             ("https://github.com/flathub/org.blender.Blender.git", "org.blender.Blender"),
+             ("https://github.com/flathub/org.ppsspp.PPSSPP.git", "org.ppsspp.PPSSPP")
              ]
 
 sh_folder = "selfhost"
@@ -101,7 +100,7 @@ def main():
         print(name)
         call(["chrt", "-i", "0", "flatpak", "run", "org.flathub.flatpak-external-data-checker", "--commit-only", "--edit-only", name])
         if not update_only:
-            ret = call(["chrt", "-i", "0", "ionice", "-c3", "nice", "-n19", "flatpak-builder", "--jobs=7", str(build_dir), name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+str(stats_dir)])
+            ret = call(["chrt", "-i", "0", "ionice", "-c3", "nice", "-n19", "flatpak-builder", "--jobs=4", str(build_dir), name, "--force-clean", "--repo="+repo_path, "--arch="+arch, "--state-dir="+str(stats_dir)])
             results.append(name + " -> " + str(ret))
 
     for r in results:
