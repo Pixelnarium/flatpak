@@ -1,6 +1,6 @@
 app-id: com.github.nba_emu.NanoBoyAdvance
 runtime: org.kde.Platform
-runtime-version: '6.4'
+runtime-version: '6.5'
 sdk: org.kde.Sdk
 command: NanoBoyAdvance
 finish-args:
@@ -25,6 +25,7 @@ modules:
       - -DUSE_QT6=ON
     post-install:
       - install -Dt /app/bin bin/qt/NanoBoyAdvance
+      - install -Dm644 ../com.github.nba_emu.NanoBoyAdvance.appdata.xml /app/share/appdata/com.github.nba_emu.NanoBoyAdvance.appdata.xml
     sources:
       - type: git
         url: https://github.com/nba-emu/NanoBoyAdvance.git
@@ -36,3 +37,5 @@ modules:
       - type: shell
         commands:
           - sed -i 's|-flto||g' external/unarr/CMakeLists.txt
+      - type: file
+        path: com.github.nba_emu.NanoBoyAdvance.appdata.xml

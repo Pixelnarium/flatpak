@@ -1,7 +1,7 @@
 {
     "app-id": "com.eduke32.EDuke32",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "22.08",
+    "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "eduke32",
     "rename-desktop-file": "eduke32.desktop",
@@ -43,7 +43,7 @@
                     "type": "git",
                     "url": "https://voidpoint.io/terminx/eduke32.git",
                     "branch": "master",
-                    "commit": "77e6bb66fc27b54f9b2fa448a138047c71fab02e"
+                    "commit": "03a39f4d64a9131138eeecab08003d5c6b67da1c"
                 },
                 {
                     "type": "file",

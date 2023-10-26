@@ -6,3 +6,4 @@ gish_g_linux.tar.gz
 *.wl6
 *.tar.xz
 selfhost/
+build.py

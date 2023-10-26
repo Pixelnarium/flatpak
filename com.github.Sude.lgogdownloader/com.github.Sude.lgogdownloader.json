@@ -2,9 +2,9 @@
     "app-id": "com.github.Sude.lgogdownloader",
     "default-branch": "stable",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-22.08",
+    "runtime-version": "5.15-23.08",
     "base": "io.qt.qtwebengine.BaseApp",
-    "base-version": "5.15-22.08",
+    "base-version": "5.15-23.08",
     "sdk": "org.kde.Sdk",
     "command": "lgogdownloader",
     "cleanup": [
@@ -32,8 +32,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.bz2",
-                    "sha256": "a6e1ab9b0860e6a2881dd7b21fe9f737a095e5f33a3a874afc6a345228597ee6",
+                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.bz2",
+                    "sha256": "6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 6845,
@@ -125,8 +125,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/rhash/RHash.git",
-                    "tag": "v1.4.3",
-                    "commit": "a1ba419a295e2925cce55c80794873a92a838d44",
+                    "tag": "v1.4.4",
+                    "commit": "cfe77846a4c1bc7424eb2da2b164577a16bbcb19",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
@@ -149,8 +149,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Sude-/lgogdownloader.git",
-                    "tag": "v3.11",
-                    "commit": "b1d54e70f7ddb1bf3b1b909bac0ca60e744bc65d",
+                    "tag": "v3.12",
+                    "commit": "8e07ba18e883a0c0b3f30e527fd6952d36eaf460",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",

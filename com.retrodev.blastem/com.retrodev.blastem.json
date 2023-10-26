@@ -2,7 +2,7 @@
     "app-id": "com.retrodev.blastem",
     "runtime": "org.freedesktop.Platform",
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "22.08",
+    "runtime-version": "23.08",
     "command": "start-blastem",
     "rename-icon": "blastem",
     "finish-args": [
@@ -99,8 +99,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/python-pillow/Pillow.git",
-                    "commit": "6e28ed1f36d0eb74053af54e1eddc9c29db698cd",
-                    "tag": "10.0.0",
+                    "commit": "da59ad000d1405eaecd557175e29083a87d19f7c",
+                    "tag": "10.1.0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -123,8 +123,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ImageMagick/ImageMagick",
-                    "tag": "7.1.1-12",
-                    "commit": "a09d8dd5e3a92362cf70c184670b23163587e6f8",
+                    "tag": "7.1.1-21",
+                    "commit": "58d86e4e107603a95f2f35da99540a2eb69b458d",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+\\-[\\d]+)$"
@@ -147,7 +147,7 @@
                 "make clean all",
                 "make menu.bin",
                 "mkdir /app/blastem/",
-                "cp -r dis zdis vgmplay blastem termhelper menu.bin shaders images default.cfg rom.db gamecontrollerdb.txt README COPYING CHANGELOG /app/blastem/",
+                "cp -r dis zdis blastem termhelper menu.bin shaders images default.cfg rom.db gamecontrollerdb.txt README COPYING CHANGELOG /app/blastem/",
                 "xcf2png -o blastem.png icons/windows.xcf 256x256",
                 "install -Dm644 blastem.png /app/share/icons/hicolor/256x256/apps/",
                 "install -Dm755 start-blastem.sh /app/bin/start-blastem"
@@ -156,7 +156,7 @@
                 {
                     "type": "archive",
                     "url": "https://www.retrodev.com/repos/blastem/archive/tip.tar.bz2",
-                    "sha256": "13df49fb30031e51ada6517c20f7b7b3bcbb25609decfba3d60ed126b249c4ed"
+                    "sha256": "b1ca8e1ee773f622630c6e958cb453747b6ff83652b335008f938413496f5452"
                 },
                 {
                     "type": "file",

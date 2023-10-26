@@ -1,7 +1,7 @@
 {
     "app-id": "org.libretro.RetroArch",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "22.08",
+    "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "retroarch-wrapper",
     "rename-desktop-file": "retroarch.desktop",
@@ -49,8 +49,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/libretro/RetroArch.git",
-                    "tag": "v1.15.0",
-                    "commit": "6616b807edea5b56683e9fbca8b003b436c22b13",
+                    "tag": "v1.16.0.3",
+                    "commit": "6c2cc456284fcfa6fa5f94664950926c020d2f7b",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",

@@ -16,6 +16,9 @@
   </description>
   <url type="homepage">http://mamedev.org/</url>
   <releases>
+    <release version="0260" date="2023-10-26"/>
+    <release version="0259" date="2023-10-02"/>
+    <release version="0258" date="2023-08-31"/>
     <release version="0256" date="2023-07-05"/>
     <release version="0255" date="2023-06-08"/>
     <release version="0254" date="2023-05-07"/>

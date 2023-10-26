@@ -1,7 +1,7 @@
 app-id: net.pcsx2.PCSX2
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
-runtime-version: '6.4'
+runtime-version: '6.6'
 command: pcsx2-qt
 finish-args:
   - --device=all
@@ -101,6 +101,30 @@ modules:
           type: git
           tag-pattern: ^v([\d.]+)$
 
+  - name: sdl2
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DSDL_STATIC=OFF
+      - -DSDL_DLOPEN=ON
+      - -DSDL_RPATH=OFF
+    sources:
+      - type: git
+        url: https://github.com/libsdl-org/SDL.git
+        commit: cc016b0046d563287f0aa9f09b958b5e70d43696
+        tag: release-2.28.4
+        x-checker-data:
+          type: git
+          tag-pattern: ^release-([\d.]+)$
+    cleanup:
+      - /bin
+      - /share/man
+      - /share/aclocal
+      - /include
+      - /lib/pkgconfig
+      - /lib/*.la
+      - /lib/*.a
   - name: pcsx2
     buildsystem: cmake-ninja
     builddir: true
@@ -116,15 +140,15 @@ modules:
     post-install:
       - cp -r bin/pcsx2-qt ../bin/* ${FLATPAK_DEST}/bin
       - rm ${FLATPAK_DEST}/bin/portable.ini
-      - install -Dm644 ../pcsx2/Resources/AppIcon64.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/net.pcsx2.PCSX2.png
+      - install -Dm644 ../bin/resources/icons/AppIconLarge.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/net.pcsx2.PCSX2.png
       - install -Dm644 ../net.pcsx2.PCSX2.metainfo.xml ${FLATPAK_DEST}/share/metainfo/net.pcsx2.PCSX2.metainfo.xml
       - install -Dm644 ../.github/workflows/scripts/linux/pcsx2-qt.desktop ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
       - desktop-file-edit --set-key=Icon --set-value=net.pcsx2.PCSX2 ${FLATPAK_DEST}/share/applications/net.pcsx2.PCSX2.desktop
     sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        tag: v1.7.4683
-        commit: 87245ef9789cb1652f2755f274c08d5a076689b9
+        tag: v1.7.5156
+        commit: e9ead0d33d528417c8401224879750c725375c3b
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$

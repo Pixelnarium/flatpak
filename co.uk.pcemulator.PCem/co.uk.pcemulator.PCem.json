@@ -2,7 +2,7 @@
     "app-id": "co.uk.pcemulator.PCem",
     "runtime": "org.freedesktop.Platform",
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "22.08",
+    "runtime-version": "23.08",
     "command": "pcem",
     "rename-desktop-file": "PCem.desktop",
     "rename-appdata-file": "pcem.appdata.xml",
@@ -45,8 +45,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/wxWidgets/wxWidgets.git",
-                    "commit": "a812fffda3fe686c94e24bff27e8effd96e4de64",
-                    "tag": "v3.2.2.1",
+                    "commit": "cc7fefd9f17ced619633a7bef2f379fb8c8d25f2",
+                    "tag": "v3.2.3",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"

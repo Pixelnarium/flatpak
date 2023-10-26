@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=m64p
-GenericName=m64p
-Exec=simple64-gui
-Icon=io.github.m64p
-Categories=Game

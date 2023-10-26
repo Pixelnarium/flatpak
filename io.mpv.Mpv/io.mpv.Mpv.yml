@@ -1,0 +1,587 @@
+id: io.mpv.Mpv
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: mpv
+rename-desktop-file: mpv.desktop
+rename-icon: mpv
+
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --device=all
+  - --share=network
+  - --socket=pulseaudio
+  - --filesystem=/tmp:rw
+  - --env=LC_NUMERIC=C
+  - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
+  - --filesystem=xdg-run/pipewire-0:ro
+
+#  mpris support via dbus
+  - --own-name=org.mpris.MediaPlayer2.mpv.*
+  - --talk-name=org.gnome.SessionManager
+
+cleanup:
+  - '*.la'
+  - '*.a'
+
+modules:
+  - name: libXmu
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/xorg/lib/libxmu.git
+        tag: libXmu-1.1.4
+        commit: b29c739b577ee142877e69eb3fb07c7312d81557
+        x-checker-data:
+          type: git
+          tag-pattern: ^libXmu-([\d.]+)$
+
+  - name: xclip
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://github.com/astrand/xclip.git
+        tag: '0.13'
+        commit: 9aa7090c3b8b437c6489edca32ae43d82e0c1281
+        x-checker-data:
+          type: git
+          tag-pattern: ^(\d+\.\d+)$
+
+  - name: libXpresent
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/xorg/lib/libxpresent.git
+        tag: libXpresent-1.0.1
+        commit: 37507b5f44332accfb1064ee69a4f6a833994747
+        x-checker-data:
+          type: git
+          tag-pattern: ^libXpresent-([\d.]+)$
+
+  - name: luajit
+    no-autogen: true
+    cleanup:
+      - /bin
+      - /include
+      - /lib/pkgconfig
+      - /share/man
+    sources:
+      - type: git
+        url: https://github.com/LuaJIT/LuaJIT.git
+        disable-shallow-clone: true
+        commit: ff6c496ba1b51ed360065cbc5259f62becd70daa
+#       x-checker-data:
+#         type: json
+#         url: https://api.github.com/repos/LuaJIT/LuaJIT/commits
+#         commit-query: first( .[].sha )
+#         version-query: first( .[].sha )
+#         timestamp-query: first( .[].commit.committer.date )
+      - type: shell
+        commands:
+          - sed -i 's|/usr/local|/app|' ./Makefile
+
+  - name: yt-dlp
+    no-autogen: true
+    no-make-install: true
+    make-args:
+      - yt-dlp
+      - PYTHON=/usr/bin/python3
+    post-install:
+      - install yt-dlp /app/bin
+    sources:
+      - type: archive
+        url: https://github.com/yt-dlp/yt-dlp/releases/download/2023.10.13/yt-dlp.tar.gz
+        sha256: 64944f4452a7657b5fb31ae55d823d9411a1a29f9c1071d33fa3e6286e20522a
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name=="yt-dlp.tar.gz") | .browser_download_url
+
+  - name: uchardet
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_STATIC=0
+    cleanup:
+      - /bin
+      - /include
+      - /lib/pkgconfig
+      - /share/man
+    sources:
+      - type: archive
+        url: https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.8.tar.xz
+        sha256: e97a60cfc00a1c147a674b097bb1422abd9fa78a2d9ce3f3fdcc2e78a34ac5f0
+        x-checker-data:
+          type: html
+          url: https://www.freedesktop.org/software/uchardet/releases/
+          version-pattern: uchardet-(\d\.\d+\.?\d*).tar.xz
+          url-template: https://www.freedesktop.org/software/uchardet/releases/uchardet-$version.tar.xz
+
+  - name: libass
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    config-opts:
+      - --disable-static
+    sources:
+      - type: git
+        url: https://github.com/libass/libass.git
+        tag: 0.17.1
+        commit: e8ad72accd3a84268275a9385beb701c9284e5b3
+        x-checker-data:
+          type: git
+          tag-pattern: ^(\d\.\d{1,3}\.\d{1,2})$
+
+  - name: libv4l2
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /share/man
+    config-opts:
+      - --disable-static
+      - --disable-bpf
+      - --with-udevdir=/app/lib/udev
+    sources:
+      - type: git
+        url: https://git.linuxtv.org/v4l-utils.git
+        tag: v4l-utils-1.24.1
+        commit: 8799081b143627c9c09dea0c60ad3d1cc17cc848
+        x-checker-data:
+          type: git
+          tag-pattern: ^v4l-utils-([\d.]+)$
+
+  - name: libcdio
+    config-opts:
+      - --disable-static
+      - --disable-example-progs
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        url: https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2
+        sha256: 8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b
+        x-checker-data:
+          type: html
+          url: https://ftp.gnu.org/gnu/libcdio/
+          version-pattern: libcdio-(\d\.\d+\.?\d*).tar.bz2
+          url-template: https://ftp.gnu.org/gnu/libcdio/libcdio-$version.tar.bz2
+
+  - name: libcdio-paranoia
+    config-opts:
+      - --disable-static
+      - --disable-example-progs
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        url: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
+        sha256: 33b1cf305ccfbfd03b43936975615000ce538b119989c4bec469577570b60e8a
+        x-checker-data:
+          type: html
+          url: https://ftp.gnu.org/gnu/libcdio/
+          version-pattern: libcdio-paranoia-([\d\.\+-]+).tar.bz2
+          url-template: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-$version.tar.bz2
+
+  - name: libdvdread
+    config-opts:
+      - --disable-static
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        url: https://download.videolan.org/pub/videolan/libdvdread/6.1.3/libdvdread-6.1.3.tar.bz2
+        sha256: ce35454997a208cbe50e91232f0e73fb1ac3471965813a13b8730a8f18a15369
+        x-checker-data:
+          type: html
+          url: https://www.videolan.org/developers/libdvdnav.html
+          version-pattern: The latest version of <code>libdvdread</code> is <b>([\d\-\.]+)<
+          url-template: https://download.videolan.org/pub/videolan/libdvdread/$version/libdvdread-$version.tar.bz2
+
+  - name: libdvdnav
+    config-opts:
+      - --disable-static
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        url: https://download.videolan.org/pub/videolan/libdvdnav/6.1.1/libdvdnav-6.1.1.tar.bz2
+        sha256: c191a7475947d323ff7680cf92c0fb1be8237701885f37656c64d04e98d18d48
+        x-checker-data:
+          type: html
+          url: https://www.videolan.org/developers/libdvdnav.html
+          version-pattern: The latest version of <code>libdvdnav</code> is <b>([\d\-\.]+)</b>\.
+          url-template: https://download.videolan.org/pub/videolan/libdvdnav/$version/libdvdnav-$version.tar.bz2
+
+  - name: libaacs
+    config-opts:
+      - --disable-static
+      - --disable-bdjava-jar
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - sha256: a88aa0ebe4c98a77f7aeffd92ab3ef64ac548c6b822e8248a8b926725bea0a39
+        type: archive
+        url: https://download.videolan.org/pub/videolan/libaacs/0.11.1/libaacs-0.11.1.tar.bz2
+        x-checker-data:
+          type: html
+          url: https://www.videolan.org/developers/libaacs.html
+          version-pattern: Latest release is <b>libaacs (\d\.\d+\.?\d*)</b>
+          url-template: https://download.videolan.org/pub/videolan/libaacs/$version/libaacs-$version.tar.bz2
+
+  - name: libbluray
+    config-opts:
+      - --disable-static
+      - --disable-bdjava-jar
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - sha256: 478ffd68a0f5dde8ef6ca989b7f035b5a0a22c599142e5cd3ff7b03bbebe5f2b
+        type: archive
+        url: https://download.videolan.org/pub/videolan/libbluray/1.3.4/libbluray-1.3.4.tar.bz2
+        x-checker-data:
+          type: html
+          url: https://www.videolan.org/developers/libbluray.html
+          version-pattern: Latest release is <b>libbluray (\d\.\d+\.?\d*)</b>\.
+          url-template: https://download.videolan.org/pub/videolan/libbluray/$version/libbluray-$version.tar.bz2
+
+  - name: zimg
+    config-opts:
+      - --disable-static
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /share/doc
+    sources:
+      - type: archive
+        archive-type: tar
+        url: https://api.github.com/repos/sekrit-twc/zimg/tarball/release-3.0.5
+        sha256: 1b8998f03f4a49e4d730033143722b32bc28a5306ef809ccfb3b4bbb29e4b784
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/sekrit-twc/zimg/releases/latest
+          url-query: .tarball_url
+          version-query: .tag_name | sub("^release-"; "")
+          timestamp-query: .published_at
+
+  - name: rubberband
+    buildsystem: meson
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: git
+        url: https://github.com/breakfastquay/rubberband.git
+        tag: v3.3.0
+        commit: 2be46b0dffb13273a67396c77bc9278736bb03d2
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
+  - name: mujs
+    buildsystem: autotools
+    no-autogen: true
+    make-args:
+      - release
+    make-install-args:
+      - prefix=/app
+      - install-shared
+    cleanup:
+      - /bin
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: git
+        url: https://github.com/ccxvii/mujs.git
+        tag: 1.3.3
+        commit: 57e3f01d5f29c5823be725d96284488edf5f8ae1
+        x-checker-data:
+          type: git
+          url: https://api.github.com/repos/ccxvii/mujs/tags
+          tag-pattern: ^([\d.]+)$
+
+  - name: nv-codec-headers
+    cleanup:
+      - '*'
+    no-autogen: true
+    make-install-args:
+      - PREFIX=/app
+    sources:
+      - type: git
+        url: https://github.com/FFmpeg/nv-codec-headers.git
+        tag: n12.1.14.0
+        commit: 1889e62e2d35ff7aa9baca2bceb14f053785e6f1
+        x-checker-data:
+          type: git
+          tag-pattern: ^n([\d.]+)$
+
+  - name: x264
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /share/man
+    config-opts:
+      - --disable-cli
+      - --enable-shared
+    sources:
+      - type: git
+        url: https://code.videolan.org/videolan/x264.git
+        commit: 9c3c71688226fbb23f4d36399fab08f018e760b0
+        # Every commit to the master branch is considered a release
+        # https://code.videolan.org/videolan/x264/-/issues/35
+        x-checker-data:
+          type: json
+          url: https://code.videolan.org/api/v4/projects/536/repository/commits
+          commit-query: first( .[].id )
+          version-query: first( .[].id )
+          timestamp-query: first( .[].committed_date )
+
+  - name: x265
+    buildsystem: cmake
+    subdir: source
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_STATIC=0
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /share/man
+    sources:
+      - type: git
+        url: https://bitbucket.org/multicoreware/x265_git.git
+        tag: '3.5'
+        commit: f0c1022b6be121a753ff02853fbe33da71988656
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
+
+  - name: libmysofa
+    buildsystem: cmake
+    config-opts:
+      - -DBUILD_TESTS=OFF
+    sources:
+      - type: git
+        commit: 33974839677da7044ef5a70be7ad5550735aae6e
+        tag: v1.3.2
+        url: https://github.com/hoene/libmysofa.git
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
+  - name: libbs2b
+    buildsystem: autotools
+    config-opts:
+      - --disable-static
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        archive-type: tar
+        url: https://downloads.sourceforge.net/sourceforge/bs2b/libbs2b-3.1.0.tar.gz
+        sha256: 6aaafd81aae3898ee40148dd1349aab348db9bfae9767d0e66e0b07ddd4b2528
+        x-checker-data:
+          type: html
+          url: https://sourceforge.net/projects/bs2b/files/libbs2b/
+          version-pattern: projects/bs2b/files/libbs2b/(\d+\.\d+\.\d+)
+          url-template: https://downloads.sourceforge.net/sourceforge/bs2b/libbs2b-$version.tar.gz
+      # https://src.fedoraproject.org/rpms/libbs2b/blob/rawhide/f/libbs2b.spec#_40
+      - type: shell
+        commands:
+          - sed -i -e 's/lzma/xz/g' configure.ac
+          - autoreconf -vif
+
+  - name: libjxl
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_TESTING=OFF
+    sources:
+      - type: git
+        url: https://github.com/libjxl/libjxl.git
+        tag: v0.8.2
+        commit: 954b460768c08a147abf47689ad69b0e7beff65e
+        disable-shallow-clone: true
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
+  - name: ffmpeg
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /share/ffmpeg/examples
+    config-opts:
+      - --disable-debug
+      - --disable-doc
+      - --disable-static
+      - --enable-encoder=png
+      - --enable-gnutls
+      - --enable-gpl
+      - --enable-shared
+      - --enable-version3
+      - --enable-libaom
+      - --enable-libass
+      - --enable-libbs2b
+      - --enable-libdav1d
+      - --enable-libfreetype
+      - --enable-libmp3lame
+      - --enable-libopus
+      - --enable-libjxl
+      - --enable-libmysofa
+      - --enable-libtheora
+      - --enable-libv4l2
+      - --enable-libvorbis
+      - --enable-libvpx
+      - --enable-libx264
+      - --enable-libx265
+      - --enable-libwebp
+      - --disable-inline-asm
+
+    sources:
+      - type: git
+        url: https://github.com/FFmpeg/FFmpeg.git
+        commit: ea3d24bbe3c58b171e55fe2151fc7ffaca3ab3d2
+        tag: n6.0
+        x-checker-data:
+          type: git
+          tag-pattern: ^n([\d.]{3,7})$
+      - type: patch
+        path: ffmpeg-binutils.patch
+
+  - name: libsixel
+    buildsystem: meson
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        archive-type: tar
+        url: https://api.github.com/repos/libsixel/libsixel/tarball/refs/tags/v1.10.3
+        sha256: 7be774befba882d53701e131b6657836118f6cdb15a7515f92345c7bb6e2bb5c
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/libsixel/libsixel/tags
+          url-query: .[0].tarball_url
+          version-query: .[0].name
+
+  - name: vapoursynth
+    config-opts:
+      - --disable-static
+      - --with-python_prefix=/app
+    sources:
+      - type: git
+        url: https://github.com/vapoursynth/vapoursynth.git
+        tag: R64
+        commit: 3c3271769030d3f9ce8f84df7bccb7c2db3e33c0
+        x-checker-data:
+          type: git
+          tag-pattern: ^R([\d.]+)$
+
+  - name: libplacebo
+    buildsystem: meson
+    config-opts:
+      - -Dvulkan=enabled
+      - -Dshaderc=enabled
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: git
+        url: https://code.videolan.org/videolan/libplacebo.git
+        tag: v6.338.1
+        commit: 2805a0d01c029084ab36bf5d0e3c8742012a0b27
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+    modules:
+      - name: shaderc
+        buildsystem: cmake-ninja
+        builddir: true
+        config-opts:
+          - -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
+          - -DSHADERC_SKIP_EXAMPLES=ON
+          - -DSHADERC_SKIP_TESTS=ON
+          - -DSPIRV_SKIP_EXECUTABLES=ON
+          - -DENABLE_GLSLANG_BINARIES=OFF
+        cleanup:
+          - /bin
+          - /include
+          - /lib/cmake
+          - /lib/pkgconfig
+        sources:
+          # see https://github.com/google/shaderc/blob/known-good/known_good.json
+          - type: git
+            url: https://github.com/google/shaderc.git
+            commit: 3882b16417077aa8eaa7b5775920e7ba4b8a224d
+          - type: git
+            url: https://github.com/KhronosGroup/SPIRV-Tools.git
+            commit: 360d469b9eac54d6c6e20f609f9ec35e3a5380ad
+            dest: third_party/spirv-tools
+          - type: git
+            url: https://github.com/KhronosGroup/SPIRV-Headers.git
+            commit: 4183b260f4cccae52a89efdfcdd43c4897989f42
+            dest: third_party/spirv-headers
+          - type: git
+            url: https://github.com/KhronosGroup/glslang.git
+            commit: 48f9ed8b08be974f4e463ef38136c8f23513b2cf
+            dest: third_party/glslang
+
+  - name: mpv
+    buildsystem: meson
+    config-opts:
+      - -Dbuild-date=false
+      - -Dlibmpv=true
+      - -Dmanpage-build=disabled
+      - -Dcdda=enabled
+      - -Ddvbin=enabled
+      - -Ddvdnav=enabled
+      - -Dlibarchive=enabled
+      - -Dsdl2=enabled
+      - -Dvulkan=enabled
+      - -Dshaderc=enabled
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    post-install:
+      - mv /app/bin/mpv /app/bin/mpv-bin
+      # save screenshots at xdg-pictures/mpv
+      - echo "screenshot-directory=~/.var/app/io.mpv.Mpv/Pictures/mpv" > /app/etc/mpv/mpv.conf
+    sources:
+      - type: git
+        url: https://github.com/mpv-player/mpv.git
+        tag: v0.36.0
+        commit: f4210f84906c3b00a65fba198c8127b6757b9350
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+      - type: file
+        path: io.mpv.Mpv.appdata.xml
+      # Automatically update version and date in io.mpv.Mpv.appdata.xml
+      # Then install io.mpv.Mpv.appdata.xml
+      - type: shell
+        commands:
+          - sed -i "s/date=\"[0-9-]*\"/date=\"$(git log -n1 --pretty=format:%ad --date=short
+            VERSION)\"/" io.mpv.Mpv.appdata.xml
+          - sed -i "s/version=\"[0-9.]*\"/version=\"$(cat VERSION)\"/" io.mpv.Mpv.appdata.xml
+          # This doesn't find the file.
+          # - install -D -m644 $FLATPAK_ID.appdata.xml /app/share/appdata/$FLATPAK_ID.appdata.xml
+          - mkdir -p /app/share/appdata
+          - mv $FLATPAK_ID.appdata.xml /app/share/appdata/$FLATPAK_ID.appdata.xml
+          - chmod 644 /app/share/appdata/$FLATPAK_ID.appdata.xml
+
+# Scripts for mpv
+  - name: mpv-wrapper
+    buildsystem: simple
+    build-commands:
+      - install -D mpv /app/bin/mpv
+    sources:
+      - type: file
+        path: mpv

@@ -2,7 +2,7 @@
   "app-id": "com.github.wolf4sdl",
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "22.08",
+  "runtime-version": "23.08",
   "command": "wolf3d",
   "rename-icon": "wolf3d",
   "finish-args": [
