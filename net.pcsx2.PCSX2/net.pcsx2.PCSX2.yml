@@ -95,8 +95,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fastfloat/fast_float.git
-        tag: v5.2.0
-        commit: 2b2395f9ac836ffca6404424bcc252bff7aa80e4
+        tag: v5.3.0
+        commit: c8b8321fd4d91d83bdf0ebe098c1123bc455ebef
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -112,8 +112,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libsdl-org/SDL.git
-        commit: cc016b0046d563287f0aa9f09b958b5e70d43696
-        tag: release-2.28.4
+        commit: 15ead9a40d09a1eb9972215cceac2bf29c9b77f6
+        tag: release-2.28.5
         x-checker-data:
           type: git
           tag-pattern: ^release-([\d.]+)$
@@ -147,8 +147,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        tag: v1.7.5156
-        commit: e9ead0d33d528417c8401224879750c725375c3b
+        tag: v1.7.5243
+        commit: 234b3df332580e2590907c338646b4e5d4ee832b
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$

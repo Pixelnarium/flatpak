@@ -43,7 +43,7 @@
                     "type": "git",
                     "url": "https://voidpoint.io/terminx/eduke32.git",
                     "branch": "master",
-                    "commit": "03a39f4d64a9131138eeecab08003d5c6b67da1c"
+                    "commit": "9b6aaed972fe2bd29c8dec0686704e7f67ed21e9"
                 },
                 {
                     "type": "file",

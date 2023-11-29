@@ -8,7 +8,7 @@
  <summary>A free, open source, and cross-platform media player</summary>
  <launchable type="desktop-id">io.mpv.Mpv.desktop</launchable>
  <translation type="gettext">mpv</translation>
- <content_rating type="oars-1.1" />
+ <content_rating type="oars-1.1"/>
  <description>
   <p>
    Mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
@@ -30,16 +30,7 @@ output methods are supported.
   </ul>
  </description>
  <releases>
-  <release date="2023-07-23" version="0.36.0">
-   <description>
-    <p>
-     Please See Official Changelog at github.com/mpv-player/mpv/releases
-    </p>
-    <p>
-     Please See flatpak MPV Changelog at github.com/flathub/io.mpv.Mpv/commits/master
-    </p>
-   </description>
-  </release>
+  <release version="0.37.0" date="2023-11-24"/>
  </releases>
  <screenshots>
   <screenshot type="default">

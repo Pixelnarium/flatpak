@@ -91,8 +91,8 @@ modules:
       - install yt-dlp /app/bin
     sources:
       - type: archive
-        url: https://github.com/yt-dlp/yt-dlp/releases/download/2023.10.13/yt-dlp.tar.gz
-        sha256: 64944f4452a7657b5fb31ae55d823d9411a1a29f9c1071d33fa3e6286e20522a
+        url: https://github.com/yt-dlp/yt-dlp/releases/download/2023.11.16/yt-dlp.tar.gz
+        sha256: aa7fb7e49b57b1b5ac439a72568575e4df904ffc30417e19e644990e7239ac53
         x-checker-data:
           type: json
           url: https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest
@@ -139,15 +139,17 @@ modules:
       - /include
       - /lib/pkgconfig
       - /share/man
+    buildsystem: meson
     config-opts:
-      - --disable-static
-      - --disable-bpf
-      - --with-udevdir=/app/lib/udev
+      - -Ddoxygen-html=false
+      - -Ddoxygen-doc=disabled
+      - -Dbpf=disabled
+      - -Dudevdir=/app/lib/udev
     sources:
       - type: git
         url: https://git.linuxtv.org/v4l-utils.git
-        tag: v4l-utils-1.24.1
-        commit: 8799081b143627c9c09dea0c60ad3d1cc17cc848
+        tag: v4l-utils-1.26.0
+        commit: b5467f9bd5b799051fd42b4a5c8808a37e70c429
         x-checker-data:
           type: git
           tag-pattern: ^v4l-utils-([\d.]+)$
@@ -300,8 +302,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ccxvii/mujs.git
-        tag: 1.3.3
-        commit: 57e3f01d5f29c5823be725d96284488edf5f8ae1
+        tag: 1.3.4
+        commit: a76d157bdaa9aec8de5ea5a362eed2f59139152d
         x-checker-data:
           type: git
           url: https://api.github.com/repos/ccxvii/mujs/tags
@@ -333,7 +335,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: 9c3c71688226fbb23f4d36399fab08f018e760b0
+        commit: c1c9931dc87289b8aeba78150467f17bdb97d019
         # Every commit to the master branch is considered a release
         # https://code.videolan.org/videolan/x264/-/issues/35
         x-checker-data:
@@ -448,13 +450,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        commit: ea3d24bbe3c58b171e55fe2151fc7ffaca3ab3d2
-        tag: n6.0
+        commit: d4ff0020b40b524a490cf62eccbd3a318f4c0e58
+        tag: n6.1
         x-checker-data:
           type: git
           tag-pattern: ^n([\d.]{3,7})$
-      - type: patch
-        path: ffmpeg-binutils.patch
 
   - name: libsixel
     buildsystem: meson
@@ -479,8 +479,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vapoursynth/vapoursynth.git
-        tag: R64
-        commit: 3c3271769030d3f9ce8f84df7bccb7c2db3e33c0
+        tag: R65
+        commit: 3157049549a0940359b37004aeeeebd8f1db665e
         x-checker-data:
           type: git
           tag-pattern: ^R([\d.]+)$
@@ -557,8 +557,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/mpv-player/mpv.git
-        tag: v0.36.0
-        commit: f4210f84906c3b00a65fba198c8127b6757b9350
+        tag: v0.37.0
+        commit: 818ce7c51a6b9179307950e919983e0909942098
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
