@@ -1,0 +1,86 @@
+app-id: io.github.nba_emu.NanoBoyAdvance
+runtime: org.kde.Platform
+runtime-version: '6.6'
+sdk: org.kde.Sdk
+command: NanoBoyAdvance
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --share=network
+  - --device=all
+  - --persist=.
+
+modules:
+  - ../shared-modules/glew/glew.json
+  - name: unarr
+    buildsystem: cmake-ninja
+    builddir: true
+    cleanup:
+      - /include
+    sources:
+      - type: git
+        url: https://github.com/selmf/unarr
+        tag: v1.1.1
+        commit: b211040df83dee513362cdeb9bd87afa26fd5e38
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+      - type: shell
+        commands:
+          - sed -i 's|-flto||g' CMakeLists.txt
+  - name: toml11
+    buildsystem: cmake-ninja
+    builddir: true
+    cleanup:
+      - /include
+    config-opts:
+      - -DCMAKE_CXX_STANDARD=C++11
+      - -Dtoml11_BUILD_TEST=OFF
+    sources:
+      - type: git
+        url: https://github.com/ToruNiina/toml11
+        tag: v3.8.1
+        commit: d4eb5f3c9d8557b3820c80d55c41068839341b27
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+  - name: fmt
+    buildsystem: cmake-ninja
+    builddir: true
+    cleanup:
+      - /include
+    sources:
+      - type: git
+        url: https://github.com/fmtlib/fmt
+        tag: 10.2.1
+        commit: e69e5f977d458f2650bb346dadf2ad30c5320281
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$ 
+  - name: nba
+    buildsystem: cmake-ninja
+    builddir: true
+    build-options:
+      cflags: -DGLEW_NO_GLU
+      cxxflags: -DGLEW_NO_GLU
+    cleanup:
+      - /include
+    config-opts:
+      - -DOpenGL_GL_PREFERENCE=GLVND
+      - -DCMAKE_BUILD_TYPE=None
+      - -DUSE_QT6=ON
+      - -DPORTABLE_MODE=OFF
+      - -DUSE_SYSTEM_TOML11=ON
+      - -DUSE_SYSTEM_UNARR=ON
+      - -DUSE_SYSTEM_FMT=ON
+    sources:
+      - type: git
+        url: https://github.com/nba-emu/NanoBoyAdvance.git
+#        tag: v1.7.1
+#        commit: 5a14f6356e94e5dd9285256165ccd7ab65fb0fb5
+#        x-checker-data:
+#          type: git
+#          tag-pattern: ^v([\d.]+)$
+

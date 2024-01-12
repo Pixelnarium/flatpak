@@ -19,7 +19,8 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DUSE_FFMPEG=OFF",
-                "-DCMAKE_INSTALL_LIBDIR=lib"
+                "-DCMAKE_INSTALL_LIBDIR=lib",
+                "-DUSE_DISCORD_RPC=OFF"
             ],
             "build-commands": [
                 "install -Dm644 io.mgba.mGBA.appdata.xml /app/share/appdata/io.mgba.mGBA.appdata.xml"
@@ -28,8 +29,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/mgba-emu/mgba.git",
-                    "tag": "0.10.2",
-                    "commit": "2fb55450610a4d10479a1eed1408f905d79318e3",
+                    "tag": "0.10.3",
+                    "commit": "1c61b54208ca6266129d0f2394c04bd8c44f98c5",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$",

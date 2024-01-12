@@ -1,6 +1,8 @@
 app-id: net.pcsx2.PCSX2
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm17
 runtime-version: '6.6'
 command: pcsx2-qt
 finish-args:
@@ -95,8 +97,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fastfloat/fast_float.git
-        tag: v5.3.0
-        commit: c8b8321fd4d91d83bdf0ebe098c1123bc455ebef
+        tag: v6.0.0
+        commit: f3ff46fd40d28b5eb272727812e5bd8dc5a6d876
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -128,7 +130,12 @@ modules:
   - name: pcsx2
     buildsystem: cmake-ninja
     builddir: true
+    build-options:
+      append-path: /usr/lib/sdk/llvm17/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm17/lib
     config-opts:
+      - -DCMAKE_C_COMPILER=clang
+      - -DCMAKE_CXX_COMPILER=clang++
       - -DCMAKE_BUILD_TYPE=Release
       - -DDISABLE_BUILD_DATE=ON
       - -DWAYLAND_API=ON
@@ -147,8 +154,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/PCSX2/pcsx2.git
-        tag: v1.7.5243
-        commit: 234b3df332580e2590907c338646b4e5d4ee832b
+        tag: v1.7.5446
+        commit: 4b6ddaf09efa9ec3060eb6809db2a669585d07c2
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
