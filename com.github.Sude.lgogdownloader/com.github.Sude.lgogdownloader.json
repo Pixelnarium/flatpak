@@ -143,6 +143,7 @@
                 "-DUSE_QT_GUI=ON"
             ],
             "post-install": [
+                "mkdir -p /app/share/appdata",
                 "install -Dm644 ../com.github.Sude.lgogdownloader.appdata.xml /app/share/appdata/"
             ],
             "sources": [

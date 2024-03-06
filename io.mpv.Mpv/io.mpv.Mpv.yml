@@ -335,7 +335,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: c1c9931dc87289b8aeba78150467f17bdb97d019
+        commit: be4f0200ed007c466fd96185c39cde2a2d60ef50
         # Every commit to the master branch is considered a release
         # https://code.videolan.org/videolan/x264/-/issues/35
         x-checker-data:
@@ -408,8 +408,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libjxl/libjxl.git
-        tag: v0.9.1
-        commit: b8ceae3a6e9d0ffd9efebcbdd04322fcfc502eed
+        tag: v0.10.1
+        commit: 5f67ebced96df5c0696ec7d1822bdd3e4e11a1a1
         disable-shallow-clone: true
         x-checker-data:
           type: git
@@ -496,8 +496,8 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/libplacebo.git
-        tag: v6.338.1
-        commit: 2805a0d01c029084ab36bf5d0e3c8742012a0b27
+        tag: v6.338.2
+        commit: 64c1954570f1cd57f8570a57e51fb0249b57bb90
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
