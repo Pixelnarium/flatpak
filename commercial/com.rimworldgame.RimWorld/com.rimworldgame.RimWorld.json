@@ -21,6 +21,7 @@
             "name": "game",
             "buildsystem": "simple",
             "build-commands": [
+              "echo 'New RimWorld Release May 2025'",
               "mkdir /app/bin",
               "mkdir /app/game",
               "mv RimWorld/* /app/game/",

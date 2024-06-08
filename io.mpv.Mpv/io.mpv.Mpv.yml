@@ -31,8 +31,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/xorg/lib/libxmu.git
-        tag: libXmu-1.1.4
-        commit: b29c739b577ee142877e69eb3fb07c7312d81557
+        tag: libXmu-1.2.1
+        commit: 792f80402ee06ce69bca3a8f2a84295999c3a170
         x-checker-data:
           type: git
           tag-pattern: ^libXmu-([\d.]+)$
@@ -91,8 +91,8 @@ modules:
       - install yt-dlp /app/bin
     sources:
       - type: archive
-        url: https://github.com/yt-dlp/yt-dlp/releases/download/2023.12.30/yt-dlp.tar.gz
-        sha256: 5408fe5d12cd1c430ee10346770e3d60baad5c63a38b41c8967005e4956780a7
+        url: https://github.com/yt-dlp/yt-dlp/releases/download/2024.05.27/yt-dlp.tar.gz
+        sha256: 83dbf15456490e7efe9ba839922f8221d07cf1168b29653fd476faa3cdf91235
         x-checker-data:
           type: json
           url: https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest
@@ -128,8 +128,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libass/libass.git
-        tag: 0.17.1
-        commit: e8ad72accd3a84268275a9385beb701c9284e5b3
+        tag: 0.17.2
+        commit: cbb48cc4f2f076300004b8b06a86bec55281d0c2
         x-checker-data:
           type: git
           tag-pattern: ^(\d\.\d{1,3}\.\d{1,2})$
@@ -318,8 +318,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/nv-codec-headers.git
-        tag: n12.1.14.0
-        commit: 1889e62e2d35ff7aa9baca2bceb14f053785e6f1
+        tag: n12.2.72.0
+        commit: c69278340ab1d5559c7d7bf0edf615dc33ddbba7
         x-checker-data:
           type: git
           tag-pattern: ^n([\d.]+)$
@@ -335,7 +335,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: be4f0200ed007c466fd96185c39cde2a2d60ef50
+        commit: 4613ac3c15fd75cebc4b9f65b7fb95e70a3acce1
         # Every commit to the master branch is considered a release
         # https://code.videolan.org/videolan/x264/-/issues/35
         x-checker-data:
@@ -358,8 +358,8 @@ modules:
     sources:
       - type: git
         url: https://bitbucket.org/multicoreware/x265_git.git
-        tag: '3.5'
-        commit: f0c1022b6be121a753ff02853fbe33da71988656
+        tag: '3.6'
+        commit: aa7f602f7592eddb9d87749be7466da005b556ee
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
@@ -408,8 +408,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libjxl/libjxl.git
-        tag: v0.10.1
-        commit: 5f67ebced96df5c0696ec7d1822bdd3e4e11a1a1
+        tag: v0.10.2
+        commit: e1489592a770b989303b0edc5cc1dc447bbe0515
         disable-shallow-clone: true
         x-checker-data:
           type: git
@@ -450,8 +450,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        commit: e38092ef9395d7049f871ef4d5411eb410e283e0
-        tag: n6.1.1
+        commit: af25a4bfd2503caf3ee485b27b99b620302f5718
+        tag: n7.0.1
         x-checker-data:
           type: git
           tag-pattern: ^n([\d.]{3,7})$
@@ -479,8 +479,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vapoursynth/vapoursynth.git
-        tag: R65
-        commit: 3157049549a0940359b37004aeeeebd8f1db665e
+        tag: R68
+        commit: 18bf017f8e6fac14b2fdb6a6d0c6e44c6686e4f3
         x-checker-data:
           type: git
           tag-pattern: ^R([\d.]+)$
@@ -489,7 +489,7 @@ modules:
     buildsystem: meson
     config-opts:
       - -Dvulkan=enabled
-      - -Dshaderc=enabled
+      #- -Dshaderc=enabled
     cleanup:
       - /include
       - /lib/pkgconfig
@@ -546,7 +546,7 @@ modules:
       - -Dlibarchive=enabled
       - -Dsdl2=enabled
       - -Dvulkan=enabled
-      - -Dshaderc=enabled
+      #- -Dshaderc=enabled
     cleanup:
       - /include
       - /lib/pkgconfig
@@ -557,8 +557,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/mpv-player/mpv.git
-        tag: v0.37.0
-        commit: 818ce7c51a6b9179307950e919983e0909942098
+        tag: v0.38.0
+        commit: 02254b92dd237f03aa0a151c2a68778c4ea848f9
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
