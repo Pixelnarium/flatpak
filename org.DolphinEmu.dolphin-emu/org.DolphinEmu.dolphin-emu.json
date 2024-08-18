@@ -15,6 +15,7 @@
     "--share=ipc"
   ],
   "modules": [
+    "../modules/sdl2.json",
     {
       "name": "dolphin-emu",
       "buildsystem": "cmake-ninja",
@@ -39,7 +40,7 @@
       ],
       "post-install": [
         "install -Dm644 org.DolphinEmu.dolphin-emu.appdata.xml /app/share/appdata/org.DolphinEmu.dolphin-emu.appdata.xml",
-        "sed -i -e 's/\"2048\"/\"512\"/g' /app/share/icons/hicolor/scalable/apps/dolphin-emu.svg"
+        "sed -i -e 's/viewBox=\"0 0 1024.02 571.29\"/viewBox=\"0 -285.645 1024 1024\" width=\"2048\" height=\"2048\"/g' /app/share/icons/hicolor/scalable/apps/dolphin-emu.svg"
       ],
       "sources": [
         {

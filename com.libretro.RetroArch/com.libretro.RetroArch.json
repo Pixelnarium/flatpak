@@ -1,10 +1,10 @@
 {
-    "app-id": "org.libretro.RetroArch",
+    "app-id": "com.libretro.RetroArch",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "retroarch-wrapper",
-    "rename-desktop-file": "retroarch.desktop",
+    "rename-desktop-file": "org.libretro.RetroArch.desktop",
     "rename-icon": "retroarch",
     "finish-args": [
         "--socket=fallback-x11",
@@ -59,10 +59,6 @@
                 },
                 {
                     "type": "file",
-                    "path": "org.libretro.RetroArch.appdata.xml"
-                },
-                {
-                    "type": "file",
                     "path": "retroarch.cfg"
                 },
                 {
@@ -76,10 +72,9 @@
                 "rmdir ${FLATPAK_DEST}/share/pixmaps/",
                 "mkdir -p ${FLATPAK_DEST}/etc",
                 "sed s:@prefix@:${FLATPAK_DEST}:g retroarch.cfg > ${FLATPAK_DEST}/etc/retroarch.cfg",
-                "mkdir -p ${FLATPAK_DEST}/share/appdata",
-                "cp org.libretro.RetroArch.appdata.xml ${FLATPAK_DEST}/share/appdata",
                 "install -Dm775 retroarch-wrapper.sh /app/bin/retroarch-wrapper",
-                "desktop-file-edit --set-key=Exec --set-value=retroarch-wrapper /app/share/applications/retroarch.desktop"
+                "desktop-file-edit --set-key=Exec --set-value=retroarch-wrapper /app/share/applications/org.libretro.RetroArch.desktop"
+
             ]
         },
         {

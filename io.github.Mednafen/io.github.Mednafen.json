@@ -18,38 +18,7 @@
     ],
     "modules": [
         "../shared-modules/glu/glu-9.json",
-        {
-            "name": "sdl2",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_INSTALL_PREFIX=/app",
-                "-DSDL_STATIC=OFF",
-                "-DSDL_DLOPEN=ON",
-                "-DSDL_RPATH=OFF"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/libsdl-org/SDL.git",
-                    "commit": "859844eae358447be8d66e6da59b6fb3df0ed778",
-                    "tag": "release-2.30.0",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^release-([\\d.]+)$"
-                    }
-                }
-            ],
-            "cleanup": [
-                "/bin",
-                "/share/man",
-                "/share/aclocal",
-                "/include",
-                "/lib/pkgconfig",
-                "/lib/*.la",
-                "/lib/*.a"
-            ]
-        },
+        "../modules/sdl2.json",
         {
             "name": "mednafen",
             "post-install": [
@@ -64,8 +33,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://mednafen.github.io/releases/files/mednafen-1.29.0.tar.xz",
-                    "sha256": "da3fbcf02877f9be0f028bfa5d1cb59e953a4049b90fe7e39388a3386d9f362e",
+                    "url": "https://mednafen.github.io/releases/files/mednafen-1.32.1.tar.xz",
+                    "sha256": "de7eb94ab66212ae7758376524368a8ab208234b33796625ca630547dbc83832",
                     "x-checker-data": {
                         "type": "html",
                         "url": "https://mednafen.github.io/documentation/ChangeLog.txt",

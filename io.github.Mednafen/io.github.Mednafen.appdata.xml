@@ -13,6 +13,12 @@
   <project_license>GPL-2.0</project_license>
   <url type="homepage">https://mednafen.github.io/</url>
   <releases>
+    <release version="1.32.1" date="2024-04-05">
+      <description></description>
+    </release>
+    <release version="1.32.1" date="2024-04-05">
+      <description/>
+    </release>
     <release version="1.29.0" date="2022-01-19"/>
   </releases>
 </component>

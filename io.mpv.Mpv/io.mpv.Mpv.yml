@@ -91,8 +91,8 @@ modules:
       - install yt-dlp /app/bin
     sources:
       - type: archive
-        url: https://github.com/yt-dlp/yt-dlp/releases/download/2024.05.27/yt-dlp.tar.gz
-        sha256: 83dbf15456490e7efe9ba839922f8221d07cf1168b29653fd476faa3cdf91235
+        url: https://github.com/yt-dlp/yt-dlp/releases/download/2024.08.06/yt-dlp.tar.gz
+        sha256: e08331fb9a36eba56b4efd074b5b25fbf08413e9cb47009a28ecbffe47150310
         x-checker-data:
           type: json
           url: https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest
@@ -128,8 +128,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libass/libass.git
-        tag: 0.17.2
-        commit: cbb48cc4f2f076300004b8b06a86bec55281d0c2
+        tag: 0.17.3
+        commit: e46aedea0a0d17da4c4ef49d84b94a7994664ab5
         x-checker-data:
           type: git
           tag-pattern: ^(\d\.\d{1,3}\.\d{1,2})$
@@ -148,8 +148,8 @@ modules:
     sources:
       - type: git
         url: https://git.linuxtv.org/v4l-utils.git
-        tag: v4l-utils-1.26.1
-        commit: 4aee01a027923cab1e40969f56f8ba58d3e6c0d1
+        tag: v4l-utils-1.28.1
+        commit: fc15e229d9d337e46d730f00647821adbbd58548
         x-checker-data:
           type: git
           tag-pattern: ^v4l-utils-([\d.]+)$
@@ -180,8 +180,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
-        sha256: 33b1cf305ccfbfd03b43936975615000ce538b119989c4bec469577570b60e8a
+        url: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.2.tar.bz2
+        sha256: 186892539dedd661276014d71318c8c8f97ecb1250a86625256abd4defbf0d0c
         x-checker-data:
           type: html
           url: https://ftp.gnu.org/gnu/libcdio/
@@ -302,8 +302,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ccxvii/mujs.git
-        tag: 1.3.4
-        commit: a76d157bdaa9aec8de5ea5a362eed2f59139152d
+        tag: 1.3.5
+        commit: 0df0707f2f10187127e36acfbc3ba9b9ca5b5cf0
         x-checker-data:
           type: git
           url: https://api.github.com/repos/ccxvii/mujs/tags
@@ -408,8 +408,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libjxl/libjxl.git
-        tag: v0.10.2
-        commit: e1489592a770b989303b0edc5cc1dc447bbe0515
+        tag: v0.10.3
+        commit: 4a3b22d2600f92d8706fb72d85d52bfee2acbd54
         disable-shallow-clone: true
         x-checker-data:
           type: git
@@ -450,8 +450,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        commit: af25a4bfd2503caf3ee485b27b99b620302f5718
-        tag: n7.0.1
+        commit: e3a61e91030696348b56361bdf80ea358aef4a19
+        tag: n7.0.2
         x-checker-data:
           type: git
           tag-pattern: ^n([\d.]{3,7})$
@@ -479,8 +479,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vapoursynth/vapoursynth.git
-        tag: R68
-        commit: 18bf017f8e6fac14b2fdb6a6d0c6e44c6686e4f3
+        tag: R69
+        commit: 2804ed7a4926863f4a12e879d95155c4b05ecdf3
         x-checker-data:
           type: git
           tag-pattern: ^R([\d.]+)$
@@ -496,43 +496,13 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/libplacebo.git
-        tag: v6.338.2
-        commit: 64c1954570f1cd57f8570a57e51fb0249b57bb90
+        tag: v7.349.0
+        commit: 1fd3c7bde7b943fe8985c893310b5269a09b46c5
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
     modules:
-      - name: shaderc
-        buildsystem: cmake-ninja
-        builddir: true
-        config-opts:
-          - -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
-          - -DSHADERC_SKIP_EXAMPLES=ON
-          - -DSHADERC_SKIP_TESTS=ON
-          - -DSPIRV_SKIP_EXECUTABLES=ON
-          - -DENABLE_GLSLANG_BINARIES=OFF
-        cleanup:
-          - /bin
-          - /include
-          - /lib/cmake
-          - /lib/pkgconfig
-        sources:
-          # see https://github.com/google/shaderc/blob/known-good/known_good.json
-          - type: git
-            url: https://github.com/google/shaderc.git
-            commit: 3882b16417077aa8eaa7b5775920e7ba4b8a224d
-          - type: git
-            url: https://github.com/KhronosGroup/SPIRV-Tools.git
-            commit: 360d469b9eac54d6c6e20f609f9ec35e3a5380ad
-            dest: third_party/spirv-tools
-          - type: git
-            url: https://github.com/KhronosGroup/SPIRV-Headers.git
-            commit: 4183b260f4cccae52a89efdfcdd43c4897989f42
-            dest: third_party/spirv-headers
-          - type: git
-            url: https://github.com/KhronosGroup/glslang.git
-            commit: 48f9ed8b08be974f4e463ef38136c8f23513b2cf
-            dest: third_party/glslang
+      - ../modules/shaderc.yml
 
   - name: mpv
     buildsystem: meson

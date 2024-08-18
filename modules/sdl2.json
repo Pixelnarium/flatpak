@@ -1,0 +1,32 @@
+{
+    "name": "sdl2",
+    "buildsystem": "cmake-ninja",
+    "builddir": true,
+    "config-opts": [
+        "-DCMAKE_INSTALL_PREFIX=/app",
+        "-DSDL_STATIC=OFF",
+        "-DSDL_DLOPEN=ON",
+        "-DSDL_RPATH=OFF"
+    ],
+    "sources": [
+        {
+            "type": "git",
+            "url": "https://github.com/libsdl-org/SDL.git",
+            "commit": "ba2f78a0069118a6c583f1fbf1420144ffa35bad",
+            "tag": "release-2.30.6",
+            "x-checker-data": {
+                "type": "git",
+                "tag-pattern": "^release-([\\d.]+)$"
+            }
+        }
+    ],
+    "cleanup": [
+        "/bin",
+        "/share/man",
+        "/share/aclocal",
+        "/include",
+        "/lib/pkgconfig",
+        "/lib/*.la",
+        "/lib/*.a"
+    ]
+}

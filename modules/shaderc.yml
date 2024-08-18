@@ -1,0 +1,32 @@
+---
+name: shaderc
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
+  - -DSHADERC_SKIP_EXAMPLES=ON
+  - -DSHADERC_SKIP_TESTS=ON
+  - -DSPIRV_SKIP_EXECUTABLES=ON
+  - -DENABLE_GLSLANG_BINARIES=OFF
+cleanup:
+  - /bin
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+sources:
+  # see https://github.com/google/shaderc/blob/known-good/known_good.json
+  - type: git
+    url: https://github.com/google/shaderc.git
+    commit: 47a9387ef5b3600d30d84c71ec77a59dc7db46fa
+  - type: git
+    url: https://github.com/KhronosGroup/SPIRV-Tools.git
+    commit: dd4b663e13c07fea4fbb3f70c1c91c86731099f7
+    dest: third_party/spirv-tools
+  - type: git
+    url: https://github.com/KhronosGroup/SPIRV-Headers.git
+    commit: 5e3ad389ee56fca27c9705d093ae5387ce404df4
+    dest: third_party/spirv-headers
+  - type: git
+    url: https://github.com/KhronosGroup/glslang.git
+    commit: 142052fa30f9eca191aa9dcf65359fcaed09eeec
+    dest: third_party/glslang

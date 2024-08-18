@@ -32,8 +32,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.bz2",
-                    "sha256": "cc4b893acf645c9d4b698e9a0f08ca8846aa5d6c68275c14c3e7949c24109454",
+                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.86.0/source/boost_1_86_0.tar.bz2",
+                    "sha256": "1bed88e40401b2cb7a1f76d4bab499e352fa4d0c5f31c0dbae64e24d34d7513b",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 6845,
@@ -135,6 +135,22 @@
             ]
         },
         {
+            "name": "tidy",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/htacg/tidy-html5.git",
+                    "tag": "5.8.0",
+                    "commit": "1ca37471b48a3498f985509828cb3cf85ea129f8",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    }
+                }
+            ]
+        },
+        {
             "name": "lgogdownloader",
             "buildsystem": "cmake-ninja",
             "builddir": true,
@@ -150,8 +166,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Sude-/lgogdownloader.git",
-                    "tag": "v3.12",
-                    "commit": "8e07ba18e883a0c0b3f30e527fd6952d36eaf460",
+                    "tag": "v3.14",
+                    "commit": "5b53cce83e8e3ed3de572972feb07923da120410",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",
