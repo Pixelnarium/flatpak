@@ -2,7 +2,7 @@
   "name": "glew-egl",
   "buildsystem": "simple",
   "build-commands": [
-    "sed -i '/^.PHONY: .*\.pc$/d' Makefile",
+    "sed -i '/^.PHONY: .*\\.pc$/d' Makefile",
     "sed -i 's,lib64,lib,' config/Makefile.linux",
     "make SYSTEM=linux-egl",
     "make GLEW_DEST=\"$FLATPAK_DEST\" SYSTEM=linux-egl install.all"

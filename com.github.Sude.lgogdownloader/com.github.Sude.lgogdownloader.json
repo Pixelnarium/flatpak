@@ -54,8 +54,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/open-source-parsers/jsoncpp.git",
-                    "tag": "1.9.5",
-                    "commit": "5defb4ed1a4293b8e2bf641e16b156fb9de498cc",
+                    "tag": "1.9.6",
+                    "commit": "89e2973c754a9c02a49974d839779b151e95afd6",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -166,8 +166,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Sude-/lgogdownloader.git",
-                    "tag": "v3.14",
-                    "commit": "5b53cce83e8e3ed3de572972feb07923da120410",
+                    "tag": "v3.15",
+                    "commit": "5cdee34b99b20052c04d7f4238f4dfdf6dd5d534",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",

@@ -1,7 +1,7 @@
 {
     "app-id": "com.rimworldgame.RimWorld",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "23.08",
+    "runtime-version": "24.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "starter",
     "finish-args": [
@@ -21,7 +21,7 @@
             "name": "game",
             "buildsystem": "simple",
             "build-commands": [
-              "echo 'New RimWorld Release May 2025'",
+              "echo 'New RimWorld Release May 2024'",
               "mkdir /app/bin",
               "mkdir /app/game",
               "mv RimWorld/* /app/game/",

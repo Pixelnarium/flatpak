@@ -2,7 +2,7 @@
     "app-id": "com.retrodev.blastem",
     "runtime": "org.freedesktop.Platform",
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "23.08",
+    "runtime-version": "24.08",
     "command": "start-blastem",
     "rename-icon": "blastem",
     "finish-args": [
@@ -123,8 +123,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ImageMagick/ImageMagick",
-                    "tag": "7.1.1-36",
-                    "commit": "852a4e91b1cdb0c055a27dae956f130941e66ac0",
+                    "tag": "7.1.1-38",
+                    "commit": "b0ab92265bab638e6ecd2f18b45977c38771c671",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+\\-[\\d]+)$"
@@ -156,7 +156,7 @@
                 {
                     "type": "archive",
                     "url": "https://www.retrodev.com/repos/blastem/archive/tip.tar.bz2",
-                    "sha256": "b1ca8e1ee773f622630c6e958cb453747b6ff83652b335008f938413496f5452"
+                    "sha256": "5897d1275feb31f7e1042ff4d56a5680e1eb5aab9def43bd663a14574824ec09"
                 },
                 {
                     "type": "file",
