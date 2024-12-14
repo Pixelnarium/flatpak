@@ -13,8 +13,11 @@
   <project_license>MIT</project_license>
   <url type="homepage">https://sameboy.github.io/</url>
   <releases>
-    <release version="0.16.6" date="2024-07-02">
+    <release version="0.16.7" date="2024-11-23">
       <description></description>
+    </release>
+    <release version="0.16.6" date="2024-07-02">
+      <description/>
     </release>
     <release version="0.16.5" date="2024-06-12">
       <description/>

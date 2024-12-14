@@ -1,7 +1,7 @@
 {
     "id": "org.mamedev.MAME",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.7",
+    "runtime-version": "6.8",
     "sdk": "org.kde.Sdk",
     "command": "mame-wrapper",
     "finish-args": [
@@ -34,8 +34,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/mamedev/mame.git",
-                    "tag": "mame0270",
-                    "commit": "ef032a31e50e861d4f593fa4d5e9a8c4cc06b0e1",
+                    "tag": "mame0271",
+                    "commit": "4da96a0c4fbc9ee692082e889b3a5a913fc0659e",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^mame([\\d.]+)$",

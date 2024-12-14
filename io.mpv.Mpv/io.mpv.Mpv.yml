@@ -1,6 +1,6 @@
 id: io.mpv.Mpv
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: mpv
 rename-desktop-file: mpv.desktop
@@ -99,8 +99,8 @@ modules:
       - install yt-dlp /app/bin
     sources:
       - type: archive
-        url: https://github.com/yt-dlp/yt-dlp/releases/download/2024.09.27/yt-dlp.tar.gz
-        sha256: ffce6ebd742373eff6dac89b23f706ec7513a0367160eb8b5a550cd706cd883f
+        url: https://github.com/yt-dlp/yt-dlp/releases/download/2024.12.06/yt-dlp.tar.gz
+        sha256: ca50d78fee784e49b53cbfa0278f3f8ded3d17104fca50e7b45f74892479c0d6
         x-checker-data:
           type: json
           url: https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest
@@ -288,8 +288,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/breakfastquay/rubberband.git
-        tag: v3.3.0
-        commit: 2be46b0dffb13273a67396c77bc9278736bb03d2
+        tag: v4.0.0
+        commit: 1d95888bec3ae0a17c0c4af791810d5a63f6bc35
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -342,7 +342,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: c24e06c2e184345ceb33eb20a15d1024d9fd3497
+        commit: da14df5535fd46776fb1c9da3130973295c87aca
         # Every commit to the master branch is considered a release
         # https://code.videolan.org/videolan/x264/-/issues/35
         x-checker-data:
@@ -366,10 +366,10 @@ modules:
       - type: git
         url: https://bitbucket.org/multicoreware/x265_git.git
         tag: '4.0'
-        commit: 6318f223684118a2c71f67f3f4633a9e35046b00
-        x-checker-data:
-          type: git
-          tag-pattern: ^([\d.]+)$
+        commit: 6318f223684118a2c71f67f3f4633a9e35046b00 
+#        x-checker-data:
+#          type: git
+#          tag-pattern: ^([\d.]+)$
 
   - name: libmysofa
     buildsystem: cmake
@@ -377,8 +377,8 @@ modules:
       - -DBUILD_TESTS=OFF
     sources:
       - type: git
-        commit: 33974839677da7044ef5a70be7ad5550735aae6e
-        tag: v1.3.2
+        commit: 444d2c1d7ececf5cc2d96d3b17b209047b02318d
+        tag: v1.3.3
         url: https://github.com/hoene/libmysofa.git
         x-checker-data:
           type: git
@@ -415,8 +415,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libjxl/libjxl.git
-        tag: v0.11.0
-        commit: 4df1e9eccdf86b8df4c0c7c08f529263906f9c4f
+        tag: v0.11.1
+        commit: 794a5dcf0d54f9f0b20d288a12e87afb91d20dfc
         disable-shallow-clone: true
         x-checker-data:
           type: git
@@ -457,8 +457,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        commit: e3a61e91030696348b56361bdf80ea358aef4a19
-        tag: n7.0.2
+        commit: b08d7969c550a804a59511c7b83f2dd8cc0499b8
+        tag: n7.1
         x-checker-data:
           type: git
           tag-pattern: ^n([\d.]{3,7})$

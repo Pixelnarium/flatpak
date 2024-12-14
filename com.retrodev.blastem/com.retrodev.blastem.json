@@ -54,8 +54,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://phoenix.owl.de/tags/vasm1_9.tar.gz",
-                    "sha256": "1986e21096a7a08f18699921c719098152f0e981468fa8bf651fe44681526482",
+                    "url": "http://phoenix.owl.de/tags/vasm2_0.tar.gz",
+                    "sha256": "210334b0326d54dfd21fe6c065ceca990a6b5da762d59c6c0f9d8c3e5f6a6093",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 234716,
@@ -99,8 +99,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/python-pillow/Pillow.git",
-                    "commit": "9b4fae77178e827ab17118fbc89c739ffd6a0fab",
-                    "tag": "10.4.0",
+                    "commit": "204aae6682fc936f5350b3fe70335776f81480a7",
+                    "tag": "11.0.0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -123,8 +123,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ImageMagick/ImageMagick",
-                    "tag": "7.1.1-38",
-                    "commit": "b0ab92265bab638e6ecd2f18b45977c38771c671",
+                    "tag": "7.1.1-41",
+                    "commit": "bbdcbf78a67b0d4e2cf26e2a37c6d806b9ad3a13",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+\\-[\\d]+)$"

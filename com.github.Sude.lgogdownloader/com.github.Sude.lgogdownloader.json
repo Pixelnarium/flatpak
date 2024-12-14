@@ -2,9 +2,9 @@
     "app-id": "com.github.Sude.lgogdownloader",
     "default-branch": "stable",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-23.08",
+    "runtime-version": "5.15-24.08",
     "base": "io.qt.qtwebengine.BaseApp",
-    "base-version": "5.15-23.08",
+    "base-version": "5.15-24.08",
     "sdk": "org.kde.Sdk",
     "command": "lgogdownloader",
     "cleanup": [
@@ -125,8 +125,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/rhash/RHash.git",
-                    "tag": "v1.4.4",
-                    "commit": "cfe77846a4c1bc7424eb2da2b164577a16bbcb19",
+                    "tag": "v1.4.5",
+                    "commit": "6ea6791024499524cf41f9e0b6b08d456bf4a5e2",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"

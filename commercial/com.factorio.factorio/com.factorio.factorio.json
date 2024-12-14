@@ -12,7 +12,8 @@
     "--share=network",
     "--socket=wayland",
     "--socket=pulseaudio",
-    "--persist=."
+    "--persist=.",
+    "--filesystem=xdg-run/pipewire-0:ro"
   ],
   "command": "start-factorio",
   "modules": [
@@ -20,7 +21,6 @@
       "name": "factorio",
       "buildsystem": "simple",
       "build-commands": [
-        "echo 'building factorio 1.1.110'",
         "mv factorio /app/",
         "mkdir -p /app/share/applications",
         "mkdir -p /app/share/metainfo",
@@ -35,7 +35,7 @@
       "sources": [
         {
           "type": "archive",
-          "path": "factorio_alpha_x64_1.1.110.tar.xz",
+          "path": "factorio_linux_2.0.20.tar.xz",
           "strip-components": 0
         },
         {
