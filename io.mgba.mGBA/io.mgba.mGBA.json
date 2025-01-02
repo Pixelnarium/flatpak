@@ -29,8 +29,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/mgba-emu/mgba.git",
-                    "tag": "0.10.3",
-                    "commit": "1c61b54208ca6266129d0f2394c04bd8c44f98c5",
+                    "tag": "0.10.4",
+                    "commit": "6c2da7b62163fcd6446fc06b9b993fd414a05eaa",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$",

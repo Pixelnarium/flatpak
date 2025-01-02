@@ -52,8 +52,11 @@
     <id>org.phoenicis.playonlinux</id>
   </suggests>
   <releases>
-    <release version="3.15" date="2024-09-25">
+    <release version="3.16" date="2025-01-02">
       <description></description>
+    </release>
+    <release version="3.15" date="2024-09-25">
+      <description/>
     </release>
     <release version="3.14" date="2024-06-12">
       <description/>

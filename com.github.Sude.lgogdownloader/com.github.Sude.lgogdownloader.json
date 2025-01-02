@@ -166,8 +166,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Sude-/lgogdownloader.git",
-                    "tag": "v3.15",
-                    "commit": "5cdee34b99b20052c04d7f4238f4dfdf6dd5d534",
+                    "tag": "v3.16",
+                    "commit": "5d6640de888dcac41401d0c3d1dd93cdc8920074",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",
