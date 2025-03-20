@@ -21,7 +21,7 @@
       "name": "factorio",
       "buildsystem": "simple",
       "build-commands": [
-        "mv factorio /app/",
+        "mv factorio /app/ ",
         "mkdir -p /app/share/applications",
         "mkdir -p /app/share/metainfo",
         "install -Dm644 factorio.desktop /app/share/applications/",
@@ -35,7 +35,7 @@
       "sources": [
         {
           "type": "archive",
-          "path": "factorio_linux_2.0.20.tar.xz",
+          "path": "factorio_linux_2.0.32.tar.xz",
           "strip-components": 0
         },
         {

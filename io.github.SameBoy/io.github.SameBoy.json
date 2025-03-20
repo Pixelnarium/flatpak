@@ -70,7 +70,7 @@
                     "type": "git",
                     "url": "https://github.com/LIJI32/SameBoy.git",
                     "tag": "v1.0",
-                    "commit": "eadf395de607e5d4bb66dffa90b05d8a36bd4fce",
+                    "commit": "a659de99601135758727443113b7ef90e762ef3a",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",

@@ -32,13 +32,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.86.0/source/boost_1_86_0.tar.bz2",
-                    "sha256": "1bed88e40401b2cb7a1f76d4bab499e352fa4d0c5f31c0dbae64e24d34d7513b",
+                    "url": "https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.bz2",
+                    "sha256": "af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 6845,
                         "stable-only": true,
-                        "url-template": "https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${version0}_${version1}_${version2}.tar.bz2"
+                        "url-template": "https://archives.boost.io/release/$version/source/boost_${version0}_${version1}_${version2}.tar.bz2"
                     }
                 }
             ]
@@ -97,8 +97,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/leethomason/tinyxml2.git",
-                    "tag": "10.0.0",
-                    "commit": "321ea883b7190d4e85cae5512a12e5eaa8f8731f",
+                    "tag": "11.0.0",
+                    "commit": "9148bdf719e997d1f474be6bcc7943881046dba1",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -166,8 +166,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Sude-/lgogdownloader.git",
-                    "tag": "v3.16",
-                    "commit": "5d6640de888dcac41401d0c3d1dd93cdc8920074",
+                    "tag": "v3.17",
+                    "commit": "555054e5096fdbaab608601671373bf2e628d4ea",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",

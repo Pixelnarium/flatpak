@@ -16,8 +16,14 @@
   </description>
   <url type="homepage">http://mamedev.org/</url>
   <releases>
-    <release version="0273" date="2025-01-02">
+    <release version="0275" date="2025-03-17">
       <description></description>
+    </release>
+    <release version="0274" date="2025-02-06">
+      <description/>
+    </release>
+    <release version="0273" date="2025-01-02">
+      <description/>
     </release>
     <release version="0271" date="2024-11-23">
       <description/>

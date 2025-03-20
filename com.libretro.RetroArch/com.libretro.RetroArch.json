@@ -4,16 +4,16 @@
     "runtime-version": "24.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "retroarch-wrapper",
-    "rename-desktop-file": "org.libretro.RetroArch.desktop",
-    "rename-icon": "retroarch",
     "finish-args": [
         "--socket=fallback-x11",
         "--socket=wayland",
         "--socket=pulseaudio",
+        "--filesystem=xdg-run/pipewire-0",
         "--share=ipc",
         "--share=network",
         "--device=all",
-        "--talk-name=org.freedesktop.ScreenSaver"
+        "--talk-name=org.freedesktop.ScreenSaver",
+        "--talk-name=org.freedesktop.PowerManagement.Inhibit"
     ],
     "modules": [
         {
@@ -49,8 +49,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/libretro/RetroArch.git",
-                    "tag": "v1.19.1",
-                    "commit": "0792144fe3a7b59908b0afdb2c01722e79040360",
+                    "tag": "v1.20.0",
+                    "commit": "ab3b175848fa6cd8b2340809631e30bc0fe1d136",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$",
@@ -68,13 +68,12 @@
             ],
             "post-install": [
                 "mkdir -p ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
-                "mv /app/share/pixmaps/retroarch.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
+                "mv /app/share/pixmaps/com.libretro.RetroArch.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
                 "rmdir ${FLATPAK_DEST}/share/pixmaps/",
                 "mkdir -p ${FLATPAK_DEST}/etc",
                 "sed s:@prefix@:${FLATPAK_DEST}:g retroarch.cfg > ${FLATPAK_DEST}/etc/retroarch.cfg",
                 "install -Dm775 retroarch-wrapper.sh /app/bin/retroarch-wrapper",
-                "desktop-file-edit --set-key=Exec --set-value=retroarch-wrapper /app/share/applications/org.libretro.RetroArch.desktop"
-
+                "desktop-file-edit --set-key=Exec --set-value=retroarch-wrapper /app/share/applications/com.libretro.RetroArch.desktop"
             ]
         },
         {

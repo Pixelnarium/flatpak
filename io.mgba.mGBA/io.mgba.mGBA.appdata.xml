@@ -20,8 +20,11 @@
     <screenshot>https://raw.githubusercontent.com/flathub/io.mgba.mGBA/master/screenshots/3.png</screenshot>
   </screenshots>
   <releases>
-    <release version="0.10.4" date="2025-01-02">
+    <release version="0.10.5" date="2025-03-17">
       <description></description>
+    </release>
+    <release version="0.10.4" date="2025-01-02">
+      <description/>
     </release>
     <release version="0.10.3" date="2024-01-12"/>
     <release version="0.10.2" date="2023-05-07"/>

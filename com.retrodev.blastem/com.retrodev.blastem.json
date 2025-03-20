@@ -123,8 +123,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ImageMagick/ImageMagick",
-                    "tag": "7.1.1-43",
-                    "commit": "a2d96f40e707ba54b57e7d98c3277d3ea6611ace",
+                    "tag": "7.1.1-46",
+                    "commit": "8209e844cf02b5365918da83b2fc811442813080",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+\\-[\\d]+)$"
@@ -156,7 +156,7 @@
                 {
                     "type": "archive",
                     "url": "https://www.retrodev.com/repos/blastem/archive/tip.tar.bz2",
-                    "sha256": "5897d1275feb31f7e1042ff4d56a5680e1eb5aab9def43bd663a14574824ec09"
+                    "sha256": "90366b74abf6be20e24c89b31a7e3060884c3bd85e7129656ff6052d6d648d30"
                 },
                 {
                     "type": "file",

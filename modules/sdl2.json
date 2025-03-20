@@ -1,5 +1,5 @@
 {
-    "name": "sdl2",
+    "name": "sdl2-compat",
     "buildsystem": "cmake-ninja",
     "builddir": true,
     "config-opts": [
@@ -11,9 +11,9 @@
     "sources": [
         {
             "type": "git",
-            "url": "https://github.com/libsdl-org/SDL.git",
-            "commit": "fa24d868ac2f8fd558e4e914c9863411245db8fd",
-            "tag": "release-2.30.11",
+            "url": "https://github.com/libsdl-org/sdl2-compat.git",
+            "commit": "fc273d65b167e88626d753aafe1e21be6c728974",
+            "tag": "release-2.32.52",
             "x-checker-data": {
                 "type": "git",
                 "tag-pattern": "^release-([\\d.]+)$"
@@ -28,5 +28,39 @@
         "/lib/pkgconfig",
         "/lib/*.la",
         "/lib/*.a"
+    ],
+    "modules": [
+        {
+            "name": "sdl3",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_INSTALL_PREFIX=/app",
+                "-DSDL_STATIC=OFF",
+                "-DSDL_DLOPEN=ON",
+                "-DSDL_RPATH=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libsdl-org/SDL.git",
+                    "commit": "f6864924f76e1a0b4abaefc76ae2ed22b1a8916e",
+                    "tag": "release-3.2.8",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^release-([\\d.]+)$"
+                    }
+                }
+            ],
+            "cleanup": [
+                "/bin",
+                "/share/man",
+                "/share/aclocal",
+                "/include",
+                "/lib/pkgconfig",
+                "/lib/*.la",
+                "/lib/*.a"
+            ]
+        }
     ]
 }
