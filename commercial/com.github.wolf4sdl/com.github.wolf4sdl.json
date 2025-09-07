@@ -2,7 +2,7 @@
   "app-id": "com.github.wolf4sdl",
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "24.08",
+  "runtime-version": "25.08",
   "command": "wolf3d",
   "rename-icon": "wolf3d",
   "finish-args": [
@@ -14,7 +14,8 @@
     "--persist=."
   ],
   "modules": [
-    "../../shared-modules/SDL/SDL-1.2.15.json",
+    "../../modules/sdl2.json",
+    "../../shared-modules/SDL/sdl12-compat.json",
     "../../shared-modules/SDL/SDL_mixer-1.2.12.json",
     {
       "name": "wolf4sdl",

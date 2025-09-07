@@ -1,7 +1,7 @@
 {
     "app-id": "io.github.pr-starfighter",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "24.08",
+    "runtime-version": "25.08",
     "sdk": "org.freedesktop.Sdk",
     "rename-desktop-file": "starfighter.desktop",
     "rename-icon": "starfighter",
@@ -16,6 +16,7 @@
         "--persist=."
     ],
     "modules": [
+        "../shared-modules/SDL2/SDL2_image.json",
         {
             "name": "pr-starfighter",
             "sources": [

@@ -32,8 +32,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.bz2",
-                    "sha256": "af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89",
+                    "url": "https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2",
+                    "sha256": "85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 6845,
@@ -125,8 +125,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/rhash/RHash.git",
-                    "tag": "v1.4.5",
-                    "commit": "6ea6791024499524cf41f9e0b6b08d456bf4a5e2",
+                    "tag": "v1.4.6",
+                    "commit": "6562de382954d9893442b89b0e8b5c513eea6a88",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"

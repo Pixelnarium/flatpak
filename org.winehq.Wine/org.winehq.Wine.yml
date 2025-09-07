@@ -1,11 +1,11 @@
 id: org.winehq.Wine
-default-branch: &app-version stable-24.08
-x-extension-versions: &extension-versions stable;stable-24.08
+default-branch: &app-version stable-25.08
+x-extension-versions: &extension-versions stable;stable-25.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '24.08'
+runtime-version: &runtime-version '25.08'
 x-gl-version: &gl-version '1.4'
-x-gl-versions: &gl-versions 24.08;1.4
+x-gl-versions: &gl-versions 25.08;1.4
 x-gl-merge-dirs: &gl-merge-dirs vulkan/icd.d;glvnd/egl_vendor.d;egl/egl_external_platform.d;OpenCL/vendors;lib/dri;lib/d3d;lib/gbm;vulkan/explicit_layer.d;vulkan/implicit_layer.d
 finish-args:
   - --share=ipc
@@ -98,8 +98,8 @@ modules:
       - -DGSTREAMER=ON
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/25.08/FAudio-25.08.tar.gz
-        sha256: af769d927d61e27074d3deff5af7a3cb0573054e163fbdace51d531d09a000a8
+        url: https://github.com/FNA-XNA/FAudio/archive/25.09/FAudio-25.09.tar.gz
+        sha256: 0d055030959afc8e5b39e6a16ee33eec1f5e4e9c8d8badb8772001b3b45824a2
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
@@ -137,8 +137,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22-final.tar.gz
-        sha256: 686f7251da4b1ffcba1112b4b25c888890dac3227f9b84151bb41fce4ffc2d78
+        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22.1-final.tar.gz
+        sha256: d7dd1ded54c1c2d3381da4a266935feda6ba6398155720df27e2975bd5a39239
         x-checker-data:
           type: anitya
           project-id: 13287
@@ -188,8 +188,8 @@ modules:
       - /sbin
     sources:
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.22.3.tar.gz
-        sha256: 8fd7092629a3596d935cd7567d934979f94272918ec3affd0cc807934ecf22ba
+        url: https://download.samba.org/pub/samba/stable/samba-4.22.4.tar.gz
+        sha256: a41a828848abdf5e942c900ca178597e18aab7b61d3c06a9b5ba43661988010b
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/stable/
@@ -228,8 +228,8 @@ modules:
   - name: unixodbc
     sources:
       - type: archive
-        url: http://www.unixodbc.org/unixODBC-2.3.9.tar.gz
-        sha256: 52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207
+        url: http://www.unixodbc.org/unixODBC-2.3.12.tar.gz
+        sha256: f210501445ce21bf607ba51ef8c125e10e22dffdffec377646462df5f01915ec
     cleanup:
       - /bin
 
@@ -240,13 +240,11 @@ modules:
       arch:
         x86_64:
           config-opts:
-            - --enable-win64
             - --enable-archs=x86_64,i386
           libdir: /app/lib
       env:
         LIBDIR: lib
     config-opts:
-      - --disable-win16
       - --disable-tests
       - --with-x
       - --with-pulse
@@ -260,13 +258,10 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/source/10.0/wine-10.0.tar.xz                      
-        sha256: c5e0b3f5f7efafb30e9cd4d9c624b85c583171d33549d933cd3402f341ac3601
+        url: https://dl.winehq.org/wine/source/10.x/wine-10.14.tar.xz
+        sha256: a4fa3b5aefe1c0b7391a91a2c3c733b8dfd04bb315c8eabcfb2af413969e5e4b
         x-addons-url: &wine-addons-url >-
           https://gitlab.winehq.org/wine/wine/-/raw/master/dlls/appwiz.cpl/addons.c?ref_type=heads
-      - type: patch
-        paths:
-          - patches/wine/loader-prefer-winedllpath.patch
 
   # Tools
 
@@ -317,10 +312,14 @@ modules:
 
           - name: yasm
             buildsystem: cmake-ninja
+            config-opts:
+              - "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
             sources:
-              - type: archive
-                url: https://github.com/yasm/yasm/archive/v1.3.0.tar.gz
-                sha256: f708be0b7b8c59bc1dbe7134153cd2f31faeebaa8eec48676c10f972a1f13df3
+              - type: git
+                url: https://github.com/zeroomega/yasm.git
+                branch: bump_cmake
+#                url: https://github.com/yasm/yasm/archive/v1.3.0.tar.gz
+#                sha256: f708be0b7b8c59bc1dbe7134153cd2f31faeebaa8eec48676c10f972a1f13df3
             cleanup:
               - '*'
 
@@ -369,9 +368,9 @@ modules:
         ${FLATPAK_ID}.mono.metainfo.xml
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/10.1.0/wine-mono-10.1.0-x86.tar.xz
+        url: https://dl.winehq.org/wine/wine-mono/10.2.0/wine-mono-10.2.0-x86.tar.xz
         strip-components: 0
-        sha256: 7f4763edd350503a3a70b1bbbdbff944f1f4bb1552f0731957363d162ce2589a
+        sha256: ba12894e566944be8a04fdae62e0ebe0908a159020ab9a4e72ac4db774732de0
         x-checker-data:
           type: html
           url: *wine-addons-url

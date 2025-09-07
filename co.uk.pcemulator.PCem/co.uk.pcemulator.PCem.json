@@ -30,7 +30,6 @@
                 "--with-libpng",
                 "--with-zlib",
                 "--disable-sdltest",
-                "--enable-unicode",
                 "--enable-display",
                 "--enable-propgrid",
                 "--disable-webview",
@@ -45,8 +44,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/wxWidgets/wxWidgets.git",
-                    "commit": "a7d97b966993214a5ea8928aec6ed5fa6e32f939",
-                    "tag": "v3.2.7.1",
+                    "commit": "49c6810948f40c457e3d0848b9111627b5b61de5",
+                    "tag": "v3.3.1",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"

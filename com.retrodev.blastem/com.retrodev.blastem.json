@@ -2,7 +2,7 @@
     "app-id": "com.retrodev.blastem",
     "runtime": "org.freedesktop.Platform",
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "24.08",
+    "runtime-version": "25.08",
     "command": "start-blastem",
     "rename-icon": "blastem",
     "finish-args": [
@@ -99,8 +99,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/python-pillow/Pillow.git",
-                    "commit": "09adcfb4e4bd1ad57896ea176a021d396a7965f4",
-                    "tag": "11.2.0",
+                    "commit": "89f1f4626a2aaf5f3d5ca6437f41def2998fbe09",
+                    "tag": "11.3.0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -123,8 +123,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ImageMagick/ImageMagick",
-                    "tag": "7.1.1-47",
-                    "commit": "82572afc879b439cbf8c9c6f3a9ac7626adf98fb",
+                    "tag": "7.1.2-3",
+                    "commit": "147bc9c12ce8fbc1e94af5b5f6f0643ca410103a",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+\\-[\\d]+)$"
