@@ -447,7 +447,6 @@ modules:
       - --enable-libjxl
       - --enable-libmysofa
       - --enable-libtheora
-      - --enable-libv4l2
       - --enable-libvorbis
       - --enable-libvpx
       - --enable-libx264
@@ -460,11 +459,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        commit: 140fd653aed8cad774f991ba083e2d01e86420c7
-        tag: n8.0
-        x-checker-data:
-          type: git
-          tag-pattern: ^n([\d.]{3,7})$
+        commit: db69d06eeeab4f46da15030a80d539efb4503ca8
+        tag: n7.1.1
+#        x-checker-data:
+#          type: git
+#            tag-pattern: ^n([\d.]{3,7})$
 
   - name: libsixel
     buildsystem: meson
