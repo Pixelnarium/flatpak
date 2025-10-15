@@ -61,8 +61,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/xorg/lib/libxpresent.git
-        tag: libXpresent-1.0.1
-        commit: 37507b5f44332accfb1064ee69a4f6a833994747
+        tag: libXpresent-1.0.2
+        commit: 4d92149372461bf575e8a09b1064a2884c38c3aa
         x-checker-data:
           type: git
           tag-pattern: ^libXpresent-([\d.]+)$
@@ -89,6 +89,23 @@ modules:
         commands:
           - sed -i 's|/usr/local|/app|' ./Makefile
 
+  - name: deno
+    no-autogen: true
+    no-make-install: true
+    buildsystem: simple
+    build-commands:
+      - install -m 775 deno /app/bin
+    sources:
+      - type: archive
+        url: https://github.com/denoland/deno/releases/download/v2.5.4/deno-x86_64-unknown-linux-gnu.zip
+        sha256: 8a04bb02a1dcd56ed060e55281df4b306ca4553a0d02b53b666063f465f2193a
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/denoland/deno/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name=="deno-x86_64-unknown-linux-gnu.zip")
+            | .browser_download_url
+
   - name: yt-dlp
     no-autogen: true
     no-make-install: true
@@ -99,8 +116,8 @@ modules:
       - install yt-dlp /app/bin
     sources:
       - type: archive
-        url: https://github.com/yt-dlp/yt-dlp/releases/download/2025.09.05/yt-dlp.tar.gz
-        sha256: 71b746f537ddccdcd54352a941e9e6cd2033150b440eb14d8d15daefa4b2c855
+        url: https://github.com/yt-dlp/yt-dlp/releases/download/2025.09.26/yt-dlp.tar.gz
+        sha256: 1a2221451f0b4815b4bd6dfa665238f44b34cb1dac01c1cfda5dff36459e1164
         x-checker-data:
           type: json
           url: https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest
@@ -343,7 +360,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: b35605ace3ddf7c1a5d67a2eb553f034aef41d55
+        commit: 0480cb05fa188d37ae87e8f4fd8f1aea3711f7ee
         # Every commit to the master branch is considered a release
         # https://code.videolan.org/videolan/x264/-/issues/35
         x-checker-data:
