@@ -100,11 +100,7 @@
                     "type": "git",
                     "url": "https://github.com/python-pillow/Pillow.git",
                     "commit": "89f1f4626a2aaf5f3d5ca6437f41def2998fbe09",
-                    "tag": "11.3.0",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^([\\d.]+)$"
-                    }
+                    "tag": "11.3.0"
                 },
                 {
                     "type": "shell",
@@ -123,8 +119,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ImageMagick/ImageMagick",
-                    "tag": "7.1.2-5",
-                    "commit": "4a620c2a89a7481e83cb4a0ff32db0ccbb3afcd2",
+                    "tag": "7.1.2-9",
+                    "commit": "a90c0505dcb65c8caff3c545be10afea6028ec8f",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+\\-[\\d]+)$"
@@ -156,7 +152,7 @@
                 {
                     "type": "archive",
                     "url": "https://www.retrodev.com/repos/blastem/archive/tip.tar.bz2",
-                    "sha256": "90366b74abf6be20e24c89b31a7e3060884c3bd85e7129656ff6052d6d648d30"
+                    "sha256": "cb1f48b56daee3fdd6c1b87bbae563f94e1c367ac512f1e823ed7359dfcdbf05"
                 },
                 {
                     "type": "file",
