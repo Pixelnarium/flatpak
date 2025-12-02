@@ -1,6 +1,6 @@
 app-id: net.kuribo64.melonDS
 runtime: org.kde.Platform
-runtime-version: 6.9
+runtime-version: 6.10
 sdk: org.kde.Sdk
 command: melonDS
 finish-args:
@@ -35,7 +35,7 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-  
+
   - name: libenet
     sources:
       - type: git
@@ -46,10 +46,19 @@ modules:
           type: git
           tag-pattern: ^v([\d.]+)$
       - type: script
-        commands: [
-          "autoreconf -vfi"
-        ]
-          
+        commands: [autoreconf -vfi]
+
+  - name: faad2
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/knik0/faad2
+        tag: 2.11.2
+        commit: 673a22a3c7c33e96e2ff7aae7c4d2bc190dfbf92
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
+
   - name: melonds
     buildsystem: cmake-ninja
     builddir: true
@@ -62,8 +71,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Arisotura/melonDS.git
-        tag: '1.0'
-        commit: e099cfdc5a38141135e9d5747bebae8f640978c4
+        tag: '1.1'
+        commit: b86390e4428bf38ce4c1ce0e9ca446d6d25955e8
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$

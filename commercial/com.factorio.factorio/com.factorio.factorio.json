@@ -35,7 +35,7 @@
       "sources": [
         {
           "type": "archive",
-          "path": "factorio_linux_2.0.32.tar.xz",
+          "path": "factorio_linux_2.0.69.tar.xz",
           "strip-components": 0
         },
         {

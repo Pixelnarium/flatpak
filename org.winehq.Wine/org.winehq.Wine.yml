@@ -157,8 +157,8 @@ modules:
       - /sbin
     sources:
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.23.1.tar.gz
-        sha256: a4fe464652c136600525dcd2665737c72248c6a49d9d5323661a683800c39f75
+        url: https://download.samba.org/pub/samba/stable/samba-4.23.3.tar.gz
+        sha256: 06cdbb27a6956978b045455fe0696d998ffbac8d24ba24de87a4ef8200813320
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/stable/
@@ -246,8 +246,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/source/10.x/wine-10.16.tar.xz
-        sha256: c5ed2742bff208c63b005bcfb91a2fc6cc49af6c6695bc8c0cf0fe6f4da60446
+        url: https://dl.winehq.org/wine/source/10.x/wine-10.20.tar.xz
+        sha256: 81b4a153958f6247fe5041d5df65eadcbbeea1b6ba8cda24eb7e3d7ce2d1fe3c
         x-addons-url: &wine-addons-url >-
           https://gitlab.winehq.org/wine/wine/-/raw/master/dlls/appwiz.cpl/addons.c?ref_type=heads
 
@@ -334,9 +334,9 @@ modules:
         ${FLATPAK_ID}.mono.metainfo.xml
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/10.2.0/wine-mono-10.2.0-x86.tar.xz
+        url: https://dl.winehq.org/wine/wine-mono/10.4.0/wine-mono-10.4.0-x86.tar.xz
         strip-components: 0
-        sha256: ba12894e566944be8a04fdae62e0ebe0908a159020ab9a4e72ac4db774732de0
+        sha256: 2ca7b7083b52357f09c84a577709e65bba54c6c356ec052fbfab6003ecb2012a
         x-checker-data:
           type: html
           url: *wine-addons-url

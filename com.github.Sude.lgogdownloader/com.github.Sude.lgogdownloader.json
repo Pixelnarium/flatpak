@@ -2,9 +2,9 @@
     "app-id": "com.github.Sude.lgogdownloader",
     "default-branch": "stable",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15-24.08",
+    "runtime-version": "5.15-25.08",
     "base": "io.qt.qtwebengine.BaseApp",
-    "base-version": "5.15-24.08",
+    "base-version": "5.15-25.08",
     "sdk": "org.kde.Sdk",
     "command": "lgogdownloader",
     "cleanup": [

@@ -2,7 +2,7 @@
     "app-id": "io.mgba.mGBA",
     "runtime": "org.kde.Platform",
     "sdk": "org.kde.Sdk",
-    "runtime-version": "5.15-24.08",
+    "runtime-version": "5.15-25.08",
     "command": "mgba-qt",
     "finish-args": [
         "--device=all",
@@ -20,7 +20,8 @@
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DUSE_FFMPEG=OFF",
                 "-DCMAKE_INSTALL_LIBDIR=lib",
-                "-DUSE_DISCORD_RPC=OFF"
+                "-DUSE_DISCORD_RPC=OFF",
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
             ],
             "build-commands": [
                 "install -Dm644 io.mgba.mGBA.appdata.xml /app/share/appdata/io.mgba.mGBA.appdata.xml"
