@@ -12,8 +12,8 @@
         {
             "type": "git",
             "url": "https://github.com/libsdl-org/sdl2-compat.git",
-            "commit": "7c830290c6325190147abb7aedf39ef0e914d71a",
-            "tag": "release-2.32.58",
+            "commit": "9831c2e1fcf0a115a351339dfa29d7f32e202f36",
+            "tag": "release-2.32.60",
             "x-checker-data": {
                 "type": "git",
                 "tag-pattern": "^release-([\\d.]+)$"
@@ -44,8 +44,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/libsdl-org/SDL.git",
-                    "commit": "badbf8da4ee72b3ef599c721ffc9899e8d7c8d90",
-                    "tag": "release-3.2.26",
+                    "commit": "7f3ae3d57459e59943a4ecfefc8f6277ec6bf540",
+                    "tag": "release-3.2.28",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^release-([\\d.]+)$"

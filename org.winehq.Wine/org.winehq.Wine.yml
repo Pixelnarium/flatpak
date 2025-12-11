@@ -246,8 +246,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/source/10.x/wine-10.20.tar.xz
-        sha256: 81b4a153958f6247fe5041d5df65eadcbbeea1b6ba8cda24eb7e3d7ce2d1fe3c
+        url: https://dl.winehq.org/wine/source/11.0/wine-11.0-rc1.tar.xz
+        sha256: 84ede94dca350012ade19237fbde36117463593e37c94becbdab4c692025c78d 
         x-addons-url: &wine-addons-url >-
           https://gitlab.winehq.org/wine/wine/-/raw/master/dlls/appwiz.cpl/addons.c?ref_type=heads
 
