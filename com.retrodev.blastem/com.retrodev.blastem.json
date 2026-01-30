@@ -152,7 +152,7 @@
                 {
                     "type": "archive",
                     "url": "https://www.retrodev.com/repos/blastem/archive/tip.tar.bz2",
-                    "sha256": "cb1f48b56daee3fdd6c1b87bbae563f94e1c367ac512f1e823ed7359dfcdbf05"
+                    "sha256": "7e02e3ee6547ddb81f049f8b99d1a17288c916cdb169365e60ae91bad33b0f0c"
                 },
                 {
                     "type": "file",
