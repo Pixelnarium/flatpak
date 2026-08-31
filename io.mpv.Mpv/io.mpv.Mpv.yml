@@ -132,6 +132,8 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_STATIC=0
+      # TODO can be removed when updating to uchardet > 0.0.8
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     cleanup:
       - /bin
       - /include
@@ -146,6 +148,7 @@ modules:
           url: https://www.freedesktop.org/software/uchardet/releases/
           version-pattern: uchardet-(\d\.\d+\.?\d*).tar.xz
           url-template: https://www.freedesktop.org/software/uchardet/releases/uchardet-$version.tar.xz
+
 
   - name: libass
     cleanup:
