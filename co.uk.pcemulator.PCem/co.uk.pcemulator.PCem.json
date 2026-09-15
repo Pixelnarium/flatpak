@@ -44,8 +44,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/wxWidgets/wxWidgets.git",
-                    "commit": "49c6810948f40c457e3d0848b9111627b5b61de5",
-                    "tag": "v3.3.1",
+                    "commit": "db1005db3dea2c37a46fb455a9a02e37aa360751",
+                    "tag": "v3.3.2",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"

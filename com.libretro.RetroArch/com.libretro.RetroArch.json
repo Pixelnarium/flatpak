@@ -1,7 +1,7 @@
 {
     "app-id": "com.libretro.RetroArch",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "25.08",
+    "runtime-version": "26.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "retroarch-wrapper",
     "finish-args": [
@@ -26,8 +26,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://downloads.sourceforge.net/lame/lame-3.100.tar.gz",
-                    "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e",
+                    "url": "https://downloads.sourceforge.net/lame/lame-4.0.tar.gz",
+                    "sha256": "3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 12523,
